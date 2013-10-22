@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Logs | My Octopress Blog]]></title>
+  <link href="http://sudharsh.github.io/blog/categories/logs/atom.xml" rel="self"/>
+  <link href="http://sudharsh.github.io/"/>
+  <updated>2013-10-22T17:40:26+05:30</updated>
+  <id>http://sudharsh.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[There and back again..]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/12/30/there-and-back-again/"/>
+    <updated>2008-12-30T21:02:32+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/12/30/there-and-back-again</id>
+    <content type="html"><![CDATA[<p>Went for a little holiday to Kerala (Kochi, Guruvayoor and Calicut). My dad wanted to go to Kerala and catch up with a few of his college buddies and Me, I wanted to visit the lanes and streets of Calicut where I had roamed as a very little boy. After all, I had lived there for 8 years and Kozhikode hasn&rsquo;t changed a lot to be honest, except for fresh coats of paints. A new building here and there, one or two demolished. But most of my favorite spots still remain, PaiCo, Alakapuri, Lions park, my school :D, the local chips store, the &lsquo;samooham&rsquo;, winding lanes of chalapuram..etc..</p>
+
+<p>The best part is, I met my LKG class teacher out of sheer luck. Woot, its been 14 years and still she remembers me :D (I must have been very very &lsquo;notorius&rsquo;), After all she had the patience to teach me that &lsquo;C&rsquo; follows &lsquo;B&rsquo;&hellip;..</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=128" alt="Geetha" /></p>
+
+<p>And not to forget the &lsquo;Anna kada&rsquo; as I used to call it, Still the same&hellip;</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=128" alt="dsc04529" />NSS school&hellip; :D,</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=128" alt="NSS chalapuram" /></p>
+
+<p>Tali Shivan Temple.</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=128" alt="tali" /></p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=128" alt="P" /></p>
+
+<p>Sunset at the beach with little karthik,</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=128" alt="sunset" />&hellip;and, couldn&rsquo;t help myself :P</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=128" alt="Hillarious?.." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fsod status]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/10/20/fsod-status/"/>
+    <updated>2008-10-20T23:07:26+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/10/20/fsod-status</id>
+    <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
+
+<p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
+
+<p>It would be also be pretty awesome if fsod could support loading python plugins, kind of like what gedit does. The GSM code especially could benefit from this since there is not much to gain in terms of performance here.</p>
+
+<p>As for fsod, the sources are available <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. In case anyone wants to get hold of a opk of the current code to install on the Freerunner, it is available <a href="http://sudharsh.mukt.in/fsod-preview_armv4t.opk">here</a>. Comments are welcome</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[odeviced: More sysfs abuse (Screenshot attached! :P)]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/"/>
+    <updated>2008-06-13T22:06:51+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p</id>
+    <content type="html"><![CDATA[<p>A few days gone by, and endless wrestling with git wherein I was not able to push code. Turned out, I was using the wrong URL to push ..doh!</p>
+
+<p>But anyway, the <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">code</a> is beginning to stabilise a bit (Read no unexpected segfaults, only expected ones..). The last few days were spent in changing the method names in accordance with OTAPI naming conventions after my mentor went through my code.</p>
+
+<p>There is also another important change. The sysfs nodes for backlight and power plugins were hardcoded in their configuration files. So, I came up with some helpers that creates DBus paths automatically based on the device class which they belong to. Here&rsquo;s a picture of today&rsquo;s code in action,</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png"><img src="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=300" alt="" /></a></p>
+
+<p>Notice the <a href="https://hosted.fedoraproject.org/projects/d-feet/">d-feet DBus</a> debugger towards the lower left? It shows all the automatically created DBus object paths based on the device class which the plugin stands for. And the terminal to the right shows some debug messages. Note how odeviced spits out the current battery status viz. &ldquo;Charging, Discharging&rdquo;. The corresponding &ldquo;battery-status-changed&rdquo; DBus signal is emitted as well (along with &ldquo;low-battery-warning&rdquo; signal which <em>ahem</em> is emitted when battery is low).</p>
+
+<p>For more follow this <a href="http://lists.openmoko.org/pipermail/openmoko-devel/2008-June/003002.html">thread</a>..</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Battery Plugin and more..]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/06/05/battery-plugin-and-more/"/>
+    <updated>2008-06-05T18:09:23+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/06/05/battery-plugin-and-more</id>
+    <content type="html"><![CDATA[<p>After a little chat with <a href="http://www.vanille-media.de/site/index.php/blog/">mickeyl</a>, I realised that exposing crucial functions like load() and unload() was not that of a good idea considering how <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">odeviced</a> is supposed to closely interact with the underlying devices. Consequently there has been some changes over the last week,</p>
+
+<ul>
+<li><p>No DBus interface for the service.</p></li>
+<li><p>Plugins have now access to a set of helper functions. Only two at the moment (Think setting up DBus object paths)</p></li>
+<li><p>Plugins once loaded become resident, that is they cannot be unloaded. If plugins are to be disabled during startup, just remove them from the &ldquo;enable&rdquo; field in the global configuration file.</p></li>
+<li><p>Per plugin configuration. Each plugins now have their own configuration. Makes more sense, since this mean plugins can have greater freedom with their settings. I really like how the newly checked in <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=tree;f=odeviced/plugins/backlight;h=cf890037a9a39f4a801ea9e5984c40af8440fa03;hb=e21a88cf6a35d9ef43a3d0836be26bdae733d670">battery plugin</a> exploits this.</p></li>
+<li><p>Freshly checked in battery plugin. Makes use of sysfs for its functions viz. get_current_brightness, set_brightness, get_maximum_brightness.</p></li>
+</ul>
+
+
+<p><a href="http://en.wikipedia.org/wiki/Sysfs">SysFS</a> (/sys in 2.6.x.x) is sort of similar to the /proc filesystem and acts as an interface for user-space applications to control/access various devices. One of the neat things about sysfs is the fact that all files consist of only a <strong>single</strong> entry. This means I don&rsquo;t have to write a separate parser to extract data from them. So a simple fprintf or fscanf or even the seemingly mundane &ldquo;echo&rdquo; can be used to control the devices.</p>
+
+<p>I am also planning to work on the python shell for odeviced for a while. This will be really convenient for testing the service. Something like this,</p>
+
+<p><code>&gt; Wifi is_on wlan0
+True
+</code></p>
+
+<p>The code can be checked out from <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. I can&rsquo;t wait till I get hold of a FreeRunner to test odeviced out. :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The code is in...]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/06/02/the-code-is-in/"/>
+    <updated>2008-06-02T21:01:46+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/06/02/the-code-is-in</id>
+    <content type="html"><![CDATA[<p>Yay. Got the repository for odeviced set up at <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">http://git.freesmartphone.org</a></p>
+
+<p>Boy, do I love <a href="http://git.or.cz/">git</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
