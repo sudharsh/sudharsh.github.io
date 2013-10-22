@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: embedded | Anti-social]]></title>
+  <title><![CDATA[Category: embedded | Forty two]]></title>
   <link href="http://sudharsh.github.io/blog/categories/embedded/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -150,7 +150,9 @@ server.run()
     <link href="http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
     <updated>2008-08-16T22:32:22+05:30</updated>
     <id>http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png"><img src="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png" alt="" /></a>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a>"></p>
+
+<p>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
 
 <ul>
 <li><p>Accelerometer plugin for Freerunner. Now you can use odeviced to retrieve accelerometer values for the position of the device along the x,y,z axes.</p></li>

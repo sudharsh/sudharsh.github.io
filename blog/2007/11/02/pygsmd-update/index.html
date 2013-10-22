@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>pygsmd: update - Anti-social</title>
-  <meta name="author" content="Your Name">
+  <title>pygsmd: update - Forty two</title>
+  <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement multithreading2 for the first time in my life and that &hellip;">
+  <meta name="description" content="Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement multithreading for the first time in my life and that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://sudharsh.github.io/blog/2007/11/02/pygsmd-update">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Forty two" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,7 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Anti-social</a></h1>
+  <h1><a href="/">Forty two</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
   
 </hgroup>
 
@@ -55,7 +57,7 @@
   
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+g  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
@@ -89,11 +91,11 @@
   </header>
 
 
-<div class="entry-content"><p>Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement multithreading<a href="[http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html](http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html)">2</a> for the first time in my life and that was real fun. But I had to cope up with a stupid race condition which fortunately has been fixed after gdb put things in perspective. Phonesim<a href="[http://unadventure.wordpress.com/2007/10/28/qpe-430-plus-qemu/](http://unadventure.wordpress.com/2007/10/28/qpe-430-plus-qemu/)">1</a> has been really useful this time, Now I can thoroughly check my code if it works on my desktop before creating premature borky packages. Anyways messages are getting handled now, after borrowing some code from libgsmd-tool. As a result functions like pygsmd.network.get_oper() return correctly. So now I can turn my attention to sms now. As always please please check the code out, and if you find some glitches report bugs that may be present aplenty.</p>
+<div class="entry-content"><p>Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement <a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html">multithreading</a> for the first time in my life and that was real fun. But I had to cope up with a stupid race condition which fortunately has been fixed after gdb put things in perspective. <a href="http://unadventure.wordpress.com/2007/10/28/qpe-430-plus-qemu/">Phonesim</a> has been really useful this time, Now I can thoroughly check my code if it works on my desktop before creating premature borky packages. Anyways messages are getting handled now, after borrowing some code from libgsmd-tool. As a result functions like pygsmd.network.get_oper() return correctly. So now I can turn my attention to sms now. As always please please check the code out, and if you find some glitches report bugs that may be present aplenty.</p>
 
 <p>Heres a screenshot of the latest revision 76 in action, Note that loads have changed internally since the last one.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2007/11/screenshot.png"><img src="http://sudharsh.files.wordpress.com/2007/11/screenshot.thumbnail.png" alt="pygsmd76" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/screenshot.png?w=512"></p>
 </div>
 
 
@@ -130,7 +132,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2007/11/02/pygsmd-update/" data-via="" data-counturl="http://sudharsh.github.io/blog/2007/11/02/pygsmd-update/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2007/11/02/pygsmd-update/" data-via="zphds" data-counturl="http://sudharsh.github.io/blog/2007/11/02/pygsmd-update/" >Tweet</a>
   
   
   
@@ -179,6 +181,35 @@
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -190,7 +221,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Sudharshan S -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

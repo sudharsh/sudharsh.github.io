@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Python | Anti-social]]></title>
+  <title><![CDATA[Category: Python | Forty two]]></title>
   <link href="http://sudharsh.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -158,11 +158,11 @@
     <link href="http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
     <updated>2013-05-27T01:02:16+05:30</updated>
     <id>http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png"><img src="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png?w=300" alt="2013-05-25_00.39.01" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png">http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png</a>"></p>
 
 <p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg"><img src="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg" alt="2. zsh 2013-05-27 00-23-17" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg">http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg</a>"></p>
 
 <p>Autoscaling instances, plugin management, automatic updates are some of the things that are in the pipeline.</p>
 
@@ -177,7 +177,7 @@
     <id>http://sudharsh.github.io/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg"><img src="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg">http://sudharsh.files.wordpress.com/2011/02/office-space.jpg</a>"></p>
 
 <p>The key to &lsquo;<a href="http://en.wikipedia.org/wiki/Bill_Lumbergh">Lumberg Evasion</a>&rsquo; is not only to stay &lsquo;hidden&rsquo; but also to be aware of your boss' whereabouts. Information is wealth and can potentially save your weekend.</p>
 
@@ -192,11 +192,11 @@
 </ul>
 
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png</a>"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png</a>"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png</a>"></p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 

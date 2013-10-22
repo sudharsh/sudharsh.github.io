@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Anti-social</title>
-  <meta name="author" content="Your Name">
+  <title>Forty two</title>
+  <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement multithreading2 for the first time in my life and that &hellip;">
+  <meta name="description" content="Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement multithreading for the first time in my life and that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://sudharsh.github.io/blog/page/7">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Forty two" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,7 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Anti-social</a></h1>
+  <h1><a href="/">Forty two</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
   
 </hgroup>
 
@@ -55,7 +57,7 @@
   
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+g  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
@@ -92,11 +94,11 @@
   </header>
 
 
-  <div class="entry-content"><p>Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement multithreading<a href="[http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html](http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html)">2</a> for the first time in my life and that was real fun. But I had to cope up with a stupid race condition which fortunately has been fixed after gdb put things in perspective. Phonesim<a href="[http://unadventure.wordpress.com/2007/10/28/qpe-430-plus-qemu/](http://unadventure.wordpress.com/2007/10/28/qpe-430-plus-qemu/)">1</a> has been really useful this time, Now I can thoroughly check my code if it works on my desktop before creating premature borky packages. Anyways messages are getting handled now, after borrowing some code from libgsmd-tool. As a result functions like pygsmd.network.get_oper() return correctly. So now I can turn my attention to sms now. As always please please check the code out, and if you find some glitches report bugs that may be present aplenty.</p>
+  <div class="entry-content"><p>Semesters are start in 10 days, so hardly had the time to hack on pygsmd. I had to implement <a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html">multithreading</a> for the first time in my life and that was real fun. But I had to cope up with a stupid race condition which fortunately has been fixed after gdb put things in perspective. <a href="http://unadventure.wordpress.com/2007/10/28/qpe-430-plus-qemu/">Phonesim</a> has been really useful this time, Now I can thoroughly check my code if it works on my desktop before creating premature borky packages. Anyways messages are getting handled now, after borrowing some code from libgsmd-tool. As a result functions like pygsmd.network.get_oper() return correctly. So now I can turn my attention to sms now. As always please please check the code out, and if you find some glitches report bugs that may be present aplenty.</p>
 
 <p>Heres a screenshot of the latest revision 76 in action, Note that loads have changed internally since the last one.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2007/11/screenshot.png"><img src="http://sudharsh.files.wordpress.com/2007/11/screenshot.thumbnail.png" alt="pygsmd76" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/screenshot.png?w=512"></p>
 </div>
   
   
@@ -140,11 +142,11 @@
 
 <p>Oh, got to study now, dang internet is addictive..Leaving you with a couple of screenshots showing a program of 16 bit addition..</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2007/10/snapshot1.png"><img src="http://sudharsh.files.wordpress.com/2007/10/snapshot1.thumbnail.png" alt="snapshot1.png" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/10/snapshot1.png?w=512"></p>
 
 <p>The opcode listing&hellip;</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2007/10/snapshot2.png"><img src="http://sudharsh.files.wordpress.com/2007/10/snapshot2.thumbnail.png" alt="snapshot2.png" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/10/snapshot2.png?w=512"></p>
 
 <p>Get gnusim8085 <a href="http://gnusim8085.org">here</a></p>
 
@@ -198,7 +200,7 @@
 
 <p>And in the terminal on the top, we have a python session leading to a call to my good ol&#8217; mom.</p>
 
-<p>[<img src="http://sudharsh.files.wordpress.com/2007/10/screenshot.png" alt="python-gsmd" />]</p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/10/screenshot.png"></p>
 
 <p>Now that the code sorta works, I have moved it to the projects.openmoko.org. <a href="http://projects.openmoko.org/plugins/scmsvn/viewcvs.php/?root=python-openmoko">Click here</a> to browse the source. Note that theres another project by zecke which wraps up mickeyl&rsquo;s libmokogsmd. Ours wraps up gsmd directly and creates a sort of raw interface to the daemon.</p>
 
@@ -509,7 +511,7 @@
 
   <div class="entry-content"><p>pygsmd wrapping up libgsmd seems to work, Don&rsquo;t get the &ldquo;Couldn&rsquo;t connect to gsmd warning&rdquo; now. Instead, getting &ldquo;Busy line&rdquo; as is evident from the screenshot. Best of all, I could ssh into the neo (of course which runs on qemu). So hacking has been a bit easy  since  I can use my keyboard properly without using the slow onscreen keyboard on the neo. Waiting for the neo to arrive to see if it works on the device. Only the voicecall part of libgsmd has been written, that too its quite clunky. Check out the emacs window showing that an attempt has been made to connect to the gsm daemon and note the terminal in the foreground with the output of uname after ssh&#8217;ing</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2007/08/screenshot.png"><img src="http://sudharsh.files.wordpress.com/2007/08/screenshot.thumbnail.png" alt="screenshot.png" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/08/screenshot.png"></p>
 
 <p>.</p>
 </div>
@@ -558,6 +560,35 @@
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -568,7 +599,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Sudharshan S -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

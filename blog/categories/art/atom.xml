@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: art | Anti-social]]></title>
+  <title><![CDATA[Category: art | Forty two]]></title>
   <link href="http://sudharsh.github.io/blog/categories/art/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -31,15 +31,17 @@
     <link href="http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm/"/>
     <updated>2009-01-10T00:23:29+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png"><img src="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247" alt="Legolas Greenleaf" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247">http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247</a>"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg"><img src="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204" alt="Legolas Greenleaf" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204">http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204</a>"></p>
 
-<pre><code>"_Legolas Greenleaf long under tree_
-_In joy thou hast lived. Beware of the Sea!_
-_If thou hearest the cry of the gull on the shore,_
-_Thy heart shall rest in the forest no more._"
-</code></pre>
+<blockquote><p>Legolas Greenleaf long under tree</p>
+
+<p>In joy thou hast lived. Beware of the Sea!</p>
+
+<p>If thou hearest the cry of the gull on the shore,</p>
+
+<p>Thy heart shall rest in the forest no more."</p></blockquote>
 
 <p>My favorite character from Lord of the Rings. Not as good as the <a href="http://lotr.wikia.com/wiki/Image:Legolas1.jpg">original</a>, but I drew these after a very long time.. :)</p>
 

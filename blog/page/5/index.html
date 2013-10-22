@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Anti-social</title>
-  <meta name="author" content="Your Name">
+  <title>Forty two</title>
+  <meta name="author" content="Sudharshan S">
 
   
   <meta name="description" content="After a little chat with mickeyl, I realised that exposing crucial functions like load() and unload() was not that of a good idea considering how &hellip;">
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://sudharsh.github.io/blog/page/5">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Forty two" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,7 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Anti-social</a></h1>
+  <h1><a href="/">Forty two</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
   
 </hgroup>
 
@@ -55,7 +57,7 @@
   
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+g  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
@@ -361,7 +363,7 @@ enable=1`</p></li>
   <div class="entry-content"><p>After the lousy semester exams, I decided put in some time to learn <a href="http://live.gnome.org/Vala">vala</a> and <a href="http://freedesktop.org/wiki/Software/dbus">dbus</a> to cheer me up. For the unitiated,</p>
 
 <ul>
-<li><p>`<em>Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C.</em>&#8217;</p></li>
+<li><p>&lsquo;<em>Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C.</em>&rsquo;</p></li>
 <li><p>DBus is a low latency IPC system with less overhead with emphasis on desktop applications</p></li>
 </ul>
 
@@ -370,33 +372,51 @@ enable=1`</p></li>
 
 <p>I learned a couple of things on the way. Especially the KeyFile API from the <a href="http://library.gnome.org/devel/glib/">GLib</a> library really rocked. Note that odeviced would have configuration file sitting in &lsquo;/etc&rsquo; containing various settings like plugins to be loaded, their own internal switches and so on. I would have almost &ldquo;reinvented the wheel&rdquo; trying to reimplement stuff thats already provided by GLib if I hadn&rsquo;t browsed through the API reference of GLib. Implementing something like the above for odeviced in vala looks something like this,</p>
 
-<p><code>
-....
-private GLib.KeyFile file = new GLib.KeyFile();
-private string[] plugins;
-private string dev_name = new string();
-......
-/* vala will warn you if you dont put this under a try, catch block */
-file.load_from_file("/etc/odeviced.conf", GLib.KeyFileFlags.NONE);
-if (file.has_group("odeviced"))
-this.dev_name = file.get_string("odeviced", "device_name");
-plugins = file.get_groups();
-_load(plugins);
-....
-</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='vala'><span class='line'><span class="p">....</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFile</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFile</span><span class="p">();</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">plugins</span><span class="p">;</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">string</span> <span class="n">dev_name</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">();</span>
+</span><span class='line'><span class="p">......</span>
+</span><span class='line'><span class="cm">/* vala will warn you if you dont put this under a try, catch block */</span>
+</span><span class='line'><span class="n">file</span><span class="p">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="s">&quot;/etc/odeviced.conf&quot;</span><span class="p">,</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFileFlags</span><span class="p">.</span><span class="n">NONE</span><span class="p">);</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">has_group</span><span class="p">(</span><span class="s">&quot;odeviced&quot;</span><span class="p">))</span>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="n">dev_name</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="n">get_string</span><span class="p">(</span><span class="s">&quot;odeviced&quot;</span><span class="p">,</span> <span class="s">&quot;device_name&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">plugins</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="n">get_groups</span><span class="p">();</span>
+</span><span class='line'><span class="n">_load</span><span class="p">(</span><span class="n">plugins</span><span class="p">);</span>
+</span><span class='line'><span class="p">....</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Of course, the corresponding configuration file will look something like this,
-`
-[odeviced]
-device_name=FreeRunner</p>
 
-<p>[powercontrol]
-enable=1
-`</p>
+<p>Of course, the corresponding configuration file will look something like this,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[odeviced]</span>
+</span><span class='line'><span class="na">device_name</span><span class="o">=</span><span class="s">FreeRunner</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">[powercontrol]</span>
+</span><span class='line'><span class="na">enable</span><span class="o">=</span><span class="s">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>In the above example, things within &lsquo;[&rsquo; and &lsquo;]&rsquo; are group names and each of these groups consist of a key-value pair.</p>
 
-<p>As for the dbus part, each plugin would set up dbus objects on their own. GModule library will be used to load the <em>.so</em> libraries. So we&rsquo;d have object paths like /org/freesmartphone/Device/powercontroller. And of course, odeviced will be on the System Bus.</p>
+<p>As for the dbus part, each plugin would set up dbus objects on their own. GModule library will be used to load the <em>.so</em> libraries. So we&rsquo;d have object paths like <code>/org/freesmartphone/Device/powercontroller</code>. And of course, odeviced will be on the System Bus.</p>
 
 <p>On a related note, the &ldquo;surprise&rdquo; gift is on its way :D.</p>
 </div>
@@ -654,6 +674,35 @@ enable=1
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -664,7 +713,7 @@ enable=1
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Sudharshan S -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

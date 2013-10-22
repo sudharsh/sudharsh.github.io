@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: neo1973 | Anti-social]]></title>
+  <title><![CDATA[Category: neo1973 | Forty two]]></title>
   <link href="http://sudharsh.github.io/blog/categories/neo1973/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -35,7 +35,9 @@
     <id>http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
     <content type="html"><![CDATA[<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png"><img src="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225" alt="screenshot-11" /></a>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225">http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225</a>"></p>
+
+<p>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
 
 <p>As for fsod, I could really use some help especially with autotools. I managed to set up a preliminary a python scripting interface so that fsod can load python scripts. But that&rsquo;s as far as I got. Apparently DBus needs a mainloop to be setup for exporting objects on the system bus. And since GObject introspection in python seems to be absent at the moment, I had to create bindings to my code. This process is documented and explained <a href="http://www.ibm.com/developerworks/linux/library/l-wrap/">here</a>. But still, I am at a loss as to how to pass the DBus connection object from the mainloop to the python scripts. If someone knows how to do this, please poke me.</p>
 
@@ -65,7 +67,7 @@
     <link href="http://sudharsh.github.io/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
     <updated>2008-09-12T19:14:56+05:30</updated>
     <id>http://sudharsh.github.io/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg"><img src="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg" alt="" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a>"></p>
 
 <p>In Chennai we have three seasons, summer (nov-march), f***ing hot summer (april &ndash; june), a mildly wet but still hot summer (july-oct). In case you are wondering where I am pointlessly heading to, I was talking about the <a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> which ended successfully for me :D; the code which I submitted was only about 56KB which means I was the laziest among the <a href="http://code.google.com/soc/2008/openmoko/about.html">9 other GSoC'ers</a> for <a href="http://www.openmoko.com">Openmoko</a>. On the whole, I think Openmoko had a wonderful SoC this year.</p>
 
@@ -84,7 +86,9 @@
     <link href="http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
     <updated>2008-08-16T22:32:22+05:30</updated>
     <id>http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png"><img src="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png" alt="" /></a>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a>"></p>
+
+<p>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
 
 <ul>
 <li><p>Accelerometer plugin for Freerunner. Now you can use odeviced to retrieve accelerometer values for the position of the device along the x,y,z axes.</p></li>

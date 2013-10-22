@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: bleh | Anti-social]]></title>
+  <title><![CDATA[Category: bleh | Forty two]]></title>
   <link href="http://sudharsh.github.io/blog/categories/bleh/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -39,11 +39,11 @@
     <id>http://sudharsh.github.io/blog/2009/05/11/why-python</id>
     <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
 
-<p>[youtube=<a href="http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1">http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1</a>]</p>
+<p><iframe width="" height="" src="http://www.youtube.com/embed/2pfwY2TNehw&amp;hl=en&amp;fs=1 ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
 
 <p>Yeah, so basically what I am coming at is simple. Party now, Life is too short to be spent over unnecessary complications. Or in other words <strong><em>Frigging Use Python!!!!</em></strong></p>
 
-<p><a href="http://imgs.xkcd.com/comics/python.png"><img src="http://imgs.xkcd.com/comics/python.png" alt="" /></a>(Strip from XKCD)</p>
+<p><img class="center <a" src="href="http://imgs.xkcd.com/comics/python.png">http://imgs.xkcd.com/comics/python.png</a>"></p>
 ]]></content>
   </entry>
   
@@ -65,15 +65,17 @@
     <link href="http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm/"/>
     <updated>2009-01-10T00:23:29+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png"><img src="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247" alt="Legolas Greenleaf" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247">http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247</a>"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg"><img src="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204" alt="Legolas Greenleaf" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204">http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204</a>"></p>
 
-<pre><code>"_Legolas Greenleaf long under tree_
-_In joy thou hast lived. Beware of the Sea!_
-_If thou hearest the cry of the gull on the shore,_
-_Thy heart shall rest in the forest no more._"
-</code></pre>
+<blockquote><p>Legolas Greenleaf long under tree</p>
+
+<p>In joy thou hast lived. Beware of the Sea!</p>
+
+<p>If thou hearest the cry of the gull on the shore,</p>
+
+<p>Thy heart shall rest in the forest no more."</p></blockquote>
 
 <p>My favorite character from Lord of the Rings. Not as good as the <a href="http://lotr.wikia.com/wiki/Image:Legolas1.jpg">original</a>, but I drew these after a very long time.. :)</p>
 
@@ -86,7 +88,7 @@ _Thy heart shall rest in the forest no more._"
     <link href="http://sudharsh.github.io/blog/2008/06/09/bhootkiddo/"/>
     <updated>2008-06-09T01:36:54+05:30</updated>
     <id>http://sudharsh.github.io/blog/2008/06/09/bhootkiddo</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2008/06/image004.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128" alt="" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128">http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128</a>"></p>
 
 <p>As the summer holidays progress, I am finding myself become a nocturnal being. My sense of a &ldquo;day&rdquo; has changed a lot.</p>
 

@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Anti-social</title>
-  <meta name="author" content="Your Name">
+  <title>Forty two</title>
+  <meta name="author" content="Sudharshan S">
 
   
   <meta name="description" content="Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports.. Oh and router=modem in this article&hellip; DHCP &hellip;">
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://sudharsh.github.io/blog/page/11">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Forty two" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,7 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Anti-social</a></h1>
+  <h1><a href="/">Forty two</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
   
 </hgroup>
 
@@ -55,7 +57,7 @@
   
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+g  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
@@ -149,8 +151,12 @@ gateway="eth0/192.168.1.1"</code></p>
 <p><strong>If nothing works:</strong>
 So if  these steps dont work..there a last chance. Most of the times resolv.conf is to be blamed, Double check if its ok, Even if you have valid nameservers try putting the following in /etc/resolv.conf.</p>
 
-<p><code>nameserver 4.2.2.1</code>
-<code>nameserver 4.2.2.2</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.1</span>
+</span><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.2</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>These are public nameservers.
 If it still doesnt work..you may have goofed up somewhere..</p>
@@ -632,6 +638,35 @@ So in a 14 hour trip if 2 hours were spent for I V, what happened to the remaini
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -642,7 +677,7 @@ So in a 14 hour trip if 2 hours were spent for I V, what happened to the remaini
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Sudharshan S -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

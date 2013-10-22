@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Tips | Anti-social]]></title>
+  <title><![CDATA[Category: Tips | Forty two]]></title>
   <link href="http://sudharsh.github.io/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -20,7 +20,7 @@
     <id>http://sudharsh.github.io/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg"><img src="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg">http://sudharsh.files.wordpress.com/2011/02/office-space.jpg</a>"></p>
 
 <p>The key to &lsquo;<a href="http://en.wikipedia.org/wiki/Bill_Lumbergh">Lumberg Evasion</a>&rsquo; is not only to stay &lsquo;hidden&rsquo; but also to be aware of your boss' whereabouts. Information is wealth and can potentially save your weekend.</p>
 
@@ -35,11 +35,11 @@
 </ul>
 
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png</a>"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png</a>"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png</a>"></p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 
@@ -56,7 +56,7 @@
     <id>http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
-<p><a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a></p>
+<p><img class="center <a" src="href="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg">http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg</a>"></p>
 
 <p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
 

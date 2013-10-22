@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>The code is in... - Anti-social</title>
-  <meta name="author" content="Your Name">
+  <title>The code is in... - Forty two</title>
+  <meta name="author" content="Sudharshan S">
 
   
   <meta name="description" content="Yay. Got the repository for odeviced set up at http://git.freesmartphone.org Boy, do I love git.
@@ -22,7 +22,7 @@
   <link rel="canonical" href="http://sudharsh.github.io/blog/2008/06/02/the-code-is-in">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Forty two" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -37,7 +37,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Anti-social</a></h1>
+  <h1><a href="/">Forty two</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
   
 </hgroup>
 
@@ -56,7 +58,7 @@
   
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+g  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
@@ -129,7 +131,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2008/06/02/the-code-is-in/" data-via="" data-counturl="http://sudharsh.github.io/blog/2008/06/02/the-code-is-in/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2008/06/02/the-code-is-in/" data-via="zphds" data-counturl="http://sudharsh.github.io/blog/2008/06/02/the-code-is-in/" >Tweet</a>
   
   
   
@@ -178,6 +180,35 @@
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -189,7 +220,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Sudharshan S -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

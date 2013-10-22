@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Anti-social]]></title>
+  <title><![CDATA[Forty two]]></title>
   <link href="http://sudharsh.github.io/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -194,11 +194,11 @@
     <link href="http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
     <updated>2013-05-27T01:02:16+05:30</updated>
     <id>http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png"><img src="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png?w=300" alt="2013-05-25_00.39.01" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png"></p>
 
 <p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg"><img src="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg" alt="2. zsh 2013-05-27 00-23-17" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg"></p>
 
 <p>Autoscaling instances, plugin management, automatic updates are some of the things that are in the pipeline.</p>
 
@@ -218,7 +218,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>The only bright side is that at least parts of my identity will live on as memories in people close to me if that happens. Coming to think of it, things won&rsquo;t be that bad after all :). As they say,</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg"><img src="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240" alt="8x10 keep calm carry on gray" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240"></p>
 ]]></content>
   </entry>
   
@@ -233,7 +233,10 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>I keep hoping Brooks found his Freedom.</p>
 
-<p>[youtube=<a href="http://www.youtube.com/watch?v=kotNxb2YApk">http://www.youtube.com/watch?v=kotNxb2YApk</a>]</p>
+<iframe width="" height="" src="http://www.youtube.com/embed/kotNxb2YApk ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+
 ]]></content>
   </entry>
   
@@ -248,7 +251,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>Fast forward a month, We are delighted to announce that Cruns is one of the <a href="http://www.startupchile.org/154-startups-selected-in-start-up-chiles-2nd-round-of-2011/">154 startups</a> that made it through the 2nd round of the program.</p>
 
-<p><a href="http://startupchile.org"><img src="http://sudharsh.files.wordpress.com/2011/10/sup-logo.png" alt="" /></a></p>
+<p><a href="http://startupchile.org"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/sup-logo.png"></a></p>
 
 <p>These are still early days, I am all excited, happy, anxious and scared, all the same time. Never have I budgeted for things months in advance. Ever since I passed out of college, I have been living in the relative comfort of working under a great team at Serendio where I began my baby steps as a programmer.</p>
 
@@ -256,7 +259,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>So there, Announcing Cruns; Something which we hope will help you to organize your information better.</p>
 
-<p><a href="http://twitter.com/#!/CrunsLabs"><img src="http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300" alt="" /></a></p>
+<p><a href="http://twitter.com/#!/CrunsLabs"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300"></a></p>
 
 <p>Congratulations to the other 153 teams that made it through. Looking forward to meeting you all this January!</p>
 ]]></content>
@@ -269,7 +272,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <id>http://sudharsh.github.io/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg"><img src="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg" alt="" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg"></p>
 
 <p>The key to &lsquo;<a href="http://en.wikipedia.org/wiki/Bill_Lumbergh">Lumberg Evasion</a>&rsquo; is not only to stay &lsquo;hidden&rsquo; but also to be aware of your boss&#8217; whereabouts. Information is wealth and can potentially save your weekend.</p>
 
@@ -284,11 +287,11 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 </ul>
 
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"></p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 
@@ -328,9 +331,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>It was a long, wet weekend with rains lashing through Kerala rather heavily. Nevertheless, I was having lots of fun except for the crash in the mountains near Ooty. That was not fun AT ALL. Detailed logs to follow soon.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg"><img src="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg" alt="" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg"></p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg"><img src="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg" alt="" /></a></p>
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg"></p>
 ]]></content>
   </entry>
   
@@ -341,7 +344,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <id>http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
-<p><a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a></p>
+<p><img class="center" src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg"></p>
 
 <p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
 
@@ -735,7 +738,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <link href="http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T22:52:42+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg"><img src="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg" alt="Sekar" /></a>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
+    <content type="html"><![CDATA[<p><img class="center" src="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg"></p>
+
+<p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
 
 <p>Writing a Jabber bot is incredibly easy with python. You will need the <a href="http://thpinfo.com/2007/python-jabberbot/">JabberBot</a> package, which offers a really really simple and straightforward way to write bots. The little script below proves how easy it is.</p>
 
@@ -871,7 +876,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <link href="http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
     <updated>2009-06-30T16:27:47+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
-    <content type="html"><![CDATA[<p><a href="http://dilbert.com/strips/comic/2009-06-30/"><img src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif" alt="Dilbert.com" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center" src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif"></p>
 
 <p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
 
@@ -964,11 +969,12 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <id>http://sudharsh.github.io/blog/2009/05/11/why-python</id>
     <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
 
-<p>[youtube=<a href="http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1">http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1</a>]</p>
+<iframe width="" height="" src="http://www.youtube.com/embed/2pfwY2TNehw&hl=en&fs=1 ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
 
 <p>Yeah, so basically what I am coming at is simple. Party now, Life is too short to be spent over unnecessary complications. Or in other words <strong><em>Frigging Use Python!!!!</em></strong></p>
 
-<p><a href="http://imgs.xkcd.com/comics/python.png"><img src="http://imgs.xkcd.com/comics/python.png" alt="" /></a>(Strip from XKCD)</p>
+<p><img class="center" src="http://imgs.xkcd.com/comics/python.png"></p>
 ]]></content>
   </entry>
   

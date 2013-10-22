@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rants | Anti-social]]></title>
+  <title><![CDATA[Category: Rants | Forty two]]></title>
   <link href="http://sudharsh.github.io/blog/categories/rants/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T19:35:23+05:30</updated>
+  <updated>2013-10-22T22:12:08+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Sudharshan S]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -25,7 +25,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>The only bright side is that at least parts of my identity will live on as memories in people close to me if that happens. Coming to think of it, things won&rsquo;t be that bad after all :). As they say,</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg"><img src="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240" alt="8x10 keep calm carry on gray" /></a></p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240">http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240</a>"></p>
 ]]></content>
   </entry>
   
@@ -36,7 +36,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <id>http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
-<p><a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a></p>
+<p><img class="center <a" src="href="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg">http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg</a>"></p>
 
 <p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
 
@@ -98,7 +98,9 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
     <link href="http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T22:52:42+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
-    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg"><img src="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg" alt="Sekar" /></a>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a>"></p>
+
+<p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
 
 <p>Writing a Jabber bot is incredibly easy with python. You will need the <a href="http://thpinfo.com/2007/python-jabberbot/">JabberBot</a> package, which offers a really really simple and straightforward way to write bots. The little script below proves how easy it is.</p>
 
@@ -177,7 +179,7 @@ if __name__ == '__main__':
     <link href="http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
     <updated>2009-06-30T16:27:47+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
-    <content type="html"><![CDATA[<p><a href="http://dilbert.com/strips/comic/2009-06-30/"><img src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif" alt="Dilbert.com" /></a></p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif">http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif</a>"></p>
 
 <p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
 

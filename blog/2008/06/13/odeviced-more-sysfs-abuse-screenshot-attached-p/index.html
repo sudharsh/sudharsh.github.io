@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>odeviced: More sysfs abuse (Screenshot attached! :P) - Anti-social</title>
-  <meta name="author" content="Your Name">
+  <title>odeviced: More sysfs abuse (Screenshot attached! :P) - Forty two</title>
+  <meta name="author" content="Sudharshan S">
 
   
   <meta name="description" content="A few days gone by, and endless wrestling with git wherein I was not able to push code. Turned out, I was using the wrong URL to push ..doh! But &hellip;">
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://sudharsh.github.io/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Forty two" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,7 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Anti-social</a></h1>
+  <h1><a href="/">Forty two</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
   
 </hgroup>
 
@@ -55,7 +57,7 @@
   
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+g  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
@@ -95,7 +97,7 @@
 
 <p>There is also another important change. The sysfs nodes for backlight and power plugins were hardcoded in their configuration files. So, I came up with some helpers that creates DBus paths automatically based on the device class which they belong to. Here&rsquo;s a picture of today&rsquo;s code in action,</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png"><img src="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=300" alt="" /></a></p>
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png"><img class="center" src="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=512"></a></p>
 
 <p>Notice the <a href="https://hosted.fedoraproject.org/projects/d-feet/">d-feet DBus</a> debugger towards the lower left? It shows all the automatically created DBus object paths based on the device class which the plugin stands for. And the terminal to the right shows some debug messages. Note how odeviced spits out the current battery status viz. &ldquo;Charging, Discharging&rdquo;. The corresponding &ldquo;battery-status-changed&rdquo; DBus signal is emitted as well (along with &ldquo;low-battery-warning&rdquo; signal which <em>ahem</em> is emitted when battery is low).</p>
 
@@ -136,7 +138,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/" data-via="" data-counturl="http://sudharsh.github.io/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/" data-via="zphds" data-counturl="http://sudharsh.github.io/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/" >Tweet</a>
   
   
   
@@ -185,6 +187,35 @@
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -196,7 +227,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Sudharshan S -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
