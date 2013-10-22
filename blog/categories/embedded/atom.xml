@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: embedded | 42]]></title>
-  <link href="http://sudharsh.github.io/blog/categories/embedded/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T23:04:09+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/blog/categories/embedded/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T00:07:41+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
     <updated>2009-12-06T19:57:14+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 
 <p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
@@ -117,9 +117,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009/"/>
+    <link href="http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009/"/>
     <updated>2009-04-05T19:26:17+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009</id>
+    <id>http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009</id>
     <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
 
 <p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
@@ -132,9 +132,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[fsod status]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/10/20/fsod-status/"/>
+    <link href="http://sudharsh.me/blog/2008/10/20/fsod-status/"/>
     <updated>2008-10-20T23:07:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/10/20/fsod-status</id>
+    <id>http://sudharsh.me/blog/2008/10/20/fsod-status</id>
     <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
 
 <p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
@@ -147,9 +147,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[odeviced: Accelerometers, PowerControl, IdleNotifiers and Input plugins]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
+    <link href="http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
     <updated>2008-08-16T22:32:22+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
+    <id>http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a>"></p>
 
 <p>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
@@ -181,9 +181,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[Woot..Passed the mid-term evals]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/07/17/wootpassed-the-mid-term-evals/"/>
+    <link href="http://sudharsh.me/blog/2008/07/17/wootpassed-the-mid-term-evals/"/>
     <updated>2008-07-17T19:21:51+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/07/17/wootpassed-the-mid-term-evals</id>
+    <id>http://sudharsh.me/blog/2008/07/17/wootpassed-the-mid-term-evals</id>
     <content type="html"><![CDATA[<p>After a week&rsquo;s waiting my mentor informed me that I had passed the mid-term evaluations. (he said that my performance for the first phase exceeded his expectations. :D ).</p>
 
 <p>Its been a long time since I actually blogged about the progress. After I got the Freerunner in my hand (muhuhahahaa), it was more fun since there were subtle changes in the way the code ran on the device. Tracking down segfaults was uber awesome.</p>

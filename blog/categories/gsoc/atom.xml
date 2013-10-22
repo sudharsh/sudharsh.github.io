@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: gsoc | 42]]></title>
-  <link href="http://sudharsh.github.io/blog/categories/gsoc/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T23:04:09+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/blog/categories/gsoc/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T00:07:41+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009/"/>
+    <link href="http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009/"/>
     <updated>2009-04-05T19:26:17+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009</id>
+    <id>http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009</id>
     <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
 
 <p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
@@ -30,9 +30,9 @@
   
   <entry>
     <title type="html"><![CDATA[Summer ends but the insanity continues.]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
+    <link href="http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
     <updated>2008-09-12T19:14:56+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
+    <id>http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a>"></p>
 
 <p>In Chennai we have three seasons, summer (nov-march), f***ing hot summer (april &ndash; june), a mildly wet but still hot summer (july-oct). In case you are wondering where I am pointlessly heading to, I was talking about the <a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> which ended successfully for me :D; the code which I submitted was only about 56KB which means I was the laziest among the <a href="http://code.google.com/soc/2008/openmoko/about.html">9 other GSoC'ers</a> for <a href="http://www.openmoko.com">Openmoko</a>. On the whole, I think Openmoko had a wonderful SoC this year.</p>
@@ -49,9 +49,9 @@
   
   <entry>
     <title type="html"><![CDATA[odeviced: Accelerometers, PowerControl, IdleNotifiers and Input plugins]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
+    <link href="http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
     <updated>2008-08-16T22:32:22+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
+    <id>http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a>"></p>
 
 <p>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
@@ -83,9 +83,9 @@
   
   <entry>
     <title type="html"><![CDATA[Woot..Passed the mid-term evals]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/07/17/wootpassed-the-mid-term-evals/"/>
+    <link href="http://sudharsh.me/blog/2008/07/17/wootpassed-the-mid-term-evals/"/>
     <updated>2008-07-17T19:21:51+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/07/17/wootpassed-the-mid-term-evals</id>
+    <id>http://sudharsh.me/blog/2008/07/17/wootpassed-the-mid-term-evals</id>
     <content type="html"><![CDATA[<p>After a week&rsquo;s waiting my mentor informed me that I had passed the mid-term evaluations. (he said that my performance for the first phase exceeded his expectations. :D ).</p>
 
 <p>Its been a long time since I actually blogged about the progress. After I got the Freerunner in my hand (muhuhahahaa), it was more fun since there were subtle changes in the way the code ran on the device. Tracking down segfaults was uber awesome.</p>
@@ -102,9 +102,9 @@
   
   <entry>
     <title type="html"><![CDATA[Finally, The Freerunner is here..]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/06/25/finally-the-freerunner-is-here/"/>
+    <link href="http://sudharsh.me/blog/2008/06/25/finally-the-freerunner-is-here/"/>
     <updated>2008-06-25T17:39:03+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/06/25/finally-the-freerunner-is-here</id>
+    <id>http://sudharsh.me/blog/2008/06/25/finally-the-freerunner-is-here</id>
     <content type="html"><![CDATA[<p>Wow, DHL dudes are fast. They took just 4 days to ship the device considering there was a sunday in-between. Thanks to Daniel for sending the devices to the SoC'ers.</p>
 
 <p>I don&rsquo;t have a dedicated camera, so pics are a bit sucky</p>

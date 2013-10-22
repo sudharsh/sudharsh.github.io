@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: FOSS and Linux | 42]]></title>
-  <link href="http://sudharsh.github.io/blog/categories/foss-and-linux/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T23:04:09+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/blog/categories/foss-and-linux/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T00:07:41+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
     <updated>2009-12-06T19:57:14+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 
 <p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
@@ -117,9 +117,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
     <updated>2009-10-17T11:48:07+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
     <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
 
 <ol>
@@ -169,9 +169,9 @@ if __name__ == '__main__':
   
   <entry>
     <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
+    <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T22:52:42+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
+    <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a>"></p>
 
 <p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
@@ -250,9 +250,9 @@ if __name__ == '__main__':
   
   <entry>
     <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
+    <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
     <updated>2009-06-30T16:27:47+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
+    <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif">http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif</a>"></p>
 
 <p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
@@ -300,9 +300,9 @@ if __name__ == "__main__":
   
   <entry>
     <title type="html"><![CDATA[Yet another Brainfuck interpreter]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/04/09/yet-another-brainfuck-interpreter/"/>
+    <link href="http://sudharsh.me/blog/2009/04/09/yet-another-brainfuck-interpreter/"/>
     <updated>2009-04-09T18:47:33+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/04/09/yet-another-brainfuck-interpreter</id>
+    <id>http://sudharsh.me/blog/2009/04/09/yet-another-brainfuck-interpreter</id>
     <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Brainfuck">Brainfuck</a> is one of those turing complete languages that has no apparent use in the real world. But hey, being very very simple with a limited grammar, writing an interpreter should be easy. So here it is, under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>. The code works (I hope so) with the examples from the Wikipedia <a href="http://en.wikipedia.org/wiki/Brainfuck#Examples">article</a>.</p>
 
 <p>``` c</p>

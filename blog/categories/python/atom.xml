@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Python | 42]]></title>
-  <link href="http://sudharsh.github.io/blog/categories/python/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T23:04:09+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T00:07:41+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
-    <link href="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
+    <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
     <updated>2013-08-31T20:14:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
+    <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
     <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
 
 <h2>DRY in Jinja</h2>
@@ -155,9 +155,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
-    <link href="http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
+    <link href="http://sudharsh.me/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
     <updated>2013-05-27T01:02:16+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
+    <id>http://sudharsh.me/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png">http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png</a>"></p>
 
 <p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
@@ -172,9 +172,9 @@
   
   <entry>
     <title type="html"><![CDATA[Save your staplers!]]></title>
-    <link href="http://sudharsh.github.io/blog/2011/02/06/save-your-staplers/"/>
+    <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
     <updated>2011-02-06T21:15:18+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2011/02/06/save-your-staplers</id>
+    <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
 <p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg">http://sudharsh.files.wordpress.com/2011/02/office-space.jpg</a>"></p>
@@ -208,9 +208,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
     <updated>2009-12-06T19:57:14+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 
 <p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
@@ -310,9 +310,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
     <updated>2009-10-17T11:48:07+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
     <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
 
 <ol>

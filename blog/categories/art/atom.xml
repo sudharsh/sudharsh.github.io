@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: art | 42]]></title>
-  <link href="http://sudharsh.github.io/blog/categories/art/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T23:04:09+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/blog/categories/art/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T00:07:41+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Come.. Let's Dance]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/11/23/come-lets-dance/"/>
+    <link href="http://sudharsh.me/blog/2009/11/23/come-lets-dance/"/>
     <updated>2009-11-23T00:47:21+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/11/23/come-lets-dance</id>
+    <id>http://sudharsh.me/blog/2009/11/23/come-lets-dance</id>
     <content type="html"><![CDATA[<p>Just <a href="http://sudharsh.deviantart.com">another</a> sketch to break the monotony of my life. (Somehow felt good no matter how bad this turned out)</p>
 
 <p><a href="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png"><img src="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png" alt="" /></a></p>
@@ -28,9 +28,9 @@
   
   <entry>
     <title type="html"><![CDATA[Prince of the Woodland Realm]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm/"/>
+    <link href="http://sudharsh.me/blog/2009/01/10/prince-of-the-woodland-realm/"/>
     <updated>2009-01-10T00:23:29+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm</id>
+    <id>http://sudharsh.me/blog/2009/01/10/prince-of-the-woodland-realm</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247">http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247</a>"></p>
 
 <p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204">http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204</a>"></p>

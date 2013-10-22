@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://sudharsh.github.io/sitemap.xml 
+Sitemap: http://sudharsh.me/sitemap.xml 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Clojure | 42]]></title>
-  <link href="http://sudharsh.github.io/blog/categories/clojure/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T23:04:09+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/blog/categories/clojure/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T00:07:41+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
-    <link href="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
+    <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
     <updated>2013-08-31T20:14:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
+    <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
     <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
 
 <h2>DRY in Jinja</h2>

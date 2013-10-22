@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: openmoko | 42]]></title>
-  <link href="http://sudharsh.github.io/blog/categories/openmoko/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T23:04:09+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/blog/categories/openmoko/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T00:07:41+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/12/17/road-trip-to-yelagiri/"/>
+    <link href="http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri/"/>
     <updated>2009-12-17T20:25:55+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/12/17/road-trip-to-yelagiri</id>
+    <id>http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri</id>
     <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"><img src="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg" alt="" /></a></p>
 
 <p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"></a>I have been a lurker in the forums of <a href="http://www.xbhp.com/talkies/">xbhp</a>, just gaping in awe as these guys do <a href="http://www.xbhp.com/talkies/tourer/8611-how-sikkim-chapter.html">road trips to far off places</a> complete with triplogs. I knew I wanted to do something like this and was itching to take my FZ for a ride in the great outdoors. The farthest I had been was the trip to A R Rehman&rsquo;s concert at Swarnabhoomi a couple of months ago.</p>
@@ -32,9 +32,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
     <updated>2009-12-06T19:57:14+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 
 <p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
@@ -134,9 +134,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009/"/>
+    <link href="http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009/"/>
     <updated>2009-04-05T19:26:17+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009</id>
+    <id>http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009</id>
     <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
 
 <p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
@@ -149,9 +149,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[SHR, fsod and certain other things.]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things/"/>
+    <link href="http://sudharsh.me/blog/2008/11/23/shr-fsod-and-certain-other-things/"/>
     <updated>2008-11-23T12:28:55+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
+    <id>http://sudharsh.me/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
     <content type="html"><![CDATA[<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
 
 <p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225">http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225</a>"></p>
@@ -168,9 +168,9 @@ server.run()
   
   <entry>
     <title type="html"><![CDATA[fsod status]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/10/20/fsod-status/"/>
+    <link href="http://sudharsh.me/blog/2008/10/20/fsod-status/"/>
     <updated>2008-10-20T23:07:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/10/20/fsod-status</id>
+    <id>http://sudharsh.me/blog/2008/10/20/fsod-status</id>
     <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
 
 <p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
