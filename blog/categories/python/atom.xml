@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Python | Forty two]]></title>
+  <title><![CDATA[Category: Python | 42]]></title>
   <link href="http://sudharsh.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T22:14:40+05:30</updated>
+  <updated>2013-10-22T22:37:37+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
