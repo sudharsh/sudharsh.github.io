@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Events | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/events/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T01:28:11+05:30</updated>
+  <updated>2013-10-23T01:28:48+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -24,7 +24,7 @@
 
 <p>Fast forward a month, We are delighted to announce that Cruns is one of the <a href="http://www.startupchile.org/154-startups-selected-in-start-up-chiles-2nd-round-of-2011/">154 startups</a> that made it through the 2nd round of the program.</p>
 
-<p><a href="http://startupchile.org">{% img center http://sudharsh.files.wordpress.com/2011/10/sup-logo.png %}</a></p>
+<p><a href="http://startupchile.org"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/sup-logo.png"></a></p>
 
 <p>These are still early days, I am all excited, happy, anxious and scared, all the same time. Never have I budgeted for things months in advance. Ever since I passed out of college, I have been living in the relative comfort of working under a great team at Serendio where I began my baby steps as a programmer.</p>
 
@@ -32,7 +32,7 @@
 
 <p>So there, Announcing Cruns; Something which we hope will help you to organize your information better.</p>
 
-<p><a href="http://twitter.com/#!/CrunsLabs">{% img center http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300 %}</a></p>
+<p><a href="http://twitter.com/#!/CrunsLabs"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300"></a></p>
 
 <p>Congratulations to the other 153 teams that made it through. Looking forward to meeting you all this January!</p>
 ]]></content>
@@ -43,7 +43,7 @@
     <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T17:22:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
-    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a> %}</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a>"></p>
 
 <p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     <link href="http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
     <updated>2008-09-12T13:44:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
-    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a> %}</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a>"></p>
 
 <p>In Chennai we have three seasons, summer (nov-march), f***ing hot summer (april &ndash; june), a mildly wet but still hot summer (july-oct). In case you are wondering where I am pointlessly heading to, I was talking about the <a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> which ended successfully for me :D; the code which I submitted was only about 56KB which means I was the laziest among the <a href="http://code.google.com/soc/2008/openmoko/about.html">9 other GSoC'ers</a> for <a href="http://www.openmoko.com">Openmoko</a>. On the whole, I think Openmoko had a wonderful SoC this year.</p>
 

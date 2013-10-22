@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Biking | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/biking/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T01:28:11+05:30</updated>
+  <updated>2013-10-23T01:28:48+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -43,9 +43,9 @@
 
 <p>It was a long, wet weekend with rains lashing through Kerala rather heavily. Nevertheless, I was having lots of fun except for the crash in the mountains near Ooty. That was not fun AT ALL. Detailed logs to follow soon.</p>
 
-<p>{% img center <a href="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg</a> %}</p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg</a>"></p>
 
-<p>{% img center <a href="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg</a> %}</p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg</a>"></p>
 ]]></content>
   </entry>
   

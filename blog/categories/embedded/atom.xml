@@ -4,7 +4,7 @@
   <title><![CDATA[Category: embedded | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/embedded/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T01:28:11+05:30</updated>
+  <updated>2013-10-23T01:28:48+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -150,7 +150,7 @@ server.run()
     <link href="http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
     <updated>2008-08-16T17:02:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
-    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a> %}</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a>"></p>
 
 <p>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
 

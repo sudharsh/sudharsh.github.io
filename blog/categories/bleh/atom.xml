@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bleh | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/bleh/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T01:28:11+05:30</updated>
+  <updated>2013-10-23T01:28:48+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -39,11 +39,11 @@
     <id>http://sudharsh.me/blog/2009/05/11/why-python</id>
     <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
 
-<p>{% youtube 2pfwY2TNehw&amp;hl=en&amp;fs=1 %}</p>
+<p><iframe width="" height="" src="http://www.youtube.com/embed/2pfwY2TNehw&amp;hl=en&amp;fs=1 ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
 
 <p>Yeah, so basically what I am coming at is simple. Party now, Life is too short to be spent over unnecessary complications. Or in other words <strong><em>Frigging Use Python!!!!</em></strong></p>
 
-<p>{% img center <a href="http://imgs.xkcd.com/comics/python.png">http://imgs.xkcd.com/comics/python.png</a> %}</p>
+<p><img class="center <a" src="href="http://imgs.xkcd.com/comics/python.png">http://imgs.xkcd.com/comics/python.png</a>"></p>
 ]]></content>
   </entry>
   
@@ -65,9 +65,9 @@
     <link href="http://sudharsh.me/blog/2009/01/09/prince-of-the-woodland-realm/"/>
     <updated>2009-01-09T18:53:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/01/09/prince-of-the-woodland-realm</id>
-    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247">http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247</a> %}</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247">http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247</a>"></p>
 
-<p>{% img center <a href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204">http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204</a> %}</p>
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204">http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204</a>"></p>
 
 <blockquote><p>Legolas Greenleaf long under tree</p>
 
@@ -88,7 +88,7 @@
     <link href="http://sudharsh.me/blog/2008/06/08/bhootkiddo/"/>
     <updated>2008-06-08T20:06:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/06/08/bhootkiddo</id>
-    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128">http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128</a> %}</p>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128">http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128</a>"></p>
 
 <p>As the summer holidays progress, I am finding myself become a nocturnal being. My sense of a &ldquo;day&rdquo; has changed a lot.</p>
 
