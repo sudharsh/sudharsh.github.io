@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | 42]]></title>
+  <link href="http://sudharsh.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://sudharsh.github.io/"/>
+  <updated>2013-10-22T23:04:09+05:30</updated>
+  <id>http://sudharsh.github.io/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
+    <link href="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
+    <updated>2013-08-31T20:14:26+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
+    <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
+
+<h2>DRY in Jinja</h2>
+
+<p>In my previous <a href="http://jinja.pocoo.org/docs/templates/">Flask</a> projects, <a href="http://jinja.pocoo.org/docs/templates/">Jinja</a> was my templating engine of choice. The <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> flow in Jinja templates consists of setting up a <code>base.html</code> with a common layout markup. The &lsquo;children&rsquo; would then <a href="http://jinja.pocoo.org/docs/templates/#template-inheritance">&lsquo;inherit&rsquo;</a> and optionally override those blocks in their own templates.</p>
+
+<h2>Composition in Hiccup</h2>
+
+<p>However, In the world of Clojure (and therefore Hiccup), functions (duh!) are used to modularize templates.  For example,</p>
+
+<p>``` clojure
+(ns foobar.views
+  (:require [hiccup.core :as h]</p>
+
+<pre><code>        [hiccup.page :as hp]))
+</code></pre>
+
+<p>(defn head [title]
+  [:head
+   [:title title]
+   (hp/include-css &ldquo;/static/css/bootstrap.min.css&rdquo;</p>
+
+<pre><code>               "/static/css/bootstrap-theme.min.css")
+</code></pre>
+
+<p>   (hp/include-js &ldquo;/static/js/jquery-1.10.2.min.js&rdquo;</p>
+
+<pre><code>              "/static/js/bootstrap.min.js"
+              "/static/js/bluth.js")])
+</code></pre>
+
+<p>(defn get-page [title context]
+  (hp/html5</p>
+
+<pre><code>;; Since hiccup DSL is just code, we will just inject the
+;; &lt;head&gt; right here
+(head title)
+;; Rest of the template
+;; I'd probably have a (body..) somewhere
+(body context)
+;; Rest of the template
+</code></pre>
+
+<p>))
+```</p>
+
+<h2>Multi-methods</h2>
+
+<p>In the above example, there is a chance of repetitiveness of functions like <code>get-page</code> as the number of routes increases. In most cases, there is one (or few) container <code>div</code> that changes across the templates. To avoid this, I have found using <a href="http://clojure.org/multimethods"><code>multimethods</code></a> to be a great way of dispatching templates at runtime.</p>
+
+<p>For instance,</p>
+
+<p>``` clojure</p>
+
+<p>(defmulti container :template :default :not-found)</p>
+
+<p>(defmethod container :home [context]
+ [:h2 &ldquo;Welcome to the Bluth Company&rdquo;]
+ [:button#queue-button.btn.btn-info &ldquo;Backup&rdquo;])</p>
+
+<p>(defmethod container :users [{:keys [query-params]}]
+ [:h2 (str query-params)])</p>
+
+<p>(defmethod container :not-found [context]
+ [:h2 &ldquo;Generic Content&rdquo;])</p>
+
+<p>```</p>
+
+<p>Now that I have a group of &lsquo;container&rsquo; divs, I can invoke them from <code>get-page</code> like so,</p>
+
+<p>``` clojure</p>
+
+<p>(defn get-page [{:keys [title]</p>
+
+<pre><code>         :or {title "Bluth Co. - Welcome"}
+         :as context }]
+</code></pre>
+
+<p>  (hp/html5
+   (head title)
+   [:body</p>
+
+<pre><code>[:div#wrap
+ [:div.container
+  ;; Invoke container here
+  ;; and dispatch the right template function
+  (container context)
+  ]]]))
+</code></pre>
+
+<p>```</p>
+
+<p>Meanwhile, my <code>routes</code> will end up looking something like this,</p>
+
+<p>``` clojure
+(defroutes app-routes
+  (GET &ldquo;/&rdquo; [] (get-page { :template :home }))
+  ;; Due to the destructuring in get-page,
+  ;; I can pass in arbitrary context to be handled by
+  ;; the container multimethods. In this case, we
+  ;; are passing in the query-params
+  (GET &ldquo;/users&rdquo; [&amp; query-params] (get-page</p>
+
+<pre><code>                                   {:title "User list"
+                                    :template :users
+                                    :query-params query-params}))
+</code></pre>
+
+<p>  (route/not-found (get-page</p>
+
+<pre><code>                {:title "Pluto - Not found!"
+                 :template :not-found}))
+</code></pre>
+
+<p>```</p>
+
+<p>As you can see, <code>get-page</code> is the point of entry for my templates and the container <code>div</code> is injected according to the dispatched function. In fact, by abusing using <a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">compojure&rsquo;s</a> route destructuring, we can have true runtime dispatching of templates!</p>
+
+<p>``` clojure
+(defroutes app-routes
+  (GET &ldquo;/foo/:template [template]</p>
+
+<pre><code> ;; We don't know which container will be invoked until runtime
+ ;; Instead of adding more routes, I can just add more multimethods
+ (get-page {:template template})))
+</code></pre>
+
+<p>```</p>
+
+<p><code>get-page</code> function isn&rsquo;t going to change much and I can mix and match templates as much as I want.</p>
+
+<p>I must admit that I am super new to Clojure. Therefore I am not sure if this approach is idiomatic enough in the Clojure world. Would love to hear suggestions on how it is usually done.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
+    <link href="http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
+    <updated>2013-05-27T01:02:16+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png">http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png</a>"></p>
+
+<p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
+
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg">http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg</a>"></p>
+
+<p>Autoscaling instances, plugin management, automatic updates are some of the things that are in the pipeline.</p>
+
+<p>The project is on <a href="https://github.com/sudharsh/cloudcraft">github</a> and as usual, suggestions, bug reports, bug fixes are welcome.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Save your staplers!]]></title>
+    <link href="http://sudharsh.github.io/blog/2011/02/06/save-your-staplers/"/>
+    <updated>2011-02-06T21:15:18+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2011/02/06/save-your-staplers</id>
+    <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
+
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg">http://sudharsh.files.wordpress.com/2011/02/office-space.jpg</a>"></p>
+
+<p>The key to &lsquo;<a href="http://en.wikipedia.org/wiki/Bill_Lumbergh">Lumberg Evasion</a>&rsquo; is not only to stay &lsquo;hidden&rsquo; but also to be aware of your boss' whereabouts. Information is wealth and can potentially save your weekend.</p>
+
+<p>I wanted to check out Pygame and hacked out a little python script which does this. The idea is that you position your webcam (el-cheapo-no-brand webcams sell for peanuts) near your cubicle/desk and get notified if there is some movement in a predefined area. Also works great if you have a laptop and want to know if someone is peeking over your shoulder (yeah, yeah&hellip; I know about mirrors).</p>
+
+<p>The script can detect movements within the red rectangle. Here is how it does this</p>
+
+<ul>
+<li><p>When we start the script, the average color within the red rectangle is determined. This will act as the reference color.</p></li>
+<li><p>Deviations in this average color is monitored in consecutive frames. If its more than a certain threshold, there is some movement.</p></li>
+<li><p>When this happens, play a sound and pop up a little notification</p></li>
+</ul>
+
+
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png</a>"></p>
+
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png</a>"></p>
+
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png</a>"></p>
+
+<p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
+
+<p>P.S: No, I don&rsquo;t work for an &lsquo;Initech&rsquo;.</p>
+
+<p>P.P.S: If you are one of those &lsquo;Bill Lumberg&rsquo; types, Fuck you!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <updated>2009-12-06T19:57:14+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
+
+<p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
+
+<ol>
+<li><p> Send messages to your old/unused number whose SIM is in the <a href="http://openmoko.com/freerunner.html">Freerunner</a> (or any other device supported by the <a href="http://wiki.freesmartphone.org">FSO</a> framework)</p></li>
+<li><p> Handle the incoming messages and use <a href="http://code.google.com/p/python-twitter/">python-twitter</a> API (or) raw urllib2 to post updates. Of course, the device should be connected to the internet, you can <a href="http://wiki.openmoko.org/wiki/Usb_networking">tether</a> this device to an old unused computer. Simply put, the Freerunner should be able to access the internet.</p></li>
+</ol>
+
+
+<p>I know this is dumb given cheap GPRS and all, but what the heck; Sundays <em>are</em> reserved for dumb things and I wanted to show off how easy it is to develop and conjure up simple but powerful scripts using open hackable hardware like the Freerunner. So take off your pedantic hats ;)</p>
+
+<p>Here is the actual python code,</p>
+
+<p>``` python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>Written By Sudharshan S, <a href="http://sudharsh.wordpress.com">http://sudharsh.wordpress.com</a></h1>
+
+<p>import dbus
+import time
+import logging
+import twitter</p>
+
+<p>import gobject
+from gobject import MainLoop</p>
+
+<p>from dbus.mainloop.glib import DBusGMainLoop
+DBusGMainLoop (set_as_default = True)</p>
+
+<h1>Use OAUTH?</h1>
+
+<p>USERNAME = &ldquo;username&rdquo;
+PASSWORD = &ldquo;password&rdquo;</p>
+
+<p>log = logging.getLogger(&ldquo;TweetForwarder&rdquo;)</p>
+
+<p>class TweetForwarder:</p>
+
+<p>   &ldquo;&rdquo;&ldquo;Process Incoming messages and update twitter status</p>
+
+<pre><code>  if the message startswith 'tweet'
+</code></pre>
+
+<p>   &ldquo;&rdquo;"</p>
+
+<p>   def <strong>init</strong>(self, username, password):</p>
+
+<pre><code>   log.warning("Starting up....")
+   self.twitter_api = twitter.Api(username=username, password=password)
+
+   # Get proxies and add signal handlers
+   bus = dbus.SystemBus()
+   _usage = bus.get_object("org.freesmartphone.ousaged",
+                           "/org/freesmartphone/Usage")
+   _proxy = bus.get_object("org.freesmartphone.ogsmd", \
+                           "/org/freesmartphone/GSM/Device")
+   self.usage_iface = dbus.Interface(_usage, "org.freesmartphone.Usage")
+   self.usage_iface.RequestResource('GSM')
+   self.sms_iface = dbus.Interface (_proxy, "org.freesmartphone.GSM.SMS")
+   self.sms_iface.connect_to_signal ("IncomingMessage", self.onIncomingMessage)
+</code></pre>
+
+<p>   def onIncomingMessage(self, sender, message, kwargs):</p>
+
+<pre><code>   log.warning("Received SMS from %s:%s" % (sender, message))
+   # We don't ALL messages to this number to be tweeted
+   if message.strip().startswith("tweet "):
+       log.warning("Trying to update status : %s" % message[6:].strip())
+       self.twitter_api.PostUpdate(message[6:])
+       log.warning("Updated Status")
+</code></pre>
+
+<p>   def run(self):</p>
+
+<pre><code>   loop = MainLoop()
+   loop.run()
+</code></pre>
+
+<p>if <strong>name</strong> == &ldquo;<strong>main</strong>&rdquo;:</p>
+
+<pre><code>logging.basicConfig()
+server = TweetForwarder(USERNAME, PASSWORD)
+server.run()
+</code></pre>
+
+<p>```</p>
+
+<p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
+
+<p>The script and the accompanying dependency can be downloaded from <a href="http://gitorious.org/dumb-scripts/dumb-scripts/archive-tarball/master">here</a>. Just change the USERNAME and PASSWORD accordingly after scp'ing the tarball to your device.</p>
+
+<p>Some useful links,</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <updated>2009-10-17T11:48:07+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
+
+<ol>
+<li><p> Start the code</p></li>
+<li><p> Go out for some tea or movie.</p></li>
+<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
+</ol>
+
+
+<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
+
+<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
+
+<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
+
+<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
+
+<p>``` python</p>
+
+<pre><code>#!/usr/bin/env python
+
+import twitter
+
+username = "dummy_account"
+password = "password"
+
+receiver = "sup3rkiddo"
+
+def sendDM():
+    try:
+        api = twitter.Api(username=username, password=password)
+        stats = api.PostDirectMessage(receiver, "*Done compiling*")
+    except:
+        print "Error!"
+
+if __name__ == '__main__':
+    sendDM()
+</code></pre>
+
+<p>```</p>
+
+<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
+]]></content>
+  </entry>
+  
+</feed>

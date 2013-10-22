@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>42</title>
+  <meta name="author" content="Sudharshan S">
+
+  
+  <meta name="description" content="Howdie, I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net. Click here to visit the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.github.io/blog/page/10">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="42" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">42</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/16/gmedcon/">GMedCon</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-16T13:41:52+05:30" pubdate data-updated="true">Nov 16<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/16/gmedcon/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/11/16/gmedcon/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Howdie,</p>
+
+<p>I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net.</p>
+
+<p><a href="http://gmedcon.sourceforge.net">Click here</a> to visit the project page</p>
+
+<p>xmedcon is a tool that is used to manipulate dicom images, a standard used in medical imagery. If you would like to help please give me a ping</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/10/etk-enhance-quick-and-dirty/">ETK + Enhance, Quick and Dirty</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-10T16:22:34+05:30" pubdate data-updated="true">Nov 10<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/10/etk-enhance-quick-and-dirty/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/11/10/etk-enhance-quick-and-dirty/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ETK is a gui toolkit similar to gtk and is a part of Enlightenment Foundation Libraries or EFL. The syntax is very similar to GTK with only minor differences. Infact you could even use Glade to design GUI with ETK. For this you need a small but nifty tools called &lsquo;enhance&rsquo; also part of E. Glade btw is a tool which removes the need of manipulating each and every widget manually. It does all these in an efficient manner  leaving the developer to concentrate only on callbacks.</p>
+
+<p>I am very new to ETK+Enhance and dont know which is better. EWL or ETK. If someone could shed light on this,  I would be grateful. Myself, being a novice found the lack of documentation for enhance a bit unnerving. But still I managed to get hold of the concepts. So here is a short tutorial about using &lsquo;enhance&rsquo; to parse your .glade files and use them in your etk source codes.  Comments are welcome.</p>
+
+<p>I assume some knowledge in ETK or atleast GTK&hellip;Lets dig in..</p>
+
+<p>Now create a glade file with the name of project1.glade. Create a simple window with a single button in it. Now in the property window of the button in the Signal tab, add the following information Signal->Clicked, Handler->
+, in our case &ldquo;button_callback&rdquo;</p>
+
+<p>The following code is the famous hello world program using ETK and glade for creating the GUI..</p>
+
+<p>`#include &ldquo;Etk.h&rdquo;</p>
+
+<h1>include &ldquo;Enhance.h&rdquo;</h1>
+
+<p>Enhance <em>en;
+void button_callback(Etk_Object </em>obj, void <em>data)
+{
+printf(&ldquo;Whee THis works\n&rdquo;);
+}
+int main(int argc, char </em>argv[])
+{
+enhance_init();
+etk_init(&amp;argc, &amp;argv);
+en=enhance_new();
+enhance_file_load(en, &ldquo;window1&rdquo;, &ldquo;project1.glade&rdquo;);
+etk_main();
+enhance_free(en);
+enhance_shutdown();
+etk_shutdown();
+return 0;
+}`</p>
+
+<p><code>`
+Ok now a step by step description of whats up
+</code></p>
+
+<h1>include &ldquo;Etk.h&rdquo;</h1>
+
+<h1>include &ldquo;Enhance.h&rdquo;</h1>
+
+<p>Enhance *en;`
+We are just including header files that is required for our program..duh! Anyway the third line, we are creating a pointer for the Enhance datatype. &lsquo;en&rsquo; will be used while loading  our .glade file</p>
+
+<p><code>void button_callback(Etk_Object *obj, void *data)
+{
+printf("Whee THis works\n");
+}</code>
+The above function is the callback function. When we click the &ldquo;button&rdquo; of our program the line within the printf would output to the console. If you dont understand what I am tallking about visit the gtk website and download the tutorial to get an idea of what callbacks and widgets are.
+<code>
+enhance_init();
+etk_init(&amp;argc, &amp;argv);</code>
+We are initialising enhance and etk..
+<code>
+en=enhance_new();</code>
+Remember the pointer &lsquo;en&rsquo; of datatype Enhance. en now becomes a new instance of enhance..</p>
+
+<p><code>enhance_file_load(en, "window1", "project1.glade");</code>
+The above line will load the widget &ldquo;window1&rdquo; from the &ldquo;project1.glade&rdquo; file and &ldquo;en&rdquo; will point th them. You should load each widget, for example, you may have more than one window in your .glade file.
+The remaining lines are self-explainatory..:D</p>
+
+<p>Save the file as hello.c, in the directory containing project1.glade..and compile the program
+<code>gcc -g hello.c  -o hello</code>enhance-config &mdash;libs &mdash;cflags<code></code>pkg-config &mdash;libs &mdash;cflags&#8220;</p>
+
+<p>If all went well, you will be left with the executable called &ldquo;hello&rdquo;..
+run it
+<code>./hello</code>
+You will get a small window with the button with E17 theming  containing the label you had specified while creating the gui with glade. Click on the button and you will see the text &ldquo;Whee THis works&rdquo; output on the console everytime it is clicked.
+<strong>Reference:</strong>
+<a href="http://edevelop.org">E Developers Portal</a>
+<a href="http://people.debian.org/~rleigh/gtk/ogcalc/">Glade and GTK+</a>
+If you find something wrong, which is mostly likely, please comment about them. I am learning ETK/enhance myself.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/07/elive-052/">Elive 0.5.2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-07T19:24:38+05:30" pubdate data-updated="true">Nov 7<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/07/elive-052/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/11/07/elive-052/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Grr..First GNOME, now KDE getting on to my nerves..No matter what I try i just cant get enough juice out of them..Yesterday I decided I will try E17 but couldnt quite do it because of the time needed to compile all the dependencies one by one..Luckily theres a live cd distro called elive 0.5.2 which attracted my attention. The screenshots were stunning and I could see why the developers were calling it a work of art.</p>
+
+<p>Installer was quite buggy in the sense that you get only Ok and Cancel buttons, the latter one doing the job of the &lsquo;No&rsquo; button. Also from time to time the time interval between two successive dialogs were quite freaky especially during the partition part. That said, the speed of installation is the fastest I have evr experienced..</p>
+
+<p>After Installation the initial boot up time though small was extended by the post-install configuration and after that I was greeted by a very cool login manager called as entrance.</p>
+
+<p>Elive offers two themes by default Elive and Lukas, a light and a dark theme respectively. By the way, eye candy was totally awesome with some sexy animations and effects. All this and my card doesnt even support direct rendering!! E17 is a really light desktop &lsquo;shell&rsquo; but amazingly beautiful&hellip;</p>
+
+<p>All said the desktop does require some bit of playing around. I took around 2 hours to get used to it. But let me assure you, its worth it. Now my desktop is less cluttered and sports a clean look..And this is the first distro I have used which has flash, java and win32 codecs out of the box..
+Go get elive at <a href="http://elivecd.org">Elivecd.org</a>
+More about enlightenment at <a href="http://get-e.org">Get-E</a>
+A detailed review <a href="http://flaviostechnotalk.com/wordpress/index.php/2005/09/04/elive-03-review/">here</a></p>
+
+<p>Heres a screenshot of my desktop showing the snazzy elive panel. Note that everything moves in E17&hellip;too bad I cant show them. Check them out yourself :P</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2006/11/screenshot11.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/06/thunderbird-30-automation/">Thunderbird 3.0 Automation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-06T15:36:34+05:30" pubdate data-updated="true">Nov 6<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/06/thunderbird-30-automation/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/11/06/thunderbird-30-automation/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Started with thunderbird 3.0 automation. Already finished automating the help menu. Now I am in the middle of automating the tools menu. Lets hope that I dont run into showstopper ui bugs.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/31/1024-bytes-1-kilobyte/">1024 Bytes != 1 Kilobyte</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-31T20:04:39+05:30" pubdate data-updated="true">Oct 31<span>st</span>, 2006</time>
+        
+           | <a href="/blog/2006/10/31/1024-bytes-1-kilobyte/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/10/31/1024-bytes-1-kilobyte/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Had a laughter riot after my system software semester practicals today..My external examiner asked me an all too simple question to gauge my intelligence..He asked me about addressing modes in the SIC architecture..I didnt remember it to be honest and then he proceeded to ask me about bits and bytes in general..I wrote in a piece of paper
+1024 bytes &ndash;> 1 Kilobyte
+1024 Kilobytes &ndash;> 1 Megabyte
+1024 Megabytes &ndash;> 1 Gigabyte
+He stood his ground that I was wrong and even threatened me that he will reduce my marks..I had to give in to his ridiculous theory at last and sat down in my place..
+While all the other students were treated to his viva, I moved on; not giving up, and created a text file with exactly 1024 characters, saved it and showed its property dialog (whose size was shown as 1kb (1024bytes)) to my internal examiner and subsequently was called by the external examiner for another session of viva..Only this time, not willing to show his ignorance started exploiting mine!</p>
+
+<p>I was made to sit in the lab till 3:30&hellip;
+Wondering whether his students argued with their examiner that 1024bytes !=  1 Kilobyte</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/28/monsoonthe-good-the-bad-and-the-worse/">Monsoon&#8230; The Good, the Bad and the Worse</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-28T22:41:39+05:30" pubdate data-updated="true">Oct 28<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/10/28/monsoonthe-good-the-bad-and-the-worse/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/10/28/monsoonthe-good-the-bad-and-the-worse/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Chennai is not particularly known for its pleasant weather..I know why.
+Its either the heat or the water..yes, water especially during the monsoons.</p>
+
+<p><strong>The Good</strong>
+I like the heavy rains for two reasons. One, it ensures that the price of the water will still stay below that of crude oil for the rest of the year; Two, Holidays..Ahh..its blissful to wake up early in a monday morning, the sight of dark gloomy clouds bringing rain like anything, and the morning news bringing the news that its &ldquo;holiday today&rdquo;&hellip;Hmmm..Nothing like bunking classes for a valid reason..:D</p>
+
+<p><strong>The Bad</strong>
+The roads..Roads here are so bad that its too &ldquo;dangerous&rdquo; even for rally cars. And the North East Monsoon just makes it worse..:s..I live in a low lying area and the road has now become a fishing pond with everyone blocking the way with their fishing poles and worse, it is the site of the amphibian love making in the night..I would say a field trip for the zoologists (I love animals myself, but croaking noises when you are dreaming about owning a cray3 is bit too far for me).</p>
+
+<p><strong>The Worse</strong>
+This is what really pisses me off..Everything around me is sticky and wet..My mom was mocking the whole day today that I need diapers when I sleep..Right now my bed is having a bright canary yellow bed cover that reminds me off eastman coloured movies, just because my usual favourite green one is damp&hellip;And believe me I didnt do it..Also the keyboard is sticky, and coding with a sticky keys and a mushy mouse has become a PITA</p>
+
+<p>Hmmm..Just wondering what the blokes at my college hostel are doing&hellip;Their situation must be really FUBAR&rsquo;d since they live in an amphibian love making site throughout the year..:D</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/24/the-best-time-killer/">The Best Time Killer..</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-24T21:38:13+05:30" pubdate data-updated="true">Oct 24<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/10/24/the-best-time-killer/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/10/24/the-best-time-killer/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Life can be a crawl sometimes..seconds become minutes&hellip;Imagine a lazy cloudy monday morning with only mega serials to keep company&hellip;</p>
+
+<p>Oh well, now that I have broadband, tried listening to podcasts&hellip;But amarok has a great feature which makes it one of the best media players.. Its ability to integrate with <a href="last.fm">last.fm</a></p>
+
+<p>Been listening to last.fm for a whole day now. Lotsa genres, lotsa artists&hellip;.Worth a try :)</p>
+
+<p>Hence Amarok + last.fm + broadband + GOOD speakers = ONE heck of a time killer</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/23/open-source-asp-htmlsydney-sheldon/">Open Source ASP, HTML&#8230;Sydney Sheldon?!!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-23T22:13:52+05:30" pubdate data-updated="true">Oct 23<span>rd</span>, 2006</time>
+        
+           | <a href="/blog/2006/10/23/open-source-asp-htmlsydney-sheldon/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/10/23/open-source-asp-htmlsydney-sheldon/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today, when I was clearing junk around my room, I came across this cd which was given to me when attended a tech symposium of a highly respected college in Chennai. That cd, as my friend suggested contained some documents containing FAQs for the semester. Normally I give away cds like this since they contain only Windows software anyway.</p>
+
+<p>But today I inserted this cd and found to my pleasant surprise a folder named as Open Source. On opening , it contained 4 folders if I can remember correctly, E-Books, Flash, Projects(containing VB code) and Gate details.</p>
+
+<p>Ebooks contained the entire Harry Potter series and Sydney Sheldon released under Creative Commons :P</p>
+
+<p>And all Flash animations from various websites in another folder&hellip;And a project written in Visual Basic..</p>
+
+<p>I am not from an institution as prestigious as the one who gave away these cds, but atleast we have some common sense with regards to knowing whats open source and whats not..:)</p>
+
+<p>No offence meant</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/21/happy-diwali/">Happy Diwali!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-21T07:59:04+05:30" pubdate data-updated="true">Oct 21<span>st</span>, 2006</time>
+        
+           | <a href="/blog/2006/10/21/happy-diwali/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/10/21/happy-diwali/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everyone, Happy Diwali..</p>
+
+<p>Finally Gentoo irritated me to an extent that I have fully switched to Edgy. No offence meant, but gentoo is a great distro if you have the time and patience to cut it. But sadly I don&rsquo;t have either. 6 months of relationship with gentoo was insightful..</p>
+
+<p>Spent the whole night yesterday installing and configuring Edgy.</p>
+
+<p>First installed from the dapper cds</p>
+
+<p>Then dist-upgraded to edgy and after that installed kubuntu-desktop and removed GNOME..</p>
+
+<p>Let me tell you, upstart is kick ass application. Boots to my desktop really really fast.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/17/oracle-linux/">Oracle Linux?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-17T22:24:03+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/10/17/oracle-linux/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2006/10/17/oracle-linux/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Oracle is going to release its own Linux distribution if the following article is to be believed..</p>
+
+<p><a href="http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811">http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811</a></p>
+
+<p>RedHat and Novell will definitely find this interesting. Am kinda wondering, if Oracle were to release its own distribution, Linux will become more famous. I guess its the &lsquo;ORACLE&rsquo; name&hellip;.</p>
+
+<p>Of course it would be an expensive-enterprise-kinda-distro, Would be really interesting to see what happens&hellip;An Oracle Database Server running on an Oracle developed OS does instill some curiosity,..</p>
+
+<p>Hmm..Wondering whether they would go in for GNOME or KDE as the default DE..</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/11/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/9/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/12/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sudharshan S -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogsudharsh';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: openmoko | 42]]></title>
+  <link href="http://sudharsh.github.io/blog/categories/openmoko/atom.xml" rel="self"/>
+  <link href="http://sudharsh.github.io/"/>
+  <updated>2013-10-22T23:04:09+05:30</updated>
+  <id>http://sudharsh.github.io/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/12/17/road-trip-to-yelagiri/"/>
+    <updated>2009-12-17T20:25:55+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/12/17/road-trip-to-yelagiri</id>
+    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"><img src="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg" alt="" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"></a>I have been a lurker in the forums of <a href="http://www.xbhp.com/talkies/">xbhp</a>, just gaping in awe as these guys do <a href="http://www.xbhp.com/talkies/tourer/8611-how-sikkim-chapter.html">road trips to far off places</a> complete with triplogs. I knew I wanted to do something like this and was itching to take my FZ for a ride in the great outdoors. The farthest I had been was the trip to A R Rehman&rsquo;s concert at Swarnabhoomi a couple of months ago.</p>
+
+<p>A road trip was imminent and rallied two of my friends for a trip to Yelagiri, A small hill station retreat near Jolarpet. Nothing fancy like the Ooty or Kodai. Just a group of hills with the tallest point close to 1100m. Middle of December with cool weather was just so irresistible.</p>
+
+<p>Alas, my friends couldn&rsquo;t make it and I had to go solo, without any company. The tripmeter at the end of the day read 484.5. Also, logged part of the return trip with TangoGPS in my Freerunner. I have uploaded the <a href="http://www.openstreetmap.org/user/sudharsh/traces/585929">traces to OSM</a>.</p>
+
+<p>I have written a <a href="http://www.xbhp.com/talkies/tourer/10982-chennai-yelagiri-solo-ride-lots-lots-rain.html#post346437">fairly detailed triplog</a> at the xbhp forums. Do read it :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <updated>2009-12-06T19:57:14+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
+
+<p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
+
+<ol>
+<li><p> Send messages to your old/unused number whose SIM is in the <a href="http://openmoko.com/freerunner.html">Freerunner</a> (or any other device supported by the <a href="http://wiki.freesmartphone.org">FSO</a> framework)</p></li>
+<li><p> Handle the incoming messages and use <a href="http://code.google.com/p/python-twitter/">python-twitter</a> API (or) raw urllib2 to post updates. Of course, the device should be connected to the internet, you can <a href="http://wiki.openmoko.org/wiki/Usb_networking">tether</a> this device to an old unused computer. Simply put, the Freerunner should be able to access the internet.</p></li>
+</ol>
+
+
+<p>I know this is dumb given cheap GPRS and all, but what the heck; Sundays <em>are</em> reserved for dumb things and I wanted to show off how easy it is to develop and conjure up simple but powerful scripts using open hackable hardware like the Freerunner. So take off your pedantic hats ;)</p>
+
+<p>Here is the actual python code,</p>
+
+<p>``` python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>Written By Sudharshan S, <a href="http://sudharsh.wordpress.com">http://sudharsh.wordpress.com</a></h1>
+
+<p>import dbus
+import time
+import logging
+import twitter</p>
+
+<p>import gobject
+from gobject import MainLoop</p>
+
+<p>from dbus.mainloop.glib import DBusGMainLoop
+DBusGMainLoop (set_as_default = True)</p>
+
+<h1>Use OAUTH?</h1>
+
+<p>USERNAME = &ldquo;username&rdquo;
+PASSWORD = &ldquo;password&rdquo;</p>
+
+<p>log = logging.getLogger(&ldquo;TweetForwarder&rdquo;)</p>
+
+<p>class TweetForwarder:</p>
+
+<p>   &ldquo;&rdquo;&ldquo;Process Incoming messages and update twitter status</p>
+
+<pre><code>  if the message startswith 'tweet'
+</code></pre>
+
+<p>   &ldquo;&rdquo;"</p>
+
+<p>   def <strong>init</strong>(self, username, password):</p>
+
+<pre><code>   log.warning("Starting up....")
+   self.twitter_api = twitter.Api(username=username, password=password)
+
+   # Get proxies and add signal handlers
+   bus = dbus.SystemBus()
+   _usage = bus.get_object("org.freesmartphone.ousaged",
+                           "/org/freesmartphone/Usage")
+   _proxy = bus.get_object("org.freesmartphone.ogsmd", \
+                           "/org/freesmartphone/GSM/Device")
+   self.usage_iface = dbus.Interface(_usage, "org.freesmartphone.Usage")
+   self.usage_iface.RequestResource('GSM')
+   self.sms_iface = dbus.Interface (_proxy, "org.freesmartphone.GSM.SMS")
+   self.sms_iface.connect_to_signal ("IncomingMessage", self.onIncomingMessage)
+</code></pre>
+
+<p>   def onIncomingMessage(self, sender, message, kwargs):</p>
+
+<pre><code>   log.warning("Received SMS from %s:%s" % (sender, message))
+   # We don't ALL messages to this number to be tweeted
+   if message.strip().startswith("tweet "):
+       log.warning("Trying to update status : %s" % message[6:].strip())
+       self.twitter_api.PostUpdate(message[6:])
+       log.warning("Updated Status")
+</code></pre>
+
+<p>   def run(self):</p>
+
+<pre><code>   loop = MainLoop()
+   loop.run()
+</code></pre>
+
+<p>if <strong>name</strong> == &ldquo;<strong>main</strong>&rdquo;:</p>
+
+<pre><code>logging.basicConfig()
+server = TweetForwarder(USERNAME, PASSWORD)
+server.run()
+</code></pre>
+
+<p>```</p>
+
+<p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
+
+<p>The script and the accompanying dependency can be downloaded from <a href="http://gitorious.org/dumb-scripts/dumb-scripts/archive-tarball/master">here</a>. Just change the USERNAME and PASSWORD accordingly after scp'ing the tarball to your device.</p>
+
+<p>Some useful links,</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009/"/>
+    <updated>2009-04-05T19:26:17+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009</id>
+    <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
+
+<p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
+
+<p>For more, check this recent blog entry by <a href="http://www.vanille-media.de/site/index.php/2009/04/04/back-from-switzerland/">Mickey</a>.</p>
+
+<p>Patches all the way :D&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SHR, fsod and certain other things.]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things/"/>
+    <updated>2008-11-23T12:28:55+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
+    <content type="html"><![CDATA[<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
+
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225">http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225</a>"></p>
+
+<p>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
+
+<p>As for fsod, I could really use some help especially with autotools. I managed to set up a preliminary a python scripting interface so that fsod can load python scripts. But that&rsquo;s as far as I got. Apparently DBus needs a mainloop to be setup for exporting objects on the system bus. And since GObject introspection in python seems to be absent at the moment, I had to create bindings to my code. This process is documented and explained <a href="http://www.ibm.com/developerworks/linux/library/l-wrap/">here</a>. But still, I am at a loss as to how to pass the DBus connection object from the mainloop to the python scripts. If someone knows how to do this, please poke me.</p>
+
+<p>The code could be found <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. (src/subsystems/Python especially can use some love)</p>
+
+<p>Update: I made a package out of today&rsquo;s tree. Find it <a href="http://sudharsh.mukt.in/fsod_0.1-r0_armv4t.opk">here</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fsod status]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/10/20/fsod-status/"/>
+    <updated>2008-10-20T23:07:26+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/10/20/fsod-status</id>
+    <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
+
+<p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
+
+<p>It would be also be pretty awesome if fsod could support loading python plugins, kind of like what gedit does. The GSM code especially could benefit from this since there is not much to gain in terms of performance here.</p>
+
+<p>As for fsod, the sources are available <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. In case anyone wants to get hold of a opk of the current code to install on the Freerunner, it is available <a href="http://sudharsh.mukt.in/fsod-preview_armv4t.opk">here</a>. Comments are welcome</p>
+]]></content>
+  </entry>
+  
+</feed>

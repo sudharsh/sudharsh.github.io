@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Hiccup: Organizing templates using multimethods - 42</title>
+  <meta name="author" content="Sudharshan S">
+
+  
+  <meta name="description" content="There are two major templating libraries for Clojure, Enlive and Hiccup. Since I am not that much of a designer, I chose Hiccup for my side project &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="42" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">42</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Hiccup: Organizing Templates Using Multimethods</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-31T20:14:26+05:30" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
+
+<h2>DRY in Jinja</h2>
+
+<p>In my previous <a href="http://jinja.pocoo.org/docs/templates/">Flask</a> projects, <a href="http://jinja.pocoo.org/docs/templates/">Jinja</a> was my templating engine of choice. The <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> flow in Jinja templates consists of setting up a <code>base.html</code> with a common layout markup. The &lsquo;children&rsquo; would then <a href="http://jinja.pocoo.org/docs/templates/#template-inheritance">&lsquo;inherit&rsquo;</a> and optionally override those blocks in their own templates.</p>
+
+<h2>Composition in Hiccup</h2>
+
+<p>However, In the world of Clojure (and therefore Hiccup), functions (duh!) are used to modularize templates.  For example,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">foobar.views</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">hiccup.core</span> <span class="ss">:as</span> <span class="nv">h</span><span class="p">]</span>
+</span><span class='line'>            <span class="p">[</span><span class="nv">hiccup.page</span> <span class="ss">:as</span> <span class="nv">hp</span><span class="p">]))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">head</span> <span class="p">[</span><span class="nv">title</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">[</span><span class="ss">:head</span>
+</span><span class='line'>   <span class="p">[</span><span class="ss">:title</span> <span class="nv">title</span><span class="p">]</span>
+</span><span class='line'>   <span class="p">(</span><span class="nf">hp/include-css</span> <span class="s">&quot;/static/css/bootstrap.min.css&quot;</span>
+</span><span class='line'>                   <span class="s">&quot;/static/css/bootstrap-theme.min.css&quot;</span><span class="p">)</span>
+</span><span class='line'>   <span class="p">(</span><span class="nf">hp/include-js</span> <span class="s">&quot;/static/js/jquery-1.10.2.min.js&quot;</span>
+</span><span class='line'>                  <span class="s">&quot;/static/js/bootstrap.min.js&quot;</span>
+</span><span class='line'>                  <span class="s">&quot;/static/js/bluth.js&quot;</span><span class="p">)])</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">get-page</span> <span class="p">[</span><span class="nv">title</span> <span class="nv">context</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">hp/html5</span>
+</span><span class='line'>    <span class="c1">;; Since hiccup DSL is just code, we will just inject the</span>
+</span><span class='line'>    <span class="c1">;; &lt;head&gt; right here</span>
+</span><span class='line'>    <span class="p">(</span><span class="nf">head</span> <span class="nv">title</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">;; Rest of the template</span>
+</span><span class='line'>    <span class="c1">;; I&#39;d probably have a (body..) somewhere</span>
+</span><span class='line'>    <span class="p">(</span><span class="nf">body</span> <span class="nv">context</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">;; Rest of the template</span>
+</span><span class='line'><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Multi-methods</h2>
+
+<p>In the above example, there is a chance of repetitiveness of functions like <code>get-page</code> as the number of routes increases. In most cases, there is one (or few) container <code>div</code> that changes across the templates. To avoid this, I have found using <a href="http://clojure.org/multimethods"><code>multimethods</code></a> to be a great way of dispatching templates at runtime.</p>
+
+<p>For instance,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defmulti </span><span class="nv">container</span> <span class="ss">:template</span> <span class="ss">:default</span> <span class="ss">:not-found</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defmethod </span><span class="nv">container</span> <span class="ss">:home</span> <span class="p">[</span><span class="nv">context</span><span class="p">]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:h2</span> <span class="s">&quot;Welcome to the Bluth Company&quot;</span><span class="p">]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:button#queue-button.btn.btn-info</span> <span class="s">&quot;Backup&quot;</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defmethod </span><span class="nv">container</span> <span class="ss">:users</span> <span class="p">[{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">query-params</span><span class="p">]}]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:h2</span> <span class="p">(</span><span class="nb">str </span><span class="nv">query-params</span><span class="p">)])</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defmethod </span><span class="nv">container</span> <span class="ss">:not-found</span> <span class="p">[</span><span class="nv">context</span><span class="p">]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:h2</span> <span class="s">&quot;Generic Content&quot;</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now that I have a group of &lsquo;container&rsquo; divs, I can invoke them from <code>get-page</code> like so,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">get-page</span> <span class="p">[{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">title</span><span class="p">]</span>
+</span><span class='line'>             <span class="ss">:or</span> <span class="p">{</span><span class="nv">title</span> <span class="s">&quot;Bluth Co. - Welcome&quot;</span><span class="p">}</span>
+</span><span class='line'>             <span class="ss">:as</span> <span class="nv">context</span> <span class="p">}]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">hp/html5</span>
+</span><span class='line'>   <span class="p">(</span><span class="nf">head</span> <span class="nv">title</span><span class="p">)</span>
+</span><span class='line'>   <span class="p">[</span><span class="ss">:body</span>
+</span><span class='line'>    <span class="p">[</span><span class="ss">:div#wrap</span>
+</span><span class='line'>     <span class="p">[</span><span class="ss">:div.container</span>
+</span><span class='line'>      <span class="c1">;; Invoke container here</span>
+</span><span class='line'>      <span class="c1">;; and dispatch the right template function</span>
+</span><span class='line'>      <span class="p">(</span><span class="nf">container</span> <span class="nv">context</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">]]]))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Meanwhile, my <code>routes</code> will end up looking something like this,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">get-page</span> <span class="p">{</span> <span class="ss">:template</span> <span class="ss">:home</span> <span class="p">}))</span>
+</span><span class='line'>  <span class="c1">;; Due to the destructuring in get-page,</span>
+</span><span class='line'>  <span class="c1">;; I can pass in arbitrary context to be handled by</span>
+</span><span class='line'>  <span class="c1">;; the container multimethods. In this case, we</span>
+</span><span class='line'>  <span class="c1">;; are passing in the query-params</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/users&quot;</span> <span class="p">[</span><span class="o">&amp;</span> <span class="nv">query-params</span><span class="p">]</span> <span class="p">(</span><span class="nf">get-page</span>
+</span><span class='line'>                                       <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;User list&quot;</span>
+</span><span class='line'>                                        <span class="ss">:template</span> <span class="ss">:users</span>
+</span><span class='line'>                                        <span class="ss">:query-params</span> <span class="nv">query-params</span><span class="p">}))</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">route/not-found</span> <span class="p">(</span><span class="nf">get-page</span>
+</span><span class='line'>                    <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;Pluto - Not found!&quot;</span>
+</span><span class='line'>                     <span class="ss">:template</span> <span class="ss">:not-found</span><span class="p">}))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you can see, <code>get-page</code> is the point of entry for my templates and the container <code>div</code> is injected according to the dispatched function. In fact, by abusing using <a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">compojure&rsquo;s</a> route destructuring, we can have true runtime dispatching of templates!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">GET</span> <span class="err">&quot;</span><span class="nv">/foo/</span><span class="ss">:template</span> <span class="p">[</span><span class="nv">template</span><span class="p">]</span>
+</span><span class='line'>     <span class="c1">;; We don&#39;t know which container will be invoked until runtime</span>
+</span><span class='line'>     <span class="c1">;; Instead of adding more routes, I can just add more multimethods</span>
+</span><span class='line'>     <span class="p">(</span><span class="nf">get-page</span> <span class="p">{</span><span class="ss">:template</span> <span class="nv">template</span><span class="p">})))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>get-page</code> function isn&rsquo;t going to change much and I can mix and match templates as much as I want.</p>
+
+<p>I must admit that I am super new to Clojure. Therefore I am not sure if this approach is idiomatic enough in the Clojure world. Would love to hear suggestions on how it is usually done.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">sudharsh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-31T20:14:26+05:30" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/clojure/'>Clojure</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/python/'>Python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/" data-via="zphds" data-counturl="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/" title="Previous Post: Cloudcraft: Easy minecraft server management">&laquo; Cloudcraft: Easy minecraft server management</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/12/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">"Brooks Was Here"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sudharshan S -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogsudharsh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/';
+        var disqus_url = 'http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

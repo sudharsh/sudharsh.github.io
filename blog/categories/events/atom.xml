@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Events | 42]]></title>
+  <link href="http://sudharsh.github.io/blog/categories/events/atom.xml" rel="self"/>
+  <link href="http://sudharsh.github.io/"/>
+  <updated>2013-10-22T23:04:09+05:30</updated>
+  <id>http://sudharsh.github.io/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chile, alla vamos!]]></title>
+    <link href="http://sudharsh.github.io/blog/2011/10/01/chile-alla-vamos/"/>
+    <updated>2011-10-01T18:43:51+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2011/10/01/chile-alla-vamos</id>
+    <content type="html"><![CDATA[<p>It all started as a little hack by <a href="http://twitter.com/#%21/cnu">Srini</a> and I at the <a href="http://developer.yahoo.com/hackday/">Yahoo! Openhack</a> Event conducted in Bangalore. The hack by itself wasn&rsquo;t that fancy when compared to the other finalists but we did feel good when our hack got shortlisted for the finals. We wrote a little web app which would index <a href="http://www.delicious.com/">delicious</a> bookmarks and enable Full Text Search on the Content with a neat tagging mechanism.</p>
+
+<p>Meanwhile, applications were open for the second round of <a href="http://www.startupchile.org/about/faqs/">StartupChile</a> program. A seed of 40K equity-free USD and an exotic location, sounded rather interesting. We added some new ideas to the original delicious hack, drafted a nice crisp application and applied a few hours before the deadline.</p>
+
+<p>Fast forward a month, We are delighted to announce that Cruns is one of the <a href="http://www.startupchile.org/154-startups-selected-in-start-up-chiles-2nd-round-of-2011/">154 startups</a> that made it through the 2nd round of the program.</p>
+
+<p><a href="http://startupchile.org"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/sup-logo.png"></a></p>
+
+<p>These are still early days, I am all excited, happy, anxious and scared, all the same time. Never have I budgeted for things months in advance. Ever since I passed out of college, I have been living in the relative comfort of working under a great team at Serendio where I began my baby steps as a programmer.</p>
+
+<p>I have to admit, I am finding myself outside my comfort zone all of a sudden. Something which I hope I will adapt to sooner or later. One thing is for sure, Interesting times wait ahead :)</p>
+
+<p>So there, Announcing Cruns; Something which we hope will help you to organize your information better.</p>
+
+<p><a href="http://twitter.com/#!/CrunsLabs"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300"></a></p>
+
+<p>Congratulations to the other 153 teams that made it through. Looking forward to meeting you all this January!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
+    <updated>2009-07-25T22:52:42+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a>"></p>
+
+<p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
+
+<p>Writing a Jabber bot is incredibly easy with python. You will need the <a href="http://thpinfo.com/2007/python-jabberbot/">JabberBot</a> package, which offers a really really simple and straightforward way to write bots. The little script below proves how easy it is.</p>
+
+<p>The bot translates phrases/sentences using the <a href="http://code.google.com/p/py-gtranslate/">python-pygtrans</a> package. I had to name the script <em>something</em> and Nai Sekar seemed to be a good idea. Apologies if you just went &lsquo;WTF?!&rsquo;.  (I am quite lame when it comes to naming code/function/classes)</p>
+
+<p>``` python</p>
+
+<pre><code>#
+# Released Under WTFPL
+# http://sam.zoy.org/wtfpl/
+#
+from jabberbot import JabberBot
+import gtrans
+import random
+
+# Gmail uses Jabber, but their TOS doesn't allow automated scripts. So be warned
+username = 'yourJabberID@example.com'
+password = 'password'
+
+# Just some famous dialogues from Vadivelu comedy tracks. Might not make sense if you
+# don't know who or what vadivelu is.
+error_dialogues = [
+    "Nee yaaru kitta paysikittu irrukaynu theriyuma? Sekar ngara oru TERROR kitta",
+    "Saykar settutaan",
+    "Tirisa illana Divya",
+    "Huh.. yennaku body strong basement weeeku",
+    "Naanum rowdy.. naanum rowdy.. naanum rowdy",
+    "Shabba... ippovae kannu kattudae",
+    "Heloooo.. Ennoda biruther maark irukaara",
+    "Don't worry.. Be gaaapy",
+    "But andha dealing enaku pudichi irundhuchi",
+    "lighta...",
+    "Vaynda... Vallikidu.... Azuthuduvane.. Azhuthuduvane",
+    "Sing in the raine... I am swoying in the raine..",
+    "Helloo.. Prabha wine shop ownerungala? Kadaiya.. yeppo saar tharapeenga?",
+    " romba nallavanu enna pathu sollitanmaaaaa..."
+]
+
+class NaiSaykarBot(JabberBot):
+
+    def bot_trans(self, msg, args):
+       """Translate the phrase/sentence from the source language to the required language
+          ex: trans en pl Apples grow in trees
+          would translate the above phrase from english to polish
+       """
+       split = args.split()
+       if len(split) == 0:
+            return
+       src_language = split[0].strip()
+       required_language = split[1].strip()
+       phrase = ' '.join(split[2:])
+       try:
+            translated = gtrans.translate(src_language, required_language, phrase)
+            return translated
+       except gtrans.InvalidLanguage, e:
+            print "Invalid args : %s" %(args)
+            # Return a random error message
+            return random.choic e(error_dialogues)
+
+    # Overridden from JabberBot
+    def unknown_command( self, mess, cmd, args):
+        print "Unknown Command %s" %(args)
+        return random.choice(error_dialogues)
+
+if __name__ == '__main__':
+     bot = NaiSaykarBot(username, password)
+     bot.serve_forever()
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fun @ Shaastra]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/10/05/fun-shaastra/"/>
+    <updated>2008-10-05T21:15:35+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/10/05/fun-shaastra</id>
+    <content type="html"><![CDATA[<p>Four words. <a href="http://www.shaastra.org/2008/">Shaastra</a> &lsquo;08 was frigging awesome. I was there a couple of days and had fun meeting people (shres, madhusudhan and many others). Also got to speak about FSO framework (slides later) as part of the FOSS sub-conference. Lots of food, some awesome talks and a wonderful atmosphere made the event memorable. Too bad, I had to leave early for the FOSS HackFest on 2nd night.</p>
+
+<p>Only one gripe though, the event was not laptop friendly =(, It would have been awesome if the organizers had provided wifi spots near the talk venues.</p>
+
+<p>Thanks to <a href="http://kstars.wordpress.com/">kstars</a>, <a href="http://arunchaganty.wordpress.com/">vimzard</a>, vikram and other volunteers for organizing the event .</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Summer ends but the insanity continues.]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
+    <updated>2008-09-12T19:14:56+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a>"></p>
+
+<p>In Chennai we have three seasons, summer (nov-march), f***ing hot summer (april &ndash; june), a mildly wet but still hot summer (july-oct). In case you are wondering where I am pointlessly heading to, I was talking about the <a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> which ended successfully for me :D; the code which I submitted was only about 56KB which means I was the laziest among the <a href="http://code.google.com/soc/2008/openmoko/about.html">9 other GSoC'ers</a> for <a href="http://www.openmoko.com">Openmoko</a>. On the whole, I think Openmoko had a wonderful SoC this year.</p>
+
+<p>I will continue working on the freesmartphone.org initiative and do my little bit to help around. I was planning to release the ipks along with FSO milestone 3, but it turned out that my build tree wouldn&rsquo;t let me to do that without a fight (at `NOTE: Running task 256 of 718' now), will post the link once I have the packages. Get it <a href="http://sudharsh.mukt.in/odeviced_0.1-r0_armv4t.opk">here</a>. (Thanks to mukt.in team for hosting it)</p>
+
+<p>Meanwhile, <a href="http://softwarefreedomday.org/">Software Freedom Day</a> will be celebrated worldwide on September 20 (third saturday of September) and the <a href="http://www.ae.iitm.ac.in/mailman/listinfo/ilugc">ILUG-C</a> gang will be there at Kamban Engineering College, Thiruvannamalai this year. So if you are in Chennai at that time and want to do something fun for the weekend, please volunteer!.</p>
+
+<p>P.S: I am planning to give away my Freerunner for free, first to comment this post gets it..</p>
+
+<p>..NOT!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Summer of code 2008]]></title>
+    <link href="http://sudharsh.github.io/blog/2008/04/22/summer-of-code-2008/"/>
+    <updated>2008-04-22T22:29:22+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2008/04/22/summer-of-code-2008</id>
+    <content type="html"><![CDATA[<p>Atlast after sleepness nights, the results are out. I made it to this year&rsquo;s Google Summer of Code. I will be working for the Openmoko project under the mentorship of Mickeyl. Fun times ahead. Will post the details later.</p>
+
+<p>Now where the hell are my books. Got fricking semesters this tuesday :(.</p>
+]]></content>
+  </entry>
+  
+</feed>

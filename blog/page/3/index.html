@@ -1,0 +1,943 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>42</title>
+  <meta name="author" content="Sudharshan S">
+
+  
+  <meta name="description" content="Brainfuck is one of those turing complete languages that has no apparent use in the real world. But hey, being very very simple with a limited &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.github.io/blog/page/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="42" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">42</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/09/yet-another-brainfuck-interpreter/">Yet Another Brainfuck Interpreter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T18:47:33+05:30" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/04/09/yet-another-brainfuck-interpreter/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2009/04/09/yet-another-brainfuck-interpreter/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Brainfuck">Brainfuck</a> is one of those turing complete languages that has no apparent use in the real world. But hey, being very very simple with a limited grammar, writing an interpreter should be easy. So here it is, under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>. The code works (I hope so) with the examples from the Wikipedia <a href="http://en.wikipedia.org/wiki/Brainfuck#Examples">article</a>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;error.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#include &lt;config.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">char</span> <span class="n">cellspace</span><span class="p">[</span><span class="mi">30000</span><span class="p">];</span>
+</span><span class='line'><span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="n">data_pointer</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">process_command</span><span class="p">(</span><span class="kt">char</span> <span class="n">command</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span><span class="n">file_ptr</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">long</span> <span class="n">pos</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">switch</span><span class="p">(</span><span class="n">command</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39;&gt;&#39;</span>:
+</span><span class='line'>      <span class="o">++</span><span class="n">data_pointer</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39;&lt;&#39;</span>:
+</span><span class='line'>      <span class="o">--</span><span class="n">data_pointer</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39;+&#39;</span>:
+</span><span class='line'>      <span class="o">++*</span><span class="n">data_pointer</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39;-&#39;</span>:
+</span><span class='line'>      <span class="o">--*</span><span class="n">data_pointer</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39;.&#39;</span>:
+</span><span class='line'>      <span class="n">putchar</span><span class="p">(</span><span class="o">*</span><span class="n">data_pointer</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39;,&#39;</span>:
+</span><span class='line'>      <span class="o">*</span><span class="n">data_pointer</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39;[&#39;</span>:
+</span><span class='line'>      <span class="n">pos</span> <span class="o">=</span> <span class="n">ftell</span> <span class="p">(</span><span class="n">file_ptr</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">data_pointer</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">fseek</span> <span class="p">(</span><span class="n">file_ptr</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">c</span> <span class="o">=</span> <span class="n">getc</span><span class="p">(</span><span class="n">file_ptr</span><span class="p">);</span>
+</span><span class='line'>          <span class="k">while</span><span class="p">(</span> <span class="n">c</span><span class="o">!=</span> <span class="sc">&#39;]&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="n">process_command</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">file_ptr</span><span class="p">);</span>
+</span><span class='line'>              <span class="n">c</span> <span class="o">=</span> <span class="n">getc</span><span class="p">(</span><span class="n">file_ptr</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">interpret_source</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/*</span>
+</span><span class='line'><span class="cm">  *  Allowed brainfuck commands are,</span>
+</span><span class='line'><span class="cm">  *  &gt;    increment the data pointer (to point to the next cell to the right).</span>
+</span><span class='line'><span class="cm">  *  &lt;    decrement the data pointer (to point to the next cell to the left).</span>
+</span><span class='line'><span class="cm">  *  +   increment (increase by one) the byte at the data pointer.</span>
+</span><span class='line'><span class="cm">  *  -   decrement (decrease by one) the byte at the data pointer.</span>
+</span><span class='line'><span class="cm">  *  .   output the value of the byte at the data pointer.</span>
+</span><span class='line'><span class="cm">  *  ,   accept one byte of input, storing its value in the byte at the data pointer.</span>
+</span><span class='line'><span class="cm">  *  [   if the byte at the data pointer is zero,</span>
+</span><span class='line'><span class="cm">  *      then instead of moving the instruction pointer forward to the next command,</span>
+</span><span class='line'><span class="cm">  *      jump it forward to the command after the matching ] command.</span>
+</span><span class='line'><span class="cm">  *  ]   if the byte at the data pointer is nonzero,</span>
+</span><span class='line'><span class="cm">  *      then instead of moving the instruction pointer forward to the next command,</span>
+</span><span class='line'><span class="cm">         *      jump it back to the command after the matching [ command.</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">command</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">FILE</span> <span class="o">*</span><span class="n">file_ptr</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">file_ptr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Error: No such file %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">source</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">while</span><span class="p">((</span><span class="n">command</span> <span class="o">=</span> <span class="n">getc</span><span class="p">(</span><span class="n">file_ptr</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">process_command</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">file_ptr</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">fclose</span><span class="p">(</span><span class="n">file_ptr</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="cm">/* Init data_pointer to the left most cell */</span>
+</span><span class='line'>  <span class="n">data_pointer</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">cellspace</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* Use getopts? */</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">interpret_source</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/05/no-gta03-in-2009/">No GTA03 in 2009 :(</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-05T19:26:17+05:30" pubdate data-updated="true">Apr 5<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/04/05/no-gta03-in-2009/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
+
+<p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
+
+<p>For more, check this recent blog entry by <a href="http://www.vanille-media.de/site/index.php/2009/04/04/back-from-switzerland/">Mickey</a>.</p>
+
+<p>Patches all the way :D&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/23/got-a-new-bike/">Got a New Bike</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-23T20:08:22+05:30" pubdate data-updated="true">Mar 23<span>rd</span>, 2009</time>
+        
+           | <a href="/blog/2009/03/23/got-a-new-bike/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2009/03/23/got-a-new-bike/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I know I am pretty late but finally I got myself a new Yamaha FZ. A nice revvy pickup and wide tyres is making me go &lsquo;whee&rsquo; over long sweeping curves.</p>
+
+<p>Drinks about a litre every 40-45 kilometres</p>
+
+<p>Pics soon :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/02/05/thinking-inside-the-box/">Thinking Inside the &#8220;Box&#8221;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-05T22:50:09+05:30" pubdate data-updated="true">Feb 5<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/02/05/thinking-inside-the-box/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2009/02/05/thinking-inside-the-box/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>About 10 minutes ago, my brain switched from neutral to first gear and started pondering about ways to teach someone how to program (Not that I am particularly good at programming in the first place :D).</p>
+
+<p>For example, how would you explain the concept of variables, references, names. etc, which seemingly form the corner stone of programming language syntax. Sometimes this can make you struggle a bit when you are switching languages.</p>
+
+<p>Consider the following,</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a = 10
+</span><span class='line'>&gt;&gt;&gt; b = a
+</span><span class='line'>&gt;&gt;&gt; id(a)
+</span><span class='line'>37688272
+</span><span class='line'>&gt;&gt;&gt; id(b)
+</span><span class='line'>37688272</span></code></pre></td></tr></table></div></figure>
+
+
+<p>One teency weency thing I learnt the hardway was the fact that when the interpreter evaluates &lsquo;a = 10&rsquo;, it creates a &ldquo;box&rdquo;, slaps the label &lsquo;a&rsquo; on it and puts the integer 10 in it. Consequently, something like swapping of two numbers becomes as easy as,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is actually emphasised on most, if not all Python tutorials I have come across. This didn&rsquo;t sound all that important when I learnt Python for the first time.</p>
+
+<p>Then I found C to be doing things differently (Am I even right?),
+Take this for example,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* This however creates a new &quot;box&quot;</span>
+</span><span class='line'><span class="cm">           containing the value 5 and a name y */</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of x = %d, Address of x is %x</span><span class="se">\n</span><span class="s">&quot;</span> \
+</span><span class='line'>         <span class="s">&quot;Value of x = %d, Address of y is %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Gives the following output, where x and y are named on different boxes and yet have the same values.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">Value</span> <span class="n">of</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Address</span> <span class="n">of</span> <span class="n">x</span> <span class="n">is</span> <span class="mf">98e6</span><span class="n">cecc</span>
+</span><span class='line'><span class="n">Value</span> <span class="n">of</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Address</span> <span class="n">of</span> <span class="n">y</span> <span class="n">is</span> <span class="mf">98e6</span><span class="n">cec8</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hmm, This is where I hit it. Suddenly realisation dawned. Sun shone again. Birds twittered. The darkness was gone. I suddenly found myself telling <em><strong>&ldquo;Its called the pointers.. stupid!&rdquo;</strong></em></p>
+
+<p>Now, to mirror the the Python &ldquo;box&rdquo; analogy (not exactly) well, a in a language like C, we have to our disposal the good old pointers.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* Pointer to the &quot;box&quot; that is name &#39;x&#39;. */</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">y</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of x = %d, Address of x is %x</span><span class="se">\n</span><span class="s">&quot;</span> \
+</span><span class='line'>         <span class="s">&quot;Value of y = %d, Address of y is %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This would give me,
+<code>Value of x = 5, Address of x is c07ec844
+Value of y = 5, Address of y is c07ec844
+</code></p>
+
+<p>where &lsquo;*&rsquo; and &lsquo;&amp;&rsquo; are the de-reference (value-of) and reference (value-at) operators.</p>
+
+<p>So folks, Is it right to think along the lines of &ldquo;a box at c07ec844 is labelled &lsquo;x&rsquo; with the integer value 5&rdquo; when I see something as mundane as &ldquo;int x = 5&rdquo; . It did help me to understand pointers better, but are there any better analogies when speaking about variables, references etc. than say, picturing a row of shelves with lots of boxes, each of which can have multiple sticky notes with names at a given point of time.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/02/01/zero-productivity/">Zero Productivity</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-01T22:49:20+05:30" pubdate data-updated="true">Feb 1<span>st</span>, 2009</time>
+        
+           | <a href="/blog/2009/02/01/zero-productivity/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2009/02/01/zero-productivity/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For the last few weeks, my productivity has dipped to an all time low. <a href="http://programming.reddit.com/">Progit</a> is to be blamed. Suddenly I find myselves hitting refresh to see what&rsquo;s &lsquo;hot&rsquo; leading to more time reading blogs and articles, and less time actually getting some work done. So, from this point on I am activating a self-imposed ban on progit.</p>
+
+<p>Lets see how long I last urge :D.</p>
+
+<p><strong>EDIT: Bleh&hellip;. Gave up, ban lasted 12 minutes</strong></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/01/10/prince-of-the-woodland-realm/">Prince of the Woodland Realm</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-10T00:23:29+05:30" pubdate data-updated="true">Jan 10<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/01/10/prince-of-the-woodland-realm/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247"></p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204"></p>
+
+<blockquote><p>Legolas Greenleaf long under tree</p>
+
+<p>In joy thou hast lived. Beware of the Sea!</p>
+
+<p>If thou hearest the cry of the gull on the shore,</p>
+
+<p>Thy heart shall rest in the forest no more.&#8221;</p></blockquote>
+
+<p>My favorite character from Lord of the Rings. Not as good as the <a href="http://lotr.wikia.com/wiki/Image:Legolas1.jpg">original</a>, but I drew these after a very long time.. :)</p>
+
+<p>I also felt like creating a <a href="http://sudharsh.deviantart.com/">deviant</a> profile for myself.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/12/30/there-and-back-again/">There and Back Again..</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-30T21:02:32+05:30" pubdate data-updated="true">Dec 30<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/12/30/there-and-back-again/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2008/12/30/there-and-back-again/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Went for a little holiday to Kerala (Kochi, Guruvayoor and Calicut). My dad wanted to go to Kerala and catch up with a few of his college buddies and Me, I wanted to visit the lanes and streets of Calicut where I had roamed as a very little boy. After all, I had lived there for 8 years and Kozhikode hasn&rsquo;t changed a lot to be honest, except for fresh coats of paints. A new building here and there, one or two demolished. But most of my favorite spots still remain, PaiCo, Alakapuri, Lions park, my school :D, the local chips store, the &lsquo;samooham&rsquo;, winding lanes of chalapuram..etc..</p>
+
+<p>The best part is, I met my LKG class teacher out of sheer luck. Woot, its been 14 years and still she remembers me :D (I must have been very very &lsquo;notorius&rsquo;), After all she had the patience to teach me that &lsquo;C&rsquo; follows &lsquo;B&rsquo;&hellip;..</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=512"></p>
+
+<p>And not to forget the &lsquo;Anna kada&rsquo; as I used to call it, Still the same&hellip;</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=512"></p>
+
+<p>NSS school&hellip;</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=512"></p>
+
+<p>Tali Shivan Temple.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=512"></p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=512"></p>
+
+<p>Sunset at the beach with little karthik,</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=512"></p>
+
+<p>&hellip;and, couldn&rsquo;t help myself :P</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=512"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/11/23/shr-fsod-and-certain-other-things/">SHR, Fsod and Certain Other Things.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-23T12:28:55+05:30" pubdate data-updated="true">Nov 23<span>rd</span>, 2008</time>
+        
+           | <a href="/blog/2008/11/23/shr-fsod-and-certain-other-things/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225"></p>
+
+<p>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
+
+<p>As for fsod, I could really use some help especially with autotools. I managed to set up a preliminary a python scripting interface so that fsod can load python scripts. But that&rsquo;s as far as I got. Apparently DBus needs a mainloop to be setup for exporting objects on the system bus. And since GObject introspection in python seems to be absent at the moment, I had to create bindings to my code. This process is documented and explained <a href="http://www.ibm.com/developerworks/linux/library/l-wrap/">here</a>. But still, I am at a loss as to how to pass the DBus connection object from the mainloop to the python scripts. If someone knows how to do this, please poke me.</p>
+
+<p>The code could be found <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. (src/subsystems/Python especially can use some love)</p>
+
+<p>Update: I made a package out of today&rsquo;s tree. Find it <a href="http://sudharsh.mukt.in/fsod_0.1-r0_armv4t.opk">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/11/04/exams-again/">Exams Again&#8230;:/</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-04T18:09:24+05:30" pubdate data-updated="true">Nov 4<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/11/04/exams-again/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2008/11/04/exams-again/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Semesters start this friday, Nov 7th. :(. So will be missing in action for the next two weeks&hellip;..</p>
+
+<p>Till then,</p>
+
+<p>Ctrl-Z</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/10/20/fsod-status/">Fsod Status</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-20T23:07:26+05:30" pubdate data-updated="true">Oct 20<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/10/20/fsod-status/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.github.io/blog/2008/10/20/fsod-status/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
+
+<p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
+
+<p>It would be also be pretty awesome if fsod could support loading python plugins, kind of like what gedit does. The GSM code especially could benefit from this since there is not much to gain in terms of performance here.</p>
+
+<p>As for fsod, the sources are available <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. In case anyone wants to get hold of a opk of the current code to install on the Freerunner, it is available <a href="http://sudharsh.mukt.in/fsod-preview_armv4t.opk">here</a>. Comments are welcome</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/12/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sudharshan S -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogsudharsh';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
