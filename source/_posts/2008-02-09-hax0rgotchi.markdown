@@ -18,6 +18,5 @@ tags:
 
 Finally, got the patience to make an [hackergotchi](http://en.wikipedia.org/wiki/Hackergotchi) of my photograph using [GIMP](http://gimp.org/).
 
-[![face.png](http://sudharsh.files.wordpress.com/2008/02/face.png)](http://sudharsh.files.wordpress.com/2008/02/face.png)
+{% img center http://sudharsh.files.wordpress.com/2008/02/face.png %}
 
-Original [photo](http://) taken at FossConf by dumbhead.

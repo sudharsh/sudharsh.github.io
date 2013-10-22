@@ -21,7 +21,7 @@ Have filed a bug report on this, hopefully it should be fixed.
 
 *Sigh*, heres the screenshot of the error in qemu.
 
-[![Import-error](http://sudharsh.files.wordpress.com/2007/06/openmoko.thumbnail.png)](http://sudharsh.files.wordpress.com/2007/06/openmoko.png)
+{% img center http://sudharsh.files.wordpress.com/2007/06/openmoko.png?w=512 %}
 
 **Links:**
 

@@ -34,7 +34,7 @@ But anyway, the [code](http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=
 
 There is also another important change. The sysfs nodes for backlight and power plugins were hardcoded in their configuration files. So, I came up with some helpers that creates DBus paths automatically based on the device class which they belong to. Here's a picture of today's code in action,
 
-[![](http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=300)](http://sudharsh.files.wordpress.com/2008/06/screenshot1.png)
+[{% img center http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=512 %}](http://sudharsh.files.wordpress.com/2008/06/screenshot1.png)
 
 Notice the [d-feet DBus](https://hosted.fedoraproject.org/projects/d-feet/) debugger towards the lower left? It shows all the automatically created DBus object paths based on the device class which the plugin stands for. And the terminal to the right shows some debug messages. Note how odeviced spits out the current battery status viz. "Charging, Discharging". The corresponding "battery-status-changed" DBus signal is emitted as well (along with "low-battery-warning" signal which *ahem* is emitted when battery is low).
 

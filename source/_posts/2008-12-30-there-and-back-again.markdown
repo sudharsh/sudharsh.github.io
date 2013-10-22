@@ -23,22 +23,26 @@ Went for a little holiday to Kerala (Kochi, Guruvayoor and Calicut). My dad want
 
 The best part is, I met my LKG class teacher out of sheer luck. Woot, its been 14 years and still she remembers me :D (I must have been very very 'notorius'), After all she had the patience to teach me that 'C' follows 'B'.....
 
-![Geetha](http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=128)
+{% img center http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=512 %}
 
 And not to forget the 'Anna kada' as I used to call it, Still the same...
 
-![dsc04529](http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=128)NSS school... :D,
+{% img center http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=512 %}
 
-![NSS chalapuram](http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=128)
+NSS school... 
+
+{% img center http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=512 %}
 
 Tali Shivan Temple.
 
-![tali](http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=128)
+{% img center http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=512 %}
 
-![P](http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=128)
+{% img center http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=512 %}
 
 Sunset at the beach with little karthik,
 
-![sunset](http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=128)...and, couldn't help myself :P
+{% img center http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=512 %}
 
-![Hillarious?..](http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=128)
+...and, couldn't help myself :P
+
+{% img center http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=512 %}

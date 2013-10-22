@@ -32,11 +32,11 @@ Viva la Linux et FOSS!
 
 Oh, got to study now, dang internet is addictive..Leaving you with a couple of screenshots showing a program of 16 bit addition..
 
-[![snapshot1.png](http://sudharsh.files.wordpress.com/2007/10/snapshot1.thumbnail.png)](http://sudharsh.files.wordpress.com/2007/10/snapshot1.png)
+{% img center http://sudharsh.files.wordpress.com/2007/10/snapshot1.png?w=512 %}
 
 The opcode listing...
 
-[![snapshot2.png](http://sudharsh.files.wordpress.com/2007/10/snapshot2.thumbnail.png)](http://sudharsh.files.wordpress.com/2007/10/snapshot2.png)
+{% img center http://sudharsh.files.wordpress.com/2007/10/snapshot2.png?w=512 %}
 
 Get gnusim8085 [here](http://gnusim8085.org)
 

@@ -17,7 +17,7 @@ tags:
 - mukt.in
 ---
 
-[![](http://sudharsh.files.wordpress.com/2008/08/image000.jpg?w=128)](http://sudharsh.files.wordpress.com/2008/08/image000.jpg)
+{% img center http://sudharsh.files.wordpress.com/2008/08/image000.jpg?w=512 %}
 
 After intense negotiations with the college that made me realise that I could be a good business man, I was given OD to attend [mukt.in](http://mukt.in). I was there to talk on DBus (which by the way was EPIC FAIL!). On a brighter side, I had fun showing off my gsoc code to people at [qvantel](http://www.qvantel.com/open.html). One of the things that I learned from this "version" of mukt.in was to prepare talks well in advance, otherwise you end up giving a mediocre presentation.
 

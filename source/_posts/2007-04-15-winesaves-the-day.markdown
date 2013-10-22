@@ -20,4 +20,4 @@ WINE: [http://www.winehq.com](http://www.winehq.com)
 
 Still dont believe me? Click on the thumbnail below..notice the terminal with the output of uname -r? LINUX PWNS!!!!
 
-[![Screenshot](http://sudharsh.files.wordpress.com/2007/04/untitled.thumbnail.jpg)](http://sudharsh.files.wordpress.com/2007/04/untitled.jpg)
+{% img center http://sudharsh.files.wordpress.com/2007/04/untitled.jpg?w=512 %}

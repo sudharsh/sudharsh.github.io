@@ -29,7 +29,7 @@ After the lousy semester exams, I decided put in some time to learn [vala](http:
 
 
 	
-  * `_Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C._'
+  * '_Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C._'
 
 	
   * DBus is a low latency IPC system with less overhead with emphasis on desktop applications
@@ -39,7 +39,7 @@ I must say the folks at #vala in GimpNet has been patient with me, especially co
 
 I learned a couple of things on the way. Especially the KeyFile API from the [GLib](http://library.gnome.org/devel/glib/) library really rocked. Note that odeviced would have configuration file sitting in '/etc' containing various settings like plugins to be loaded, their own internal switches and so on. I would have almost "reinvented the wheel" trying to reimplement stuff thats already provided by GLib if I hadn't browsed through the API reference of GLib. Implementing something like the above for odeviced in vala looks something like this,
 
-`
+``` vala
 ....
 private GLib.KeyFile file = new GLib.KeyFile();
 private string[] plugins;
@@ -52,19 +52,19 @@ this.dev_name = file.get_string("odeviced", "device_name");
 plugins = file.get_groups();
 _load(plugins);
 ....
-`
+```
 
 Of course, the corresponding configuration file will look something like this,
-`
+``` ini
 [odeviced]
 device_name=FreeRunner
 
 [powercontrol]
 enable=1
-`
+```
 
 In the above example, things within '[' and ']' are group names and each of these groups consist of a key-value pair.
 
-As for the dbus part, each plugin would set up dbus objects on their own. GModule library will be used to load the _.so_ libraries. So we'd have object paths like /org/freesmartphone/Device/powercontroller. And of course, odeviced will be on the System Bus.
+As for the dbus part, each plugin would set up dbus objects on their own. GModule library will be used to load the _.so_ libraries. So we'd have object paths like `/org/freesmartphone/Device/powercontroller`. And of course, odeviced will be on the System Bus.
 
 On a related note, the "surprise" gift is on its way :D.

@@ -26,7 +26,9 @@ tags:
 - vala
 ---
 
-[![](http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png)](http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png)Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.
+{% img center http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png %}
+
+Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.
 
 
 

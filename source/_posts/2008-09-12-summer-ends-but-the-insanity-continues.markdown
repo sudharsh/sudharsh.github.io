@@ -28,7 +28,7 @@ tags:
 - summer
 ---
 
-[![](http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg)](http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg)
+{% img center http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg %}
 
 In Chennai we have three seasons, summer (nov-march), f***ing hot summer (april - june), a mildly wet but still hot summer (july-oct). In case you are wondering where I am pointlessly heading to, I was talking about the [Google Summer of Code 2008](http://code.google.com/soc/2008/) which ended successfully for me :D; the code which I submitted was only about 56KB which means I was the laziest among the [9 other GSoC'ers](http://code.google.com/soc/2008/openmoko/about.html) for [Openmoko](http://www.openmoko.com). On the whole, I think Openmoko had a wonderful SoC this year.
 

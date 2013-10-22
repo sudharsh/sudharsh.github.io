@@ -23,6 +23,6 @@ Doesn't matter if its due to some fucked up illness like Alzheimer's or a freak 
 
 The only bright side is that at least parts of my identity will live on as memories in people close to me if that happens. Coming to think of it, things won't be that bad after all :). As they say,
 
-[![8x10 keep calm carry on gray](http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240)](http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg)
+{% img center http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240 %}
 
 

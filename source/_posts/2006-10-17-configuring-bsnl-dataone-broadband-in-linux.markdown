@@ -72,8 +72,10 @@ After saving the file do a
 **If nothing works:**
 So if  these steps dont work..there a last chance. Most of the times resolv.conf is to be blamed, Double check if its ok, Even if you have valid nameservers try putting the following in /etc/resolv.conf.
 
-`nameserver 4.2.2.1`
-`nameserver 4.2.2.2`
+``` ini
+nameserver 4.2.2.1
+nameserver 4.2.2.2
+```
 
 These are public nameservers.
 If it still doesnt work..you may have goofed up somewhere..

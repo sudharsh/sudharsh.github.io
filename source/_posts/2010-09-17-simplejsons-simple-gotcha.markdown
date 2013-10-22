@@ -21,7 +21,7 @@ tags:
 
 I like simple things. Anything more complex more than 'simple' is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.
 
-[![](http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg)](http://www.flickr.com/photos/equanimity/3763158824/)
+{% img center http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg %}
 
 If you take a closer look at the spec above, you will notice that the keys for a JSON 'dictionary' should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.
 

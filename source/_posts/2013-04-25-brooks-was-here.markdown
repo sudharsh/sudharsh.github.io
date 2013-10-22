@@ -21,6 +21,6 @@ Like many others I love [Shawshank Redemption](http://www.imdb.com/title/tt01111
 
 I keep hoping Brooks found his Freedom.
 
-[youtube=http://www.youtube.com/watch?v=kotNxb2YApk]
+{% youtube kotNxb2YApk %}
 
 

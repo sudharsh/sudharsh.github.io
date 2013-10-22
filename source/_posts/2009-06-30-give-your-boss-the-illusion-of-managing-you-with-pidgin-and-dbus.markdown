@@ -27,7 +27,7 @@ tags:
 - wtfpl
 ---
 
-[![Dilbert.com](http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif)](http://dilbert.com/strips/comic/2009-06-30/)
+{% img center http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif %}
 
 Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under [WTFPL](http://sam.zoy.org/wtfpl/)). Tested with jabber accounts in a live office environment :P.
 

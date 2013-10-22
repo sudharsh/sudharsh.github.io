@@ -26,7 +26,7 @@ Meanwhile, applications were open for the second round of [StartupChile](http://
 
 Fast forward a month, We are delighted to announce that Cruns is one of the [154 startups](http://www.startupchile.org/154-startups-selected-in-start-up-chiles-2nd-round-of-2011/) that made it through the 2nd round of the program.
 
-[![](http://sudharsh.files.wordpress.com/2011/10/sup-logo.png)](http://startupchile.org)
+[{% img center http://sudharsh.files.wordpress.com/2011/10/sup-logo.png %}](http://startupchile.org)
 
 These are still early days, I am all excited, happy, anxious and scared, all the same time. Never have I budgeted for things months in advance. Ever since I passed out of college, I have been living in the relative comfort of working under a great team at Serendio where I began my baby steps as a programmer.
 
@@ -35,7 +35,7 @@ I have to admit, I am finding myself outside my comfort zone all of a sudden. So
 So there, Announcing Cruns; Something which we hope will help you to organize your information better.
 
 
-[![](http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300)](http://twitter.com/#!/CrunsLabs)
+[{% img center http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300 %}](http://twitter.com/#!/CrunsLabs)
 
 
 

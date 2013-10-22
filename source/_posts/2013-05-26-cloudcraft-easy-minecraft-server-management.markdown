@@ -17,7 +17,7 @@ tags:
 - Python
 ---
 
-[![2013-05-25_00.39.01](http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png?w=300)](http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png)
+{% img center http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png %}
 
 
 
@@ -25,7 +25,7 @@ I started working on [Cloudcraft](https://github.com/sudharsh/cloudcraft) as a t
 
 
 
-[![2. zsh 2013-05-27 00-23-17](http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg)](http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg)
+{% img center http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg %}
 
 
 

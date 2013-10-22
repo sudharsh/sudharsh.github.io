@@ -16,7 +16,7 @@ tags:
 - Rants
 ---
 
-[![](http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128)](http://sudharsh.files.wordpress.com/2008/06/image004.jpg)
+{% img center http://sudharsh.files.wordpress.com/2008/06/image004.jpg?w=128 %}
 
 As the summer holidays progress, I am finding myself become a nocturnal being. My sense of a "day" has changed a lot.
 

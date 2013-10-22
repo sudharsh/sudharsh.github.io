@@ -24,7 +24,7 @@ tags:
 Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn't be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,
 
 
-[![](http://sudharsh.files.wordpress.com/2011/02/office-space.jpg)](http://sudharsh.files.wordpress.com/2011/02/office-space.jpg)
+{% img center http://sudharsh.files.wordpress.com/2011/02/office-space.jpg %}
 
 
 
@@ -60,7 +60,7 @@ The script can detect movements within the red rectangle. Here is how it does th
 
 
 
-[![](http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png)](http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png)
+{% img center http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png %}
 
 
 
@@ -72,7 +72,7 @@ The script can detect movements within the red rectangle. Here is how it does th
 
 
 
-[![](http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png)](http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png)
+{% img center http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png %}
 
 
 
@@ -84,7 +84,7 @@ The script can detect movements within the red rectangle. Here is how it does th
 
 
 
-[![](http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png)](http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png)
+{% img center http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png %}
 
 
 Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.

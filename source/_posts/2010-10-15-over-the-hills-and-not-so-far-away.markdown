@@ -66,7 +66,7 @@ It was a long, wet weekend with rains lashing through Kerala rather heavily. Nev
 
 
 
-[![](http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg)](http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg)
+{% img center http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg %}
 
 
 
@@ -74,6 +74,6 @@ It was a long, wet weekend with rains lashing through Kerala rather heavily. Nev
 
 
 
-[![](http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg)](http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg)
+{% img center http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg %}
 
 

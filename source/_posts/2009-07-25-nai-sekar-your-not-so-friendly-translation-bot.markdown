@@ -15,7 +15,9 @@ categories:
 - Tips
 ---
 
-[![Sekar](http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg)](http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg)Recently I had to make use of Google's translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google's web UI a bit tiresome to use. I thought "heck, why not write a little jabber bot to make things a bit easier..". (Agreed, writing a bot is nowhere near to the best solution.)
+{% img center http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg %}
+
+Recently I had to make use of Google's translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google's web UI a bit tiresome to use. I thought "heck, why not write a little jabber bot to make things a bit easier..". (Agreed, writing a bot is nowhere near to the best solution.)
 
 Writing a Jabber bot is incredibly easy with python. You will need the [JabberBot](http://thpinfo.com/2007/python-jabberbot/) package, which offers a really really simple and straightforward way to write bots. The little script below proves how easy it is.
 

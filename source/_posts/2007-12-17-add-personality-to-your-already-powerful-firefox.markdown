@@ -21,6 +21,6 @@ I dunno if it adds functionality to your already functional firefox, but still i
 
 Heres a cute screenshot
 
-[![screenshot.png](http://sudharsh.files.wordpress.com/2007/12/screenshot.thumbnail.png)](http://sudharsh.files.wordpress.com/2007/12/screenshot.png)
+{% img center http://sudharsh.files.wordpress.com/2007/12/screenshot.thumbnail.png %}
 
 Get it [here ](http://labs.mozilla.com/2007/12/personas-for-firefox/).

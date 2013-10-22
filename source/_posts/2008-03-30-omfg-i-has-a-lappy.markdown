@@ -28,52 +28,29 @@ Its a Sony Vaio VGN CR 36, The specifications are really competitive..Here goes,
 
 
 	
-  * 
-
-
-Core 2 Duo t8100 clocking atround 2.1 Ghz.
+  * Core 2 Duo t8100 clocking atround 2.1 Ghz.
+	
+  * 2 gigs of RAM
 
 
 	
-  * 
-
-
-2 gigs of RAM
+  * 200 GB hard disk (comes with 5400 RPM drive, could have been a 7200)
 
 
 	
-  * 
-
-
-200 GB hard disk (comes with 5400 RPM drive, could have been a 7200)
+  * ATi Radeon x2300
 
 
 	
-  * 
-
-
-ATi Radeon x2300
+  * 3 USB ports, one firewire, RJ 45 connector..blah blah blah
 
 
 	
-  * 
-
-
-3 USB ports, one firewire, RJ 45 connector..blah blah blah
+  * and the 14.1 inch WXGA display that looks drop dead gorgeus
 
 
 	
-  * 
-
-
-and the 14.1 inch WXGA display that looks drop dead gorgeus
-
-
-	
-  * 
-
-
-The usual goodies, a web cam, finger print reader..etc
+  * The usual goodies, a web cam, finger print reader..etc
 
 
 
