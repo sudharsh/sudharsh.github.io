@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[42]]></title>
-  <link href="http://sudharsh.github.io/atom.xml" rel="self"/>
-  <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T22:40:27+05:30</updated>
-  <id>http://sudharsh.github.io/</id>
+  <link href="http://sudharsh.me/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-22T22:58:25+05:30</updated>
+  <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
-    <link href="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
+    <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
     <updated>2013-08-31T20:14:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
+    <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
     <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
 
 <h2>DRY in Jinja</h2>
@@ -191,9 +191,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
-    <link href="http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
+    <link href="http://sudharsh.me/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
     <updated>2013-05-27T01:02:16+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
+    <id>http://sudharsh.me/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png"></p>
 
 <p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
@@ -208,9 +208,9 @@
   
   <entry>
     <title type="html"><![CDATA[I]]></title>
-    <link href="http://sudharsh.github.io/blog/2013/05/12/i/"/>
+    <link href="http://sudharsh.me/blog/2013/05/12/i/"/>
     <updated>2013-05-12T01:07:49+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2013/05/12/i</id>
+    <id>http://sudharsh.me/blog/2013/05/12/i</id>
     <content type="html"><![CDATA[<p>More than Death, losing my memory scares the shit out of me.
 It makes me queasy to think that all the wonderful experiences I had, the secrets in my head, my tough times and failures can go poof; slowly or in an instant without warning.</p>
 
@@ -224,9 +224,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA["Brooks was here"]]></title>
-    <link href="http://sudharsh.github.io/blog/2013/04/25/brooks-was-here/"/>
+    <link href="http://sudharsh.me/blog/2013/04/25/brooks-was-here/"/>
     <updated>2013-04-25T20:00:20+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2013/04/25/brooks-was-here</id>
+    <id>http://sudharsh.me/blog/2013/04/25/brooks-was-here</id>
     <content type="html"><![CDATA[<p><strong>Minor spoilers ahead</strong></p>
 
 <p>Like many others I love <a href="http://www.imdb.com/title/tt0111161/">Shawshank Redemption</a>. The scene where Brooks is out of prison and is unable to catch up with the world is just plain sad. One of my favorite all time movie scenes that gives me the chills every time.</p>
@@ -242,9 +242,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Chile, alla vamos!]]></title>
-    <link href="http://sudharsh.github.io/blog/2011/10/01/chile-alla-vamos/"/>
+    <link href="http://sudharsh.me/blog/2011/10/01/chile-alla-vamos/"/>
     <updated>2011-10-01T18:43:51+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2011/10/01/chile-alla-vamos</id>
+    <id>http://sudharsh.me/blog/2011/10/01/chile-alla-vamos</id>
     <content type="html"><![CDATA[<p>It all started as a little hack by <a href="http://twitter.com/#%21/cnu">Srini</a> and I at the <a href="http://developer.yahoo.com/hackday/">Yahoo! Openhack</a> Event conducted in Bangalore. The hack by itself wasn&rsquo;t that fancy when compared to the other finalists but we did feel good when our hack got shortlisted for the finals. We wrote a little web app which would index <a href="http://www.delicious.com/">delicious</a> bookmarks and enable Full Text Search on the Content with a neat tagging mechanism.</p>
 
 <p>Meanwhile, applications were open for the second round of <a href="http://www.startupchile.org/about/faqs/">StartupChile</a> program. A seed of 40K equity-free USD and an exotic location, sounded rather interesting. We added some new ideas to the original delicious hack, drafted a nice crisp application and applied a few hours before the deadline.</p>
@@ -267,9 +267,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Save your staplers!]]></title>
-    <link href="http://sudharsh.github.io/blog/2011/02/06/save-your-staplers/"/>
+    <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
     <updated>2011-02-06T21:15:18+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2011/02/06/save-your-staplers</id>
+    <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
 <p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg"></p>
@@ -303,9 +303,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Over the Hills and not so Far Away]]></title>
-    <link href="http://sudharsh.github.io/blog/2010/10/16/over-the-hills-and-not-so-far-away/"/>
+    <link href="http://sudharsh.me/blog/2010/10/16/over-the-hills-and-not-so-far-away/"/>
     <updated>2010-10-16T00:59:22+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2010/10/16/over-the-hills-and-not-so-far-away</id>
+    <id>http://sudharsh.me/blog/2010/10/16/over-the-hills-and-not-so-far-away</id>
     <content type="html"><![CDATA[<p>I had been itching to go on a motorbike roadtrip to Kerala. Sitting in the back of the car isn&rsquo;t exactly my idea of a fun and fulfilling roadtrip.</p>
 
 <p>Therefore from Oct 2 &ndash; 10, I was on my motorbike riding through some diverse terrain and landscapes that included arid countrysides, coastal plains, villages, forests, hill stations and plantations of cardamom, sandalwood, rubber and tea.</p>
@@ -339,9 +339,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[simplejson's simple gotcha]]></title>
-    <link href="http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha/"/>
+    <link href="http://sudharsh.me/blog/2010/09/18/simplejsons-simple-gotcha/"/>
     <updated>2010-09-18T00:00:17+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha</id>
+    <id>http://sudharsh.me/blog/2010/09/18/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
 <p><img class="center" src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg"></p>
@@ -392,9 +392,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Touring, now a Breeze! ]]></title>
-    <link href="http://sudharsh.github.io/blog/2010/07/18/touring-now-a-breeze/"/>
+    <link href="http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze/"/>
     <updated>2010-07-18T22:28:35+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2010/07/18/touring-now-a-breeze</id>
+    <id>http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze</id>
     <content type="html"><![CDATA[<p>India, is a wonderful place for touring on a motorbike. With terrains ranging from high mountainous North, North Eastern India to the Coastal plains and lush Ghats down South, we sure have a huge load of places to see and experience. Motorbike touring can also be risky since a disproportionate rate of road accidents involve two-wheelers. Therefore it is absolutely necessary for the rider to protect himself on the road with proper riding gears.</p>
 
 <p>The ideal mode of getting riding gear would be to look for clearance sales outside our country and ask the relatives or friends to ship it down to India for us. For people like me, whom the relatives <em>hate</em> to be related to, there are local players like <a href="http://cramster.in">Cramster</a> and <a href="http://planetdsg.com">DSG</a> who provide gear that are priced competitively. I already have a nice helmet but the lack of a proper armoured touring jacket was preventing me from getting adventurous enough to go out on long road trips.</p>
@@ -443,9 +443,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Roadtrip to Pondy]]></title>
-    <link href="http://sudharsh.github.io/blog/2010/07/05/roadtrip-to-pondy/"/>
+    <link href="http://sudharsh.me/blog/2010/07/05/roadtrip-to-pondy/"/>
     <updated>2010-07-05T14:01:44+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2010/07/05/roadtrip-to-pondy</id>
+    <id>http://sudharsh.me/blog/2010/07/05/roadtrip-to-pondy</id>
     <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg?w=219" alt="" /></a></p>
 
 <p>Made an unplanned roadtrip to Pondicherry on my FZ yesterday. Driving on the ECR with the sunset on your right is pure bliss. The weather was good with occasional chilly bursts of sea breeze. Cruised the entire stretch at a comfortable 80km/hr.</p>
@@ -460,9 +460,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Almost a graduate]]></title>
-    <link href="http://sudharsh.github.io/blog/2010/03/30/almost-a-graduate/"/>
+    <link href="http://sudharsh.me/blog/2010/03/30/almost-a-graduate/"/>
     <updated>2010-03-30T22:36:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2010/03/30/almost-a-graduate</id>
+    <id>http://sudharsh.me/blog/2010/03/30/almost-a-graduate</id>
     <content type="html"><![CDATA[<p>4 years ago, I joined a college which had the highest mediocrity rating among the mediocre colleges in TN. To be honest, I didn&rsquo;t have good academics in my high school, so I must say I was quite fortunate to get an undergrad &lsquo;seat&rsquo; for a CS Engineering degree there. Luckily, on the very 2nd day of college, I had enough brains to come to a conclusion that my next 4 years would be spent in an Orwellian Dystopian Parallel Universe where students wore lab coats for CS Labs. (It still beats me, the purpose of a fucking labcoat in a Theoretical Computer Science Lab).</p>
 
 <p>Engineering education in TN is as fucked up as it gets. The fact that <strong><em>Yours Truly</em></strong> will be attending his Convocation ceremony next month and getting a degree certificate is proof enough that its fucked up beyond all recognition.</p>
@@ -479,9 +479,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[24camp - Be there]]></title>
-    <link href="http://sudharsh.github.io/blog/2010/02/10/24camp-be-there/"/>
+    <link href="http://sudharsh.me/blog/2010/02/10/24camp-be-there/"/>
     <updated>2010-02-10T17:49:25+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2010/02/10/24camp-be-there</id>
+    <id>http://sudharsh.me/blog/2010/02/10/24camp-be-there</id>
     <content type="html"><![CDATA[<p>Last week, <a href="http://24camp.org/">24camp</a> started out as a means for people to get together and work on interesting projects/ideas.</p>
 
 <p>Serendio will be hosting one this weekend, 13th February. We have place for about 20 &ndash; 25 in our office premises. More information can be found <a href="http://24camp.org/Camp/13Feb2010">here</a>.</p>
@@ -492,9 +492,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/12/17/road-trip-to-yelagiri/"/>
+    <link href="http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri/"/>
     <updated>2009-12-17T20:25:55+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/12/17/road-trip-to-yelagiri</id>
+    <id>http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri</id>
     <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"><img src="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg" alt="" /></a></p>
 
 <p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"></a>I have been a lurker in the forums of <a href="http://www.xbhp.com/talkies/">xbhp</a>, just gaping in awe as these guys do <a href="http://www.xbhp.com/talkies/tourer/8611-how-sikkim-chapter.html">road trips to far off places</a> complete with triplogs. I knew I wanted to do something like this and was itching to take my FZ for a ride in the great outdoors. The farthest I had been was the trip to A R Rehman&rsquo;s concert at Swarnabhoomi a couple of months ago.</p>
@@ -509,9 +509,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
     <updated>2009-12-06T19:57:14+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 
 <p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
@@ -653,9 +653,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Come.. Let's Dance]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/11/23/come-lets-dance/"/>
+    <link href="http://sudharsh.me/blog/2009/11/23/come-lets-dance/"/>
     <updated>2009-11-23T00:47:21+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/11/23/come-lets-dance</id>
+    <id>http://sudharsh.me/blog/2009/11/23/come-lets-dance</id>
     <content type="html"><![CDATA[<p>Just <a href="http://sudharsh.deviantart.com">another</a> sketch to break the monotony of my life. (Somehow felt good no matter how bad this turned out)</p>
 
 <p><a href="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png"><img src="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png" alt="" /></a></p>
@@ -666,9 +666,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
     <updated>2009-10-17T11:48:07+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
     <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
 
 <ol>
@@ -735,9 +735,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
+    <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T22:52:42+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
+    <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg"></p>
 
 <p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
@@ -873,9 +873,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
+    <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
     <updated>2009-06-30T16:27:47+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
+    <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif"></p>
 
 <p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
@@ -953,9 +953,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Burn, baby.. Burn]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/06/21/burn-baby-burn/"/>
+    <link href="http://sudharsh.me/blog/2009/06/21/burn-baby-burn/"/>
     <updated>2009-06-21T21:45:38+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/06/21/burn-baby-burn</id>
+    <id>http://sudharsh.me/blog/2009/06/21/burn-baby-burn</id>
     <content type="html"><![CDATA[<p>When it comes to fitness, I am one of those nerdy couch potatoes with a rather rotund tummy. Burning away calories has become an important priority now and boy, do I miss those Lays and the local Iyengar Bakery Bun Butter Jam and Puffs. For the last week, I have been waking up early and jogging for 30-40 minutes (I also got a good pair of running shoes). Should increase the workout time as weeks progress.</p>
 
 <p>Oh, I also got a new job :D&hellip;.</p>
@@ -964,9 +964,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[Why Python?]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/05/11/why-python/"/>
+    <link href="http://sudharsh.me/blog/2009/05/11/why-python/"/>
     <updated>2009-05-11T22:56:44+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/05/11/why-python</id>
+    <id>http://sudharsh.me/blog/2009/05/11/why-python</id>
     <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
 
 <iframe width="" height="" src="http://www.youtube.com/embed/2pfwY2TNehw&hl=en&fs=1 ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
