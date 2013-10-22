@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-06 14:45:27+00:00
+date: 2006-10-06 14:45
 layout: post
 published: false
 slug: rapid-fire-created-a-rampage-in-my-brain

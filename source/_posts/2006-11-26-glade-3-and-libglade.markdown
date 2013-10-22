@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-11-26 17:53:31+00:00
+date: 2006-11-26 17:53
 layout: post
 slug: glade-3-and-libglade
 title: Glade 3 and libglade

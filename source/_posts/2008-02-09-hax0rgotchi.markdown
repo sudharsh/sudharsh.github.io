@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-02-09 15:02:57+00:00
+date: 2008-02-09 15:02
 layout: post
 slug: hax0rgotchi
 title: Hax0rGotchi

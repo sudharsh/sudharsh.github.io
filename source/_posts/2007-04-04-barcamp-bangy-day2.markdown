@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-04-04 13:06:30+00:00
+date: 2007-04-04 13:06
 layout: post
 slug: barcamp-bangy-day2
 title: BarCamp Bangy Day2

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-13 12:47:22+00:00
+date: 2006-10-13 12:47
 layout: post
 published: false
 slug: just-get-alongmozilla-debian

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-02-05 17:20:09+00:00
+date: 2009-02-05 17:20
 layout: post
 slug: thinking-inside-the-box
 title: Thinking inside the "box"

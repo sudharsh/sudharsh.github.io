@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-08-16 17:02:22+00:00
+date: 2008-08-16 17:02
 layout: post
 slug: odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins
 title: 'odeviced: Accelerometers, PowerControl, IdleNotifiers and Input plugins'

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-11-06 10:06:34+00:00
+date: 2006-11-06 10:06
 layout: post
 slug: thunderbird-30-automation
 title: Thunderbird 3.0 automation

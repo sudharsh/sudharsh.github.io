@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-06-21 16:15:38+00:00
+date: 2009-06-21 16:15
 layout: post
 slug: burn-baby-burn
 title: Burn, baby.. Burn

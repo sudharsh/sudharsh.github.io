@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-09-27 13:06:59+00:00
+date: 2006-09-27 13:06
 layout: post
 published: false
 slug: hating-java-for-another-reason

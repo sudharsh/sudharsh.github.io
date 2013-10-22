@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-01-27 15:54:56+00:00
+date: 2007-01-27 15:54
 layout: post
 slug: tabbing-the-devil
 title: Tabbing the DEviL

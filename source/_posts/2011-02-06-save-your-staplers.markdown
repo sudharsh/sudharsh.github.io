@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2011-02-06 15:45:18+00:00
+date: 2011-02-06 15:45
 layout: post
 slug: save-your-staplers
 title: Save your staplers!

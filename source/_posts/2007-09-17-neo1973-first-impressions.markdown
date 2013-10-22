@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-09-17 15:37:49+00:00
+date: 2007-09-17 15:37
 layout: post
 slug: neo1973-first-impressions
 title: Neo1973, first impressions.

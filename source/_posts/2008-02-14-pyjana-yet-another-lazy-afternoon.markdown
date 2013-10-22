@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-02-14 17:56:20+00:00
+date: 2008-02-14 17:56
 layout: post
 slug: pyjana-yet-another-lazy-afternoon
 title: 'pyjana: yet another lazy afternoon'

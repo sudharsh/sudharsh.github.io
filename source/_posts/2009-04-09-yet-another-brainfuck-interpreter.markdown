@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-04-09 13:17:33+00:00
+date: 2009-04-09 13:17
 layout: post
 slug: yet-another-brainfuck-interpreter
 title: Yet another Brainfuck interpreter

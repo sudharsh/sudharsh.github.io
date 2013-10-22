@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-09-21 13:20:10+00:00
+date: 2006-09-21 13:20
 layout: post
 published: false
 slug: firefox-30-automation

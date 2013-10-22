@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-01-20 16:43:45+00:00
+date: 2008-01-20 16:43
 layout: post
 slug: ratatooo-ey
 title: Ratatooo-ey

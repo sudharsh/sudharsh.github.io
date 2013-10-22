@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-06-10 19:28:40+00:00
+date: 2008-06-10 19:28
 layout: post
 slug: i-got-a-job-at-google-glee-honest
 title: I got a job at Google *glee* (honest)

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-02-01 17:19:20+00:00
+date: 2009-02-01 17:19
 layout: post
 slug: zero-productivity
 title: Zero Productivity

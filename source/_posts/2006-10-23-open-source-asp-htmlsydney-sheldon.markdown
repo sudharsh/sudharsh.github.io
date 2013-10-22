@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-23 16:43:52+00:00
+date: 2006-10-23 16:43
 layout: post
 slug: open-source-asp-htmlsydney-sheldon
 title: Open Source ASP, HTML...Sydney Sheldon?!!

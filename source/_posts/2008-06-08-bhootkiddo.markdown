@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-06-08 20:06:54+00:00
+date: 2008-06-08 20:06
 layout: post
 slug: bhootkiddo
 title: BhootKiddo..

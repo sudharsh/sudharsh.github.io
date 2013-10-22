@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-02-11 13:46:00+00:00
+date: 2007-02-11 13:46
 layout: post
 slug: clustering-em-upa-fucked-up-2-days
 title: Clustering 'em up....a Fucked up 2 days

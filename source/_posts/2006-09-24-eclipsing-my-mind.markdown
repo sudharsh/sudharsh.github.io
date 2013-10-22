@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-09-24 15:05:30+00:00
+date: 2006-09-24 15:05
 layout: post
 published: false
 slug: eclipsing-my-mind

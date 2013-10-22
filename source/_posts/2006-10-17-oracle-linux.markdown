@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-17 16:54:03+00:00
+date: 2006-10-17 16:54
 layout: post
 slug: oracle-linux
 title: Oracle Linux?

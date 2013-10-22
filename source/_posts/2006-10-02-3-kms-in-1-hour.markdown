@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-02 12:07:26+00:00
+date: 2006-10-02 12:07
 layout: post
 published: false
 slug: 3-kms-in-1-hour

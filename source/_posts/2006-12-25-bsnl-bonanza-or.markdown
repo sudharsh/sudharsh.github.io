@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-12-25 11:01:04+00:00
+date: 2006-12-25 11:01
 layout: post
 slug: bsnl-bonanza-or
 title: BSNL bonanza or ...

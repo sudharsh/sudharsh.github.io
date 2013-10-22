@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-07-17 13:51:51+00:00
+date: 2008-07-17 13:51
 layout: post
 slug: wootpassed-the-mid-term-evals
 title: Woot..Passed the mid-term evals

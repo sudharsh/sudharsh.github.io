@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-09-20 13:50:13+00:00
+date: 2006-09-20 13:50
 layout: post
 slug: hello-world
 title: Hello world!

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-10-17 06:18:07+00:00
+date: 2009-10-17 06:18
 layout: post
 slug: konsole-monitoring-with-twitter-and-python
 title: Konsole monitoring with twitter and python

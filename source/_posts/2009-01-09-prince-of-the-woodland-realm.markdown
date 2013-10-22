@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-01-09 18:53:29+00:00
+date: 2009-01-09 18:53
 layout: post
 slug: prince-of-the-woodland-realm
 title: Prince of the Woodland Realm

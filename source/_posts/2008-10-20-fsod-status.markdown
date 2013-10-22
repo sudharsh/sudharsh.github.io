@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-10-20 17:37:26+00:00
+date: 2008-10-20 17:37
 layout: post
 slug: fsod-status
 title: fsod status

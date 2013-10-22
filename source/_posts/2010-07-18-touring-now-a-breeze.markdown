@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2010-07-18 16:58:35+00:00
+date: 2010-07-18 16:58
 layout: post
 slug: touring-now-a-breeze
 title: 'Touring, now a Breeze! '

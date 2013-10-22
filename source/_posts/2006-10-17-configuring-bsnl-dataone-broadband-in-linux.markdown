@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-17 13:56:15+00:00
+date: 2006-10-17 13:56
 layout: post
 slug: configuring-bsnl-dataone-broadband-in-linux
 title: Configuring BSNL Dataone Broadband in Linux

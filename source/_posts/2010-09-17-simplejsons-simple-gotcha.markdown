@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2010-09-17 18:30:17+00:00
+date: 2010-09-17 18:30
 layout: post
 slug: simplejsons-simple-gotcha
 title: simplejson's simple gotcha

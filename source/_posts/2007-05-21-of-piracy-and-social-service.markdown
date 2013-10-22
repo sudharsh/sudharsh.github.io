@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-05-21 07:06:08+00:00
+date: 2007-05-21 07:06
 layout: post
 slug: of-piracy-and-social-service
 title: Of Piracy and Social Service

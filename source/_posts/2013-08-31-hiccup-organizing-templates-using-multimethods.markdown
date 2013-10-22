@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2013-08-31 14:44:26+00:00
+date: 2013-08-31 14:44
 layout: post
 slug: hiccup-organizing-templates-using-multimethods
 title: 'Hiccup: Organizing templates using multimethods'

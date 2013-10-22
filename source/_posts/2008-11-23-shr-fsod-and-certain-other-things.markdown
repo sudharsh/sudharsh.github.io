@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-11-23 06:58:55+00:00
+date: 2008-11-23 06:58
 layout: post
 slug: shr-fsod-and-certain-other-things
 title: SHR, fsod and certain other things.

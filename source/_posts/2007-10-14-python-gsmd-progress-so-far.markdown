@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-10-14 06:35:10+00:00
+date: 2007-10-14 06:35
 layout: post
 slug: python-gsmd-progress-so-far
 title: python-gsmd, progress so far..

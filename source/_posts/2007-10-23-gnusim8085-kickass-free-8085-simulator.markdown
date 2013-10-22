@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-10-23 18:14:47+00:00
+date: 2007-10-23 18:14
 layout: post
 slug: gnusim8085-kickass-free-8085-simulator
 title: gnusim8085, kickass "free" 8085 simulator...

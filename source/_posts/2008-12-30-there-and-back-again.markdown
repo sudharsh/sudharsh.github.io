@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-12-30 15:32:32+00:00
+date: 2008-12-30 15:32
 layout: post
 slug: there-and-back-again
 title: There and back again..

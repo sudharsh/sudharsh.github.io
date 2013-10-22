@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-07-24 17:30:31+00:00
+date: 2007-07-24 17:30
 layout: post
 slug: adding-packages-to-the-openmoko-image
 title: Adding packages to the Openmoko image

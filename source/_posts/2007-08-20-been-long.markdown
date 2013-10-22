@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-08-20 13:56:06+00:00
+date: 2007-08-20 13:56
 layout: post
 slug: been-long
 title: Been long

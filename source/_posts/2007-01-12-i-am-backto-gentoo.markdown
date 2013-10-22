@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-01-12 15:42:06+00:00
+date: 2007-01-12 15:42
 layout: post
 published: false
 slug: i-am-backto-gentoo

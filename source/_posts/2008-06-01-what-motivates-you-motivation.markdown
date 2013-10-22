@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-06-01 19:39:41+00:00
+date: 2008-06-01 19:39
 layout: post
 slug: what-motivates-you-motivation
 title: '"What motivates you? Motivation"'

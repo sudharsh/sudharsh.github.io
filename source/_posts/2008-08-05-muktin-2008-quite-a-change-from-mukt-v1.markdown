@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-08-05 15:06:12+00:00
+date: 2008-08-05 15:06
 layout: post
 slug: muktin-2008-quite-a-change-from-mukt-v1
 title: mukt.in 2008, quite a change from mukt v1

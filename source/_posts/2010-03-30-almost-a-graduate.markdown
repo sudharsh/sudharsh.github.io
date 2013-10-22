@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2010-03-30 17:06:26+00:00
+date: 2010-03-30 17:06
 layout: post
 slug: almost-a-graduate
 title: Almost a graduate

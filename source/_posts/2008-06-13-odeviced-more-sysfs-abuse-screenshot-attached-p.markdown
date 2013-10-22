@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-06-13 16:36:51+00:00
+date: 2008-06-13 16:36
 layout: post
 slug: odeviced-more-sysfs-abuse-screenshot-attached-p
 title: 'odeviced: More sysfs abuse (Screenshot attached! :P)'

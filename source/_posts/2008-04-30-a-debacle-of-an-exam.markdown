@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-04-30 16:34:53+00:00
+date: 2008-04-30 16:34
 layout: post
 slug: a-debacle-of-an-exam
 title: A debacle of an exam...

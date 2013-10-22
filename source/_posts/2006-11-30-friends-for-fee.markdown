@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-11-30 15:52:19+00:00
+date: 2006-11-30 15:52
 layout: post
 slug: friends-for-fee
 title: Friends for Fee

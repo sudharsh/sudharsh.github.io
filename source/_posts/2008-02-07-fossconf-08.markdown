@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-02-07 17:32:32+00:00
+date: 2008-02-07 17:32
 layout: post
 slug: fossconf-08
 title: FossConf '08

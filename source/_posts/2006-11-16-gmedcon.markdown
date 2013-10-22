@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-11-16 08:11:52+00:00
+date: 2006-11-16 08:11
 layout: post
 slug: gmedcon
 title: GMedCon

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-07-21 05:44:09+00:00
+date: 2007-07-21 05:44
 layout: post
 slug: pottermania
 title: Pottermania!!!

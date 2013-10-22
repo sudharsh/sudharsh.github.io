@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-09-13 15:15:16+00:00
+date: 2007-09-13 15:15
 layout: post
 slug: finally-the-openmoko-kit-is-here
 title: Finally the openmoko kit is here

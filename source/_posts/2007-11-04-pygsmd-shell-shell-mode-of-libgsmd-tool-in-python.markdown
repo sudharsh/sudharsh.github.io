@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-11-04 17:59:45+00:00
+date: 2007-11-04 17:59
 layout: post
 slug: pygsmd-shell-shell-mode-of-libgsmd-tool-in-python
 title: 'pygsmd-shell: Shell mode of libgsmd-tool in python'

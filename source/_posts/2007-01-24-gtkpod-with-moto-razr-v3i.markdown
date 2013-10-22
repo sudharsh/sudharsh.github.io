@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-01-24 13:52:20+00:00
+date: 2007-01-24 13:52
 layout: post
 slug: gtkpod-with-moto-razr-v3i
 title: gtkpod with moto razr v3i

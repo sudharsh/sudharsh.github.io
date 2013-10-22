@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-12-17 15:48:58+00:00
+date: 2007-12-17 15:48
 layout: post
 slug: add-personality-to-your-already-powerful-firefox
 title: Add personality to your already powerful firefox

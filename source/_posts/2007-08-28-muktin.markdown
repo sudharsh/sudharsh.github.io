@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-08-28 11:56:10+00:00
+date: 2007-08-28 11:56
 layout: post
 slug: muktin
 title: Mukt.in

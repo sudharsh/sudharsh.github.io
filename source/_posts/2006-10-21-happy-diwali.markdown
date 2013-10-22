@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-21 02:29:04+00:00
+date: 2006-10-21 02:29
 layout: post
 slug: happy-diwali
 title: Happy Diwali!

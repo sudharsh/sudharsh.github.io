@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-06-05 12:39:23+00:00
+date: 2008-06-05 12:39
 layout: post
 slug: battery-plugin-and-more
 title: Battery Plugin and more..

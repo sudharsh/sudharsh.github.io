@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-01-06 19:16:38+00:00
+date: 2007-01-06 19:16
 layout: post
 published: false
 slug: kurukshetrabattle-oferoh-yeahbrains

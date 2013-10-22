@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-08-04 12:08:37+00:00
+date: 2007-08-04 12:08
 layout: post
 slug: pygsmd-apparently-works
 title: 'pygsmd: Apparently, works!'

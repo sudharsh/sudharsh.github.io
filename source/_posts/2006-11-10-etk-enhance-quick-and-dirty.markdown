@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-11-10 10:52:34+00:00
+date: 2006-11-10 10:52
 layout: post
 slug: etk-enhance-quick-and-dirty
 title: ETK + Enhance, quick and dirty

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-11-04 12:39:24+00:00
+date: 2008-11-04 12:39
 layout: post
 slug: exams-again
 title: Exams again...:/

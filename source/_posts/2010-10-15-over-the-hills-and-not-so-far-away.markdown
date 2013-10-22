@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2010-10-15 19:29:22+00:00
+date: 2010-10-15 19:29
 layout: post
 slug: over-the-hills-and-not-so-far-away
 title: Over the Hills and not so Far Away

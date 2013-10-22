@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-06-25 12:09:03+00:00
+date: 2008-06-25 12:09
 layout: post
 slug: finally-the-freerunner-is-here
 title: Finally, The Freerunner is here..

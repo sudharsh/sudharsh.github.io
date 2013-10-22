@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-06-30 10:57:47+00:00
+date: 2009-06-30 10:57
 layout: post
 slug: give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus
 title: Give your boss the illusion of managing you... with pidgin and dbus

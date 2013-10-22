@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-06-15 07:51:19+00:00
+date: 2007-06-15 07:51
 layout: post
 slug: wrapping-up-libgsmd-follow-up
 title: Wrapping up libgsmd (Follow up)

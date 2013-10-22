@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-05-18 15:32:04+00:00
+date: 2008-05-18 15:32
 layout: post
 slug: fun-with-vala-and-dbus
 title: Fun with Vala and DBus

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-24 16:08:13+00:00
+date: 2006-10-24 16:08
 layout: post
 slug: the-best-time-killer
 title: The best time killer..

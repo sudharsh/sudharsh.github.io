@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-04-05 13:56:17+00:00
+date: 2009-04-05 13:56
 layout: post
 slug: no-gta03-in-2009
 title: No GTA03 in 2009 :(

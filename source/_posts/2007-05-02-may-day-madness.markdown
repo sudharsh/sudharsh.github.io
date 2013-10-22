@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-05-02 09:06:29+00:00
+date: 2007-05-02 09:06
 layout: post
 slug: may-day-madness
 title: May Day Madness

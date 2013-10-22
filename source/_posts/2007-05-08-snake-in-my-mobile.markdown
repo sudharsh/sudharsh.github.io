@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-05-08 14:14:22+00:00
+date: 2007-05-08 14:14
 layout: post
 slug: snake-in-my-mobile
 title: Snake in my mobile

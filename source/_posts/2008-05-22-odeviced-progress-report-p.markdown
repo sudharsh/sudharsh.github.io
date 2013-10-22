@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-05-22 11:18:53+00:00
+date: 2008-05-22 11:18
 layout: post
 slug: odeviced-progress-report-p
 title: 'odeviced: progress report :P'

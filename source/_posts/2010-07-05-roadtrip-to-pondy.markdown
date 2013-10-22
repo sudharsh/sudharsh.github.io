@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2010-07-05 08:31:44+00:00
+date: 2010-07-05 08:31
 layout: post
 slug: roadtrip-to-pondy
 title: Roadtrip to Pondy

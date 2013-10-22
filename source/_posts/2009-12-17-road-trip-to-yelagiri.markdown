@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-12-17 14:55:55+00:00
+date: 2009-12-17 14:55
 layout: post
 slug: road-trip-to-yelagiri
 title: Road trip to Yelagiri

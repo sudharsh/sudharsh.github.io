@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2013-04-25 14:30:20+00:00
+date: 2013-04-25 14:30
 layout: post
 slug: brooks-was-here
 title: '"Brooks was here"'

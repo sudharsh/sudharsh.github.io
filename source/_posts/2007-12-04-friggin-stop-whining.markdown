@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-12-04 11:05:53+00:00
+date: 2007-12-04 11:05
 layout: post
 slug: friggin-stop-whining
 title: Friggin' stop whining

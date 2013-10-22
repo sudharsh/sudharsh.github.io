@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-07-25 17:22:42+00:00
+date: 2009-07-25 17:22
 layout: post
 slug: nai-sekar-your-not-so-friendly-translation-bot
 title: Nai Sekar, your not-so-friendly translation bot..

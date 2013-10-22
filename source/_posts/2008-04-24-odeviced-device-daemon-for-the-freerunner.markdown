@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-04-24 13:26:39+00:00
+date: 2008-04-24 13:26
 layout: post
 slug: odeviced-device-daemon-for-the-freerunner
 title: 'odeviced: Device daemon for the FreeRunner'

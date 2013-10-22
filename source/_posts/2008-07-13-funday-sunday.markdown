@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-07-13 14:36:52+00:00
+date: 2008-07-13 14:36
 layout: post
 slug: funday-sunday
 title: Funday Sunday

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-12-06 14:27:14+00:00
+date: 2009-12-06 14:27
 layout: post
 slug: mashing-twitter-and-fso
 title: Mashing Twitter and FSO

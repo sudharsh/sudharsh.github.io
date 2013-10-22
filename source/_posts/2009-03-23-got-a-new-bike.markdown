@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-03-23 14:38:22+00:00
+date: 2009-03-23 14:38
 layout: post
 slug: got-a-new-bike
 title: Got a new bike

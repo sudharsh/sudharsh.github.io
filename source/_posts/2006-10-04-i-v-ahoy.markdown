@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-04 17:05:45+00:00
+date: 2006-10-04 17:05
 layout: post
 published: false
 slug: i-v-ahoy

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2013-05-26 19:32:16+00:00
+date: 2013-05-26 19:32
 layout: post
 slug: cloudcraft-easy-minecraft-server-management
 title: 'Cloudcraft: Easy minecraft server management'

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-02-24 17:33:34+00:00
+date: 2008-02-24 17:33
 layout: post
 slug: ceiling-fan-ban-them-in-classrooms
 title: Ceiling Fan, ban them in classrooms

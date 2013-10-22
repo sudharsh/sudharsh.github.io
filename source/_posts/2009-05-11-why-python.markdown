@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-05-11 17:26:44+00:00
+date: 2009-05-11 17:26
 layout: post
 slug: why-python
 title: Why Python?

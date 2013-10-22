@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-06-02 15:31:46+00:00
+date: 2008-06-02 15:31
 layout: post
 slug: the-code-is-in
 title: The code is in...

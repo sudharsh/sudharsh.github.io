@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-28 17:11:39+00:00
+date: 2006-10-28 17:11
 layout: post
 slug: monsoonthe-good-the-bad-and-the-worse
 title: Monsoon...the good, the bad and the worse

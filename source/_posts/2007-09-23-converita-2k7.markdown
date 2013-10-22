@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-09-23 16:24:30+00:00
+date: 2007-09-23 16:24
 layout: post
 slug: converita-2k7
 title: Converita 2k7

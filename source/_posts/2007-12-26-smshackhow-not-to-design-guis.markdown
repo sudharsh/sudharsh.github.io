@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-12-26 21:01:35+00:00
+date: 2007-12-26 21:01
 layout: post
 slug: smshackhow-not-to-design-guis
 title: SMSHack...how not to design GUIs

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2011-10-01 13:13:51+00:00
+date: 2011-10-01 13:13
 layout: post
 slug: chile-alla-vamos
 title: Chile, alla vamos!

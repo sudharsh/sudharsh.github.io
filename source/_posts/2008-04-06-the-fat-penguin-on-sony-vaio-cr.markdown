@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-04-06 19:29:28+00:00
+date: 2008-04-06 19:29
 layout: post
 slug: the-fat-penguin-on-sony-vaio-cr
 title: The fat penguin on Sony Vaio CR

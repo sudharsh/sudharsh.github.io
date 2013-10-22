@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2010-02-10 12:19:25+00:00
+date: 2010-02-10 12:19
 layout: post
 slug: 24camp-be-there
 title: 24camp - Be there

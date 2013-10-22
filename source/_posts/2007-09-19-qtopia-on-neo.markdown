@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-09-19 16:24:38+00:00
+date: 2007-09-19 16:24
 layout: post
 slug: qtopia-on-neo
 title: qtopia on neo

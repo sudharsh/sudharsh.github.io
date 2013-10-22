@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-10-05 15:45:35+00:00
+date: 2008-10-05 15:45
 layout: post
 slug: fun-shaastra
 title: Fun @ Shaastra

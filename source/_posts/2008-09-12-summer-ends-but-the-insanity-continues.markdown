@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-09-12 13:44:56+00:00
+date: 2008-09-12 13:44
 layout: post
 slug: summer-ends-but-the-insanity-continues
 title: Summer ends but the insanity continues.

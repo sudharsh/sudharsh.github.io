@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2009-11-22 19:17:21+00:00
+date: 2009-11-22 19:17
 layout: post
 slug: come-lets-dance
 title: Come.. Let's Dance

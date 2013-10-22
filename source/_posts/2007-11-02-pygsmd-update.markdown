@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-11-02 10:02:23+00:00
+date: 2007-11-02 10:02
 layout: post
 slug: pygsmd-update
 title: 'pygsmd: update'

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-11-07 13:54:38+00:00
+date: 2006-11-07 13:54
 layout: post
 slug: elive-052
 title: Elive 0.5.2

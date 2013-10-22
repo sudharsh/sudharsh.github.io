@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-07-18 17:44:05+00:00
+date: 2007-07-18 17:44
 layout: post
 slug: missing-somethingbut-what
 title: Missing something..but what?

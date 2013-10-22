@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-10-07 14:29:48+00:00
+date: 2006-10-07 14:29
 layout: post
 published: false
 slug: the-pink-swirl-01

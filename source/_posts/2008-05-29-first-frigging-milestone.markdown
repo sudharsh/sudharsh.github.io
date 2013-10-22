@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-05-29 17:58:56+00:00
+date: 2008-05-29 17:58
 layout: post
 slug: first-frigging-milestone
 title: First frigging milestone..

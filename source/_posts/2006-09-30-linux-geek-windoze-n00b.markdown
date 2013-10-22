@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-09-30 13:28:39+00:00
+date: 2006-09-30 13:28
 layout: post
 published: false
 slug: linux-geek-windoze-n00b

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2008-03-30 09:47:27+00:00
+date: 2008-03-30 09:47
 layout: post
 slug: omfg-i-has-a-lappy
 title: OMFG.. I HAS A LAPPY

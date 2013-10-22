@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2007-04-15 14:18:47+00:00
+date: 2007-04-15 14:18
 layout: post
 slug: winesaves-the-day
 title: Wine...saves the day

@@ -1,7 +1,7 @@
 ---
 author: sudharsh
 comments: true
-date: 2006-11-19 07:38:20+00:00
+date: 2006-11-19 07:38
 layout: post
 published: false
 slug: learning-from-mistakesthe-hard-way
