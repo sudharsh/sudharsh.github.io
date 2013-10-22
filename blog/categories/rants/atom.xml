@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rants | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Rants | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/rants/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -36,28 +36,35 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <id>http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
-<p>[caption id=&ldquo;&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;325&rdquo; caption=&ldquo;Source: <a href="http://www.flickr.com/photos/equanimity/3763158824/">http://www.flickr.com/photos/equanimity/3763158824/</a> (by superfluity)&rdquo;]<a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a>[/caption]</p>
+<p><a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a></p>
 
 <p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
 
 <p>This is where it gets interesting. Python&rsquo;s json module tries to do something smart when you try to encode a python dictionary into a JSON string. In this case, all the keys are python ints.</p>
 
-<p><code>In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
-Out[3]: '{"1": "Foo", "3": "Baz"}'</code></p>
+<p><code>
+In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
+Out[3]: '{"1": "Foo", "3": "Baz"}'
+</code></p>
 
-<p>When I decode it back to a python object&hellip;
-<code>In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
-Out[4]: {u'1': u'Foo', u'3': u'Baz'}</code></p>
+<p>When I decode it back to a python object&hellip;</p>
+
+<p><code>
+In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
+Out[4]: {u'1': u'Foo', u'3': u'Baz'}
+</code></p>
 
 <p>BAM! The json module silently converts all my integer keys to strings. I, for one, would have preferred an Exception to be raised instead.</p>
 
 <p>Something like this, for example.
-<code>In [19]: class F: pass
+<code>
+In [19]: class F: pass
 ...
 In [20]: f = F()
 In [21]: json.loads(json.dumps({ f : 'Foo', 3: 'Baz'}))
 ... snip errors ...
-TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</code></p>
+TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
+</code></p>
 
 <p>In this case, I get the desired behaviour where a &lsquo;TypeError&rsquo; is raised. Stupid example, but you get the idea.</p>
 
@@ -87,28 +94,131 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</code></
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Burn, baby.. Burn]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/06/21/burn-baby-burn/"/>
-    <updated>2009-06-21T21:45:38+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/06/21/burn-baby-burn</id>
-    <content type="html"><![CDATA[<p>When it comes to fitness, I am one of those nerdy couch potatoes with a rather rotund tummy. Burning away calories has become an important priority now and boy, do I miss those Lays and the local Iyengar Bakery Bun Butter Jam and Puffs. For the last week, I have been waking up early and jogging for 30-40 minutes (I also got a good pair of running shoes). Should increase the workout time as weeks progress.</p>
+    <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
+    <updated>2009-07-25T22:52:42+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
+    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg"><img src="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg" alt="Sekar" /></a>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
 
-<p>Oh, I also got a new job :D&hellip;.</p>
+<p>Writing a Jabber bot is incredibly easy with python. You will need the <a href="http://thpinfo.com/2007/python-jabberbot/">JabberBot</a> package, which offers a really really simple and straightforward way to write bots. The little script below proves how easy it is.</p>
+
+<p>The bot translates phrases/sentences using the <a href="http://code.google.com/p/py-gtranslate/">python-pygtrans</a> package. I had to name the script <em>something</em> and Nai Sekar seemed to be a good idea. Apologies if you just went &lsquo;WTF?!&rsquo;.  (I am quite lame when it comes to naming code/function/classes)</p>
+
+<p>``` python</p>
+
+<pre><code>#
+# Released Under WTFPL
+# http://sam.zoy.org/wtfpl/
+#
+from jabberbot import JabberBot
+import gtrans
+import random
+
+# Gmail uses Jabber, but their TOS doesn't allow automated scripts. So be warned
+username = 'yourJabberID@example.com'
+password = 'password'
+
+# Just some famous dialogues from Vadivelu comedy tracks. Might not make sense if you
+# don't know who or what vadivelu is.
+error_dialogues = [
+    "Nee yaaru kitta paysikittu irrukaynu theriyuma? Sekar ngara oru TERROR kitta",
+    "Saykar settutaan",
+    "Tirisa illana Divya",
+    "Huh.. yennaku body strong basement weeeku",
+    "Naanum rowdy.. naanum rowdy.. naanum rowdy",
+    "Shabba... ippovae kannu kattudae",
+    "Heloooo.. Ennoda biruther maark irukaara",
+    "Don't worry.. Be gaaapy",
+    "But andha dealing enaku pudichi irundhuchi",
+    "lighta...",
+    "Vaynda... Vallikidu.... Azuthuduvane.. Azhuthuduvane",
+    "Sing in the raine... I am swoying in the raine..",
+    "Helloo.. Prabha wine shop ownerungala? Kadaiya.. yeppo saar tharapeenga?",
+    " romba nallavanu enna pathu sollitanmaaaaa..."
+]
+
+class NaiSaykarBot(JabberBot):
+
+    def bot_trans(self, msg, args):
+       """Translate the phrase/sentence from the source language to the required language
+          ex: trans en pl Apples grow in trees
+          would translate the above phrase from english to polish
+       """
+       split = args.split()
+       if len(split) == 0:
+            return
+       src_language = split[0].strip()
+       required_language = split[1].strip()
+       phrase = ' '.join(split[2:])
+       try:
+            translated = gtrans.translate(src_language, required_language, phrase)
+            return translated
+       except gtrans.InvalidLanguage, e:
+            print "Invalid args : %s" %(args)
+            # Return a random error message
+            return random.choic e(error_dialogues)
+
+    # Overridden from JabberBot
+    def unknown_command( self, mess, cmd, args):
+        print "Unknown Command %s" %(args)
+        return random.choice(error_dialogues)
+
+if __name__ == '__main__':
+     bot = NaiSaykarBot(username, password)
+     bot.serve_forever()
+</code></pre>
+
+<p>```</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Why Python?]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/05/11/why-python/"/>
-    <updated>2009-05-11T22:56:44+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/05/11/why-python</id>
-    <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
+    <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
+    <updated>2009-06-30T16:27:47+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
+    <content type="html"><![CDATA[<p><a href="http://dilbert.com/strips/comic/2009-06-30/"><img src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif" alt="Dilbert.com" /></a></p>
 
-<p>[youtube=<a href="http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1">http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1</a>]</p>
+<p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
 
-<p>Yeah, so basically what I am coming at is simple. Party now, Life is too short to be spent over unnecessary complications. Or in other words <strong><em>Frigging Use Python!!!!</em></strong></p>
+<p>``` python</p>
 
-<p><a href="http://imgs.xkcd.com/comics/python.png"><img src="http://imgs.xkcd.com/comics/python.png" alt="" /></a>(Strip from XKCD)</p>
+<pre><code>#!/usr/bin/env python
+# By Sudharshan S, released under WTFPL
+
+import dbus
+import gobject
+import time
+
+class PointyHairedBoss:
+
+   def __init__(self, boss_id, source, frequency=30):
+        self.boss_id = boss_id
+        self.source = source
+        self.frequency = frequency
+        bus = dbus.SessionBus()
+        _pidgin_proxy = bus.get_object("im.pidgin.purple.PurpleService", \
+                                                       "/im/pidgin/purple/PurpleObject")
+        self.purple = dbus.Interface (_pidgin_proxy, "im.pidgin.purple.PurpleService")
+        # FIXME:
+        account_id = self.purple.PurpleAccountsGetAllActive()[0]
+        self.boss_conversation = self.purple.PurpleConversationNew(1, account_id, self.boss_id)
+        self.boss_im = self.purple.PurpleConvIm(self.boss_conversation)
+        print self.boss_im
+
+    def start_nonsense(self):
+        question_list = open(self.source)
+        for q in question_list:
+            self.purple.PurpleConvImSend(self.boss_im, q)
+            time.sleep(self.frequency)
+
+if __name__ == "__main__":
+   # Change the jabber id and the path to your questions, with an optional frequency
+   o = PointyHairedBoss("foo@gmail.com", "questions")
+   o.start_nonsense()
+</code></pre>
+
+<p>```</p>
 ]]></content>
   </entry>
   

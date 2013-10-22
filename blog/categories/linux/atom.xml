@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: linux | My Octopress Blog]]></title>
+  <title><![CDATA[Category: linux | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -35,11 +35,11 @@
 </ul>
 
 
-<p>[caption id=&ldquo;attachment_407&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;All is well&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_409&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;Dad walks in and gets caught&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_410&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;426&rdquo; caption=&ldquo;Notifications using pynotify&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a></p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 
@@ -68,7 +68,7 @@
 
 <p>Here is the actual python code,</p>
 
-<p>[sourcecode language=&ldquo;python&rdquo;]</p>
+<p>``` python</p>
 
 <h1>!/usr/bin/env python</h1>
 
@@ -141,13 +141,65 @@ server = TweetForwarder(USERNAME, PASSWORD)
 server.run()
 </code></pre>
 
-<p>[/sourcecode]</p>
+<p>```</p>
 
 <p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
 
 <p>The script and the accompanying dependency can be downloaded from <a href="http://gitorious.org/dumb-scripts/dumb-scripts/archive-tarball/master">here</a>. Just change the USERNAME and PASSWORD accordingly after scp'ing the tarball to your device.</p>
 
 <p>Some useful links,</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <updated>2009-10-17T11:48:07+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
+
+<ol>
+<li><p> Start the code</p></li>
+<li><p> Go out for some tea or movie.</p></li>
+<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
+</ol>
+
+
+<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
+
+<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
+
+<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
+
+<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
+
+<p>``` python</p>
+
+<pre><code>#!/usr/bin/env python
+
+import twitter
+
+username = "dummy_account"
+password = "password"
+
+receiver = "sup3rkiddo"
+
+def sendDM():
+    try:
+        api = twitter.Api(username=username, password=password)
+        stats = api.PostDirectMessage(receiver, "*Done compiling*")
+    except:
+        print "Error!"
+
+if __name__ == '__main__':
+    sendDM()
+</code></pre>
+
+<p>```</p>
+
+<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
 ]]></content>
   </entry>
   
@@ -180,21 +232,6 @@ server.run()
 <p>The code could be found <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. (src/subsystems/Python especially can use some love)</p>
 
 <p>Update: I made a package out of today&rsquo;s tree. Find it <a href="http://sudharsh.mukt.in/fsod_0.1-r0_armv4t.opk">here</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[fsod status]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/10/20/fsod-status/"/>
-    <updated>2008-10-20T23:07:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/10/20/fsod-status</id>
-    <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
-
-<p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
-
-<p>It would be also be pretty awesome if fsod could support loading python plugins, kind of like what gedit does. The GSM code especially could benefit from this since there is not much to gain in terms of performance here.</p>
-
-<p>As for fsod, the sources are available <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. In case anyone wants to get hold of a opk of the current code to install on the Freerunner, it is available <a href="http://sudharsh.mukt.in/fsod-preview_armv4t.opk">here</a>. Comments are welcome</p>
 ]]></content>
   </entry>
   

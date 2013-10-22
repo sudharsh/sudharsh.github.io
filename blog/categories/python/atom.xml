@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Python | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Python | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,6 +12,163 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
+    <link href="http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
+    <updated>2013-08-31T20:14:26+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
+    <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
+
+<h2>DRY in Jinja</h2>
+
+<p>In my previous <a href="http://jinja.pocoo.org/docs/templates/">Flask</a> projects, <a href="http://jinja.pocoo.org/docs/templates/">Jinja</a> was my templating engine of choice. The <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> flow in Jinja templates consists of setting up a <code>base.html</code> with a common layout markup. The &lsquo;children&rsquo; would then <a href="http://jinja.pocoo.org/docs/templates/#template-inheritance">&lsquo;inherit&rsquo;</a> and optionally override those blocks in their own templates.</p>
+
+<h2>Composition in Hiccup</h2>
+
+<p>However, In the world of Clojure (and therefore Hiccup), functions (duh!) are used to modularize templates.  For example,</p>
+
+<p>``` clojure
+(ns foobar.views
+  (:require [hiccup.core :as h]</p>
+
+<pre><code>        [hiccup.page :as hp]))
+</code></pre>
+
+<p>(defn head [title]
+  [:head
+   [:title title]
+   (hp/include-css &ldquo;/static/css/bootstrap.min.css&rdquo;</p>
+
+<pre><code>               "/static/css/bootstrap-theme.min.css")
+</code></pre>
+
+<p>   (hp/include-js &ldquo;/static/js/jquery-1.10.2.min.js&rdquo;</p>
+
+<pre><code>              "/static/js/bootstrap.min.js"
+              "/static/js/bluth.js")])
+</code></pre>
+
+<p>(defn get-page [title context]
+  (hp/html5</p>
+
+<pre><code>;; Since hiccup DSL is just code, we will just inject the
+;; &lt;head&gt; right here
+(head title)
+;; Rest of the template
+;; I'd probably have a (body..) somewhere
+(body context)
+;; Rest of the template
+</code></pre>
+
+<p>))
+```</p>
+
+<h2>Multi-methods</h2>
+
+<p>In the above example, there is a chance of repetitiveness of functions like <code>get-page</code> as the number of routes increases. In most cases, there is one (or few) container <code>div</code> that changes across the templates. To avoid this, I have found using <a href="http://clojure.org/multimethods"><code>multimethods</code></a> to be a great way of dispatching templates at runtime.</p>
+
+<p>For instance,</p>
+
+<p>``` clojure</p>
+
+<p>(defmulti container :template :default :not-found)</p>
+
+<p>(defmethod container :home [context]
+ [:h2 &ldquo;Welcome to the Bluth Company&rdquo;]
+ [:button#queue-button.btn.btn-info &ldquo;Backup&rdquo;])</p>
+
+<p>(defmethod container :users [{:keys [query-params]}]
+ [:h2 (str query-params)])</p>
+
+<p>(defmethod container :not-found [context]
+ [:h2 &ldquo;Generic Content&rdquo;])</p>
+
+<p>```</p>
+
+<p>Now that I have a group of &lsquo;container&rsquo; divs, I can invoke them from <code>get-page</code> like so,</p>
+
+<p>``` clojure</p>
+
+<p>(defn get-page [{:keys [title]</p>
+
+<pre><code>         :or {title "Bluth Co. - Welcome"}
+         :as context }]
+</code></pre>
+
+<p>  (hp/html5
+   (head title)
+   [:body</p>
+
+<pre><code>[:div#wrap
+ [:div.container
+  ;; Invoke container here
+  ;; and dispatch the right template function
+  (container context)
+  ]]]))
+</code></pre>
+
+<p>```</p>
+
+<p>Meanwhile, my <code>routes</code> will end up looking something like this,</p>
+
+<p>``` clojure
+(defroutes app-routes
+  (GET &ldquo;/&rdquo; [] (get-page { :template :home }))
+  ;; Due to the destructuring in get-page,
+  ;; I can pass in arbitrary context to be handled by
+  ;; the container multimethods. In this case, we
+  ;; are passing in the query-params
+  (GET &ldquo;/users&rdquo; [&amp; query-params] (get-page</p>
+
+<pre><code>                                   {:title "User list"
+                                    :template :users
+                                    :query-params query-params}))
+</code></pre>
+
+<p>  (route/not-found (get-page</p>
+
+<pre><code>                {:title "Pluto - Not found!"
+                 :template :not-found}))
+</code></pre>
+
+<p>```</p>
+
+<p>As you can see, <code>get-page</code> is the point of entry for my templates and the container <code>div</code> is injected according to the dispatched function. In fact, by abusing using <a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">compojure&rsquo;s</a> route destructuring, we can have true runtime dispatching of templates!</p>
+
+<p>``` clojure
+(defroutes app-routes
+  (GET &ldquo;/foo/:template [template]</p>
+
+<pre><code> ;; We don't know which container will be invoked until runtime
+ ;; Instead of adding more routes, I can just add more multimethods
+ (get-page {:template template})))
+</code></pre>
+
+<p>```</p>
+
+<p><code>get-page</code> function isn&rsquo;t going to change much and I can mix and match templates as much as I want.</p>
+
+<p>I must admit that I am super new to Clojure. Therefore I am not sure if this approach is idiomatic enough in the Clojure world. Would love to hear suggestions on how it is usually done.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
+    <link href="http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/"/>
+    <updated>2013-05-27T01:02:16+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2013/05/27/cloudcraft-easy-minecraft-server-management</id>
+    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png"><img src="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png?w=300" alt="2013-05-25_00.39.01" /></a></p>
+
+<p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg"><img src="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg" alt="2. zsh 2013-05-27 00-23-17" /></a></p>
+
+<p>Autoscaling instances, plugin management, automatic updates are some of the things that are in the pipeline.</p>
+
+<p>The project is on <a href="https://github.com/sudharsh/cloudcraft">github</a> and as usual, suggestions, bug reports, bug fixes are welcome.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Save your staplers!]]></title>
@@ -35,11 +192,11 @@
 </ul>
 
 
-<p>[caption id=&ldquo;attachment_407&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;All is well&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_409&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;Dad walks in and gets caught&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_410&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;426&rdquo; caption=&ldquo;Notifications using pynotify&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a></p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 
@@ -68,7 +225,7 @@
 
 <p>Here is the actual python code,</p>
 
-<p>[sourcecode language=&ldquo;python&rdquo;]</p>
+<p>``` python</p>
 
 <h1>!/usr/bin/env python</h1>
 
@@ -141,7 +298,7 @@ server = TweetForwarder(USERNAME, PASSWORD)
 server.run()
 </code></pre>
 
-<p>[/sourcecode]</p>
+<p>```</p>
 
 <p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
 
@@ -152,53 +309,54 @@ server.run()
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Why Python?]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/05/11/why-python/"/>
-    <updated>2009-05-11T22:56:44+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/05/11/why-python</id>
-    <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <updated>2009-10-17T11:48:07+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
 
-<p>[youtube=<a href="http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1">http://www.youtube.com/watch?v=2pfwY2TNehw&amp;hl=en&amp;fs=1</a>]</p>
+<ol>
+<li><p> Start the code</p></li>
+<li><p> Go out for some tea or movie.</p></li>
+<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
+</ol>
 
-<p>Yeah, so basically what I am coming at is simple. Party now, Life is too short to be spent over unnecessary complications. Or in other words <strong><em>Frigging Use Python!!!!</em></strong></p>
 
-<p><a href="http://imgs.xkcd.com/comics/python.png"><img src="http://imgs.xkcd.com/comics/python.png" alt="" /></a>(Strip from XKCD)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SHR, fsod and certain other things.]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things/"/>
-    <updated>2008-11-23T12:28:55+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
-    <content type="html"><![CDATA[<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
+<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png"><img src="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225" alt="screenshot-11" /></a>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
+<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
 
-<p>As for fsod, I could really use some help especially with autotools. I managed to set up a preliminary a python scripting interface so that fsod can load python scripts. But that&rsquo;s as far as I got. Apparently DBus needs a mainloop to be setup for exporting objects on the system bus. And since GObject introspection in python seems to be absent at the moment, I had to create bindings to my code. This process is documented and explained <a href="http://www.ibm.com/developerworks/linux/library/l-wrap/">here</a>. But still, I am at a loss as to how to pass the DBus connection object from the mainloop to the python scripts. If someone knows how to do this, please poke me.</p>
+<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
 
-<p>The code could be found <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. (src/subsystems/Python especially can use some love)</p>
+<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
 
-<p>Update: I made a package out of today&rsquo;s tree. Find it <a href="http://sudharsh.mukt.in/fsod_0.1-r0_armv4t.opk">here</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SMSHack...how not to design GUIs]]></title>
-    <link href="http://sudharsh.github.io/blog/2007/12/27/smshackhow-not-to-design-guis/"/>
-    <updated>2007-12-27T02:31:35+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2007/12/27/smshackhow-not-to-design-guis</id>
-    <content type="html"><![CDATA[<p>I got to test some code in the neo and found that sms sending using pygsmd works quite well!!..Also I was looking for an opportunity to brush up my 2 hour stint with pyGTK which I had a long long time ago. What better reason than to create a dirty, scrawny, crufty, fugly GUI for sending SMS. Heres a screenshot of the GUI in action taken from the neo itself. It doesnt really follow any GUI guidelines (who would care at 2:30 AM)&hellip;When you click SendSMS, it calls pygsmd.sms.send() and sends your message..and when you click Quit button, the obvious thing happens.</p>
+<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2007/12/screenshot-1.png"><img src="http://sudharsh.files.wordpress.com/2007/12/screenshot-1.thumbnail.png" alt="screenshot-1.png" /></a></p>
+<p>``` python</p>
 
-<p>Oh there is also this another more better looking tool called <a href="http://wiki.openmoko.org/wiki/SMSTool">SMSTool</a> by alessandro, you might want to check that out as well if you want, it achieves its purpose in a weird sort of interesting way. It communicates with libgsmd-tool in shell mode through python subprocesses.</p>
+<pre><code>#!/usr/bin/env python
 
-<p>If anyone is willing to modify the GUI and make it look more humane, be my guest..It ofcourse depends on pygtk and its dependencies</p>
+import twitter
 
-<p>P.S: SVN in projects.openmoko.org seems to be down. So I was not able to commit these example scripts.</p>
+username = "dummy_account"
+password = "password"
 
-<p>Goofup: I did it again..The SMSTool is written by <a href="http://mput.de/blog/">kriss</a> and maintaned by alessandro</p>
+receiver = "sup3rkiddo"
+
+def sendDM():
+    try:
+        api = twitter.Api(username=username, password=password)
+        stats = api.PostDirectMessage(receiver, "*Done compiling*")
+    except:
+        print "Error!"
+
+if __name__ == '__main__':
+    sendDM()
+</code></pre>
+
+<p>```</p>
+
+<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
 ]]></content>
   </entry>
   

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: programming | My Octopress Blog]]></title>
+  <title><![CDATA[Category: programming | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -35,11 +35,11 @@
 </ul>
 
 
-<p>[caption id=&ldquo;attachment_407&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;All is well&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_409&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;Dad walks in and gets caught&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_410&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;426&rdquo; caption=&ldquo;Notifications using pynotify&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a></p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 
@@ -56,28 +56,35 @@
     <id>http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
-<p>[caption id=&ldquo;&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;325&rdquo; caption=&ldquo;Source: <a href="http://www.flickr.com/photos/equanimity/3763158824/">http://www.flickr.com/photos/equanimity/3763158824/</a> (by superfluity)&rdquo;]<a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a>[/caption]</p>
+<p><a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a></p>
 
 <p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
 
 <p>This is where it gets interesting. Python&rsquo;s json module tries to do something smart when you try to encode a python dictionary into a JSON string. In this case, all the keys are python ints.</p>
 
-<p><code>In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
-Out[3]: '{"1": "Foo", "3": "Baz"}'</code></p>
+<p><code>
+In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
+Out[3]: '{"1": "Foo", "3": "Baz"}'
+</code></p>
 
-<p>When I decode it back to a python object&hellip;
-<code>In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
-Out[4]: {u'1': u'Foo', u'3': u'Baz'}</code></p>
+<p>When I decode it back to a python object&hellip;</p>
+
+<p><code>
+In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
+Out[4]: {u'1': u'Foo', u'3': u'Baz'}
+</code></p>
 
 <p>BAM! The json module silently converts all my integer keys to strings. I, for one, would have preferred an Exception to be raised instead.</p>
 
 <p>Something like this, for example.
-<code>In [19]: class F: pass
+<code>
+In [19]: class F: pass
 ...
 In [20]: f = F()
 In [21]: json.loads(json.dumps({ f : 'Foo', 3: 'Baz'}))
 ... snip errors ...
-TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</code></p>
+TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
+</code></p>
 
 <p>In this case, I get the desired behaviour where a &lsquo;TypeError&rsquo; is raised. Stupid example, but you get the idea.</p>
 
@@ -119,7 +126,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</code></
 
 <p>Here is the actual python code,</p>
 
-<p>[sourcecode language=&ldquo;python&rdquo;]</p>
+<p>``` python</p>
 
 <h1>!/usr/bin/env python</h1>
 
@@ -192,7 +199,7 @@ server = TweetForwarder(USERNAME, PASSWORD)
 server.run()
 </code></pre>
 
-<p>[/sourcecode]</p>
+<p>```</p>
 
 <p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
 
@@ -203,103 +210,54 @@ server.run()
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Yet another Brainfuck interpreter]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/04/09/yet-another-brainfuck-interpreter/"/>
-    <updated>2009-04-09T18:47:33+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/04/09/yet-another-brainfuck-interpreter</id>
-    <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Brainfuck">Brainfuck</a> is one of those turing complete languages that has no apparent use in the real world. But hey, being very very simple with a limited grammar, writing an interpreter should be easy. So here it is, under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>. The code works (I hope so) with the examples from the Wikipedia <a href="http://en.wikipedia.org/wiki/Brainfuck#Examples">article</a>.</p>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <updated>2009-10-17T11:48:07+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
 
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;error.h&gt;
+<ol>
+<li><p> Start the code</p></li>
+<li><p> Go out for some tea or movie.</p></li>
+<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
+</ol>
 
-#include &lt;config.h&gt;
 
-static char cellspace[30000];
-static char *data_pointer;
+<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
 
-int process_command(char command, FILE *file_ptr)
-{
-    char c;
-    long pos;
+<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
 
-    switch(command) {
-    case '&gt;':
-        ++data_pointer;
-        break;
-    case '&lt;':
-        --data_pointer;
-        break;
-    case '+':
-        ++*data_pointer;
-        break;
-    case '-':
-        --*data_pointer;
-        break;
-    case '.':
-        putchar(*data_pointer);
-        break;
-    case ',':
-        *data_pointer = getchar();
-        break;
-    case '[':
-        pos = ftell (file_ptr);
-        while(*data_pointer != NULL) {
-            fseek (file_ptr, pos, SEEK_SET);
-            c = getc(file_ptr);
-            while( c!= ']' &amp;&amp; c != EOF) {
-                process_command(c, file_ptr);
-                c = getc(file_ptr);
-            }
+<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
 
-        }
+<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
 
-    }
+<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
 
-}
+<p>``` python</p>
 
-int interpret_source(const char *source) {
+<pre><code>#!/usr/bin/env python
 
-    /*
-     *  Allowed brainfuck commands are,
-     *  &gt;   increment the data pointer (to point to the next cell to the right).
-     *  &lt;   decrement the data pointer (to point to the next cell to the left).
-     *  +   increment (increase by one) the byte at the data pointer.
-     *  -   decrement (decrease by one) the byte at the data pointer.
-     *  .   output the value of the byte at the data pointer.
-     *  ,   accept one byte of input, storing its value in the byte at the data pointer.
-     *  [   if the byte at the data pointer is zero,
-     *      then instead of moving the instruction pointer forward to the next command,
-     *      jump it forward to the command after the matching ] command.
-     *  ]   if the byte at the data pointer is nonzero,
-     *      then instead of moving the instruction pointer forward to the next command,
-         *      jump it back to the command after the matching [ command.
-     */
+import twitter
 
-    char command;
-    FILE *file_ptr = fopen(source, "r");
+username = "dummy_account"
+password = "password"
 
-    if (!file_ptr) {
-        fprintf(stderr, "Error: No such file %s\n", source);
-        return FALSE;
-    }
+receiver = "sup3rkiddo"
 
-    while((command = getc(file_ptr)) != EOF)
-        process_command(command, file_ptr);
-    fclose(file_ptr);
-    return TRUE;
-}
+def sendDM():
+    try:
+        api = twitter.Api(username=username, password=password)
+        stats = api.PostDirectMessage(receiver, "*Done compiling*")
+    except:
+        print "Error!"
 
-int main(int argc, char **argv)
-{
-    /* Init data_pointer to the left most cell */
-    data_pointer = &amp;cellspace[0];
-
-    /* Use getopts? */
-    if (argc &gt; 1)
-        interpret_source(argv[1]);
-    return 0;
-}
+if __name__ == '__main__':
+    sendDM()
 </code></pre>
+
+<p>```</p>
+
+<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
 ]]></content>
   </entry>
   

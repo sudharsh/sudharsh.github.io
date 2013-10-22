@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adding packages to the Openmoko image - Anti-social</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Here&rsquo;s a pretty trivial script I wrote to inject packages into the openmoko images. sed does all the dirty work for me. I was feeling pretty &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.github.io/blog/2007/07/24/adding-packages-to-the-openmoko-image">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anti-social</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Adding Packages to the Openmoko Image</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-07-24T23:00:31+05:30" pubdate data-updated="true">Jul 24<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Here&rsquo;s a pretty trivial script I wrote to inject packages into the openmoko images. sed does all the dirty work for me. I was feeling pretty lazy to edit the task-openmoko.bb each and everytime after it gets reverted after an svn update. So came up with this hack.</p>
+
+<p>The trick is, task-openmoko.bb in oe/packages/tasks contains the list of the apps that will be included in the final image. If your app name is not present in it, your recipe will be parsed correctly and your app will build, but it wont make it to the final image.</p>
+
+<p>Note: Bump up PR in task-openmoko.bb before using the script.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="c"># Sudharshan &quot;Sup3rkiddo&quot; S</span>
+</span><span class='line'><span class="c"># inject, script that injects packages into the OpenMoko standard,</span>
+</span><span class='line'><span class="c"># The sed line does all the stuff, nothing elite...</span>
+</span><span class='line'><span class="c"># The package is grouped under TASK_OPENMOKO_LINUX..after rsync</span>
+</span><span class='line'><span class="c"># The bitbake recipes should be present in the proper place. OE docs for info</span>
+</span><span class='line'><span class="nv">ARGS</span><span class="o">=</span>1
+</span><span class='line'><span class="nv">E_BADARGS</span><span class="o">=</span>65
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-ne <span class="s2">&quot;$ARGS&quot;</span> <span class="o">]</span>
+</span><span class='line'><span class="k">then</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Usage: inject &quot;</span>
+</span><span class='line'><span class="nb">exit</span> <span class="nv">$E_BADARGS</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>make update
+</span><span class='line'>make setup
+</span><span class='line'><span class="nb">cd </span>oe/packages/tasks
+</span><span class='line'>mv task-openmoko.bb task-openmoko.bb_bakup
+</span><span class='line'><span class="c"># search for rsync and append the package name after it..[KIDDISH HACK]</span>
+</span><span class='line'>sed <span class="s1">&#39;/rsync \\/ a\ &#39;</span><span class="nv">$1</span><span class="s1">&#39; \\&#39;</span> &gt;task-openmoko.bb
+</span><span class='line'>mv task-openmoko.bb_bakup ~/
+</span><span class='line'><span class="nb">cd</span> ../../../
+</span><span class='line'><span class="c">#make clean-package-$1</span>
+</span><span class='line'>make build-package-<span class="nv">$1</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Done injection..muhahah&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You still have to make sure you have the bitbake recipes in the proper place. As always I am not responsible for dead kittens caused due to the usage of the above script ;)</p>
+
+<p>Links:
+<a href="http://www.bec-systems.com/web/content/view/59/9/"> http://bec-systems.com/web/content/view/59/9/</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">sudharsh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-07-24T23:00:31+05:30" pubdate data-updated="true">Jul 24<span>th</span>, 2007</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2007/07/24/adding-packages-to-the-openmoko-image/" data-via="" data-counturl="http://sudharsh.github.io/blog/2007/07/24/adding-packages-to-the-openmoko-image/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2007/07/21/pottermania/" title="Previous Post: Pottermania!!!">&laquo; Pottermania!!!</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2007/08/04/pygsmd-apparently-works/" title="Next Post: pygsmd: Apparently, works!">pygsmd: Apparently, works! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/12/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">"Brooks Was Here"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

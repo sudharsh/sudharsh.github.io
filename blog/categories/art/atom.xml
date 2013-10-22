@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: art | My Octopress Blog]]></title>
+  <title><![CDATA[Category: art | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/art/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -20,7 +20,7 @@
     <id>http://sudharsh.github.io/blog/2009/11/23/come-lets-dance</id>
     <content type="html"><![CDATA[<p>Just <a href="http://sudharsh.deviantart.com">another</a> sketch to break the monotony of my life. (Somehow felt good no matter how bad this turned out)</p>
 
-<p>[caption id=&ldquo;attachment_289&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;216&rdquo; caption=&ldquo;Come&hellip; Let&rsquo;s Dance&rdquo;]<a href="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png"><img src="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png"><img src="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png" alt="" /></a></p>
 
 <p>(My scanner sucks)</p>
 ]]></content>
@@ -31,9 +31,9 @@
     <link href="http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm/"/>
     <updated>2009-01-10T00:23:29+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/01/10/prince-of-the-woodland-realm</id>
-    <content type="html"><![CDATA[<p>[caption id=&ldquo;attachment_199&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;247&rdquo; caption=&ldquo;Legolas Greenleaf&rdquo;]<a href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png"><img src="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247" alt="Legolas Greenlead" /></a>[/caption]</p>
+    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png"><img src="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247" alt="Legolas Greenleaf" /></a></p>
 
-<p>[caption id=&ldquo;&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;204&rdquo; caption=&ldquo;Legolas Greenleaf&rdquo;]<a href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg"><img src="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204" alt="Legolas Greenlead" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg"><img src="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204" alt="Legolas Greenleaf" /></a></p>
 
 <pre><code>"_Legolas Greenleaf long under tree_
 _In joy thou hast lived. Beware of the Sea!_

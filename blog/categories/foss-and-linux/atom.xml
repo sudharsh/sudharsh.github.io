@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: FOSS and Linux | My Octopress Blog]]></title>
+  <title><![CDATA[Category: FOSS and Linux | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/foss-and-linux/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -32,7 +32,7 @@
 
 <p>Here is the actual python code,</p>
 
-<p>[sourcecode language=&ldquo;python&rdquo;]</p>
+<p>``` python</p>
 
 <h1>!/usr/bin/env python</h1>
 
@@ -105,7 +105,7 @@ server = TweetForwarder(USERNAME, PASSWORD)
 server.run()
 </code></pre>
 
-<p>[/sourcecode]</p>
+<p>```</p>
 
 <p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
 
@@ -116,11 +116,194 @@ server.run()
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <updated>2009-10-17T11:48:07+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
+
+<ol>
+<li><p> Start the code</p></li>
+<li><p> Go out for some tea or movie.</p></li>
+<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
+</ol>
+
+
+<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
+
+<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
+
+<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
+
+<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
+
+<p>``` python</p>
+
+<pre><code>#!/usr/bin/env python
+
+import twitter
+
+username = "dummy_account"
+password = "password"
+
+receiver = "sup3rkiddo"
+
+def sendDM():
+    try:
+        api = twitter.Api(username=username, password=password)
+        stats = api.PostDirectMessage(receiver, "*Done compiling*")
+    except:
+        print "Error!"
+
+if __name__ == '__main__':
+    sendDM()
+</code></pre>
+
+<p>```</p>
+
+<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
+    <updated>2009-07-25T22:52:42+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
+    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg"><img src="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg" alt="Sekar" /></a>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
+
+<p>Writing a Jabber bot is incredibly easy with python. You will need the <a href="http://thpinfo.com/2007/python-jabberbot/">JabberBot</a> package, which offers a really really simple and straightforward way to write bots. The little script below proves how easy it is.</p>
+
+<p>The bot translates phrases/sentences using the <a href="http://code.google.com/p/py-gtranslate/">python-pygtrans</a> package. I had to name the script <em>something</em> and Nai Sekar seemed to be a good idea. Apologies if you just went &lsquo;WTF?!&rsquo;.  (I am quite lame when it comes to naming code/function/classes)</p>
+
+<p>``` python</p>
+
+<pre><code>#
+# Released Under WTFPL
+# http://sam.zoy.org/wtfpl/
+#
+from jabberbot import JabberBot
+import gtrans
+import random
+
+# Gmail uses Jabber, but their TOS doesn't allow automated scripts. So be warned
+username = 'yourJabberID@example.com'
+password = 'password'
+
+# Just some famous dialogues from Vadivelu comedy tracks. Might not make sense if you
+# don't know who or what vadivelu is.
+error_dialogues = [
+    "Nee yaaru kitta paysikittu irrukaynu theriyuma? Sekar ngara oru TERROR kitta",
+    "Saykar settutaan",
+    "Tirisa illana Divya",
+    "Huh.. yennaku body strong basement weeeku",
+    "Naanum rowdy.. naanum rowdy.. naanum rowdy",
+    "Shabba... ippovae kannu kattudae",
+    "Heloooo.. Ennoda biruther maark irukaara",
+    "Don't worry.. Be gaaapy",
+    "But andha dealing enaku pudichi irundhuchi",
+    "lighta...",
+    "Vaynda... Vallikidu.... Azuthuduvane.. Azhuthuduvane",
+    "Sing in the raine... I am swoying in the raine..",
+    "Helloo.. Prabha wine shop ownerungala? Kadaiya.. yeppo saar tharapeenga?",
+    " romba nallavanu enna pathu sollitanmaaaaa..."
+]
+
+class NaiSaykarBot(JabberBot):
+
+    def bot_trans(self, msg, args):
+       """Translate the phrase/sentence from the source language to the required language
+          ex: trans en pl Apples grow in trees
+          would translate the above phrase from english to polish
+       """
+       split = args.split()
+       if len(split) == 0:
+            return
+       src_language = split[0].strip()
+       required_language = split[1].strip()
+       phrase = ' '.join(split[2:])
+       try:
+            translated = gtrans.translate(src_language, required_language, phrase)
+            return translated
+       except gtrans.InvalidLanguage, e:
+            print "Invalid args : %s" %(args)
+            # Return a random error message
+            return random.choic e(error_dialogues)
+
+    # Overridden from JabberBot
+    def unknown_command( self, mess, cmd, args):
+        print "Unknown Command %s" %(args)
+        return random.choice(error_dialogues)
+
+if __name__ == '__main__':
+     bot = NaiSaykarBot(username, password)
+     bot.serve_forever()
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
+    <link href="http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
+    <updated>2009-06-30T16:27:47+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
+    <content type="html"><![CDATA[<p><a href="http://dilbert.com/strips/comic/2009-06-30/"><img src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif" alt="Dilbert.com" /></a></p>
+
+<p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
+
+<p>``` python</p>
+
+<pre><code>#!/usr/bin/env python
+# By Sudharshan S, released under WTFPL
+
+import dbus
+import gobject
+import time
+
+class PointyHairedBoss:
+
+   def __init__(self, boss_id, source, frequency=30):
+        self.boss_id = boss_id
+        self.source = source
+        self.frequency = frequency
+        bus = dbus.SessionBus()
+        _pidgin_proxy = bus.get_object("im.pidgin.purple.PurpleService", \
+                                                       "/im/pidgin/purple/PurpleObject")
+        self.purple = dbus.Interface (_pidgin_proxy, "im.pidgin.purple.PurpleService")
+        # FIXME:
+        account_id = self.purple.PurpleAccountsGetAllActive()[0]
+        self.boss_conversation = self.purple.PurpleConversationNew(1, account_id, self.boss_id)
+        self.boss_im = self.purple.PurpleConvIm(self.boss_conversation)
+        print self.boss_im
+
+    def start_nonsense(self):
+        question_list = open(self.source)
+        for q in question_list:
+            self.purple.PurpleConvImSend(self.boss_im, q)
+            time.sleep(self.frequency)
+
+if __name__ == "__main__":
+   # Change the jabber id and the path to your questions, with an optional frequency
+   o = PointyHairedBoss("foo@gmail.com", "questions")
+   o.start_nonsense()
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Yet another Brainfuck interpreter]]></title>
     <link href="http://sudharsh.github.io/blog/2009/04/09/yet-another-brainfuck-interpreter/"/>
     <updated>2009-04-09T18:47:33+05:30</updated>
     <id>http://sudharsh.github.io/blog/2009/04/09/yet-another-brainfuck-interpreter</id>
     <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Brainfuck">Brainfuck</a> is one of those turing complete languages that has no apparent use in the real world. But hey, being very very simple with a limited grammar, writing an interpreter should be easy. So here it is, under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>. The code works (I hope so) with the examples from the Wikipedia <a href="http://en.wikipedia.org/wiki/Brainfuck#Examples">article</a>.</p>
+
+<p>``` c</p>
 
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;error.h&gt;
@@ -213,53 +396,8 @@ int main(int argc, char **argv)
     return 0;
 }
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
-    <link href="http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009/"/>
-    <updated>2009-04-05T19:26:17+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2009/04/05/no-gta03-in-2009</id>
-    <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
 
-<p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
-
-<p>For more, check this recent blog entry by <a href="http://www.vanille-media.de/site/index.php/2009/04/04/back-from-switzerland/">Mickey</a>.</p>
-
-<p>Patches all the way :D&hellip;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SHR, fsod and certain other things.]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things/"/>
-    <updated>2008-11-23T12:28:55+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
-    <content type="html"><![CDATA[<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
-
-<p><a href="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png"><img src="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225" alt="screenshot-11" /></a>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
-
-<p>As for fsod, I could really use some help especially with autotools. I managed to set up a preliminary a python scripting interface so that fsod can load python scripts. But that&rsquo;s as far as I got. Apparently DBus needs a mainloop to be setup for exporting objects on the system bus. And since GObject introspection in python seems to be absent at the moment, I had to create bindings to my code. This process is documented and explained <a href="http://www.ibm.com/developerworks/linux/library/l-wrap/">here</a>. But still, I am at a loss as to how to pass the DBus connection object from the mainloop to the python scripts. If someone knows how to do this, please poke me.</p>
-
-<p>The code could be found <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. (src/subsystems/Python especially can use some love)</p>
-
-<p>Update: I made a package out of today&rsquo;s tree. Find it <a href="http://sudharsh.mukt.in/fsod_0.1-r0_armv4t.opk">here</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[fsod status]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/10/20/fsod-status/"/>
-    <updated>2008-10-20T23:07:26+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/10/20/fsod-status</id>
-    <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
-
-<p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
-
-<p>It would be also be pretty awesome if fsod could support loading python plugins, kind of like what gedit does. The GSM code especially could benefit from this since there is not much to gain in terms of performance here.</p>
-
-<p>As for fsod, the sources are available <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. In case anyone wants to get hold of a opk of the current code to install on the Freerunner, it is available <a href="http://sudharsh.mukt.in/fsod-preview_armv4t.opk">here</a>. Comments are welcome</p>
+<p>```</p>
 ]]></content>
   </entry>
   

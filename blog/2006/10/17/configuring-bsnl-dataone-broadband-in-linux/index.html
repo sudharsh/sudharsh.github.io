@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Configuring BSNL Dataone Broadband in Linux - Anti-social</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports.. Oh and router=modem in this article&hellip; DHCP &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.github.io/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anti-social" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anti-social</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Configuring BSNL Dataone Broadband in Linux</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-17T19:26:15+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports..</p>
+
+<p>Oh and router=modem in this article&hellip;</p>
+
+<p><strong>DHCP way:</strong></p>
+
+<p>The most simple way of course is to use DHCP to set up your network automatically, In most cases everything gets configured automagically. If not enabled you should start the DHCP server by logging into the admin interface. See the wikipedia article to know more about DHCP.
+<a href="http://en.wikipedia.org/wiki/Dhcp">http://en.wikipedia.org/wiki/Dhcp</a></p>
+
+<p><strong>pppoeconf:</strong></p>
+
+<p>In ubuntu there should be a program called pppoeconf installed by default, just run
+<code>sudo pppoeconf</code>
+You will be taken through a set of screens wherein you will be able to enter the details regarding your dataone account, Mostly configuring the DNS isnt required. Just rememeber that it is <user>@dataone and not <user>@dataone.in</p>
+
+<p>Then to connect use
+<code>pon dsl-provider</code>
+if you have followed the default steps.</p>
+
+<p><code>poff dsl-provider</code>
+to disconnect and
+<code>plog</code>
+to view status</p>
+
+<p>In gentoo this tool is known an rp-pppoe, only the name differs..although its wizard is command line rather than the ncurses based pppoeconf</p>
+
+<p><strong>Configuring the router directly:</strong></p>
+
+<p>Of course another alternative is to use the admin interface available in the router provided. First make sure your box is detecting the ethernet interface correctly</p>
+
+<p>next..
+<code>ifconfig eth0 up 192.168.1.2</code>
+and&hellip;
+<code>route add default gw 192.168.1.1</code></p>
+
+<p>Point your browser to 192.168.1.1 and you should be greeted with the admin interface of your router. I use a Huawei Sterlite WA1003A.</p>
+
+<p>username and password are admin.</p>
+
+<p>After logging in goto Modem Setup, PVC0</p>
+
+<p>select pppoe, fill in the details, save the settings and restart the router&hellip;Your modem should automatically dial-in.</p>
+
+<p>Most distros have gui to configure this stuff, But some of us are smarter than the others and use distros like gentoo..For those users..:P</p>
+
+<p>open up /etc/conf.d/net</p>
+
+<p>and add/modify
+<code>iface_eth0="192.168.1.2 broadcast 192.168.1.255 netmask 255.255.255.0"
+gateway="eth0/192.168.1.1"</code></p>
+
+<p>After saving the file do a
+<code>/etc/init.d/net.eth0 restart</code></p>
+
+<p><strong>If nothing works:</strong>
+So if  these steps dont work..there a last chance. Most of the times resolv.conf is to be blamed, Double check if its ok, Even if you have valid nameservers try putting the following in /etc/resolv.conf.</p>
+
+<p><code>nameserver 4.2.2.1</code>
+<code>nameserver 4.2.2.2</code></p>
+
+<p>These are public nameservers.
+If it still doesnt work..you may have goofed up somewhere..</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li><p>Configuring the router directly is more convenient since the configuration sits in your router rather than your system. So if you in some point lose your data, all you need to do to configure the internet is to configure the interfaces of the modem. Also  when using pppoeconf,   when I chose to enable the connection during boot time I found that my system was taking more time to boot, but this time delay was not experienced when I configured the connection through the admin interface of the router. Of course if for some reason, if the modem is restarted you need not execute the &lsquo;pon&rsquo; command to connect when you configure the router directly. It automatically connects.</p></li>
+<li><p>Use any one of the methods..not both</p></li>
+<li><p>Sometimes if you have two ethernet interfaces you may need to disable one of them</p></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">sudharsh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-17T19:26:15+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.github.io/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/" data-via="" data-counturl="http://sudharsh.github.io/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2006/10/13/just-get-alongmozilla-debian/" title="Previous Post: Mozilla vs. Debian..Jus Get along">&laquo; Mozilla vs. Debian..Jus Get along</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2006/10/17/oracle-linux/" title="Next Post: Oracle Linux?">Oracle Linux? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/12/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">"Brooks Was Here"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

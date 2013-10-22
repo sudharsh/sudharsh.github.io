@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: openmoko | My Octopress Blog]]></title>
+  <title><![CDATA[Category: openmoko | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/openmoko/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -49,7 +49,7 @@
 
 <p>Here is the actual python code,</p>
 
-<p>[sourcecode language=&ldquo;python&rdquo;]</p>
+<p>``` python</p>
 
 <h1>!/usr/bin/env python</h1>
 
@@ -122,7 +122,7 @@ server = TweetForwarder(USERNAME, PASSWORD)
 server.run()
 </code></pre>
 
-<p>[/sourcecode]</p>
+<p>```</p>
 
 <p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
 

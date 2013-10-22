@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Tips | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Tips | Anti-social]]></title>
   <link href="http://sudharsh.github.io/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://sudharsh.github.io/"/>
-  <updated>2013-10-22T17:40:26+05:30</updated>
+  <updated>2013-10-22T19:10:18+05:30</updated>
   <id>http://sudharsh.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -35,11 +35,11 @@
 </ul>
 
 
-<p>[caption id=&ldquo;attachment_407&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;All is well&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_409&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;500&rdquo; caption=&ldquo;Dad walks in and gets caught&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png" alt="" /></a></p>
 
-<p>[caption id=&ldquo;attachment_410&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;426&rdquo; caption=&ldquo;Notifications using pynotify&rdquo;]<a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a>[/caption]</p>
+<p><a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"><img src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png" alt="" /></a></p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 
@@ -56,34 +56,92 @@
     <id>http://sudharsh.github.io/blog/2010/09/18/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
-<p>[caption id=&ldquo;&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;325&rdquo; caption=&ldquo;Source: <a href="http://www.flickr.com/photos/equanimity/3763158824/">http://www.flickr.com/photos/equanimity/3763158824/</a> (by superfluity)&rdquo;]<a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a>[/caption]</p>
+<p><a href="http://www.flickr.com/photos/equanimity/3763158824/"><img src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg" alt="" /></a></p>
 
 <p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
 
 <p>This is where it gets interesting. Python&rsquo;s json module tries to do something smart when you try to encode a python dictionary into a JSON string. In this case, all the keys are python ints.</p>
 
-<p><code>In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
-Out[3]: '{"1": "Foo", "3": "Baz"}'</code></p>
+<p><code>
+In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
+Out[3]: '{"1": "Foo", "3": "Baz"}'
+</code></p>
 
-<p>When I decode it back to a python object&hellip;
-<code>In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
-Out[4]: {u'1': u'Foo', u'3': u'Baz'}</code></p>
+<p>When I decode it back to a python object&hellip;</p>
+
+<p><code>
+In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
+Out[4]: {u'1': u'Foo', u'3': u'Baz'}
+</code></p>
 
 <p>BAM! The json module silently converts all my integer keys to strings. I, for one, would have preferred an Exception to be raised instead.</p>
 
 <p>Something like this, for example.
-<code>In [19]: class F: pass
+<code>
+In [19]: class F: pass
 ...
 In [20]: f = F()
 In [21]: json.loads(json.dumps({ f : 'Foo', 3: 'Baz'}))
 ... snip errors ...
-TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</code></p>
+TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
+</code></p>
 
 <p>In this case, I get the desired behaviour where a &lsquo;TypeError&rsquo; is raised. Stupid example, but you get the idea.</p>
 
 <p>If I am missing something obvious here please do comment. This particular cheekiness of the json module caught me unawares recently. Or maybe I was wrong in expecting the decode operation to return something that is identical to the source.</p>
 
 <p>Interestingly, the json support modules that ship with TurboGears error out if you try to return a dictionary having non-string keys from your controller methods.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Touring, now a Breeze! ]]></title>
+    <link href="http://sudharsh.github.io/blog/2010/07/18/touring-now-a-breeze/"/>
+    <updated>2010-07-18T22:28:35+05:30</updated>
+    <id>http://sudharsh.github.io/blog/2010/07/18/touring-now-a-breeze</id>
+    <content type="html"><![CDATA[<p>India, is a wonderful place for touring on a motorbike. With terrains ranging from high mountainous North, North Eastern India to the Coastal plains and lush Ghats down South, we sure have a huge load of places to see and experience. Motorbike touring can also be risky since a disproportionate rate of road accidents involve two-wheelers. Therefore it is absolutely necessary for the rider to protect himself on the road with proper riding gears.</p>
+
+<p>The ideal mode of getting riding gear would be to look for clearance sales outside our country and ask the relatives or friends to ship it down to India for us. For people like me, whom the relatives <em>hate</em> to be related to, there are local players like <a href="http://cramster.in">Cramster</a> and <a href="http://planetdsg.com">DSG</a> who provide gear that are priced competitively. I already have a nice helmet but the lack of a proper armoured touring jacket was preventing me from getting adventurous enough to go out on long road trips.</p>
+
+<h4>Requirements</h4>
+
+<p>I wanted a jacket that that could satisfy all the following requirements.</p>
+
+<ul>
+<li><p>Should be made of a fabric that doesn&rsquo;t tear easily protecting me against scraping injuries.</p></li>
+<li><p>Armor in the joints and some padding in the back for protection against hard falls.</p></li>
+<li><p>Since Chennai is not blessed with a good weather, the Jacket shouldn&rsquo;t boil me alive when I am wearing it. Should be bearable in hot weather atleast when the bike is in motion.</p></li>
+<li><p>Extra brownie points for usability in the rains.</p></li>
+</ul>
+
+
+<p>Alpinestars are great but they are simply too expensive for me. <a href="http://www.planetdsg.com/">DSG</a> distributes them in India in case you have saved enough moola to buy one. Be wary of fake imitation Alpinestars gear that are sold here in Chennai for 5 &ndash; 6k. They look genuine but they are, at the end of the day; fake.</p>
+
+<h4>Narrowing down the choices:</h4>
+
+<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsg-maze-jacket-black.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsg-maze-jacket-black.jpg?w=300" alt="" /></a></p>
+
+<p>Taking into account all these and reading user posts from <a href="http://xbhp.com/talkies">xBHP</a> (in addition to rabid googling), I shortlisted DSG Maze and the <a href="http://www.cramster.in/ridinggear.php">Cramster</a> Breezer 2.0. Earlier, I had almost decided to order Maze online, but after seeing the Cramster in action during the <a href="http://www.xbhp.com/talkies/458471-post4443.html">Vedanthangal xBHP G2G</a>, I noticed that the Cramster Breezer 2.0 qualified  as a worthy competition to the more expensive Maze, both of which met my requirements except for the usability in the rains. Also the presence of Leather shoulders and cuffs in Maze was putting me off. They are damn cool and sexy, but leather doesn&rsquo;t go well with rain. To add to the confusion of choices, I learnt that Cramster had released a new all black Breezer 3.0 phasing out the 2nd revision.</p>
+
+<p>The presence of a removable waterproof inner liner was the killer feature for me, which was not present in Breezer 2.0 and Maze (Correct me if I am wrong). Finally, I made the decision and took my little FZ on a road trip to Cramster&rsquo;s Bangalore office yesterday to get the damn jacket. (also some balaclavas for myself and friends). I chose to ride to Bangalore instead of ordering it online since it would give me a chance to test the jacket on my way back ;) (no nagging confusion about choosing the right size as well)</p>
+
+<p>Sorry for the soddy pics.</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsc00170.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsc00170.jpg?w=300" alt="The back" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsc00172.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsc00172.jpg?w=300" alt="" /></a></p>
+
+<p>The Jacket is heavy in the hands but fits snuggly when I wear it. I had to wear the inner lining in Bangalore because of  the windchill in the early hours of dawn when I was leaving the city. Once the sun came out, I removed it and all was well. I am quite happy with the finish and the quality of materials that have gone into this jacket. Like most other jackets, it comes with the Cordura fabric that doesn&rsquo;t tear and 3M reflectors for added visibility to other motorists for spotting you in the dark.</p>
+
+<h4>Verdict:</h4>
+
+<p>Unfortunately, I have no means to compare it with others and offer a shootout of sorts since I haven&rsquo;t really tried any other jacket before. I would love to hear from the users of other jackets. If you are not a fan of an all-black jacket, DSG Maze comes in <a href="http://www.planetdsg.com/dsg-falcon-jacket-red-p-1044.html">red</a> in addition to the all-black version.</p>
+
+<p>Ride hard and ride safe!</p>
+
+<p>P.S: Thanks to <a href="http://twitter.com/sudarsanyes">Sudarsan</a> (no, not me) and Pradeep for allowing me to camp at their place for the weekend.</p>
+
+<p>P.P.S: Thanks to my boss for buying my LCD monitor!</p>
 ]]></content>
   </entry>
   
@@ -119,7 +177,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</code></
 
 <p>Here is the actual python code,</p>
 
-<p>[sourcecode language=&ldquo;python&rdquo;]</p>
+<p>``` python</p>
 
 <h1>!/usr/bin/env python</h1>
 
@@ -192,52 +250,13 @@ server = TweetForwarder(USERNAME, PASSWORD)
 server.run()
 </code></pre>
 
-<p>[/sourcecode]</p>
+<p>```</p>
 
 <p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
 
 <p>The script and the accompanying dependency can be downloaded from <a href="http://gitorious.org/dumb-scripts/dumb-scripts/archive-tarball/master">here</a>. Just change the USERNAME and PASSWORD accordingly after scp'ing the tarball to your device.</p>
 
 <p>Some useful links,</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The fat penguin on Sony Vaio CR]]></title>
-    <link href="http://sudharsh.github.io/blog/2008/04/07/the-fat-penguin-on-sony-vaio-cr/"/>
-    <updated>2008-04-07T00:59:28+05:30</updated>
-    <id>http://sudharsh.github.io/blog/2008/04/07/the-fat-penguin-on-sony-vaio-cr</id>
-    <content type="html"><![CDATA[<p>As I said in my earlier post, Vista didn&rsquo;t last long. I was planning to install Gentoo in my Vaio CR 36 but couldnt, as it had problems with the ethernet card ( not to mention the wireless). My option was to install Ubuntu Gutsy as it has very good support for laptops out of the box. But Gutsy couldn&rsquo;t get sound working and hence found a perfect excuse to upgrade to hardy beta.</p>
-
-<p>24 after upgrading to hardy, came to know that beta_1 of gentoo 2008.0 is out. Downloaded the 64 bit mrinimal iso and got it up and running on my laptop. Things that doesn&rsquo;t work in both the distros (as of now. May change as I RTFM more)..</p>
-
-<ul>
-<li><p>Fn keys for the brightness controls. I have a brightness applet in my panel, so no real big deal.</p></li>
-<li><p>The Ricoh webcam. lsusb picks up the device and whats more strange; the <a href="http://wiki.mediati.org/R5u870">r5u870</a> driver gets loaded and the device node &lsquo;/dev/video0&rsquo; is getting created properly. Neither cheese nor camorama could pick up the camera. The device id is &ldquo;05ca:1839&rdquo;, which seems to be well supported. Maybe I am missing something obvious (yes, the firmware files are in place)</p></li>
-<li><p>The fingerprint reader. Its the same as that of the ones from the Thinkpads but thinkfinger doesn&rsquo;t support vaios :S</p></li>
-<li><p>Bluetooth, gets detected by hciconfig but other devices can&rsquo;t see my laptop. (See below)</p></li>
-</ul>
-
-
-<p>If anyone had any luck with the above, please let me know.</p>
-
-<p>What works..</p>
-
-<ul>
-<li><p>DRI with the binary &lsquo;fglrx&rsquo;</p></li>
-<li><p>Sound works well</p></li>
-<li><p>Wireless pwns with the iwl4965 module</p></li>
-<li><p>Ethernet with the realtek modules</p></li>
-<li><p><a href="http://www.gentoo-wiki.com/HOWTO_TuxOnIce">Software suspend to disk (and RAM)</a> using patches from the TuxOnIce project</p></li>
-<li><p>Volume keys and media keys work like a charm.</p></li>
-<li><p>Adobe doesn&rsquo;t offer support for flash on amd64. You can getaway with it by installing a 32 bit firefox binary alongside your 64 bit installation. &lsquo;emerge mozilla-firefox-bin netscape-flash&rsquo; and you are all set.</p></li>
-<li><p>Bluetooth works beautifully. I have had issues with I/O errors with the chipset. But a post to the gentoo forums solved the issue. This VAIO comes with a Broadcom 2046 chipset. Be sure to &lsquo;emerge bluez-firmware&rsquo; just in case. Click <a href="http://forums.gentoo.org/viewtopic-t-687593.html">here</a> for the thread. Be sure to follow the wonderful <a href="http://www.gentoo.org/doc/en/bluetooth-guide.xml">gentoo bluetooth</a> guide. emerge gnome-phone-manager and gnome-bluetooth for extra fun</p></li>
-</ul>
-
-
-<p>The kernel .config and the xorg.conf with hardware acceleration for my laptop is <a href="http://sudharsh.unixpod.com/gentoofoo">here</a>, in case if anyone is interested.</p>
-
-<p>Gentoo-wiki has been a great resource. Information about other vaios <a href="http://www.gentoo-wiki.com/Special:Search?search=sony+vaio&amp;go=Go">here</a>.</p>
 ]]></content>
   </entry>
   
