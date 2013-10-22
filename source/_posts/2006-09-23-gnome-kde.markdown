@@ -1,0 +1,23 @@
+---
+author: sudharsh
+comments: true
+date: 2006-09-23 15:43:43+00:00
+layout: post
+published: false
+slug: gnome-kde
+title: GNOME -> KDE
+wordpress_id: 5
+categories:
+- FOSS and Linux
+---
+
+I migrated to kde today..Gnome was getting on my nerves. It was slowww on my box.. Strangely kde is kinda faster..Hmm
+
+I remember using kde some 2 years back..Thats long..:D
+kde 3.5.2 looks stunning..Gnome looks clean.. I would stop my rants here. I am not even thinking of proceeding further.
+
+Anyway because of the ldtp development going on, could not remove it completely.
+
+amarok rocks, thanks to my unlimited connection (yeah..baby) I listened to podcasts and streams all day..Who cares how much I am downloading anyway..
+
+I finished automating the help menu today ..well kind of.. still got some ironing to do..:D

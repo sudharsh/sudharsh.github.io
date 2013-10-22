@@ -1,0 +1,29 @@
+---
+author: sudharsh
+comments: true
+date: 2008-04-22 16:59:22+00:00
+layout: post
+slug: summer-of-code-2008
+title: Summer of code 2008
+wordpress_id: 103
+categories:
+- bleh
+- Events
+- FOSS and Linux
+- gsoc
+- linux
+- neo1973
+- odeviced
+- openmoko
+tags:
+- fricking-semesters
+- google
+- gsoc
+- lostbooks
+- openmoko
+- semesters
+---
+
+Atlast after sleepness nights, the results are out. I made it to this year's Google Summer of Code. I will be working for the Openmoko project under the mentorship of Mickeyl. Fun times ahead. Will post the details later.
+
+Now where the hell are my books. Got fricking semesters this tuesday :(.

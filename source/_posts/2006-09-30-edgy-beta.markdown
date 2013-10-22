@@ -1,0 +1,28 @@
+---
+author: sudharsh
+comments: true
+date: 2006-09-30 13:02:19+00:00
+layout: post
+published: false
+slug: edgy-beta
+title: Edgy Beta
+wordpress_id: 8
+categories:
+- FOSS and Linux
+---
+
+Felt like doing an 'sudo apt-get dist-upgrade' to upgrade to edgy,
+
+Edgy, by the way is the yet to be released version of ubuntu..[Check her out](http://www.ubuntu.com)
+
+Heres what I did,
+
+First, replace all instances of dapper in source.list to edgy
+
+Second, sudo apt-get update
+
+and finally sudo apt-get dist-upgrade
+
+Just make sure , you have the *buntu-desktop installed, otherwise the upgrade will break..
+
+Edgy packs with all the latest stuff, Firefox Bon Echo, GNOME 2.16, KDE 3.5.4 and pretty much the latest software, The bootsplash is nothing short of slick..

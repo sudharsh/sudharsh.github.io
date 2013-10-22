@@ -1,0 +1,22 @@
+---
+author: sudharsh
+comments: true
+date: 2007-08-20 13:56:06+00:00
+layout: post
+slug: been-long
+title: Been long
+wordpress_id: 71
+categories:
+- Events
+- FOSS and Linux
+- openmoko
+- Tips
+---
+
+Been long since I blogged. Not feeling lazy or something, but been kinda busy.
+
+First stop, we had a 5 day trip to Kerala with my college buddies. Was nice to go back to a place which I once called home. I still dont know why my friends didnt like the banana bajjis  and the big rice there. The tour was fun although I came home with a bad cold. Flickr snaps [here](http://www.flickr.com/photos/7611195@N06/).
+
+Next thing, symposium preparations for my department are in full swing. Its been named Infovista much to my chagrin. The site is online at [http://www.infovista.in](http://www.infovista.in). The site is drupal powered and hosting is sponsored my #l-i buddy, jace.
+
+Oh, and NRCFOSS has sponsored us a neo. We have been billed, waiting for the baby to reach us..:D

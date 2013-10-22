@@ -1,0 +1,17 @@
+---
+author: sudharsh
+comments: true
+date: 2006-11-16 08:11:52+00:00
+layout: post
+slug: gmedcon
+title: GMedCon
+wordpress_id: 36
+---
+
+Howdie,
+
+I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net.
+
+[Click here](http://gmedcon.sourceforge.net) to visit the project page
+
+xmedcon is a tool that is used to manipulate dicom images, a standard used in medical imagery. If you would like to help please give me a ping

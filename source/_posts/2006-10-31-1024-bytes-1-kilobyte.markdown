@@ -1,0 +1,22 @@
+---
+author: sudharsh
+comments: true
+date: 2006-10-31 14:34:39+00:00
+layout: post
+slug: 1024-bytes-1-kilobyte
+title: 1024 bytes != 1 kilobyte
+wordpress_id: 29
+categories:
+- College
+- Life
+---
+
+Had a laughter riot after my system software semester practicals today..My external examiner asked me an all too simple question to gauge my intelligence..He asked me about addressing modes in the SIC architecture..I didnt remember it to be honest and then he proceeded to ask me about bits and bytes in general..I wrote in a piece of paper
+1024 bytes -> 1 Kilobyte
+1024 Kilobytes -> 1 Megabyte
+1024 Megabytes -> 1 Gigabyte
+He stood his ground that I was wrong and even threatened me that he will reduce my marks..I had to give in to his ridiculous theory at last and sat down in my place..
+While all the other students were treated to his viva, I moved on; not giving up, and created a text file with exactly 1024 characters, saved it and showed its property dialog (whose size was shown as 1kb (1024bytes)) to my internal examiner and subsequently was called by the external examiner for another session of viva..Only this time, not willing to show his ignorance started exploiting mine!
+
+I was made to sit in the lab till 3:30...
+Wondering whether his students argued with their examiner that 1024bytes !=  1 Kilobyte

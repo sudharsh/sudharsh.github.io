@@ -1,0 +1,37 @@
+---
+author: sudharsh
+comments: true
+date: 2009-04-05 13:56:17+00:00
+layout: post
+slug: no-gta03-in-2009
+title: No GTA03 in 2009 :(
+wordpress_id: 225
+categories:
+- embedded
+- FOSS and Linux
+- freesmartphone.org
+- gsoc
+- linux
+- neo1973
+- odeviced
+- openmoko
+- programming
+tags:
+- cornucopia
+- freerunner
+- freesmartphone.org
+- fso
+- gsoc
+- gta03
+- odeviced
+- openmoko
+- vala
+---
+
+2-3 back came a sad and shocking [news](http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&art_pos=2) (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.
+
+On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named [cornucopia](http://git.freesmartphone.org/?p=cornucopia.git;a=summary), which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the [Google Summer of Code 2008](http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79).
+
+For more, check this recent blog entry by [Mickey](http://www.vanille-media.de/site/index.php/2009/04/04/back-from-switzerland/).
+
+Patches all the way :D...

@@ -1,0 +1,32 @@
+---
+author: sudharsh
+comments: true
+date: 2008-02-07 17:32:32+00:00
+layout: post
+slug: fossconf-08
+title: FossConf '08
+wordpress_id: 94
+categories:
+- Events
+- FOSS and Linux
+- linux
+- Logs
+tags:
+- chennai
+- conference
+- FOSS
+- foss.in
+- fossconf
+- fossconf08
+- linux
+---
+
+Totally screwed out for the last 5 days. 3 days of intense FOSS at Fossconf and internal assessments at College after that. What a week. I had Ub3rcool fun at fossconf meeting new people and matching irc nicks with faces, presenting a tutorial on writing python extensions and pygsmd, and of course voluntary work eating food which was provided to us.
+
+I am feeling lazy to give a report on the event, which my fat elder bro has [taken time to do so](http://technofreakatchennai.wordpress.com/2008/02/04/fossconf-chennai-2008/).
+
+The best I can do is give you some links =).
+
+[http://flickr.com/search/?q=fossconf](http://flickr.com/search/?q=fossconf)
+
+[http://picasaweb.google.co.uk/tshrinivasan/FossConfDayOne](http://picasaweb.google.co.uk/tshrinivasan/FossConfDayOne)
