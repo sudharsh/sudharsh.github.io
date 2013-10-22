@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rants | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/rants/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:07:41+05:30</updated>
+  <updated>2013-10-23T00:32:49+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[I]]></title>
-    <link href="http://sudharsh.me/blog/2013/05/12/i/"/>
-    <updated>2013-05-12T01:07:49+05:30</updated>
-    <id>http://sudharsh.me/blog/2013/05/12/i</id>
+    <link href="http://sudharsh.me/blog/2013/05/11/i/"/>
+    <updated>2013-05-11T19:37:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/05/11/i</id>
     <content type="html"><![CDATA[<p>More than Death, losing my memory scares the shit out of me.
 It makes me queasy to think that all the wonderful experiences I had, the secrets in my head, my tough times and failures can go poof; slowly or in an instant without warning.</p>
 
@@ -31,9 +31,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   
   <entry>
     <title type="html"><![CDATA[simplejson's simple gotcha]]></title>
-    <link href="http://sudharsh.me/blog/2010/09/18/simplejsons-simple-gotcha/"/>
-    <updated>2010-09-18T00:00:17+05:30</updated>
-    <id>http://sudharsh.me/blog/2010/09/18/simplejsons-simple-gotcha</id>
+    <link href="http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha/"/>
+    <updated>2010-09-17T18:30:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
 <p><img class="center <a" src="href="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg">http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg</a>"></p>
@@ -77,7 +77,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
   <entry>
     <title type="html"><![CDATA[Almost a graduate]]></title>
     <link href="http://sudharsh.me/blog/2010/03/30/almost-a-graduate/"/>
-    <updated>2010-03-30T22:36:26+05:30</updated>
+    <updated>2010-03-30T17:06:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/03/30/almost-a-graduate</id>
     <content type="html"><![CDATA[<p>4 years ago, I joined a college which had the highest mediocrity rating among the mediocre colleges in TN. To be honest, I didn&rsquo;t have good academics in my high school, so I must say I was quite fortunate to get an undergrad &lsquo;seat&rsquo; for a CS Engineering degree there. Luckily, on the very 2nd day of college, I had enough brains to come to a conclusion that my next 4 years would be spent in an Orwellian Dystopian Parallel Universe where students wore lab coats for CS Labs. (It still beats me, the purpose of a fucking labcoat in a Theoretical Computer Science Lab).</p>
 
@@ -96,7 +96,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
   <entry>
     <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
     <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
-    <updated>2009-07-25T22:52:42+05:30</updated>
+    <updated>2009-07-25T17:22:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a>"></p>
 
@@ -177,7 +177,7 @@ if __name__ == '__main__':
   <entry>
     <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
     <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
-    <updated>2009-06-30T16:27:47+05:30</updated>
+    <updated>2009-06-30T10:57:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif">http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif</a>"></p>
 

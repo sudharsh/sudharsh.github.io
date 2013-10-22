@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Events | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/events/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:07:41+05:30</updated>
+  <updated>2013-10-23T00:32:49+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Chile, alla vamos!]]></title>
     <link href="http://sudharsh.me/blog/2011/10/01/chile-alla-vamos/"/>
-    <updated>2011-10-01T18:43:51+05:30</updated>
+    <updated>2011-10-01T13:13:00+05:30</updated>
     <id>http://sudharsh.me/blog/2011/10/01/chile-alla-vamos</id>
     <content type="html"><![CDATA[<p>It all started as a little hack by <a href="http://twitter.com/#%21/cnu">Srini</a> and I at the <a href="http://developer.yahoo.com/hackday/">Yahoo! Openhack</a> Event conducted in Bangalore. The hack by itself wasn&rsquo;t that fancy when compared to the other finalists but we did feel good when our hack got shortlisted for the finals. We wrote a little web app which would index <a href="http://www.delicious.com/">delicious</a> bookmarks and enable Full Text Search on the Content with a neat tagging mechanism.</p>
 
@@ -41,7 +41,7 @@
   <entry>
     <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
     <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
-    <updated>2009-07-25T22:52:42+05:30</updated>
+    <updated>2009-07-25T17:22:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a>"></p>
 
@@ -122,7 +122,7 @@ if __name__ == '__main__':
   <entry>
     <title type="html"><![CDATA[Fun @ Shaastra]]></title>
     <link href="http://sudharsh.me/blog/2008/10/05/fun-shaastra/"/>
-    <updated>2008-10-05T21:15:35+05:30</updated>
+    <updated>2008-10-05T15:45:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/10/05/fun-shaastra</id>
     <content type="html"><![CDATA[<p>Four words. <a href="http://www.shaastra.org/2008/">Shaastra</a> &lsquo;08 was frigging awesome. I was there a couple of days and had fun meeting people (shres, madhusudhan and many others). Also got to speak about FSO framework (slides later) as part of the FOSS sub-conference. Lots of food, some awesome talks and a wonderful atmosphere made the event memorable. Too bad, I had to leave early for the FOSS HackFest on 2nd night.</p>
 
@@ -135,7 +135,7 @@ if __name__ == '__main__':
   <entry>
     <title type="html"><![CDATA[Summer ends but the insanity continues.]]></title>
     <link href="http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
-    <updated>2008-09-12T19:14:56+05:30</updated>
+    <updated>2008-09-12T13:44:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a>"></p>
 
@@ -154,7 +154,7 @@ if __name__ == '__main__':
   <entry>
     <title type="html"><![CDATA[Summer of code 2008]]></title>
     <link href="http://sudharsh.me/blog/2008/04/22/summer-of-code-2008/"/>
-    <updated>2008-04-22T22:29:22+05:30</updated>
+    <updated>2008-04-22T16:59:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/04/22/summer-of-code-2008</id>
     <content type="html"><![CDATA[<p>Atlast after sleepness nights, the results are out. I made it to this year&rsquo;s Google Summer of Code. I will be working for the Openmoko project under the mentorship of Mickeyl. Fun times ahead. Will post the details later.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Logs | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/logs/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:07:41+05:30</updated>
+  <updated>2013-10-23T00:32:49+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
     <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
-    <updated>2013-08-31T20:14:26+05:30</updated>
+    <updated>2013-08-31T14:44:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
     <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
 
@@ -156,7 +156,7 @@
   <entry>
     <title type="html"><![CDATA[There and back again..]]></title>
     <link href="http://sudharsh.me/blog/2008/12/30/there-and-back-again/"/>
-    <updated>2008-12-30T21:02:32+05:30</updated>
+    <updated>2008-12-30T15:32:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/12/30/there-and-back-again</id>
     <content type="html"><![CDATA[<p>Went for a little holiday to Kerala (Kochi, Guruvayoor and Calicut). My dad wanted to go to Kerala and catch up with a few of his college buddies and Me, I wanted to visit the lanes and streets of Calicut where I had roamed as a very little boy. After all, I had lived there for 8 years and Kozhikode hasn&rsquo;t changed a lot to be honest, except for fresh coats of paints. A new building here and there, one or two demolished. But most of my favorite spots still remain, PaiCo, Alakapuri, Lions park, my school :D, the local chips store, the &lsquo;samooham&rsquo;, winding lanes of chalapuram..etc..</p>
 
@@ -191,7 +191,7 @@
   <entry>
     <title type="html"><![CDATA[fsod status]]></title>
     <link href="http://sudharsh.me/blog/2008/10/20/fsod-status/"/>
-    <updated>2008-10-20T23:07:26+05:30</updated>
+    <updated>2008-10-20T17:37:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/10/20/fsod-status</id>
     <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
 
@@ -206,7 +206,7 @@
   <entry>
     <title type="html"><![CDATA[odeviced: More sysfs abuse (Screenshot attached! :P)]]></title>
     <link href="http://sudharsh.me/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/"/>
-    <updated>2008-06-13T22:06:51+05:30</updated>
+    <updated>2008-06-13T16:36:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p</id>
     <content type="html"><![CDATA[<p>A few days gone by, and endless wrestling with git wherein I was not able to push code. Turned out, I was using the wrong URL to push ..doh!</p>
 
@@ -225,7 +225,7 @@
   <entry>
     <title type="html"><![CDATA[Battery Plugin and more..]]></title>
     <link href="http://sudharsh.me/blog/2008/06/05/battery-plugin-and-more/"/>
-    <updated>2008-06-05T18:09:23+05:30</updated>
+    <updated>2008-06-05T12:39:00+05:30</updated>
     <id>http://sudharsh.me/blog/2008/06/05/battery-plugin-and-more</id>
     <content type="html"><![CDATA[<p>After a little chat with <a href="http://www.vanille-media.de/site/index.php/blog/">mickeyl</a>, I realised that exposing crucial functions like load() and unload() was not that of a good idea considering how <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">odeviced</a> is supposed to closely interact with the underlying devices. Consequently there has been some changes over the last week,</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tips | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:07:41+05:30</updated>
+  <updated>2013-10-23T00:32:49+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Save your staplers!]]></title>
     <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
-    <updated>2011-02-06T21:15:18+05:30</updated>
+    <updated>2011-02-06T15:45:00+05:30</updated>
     <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
@@ -51,9 +51,9 @@
   
   <entry>
     <title type="html"><![CDATA[simplejson's simple gotcha]]></title>
-    <link href="http://sudharsh.me/blog/2010/09/18/simplejsons-simple-gotcha/"/>
-    <updated>2010-09-18T00:00:17+05:30</updated>
-    <id>http://sudharsh.me/blog/2010/09/18/simplejsons-simple-gotcha</id>
+    <link href="http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha/"/>
+    <updated>2010-09-17T18:30:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
 <p><img class="center <a" src="href="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg">http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg</a>"></p>
@@ -97,7 +97,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
   <entry>
     <title type="html"><![CDATA[Touring, now a Breeze! ]]></title>
     <link href="http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze/"/>
-    <updated>2010-07-18T22:28:35+05:30</updated>
+    <updated>2010-07-18T16:58:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze</id>
     <content type="html"><![CDATA[<p>India, is a wonderful place for touring on a motorbike. With terrains ranging from high mountainous North, North Eastern India to the Coastal plains and lush Ghats down South, we sure have a huge load of places to see and experience. Motorbike touring can also be risky since a disproportionate rate of road accidents involve two-wheelers. Therefore it is absolutely necessary for the rider to protect himself on the road with proper riding gears.</p>
 
@@ -148,7 +148,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
   <entry>
     <title type="html"><![CDATA[24camp - Be there]]></title>
     <link href="http://sudharsh.me/blog/2010/02/10/24camp-be-there/"/>
-    <updated>2010-02-10T17:49:25+05:30</updated>
+    <updated>2010-02-10T12:19:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/02/10/24camp-be-there</id>
     <content type="html"><![CDATA[<p>Last week, <a href="http://24camp.org/">24camp</a> started out as a means for people to get together and work on interesting projects/ideas.</p>
 
@@ -161,7 +161,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
     <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
-    <updated>2009-12-06T19:57:14+05:30</updated>
+    <updated>2009-12-06T14:27:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 
