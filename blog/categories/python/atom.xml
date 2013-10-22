@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:32:49+05:30</updated>
+  <updated>2013-10-23T01:28:11+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -158,11 +158,11 @@
     <link href="http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/"/>
     <updated>2013-05-26T19:32:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management</id>
-    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png">http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png</a>"></p>
+    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png">http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png</a> %}</p>
 
 <p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg">http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg">http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg</a> %}</p>
 
 <p>Autoscaling instances, plugin management, automatic updates are some of the things that are in the pipeline.</p>
 
@@ -177,7 +177,7 @@
     <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg">http://sudharsh.files.wordpress.com/2011/02/office-space.jpg</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg">http://sudharsh.files.wordpress.com/2011/02/office-space.jpg</a> %}</p>
 
 <p>The key to &lsquo;<a href="http://en.wikipedia.org/wiki/Bill_Lumbergh">Lumberg Evasion</a>&rsquo; is not only to stay &lsquo;hidden&rsquo; but also to be aware of your boss' whereabouts. Information is wealth and can potentially save your weekend.</p>
 
@@ -192,11 +192,11 @@
 </ul>
 
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png</a> %}</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png</a> %}</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png">http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png</a> %}</p>
 
 <p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
 

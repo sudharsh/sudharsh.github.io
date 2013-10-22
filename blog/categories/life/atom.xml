@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Life | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:32:49+05:30</updated>
+  <updated>2013-10-23T01:28:11+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -25,7 +25,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>The only bright side is that at least parts of my identity will live on as memories in people close to me if that happens. Coming to think of it, things won&rsquo;t be that bad after all :). As they say,</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240">http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240">http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240</a> %}</p>
 ]]></content>
   </entry>
   
@@ -40,7 +40,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>I keep hoping Brooks found his Freedom.</p>
 
-<p><iframe width="" height="" src="http://www.youtube.com/embed/kotNxb2YApk ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
+<p>{% youtube kotNxb2YApk %}</p>
 ]]></content>
   </entry>
   
@@ -55,7 +55,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>Fast forward a month, We are delighted to announce that Cruns is one of the <a href="http://www.startupchile.org/154-startups-selected-in-start-up-chiles-2nd-round-of-2011/">154 startups</a> that made it through the 2nd round of the program.</p>
 
-<p><a href="http://startupchile.org"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/sup-logo.png"></a></p>
+<p><a href="http://startupchile.org">{% img center http://sudharsh.files.wordpress.com/2011/10/sup-logo.png %}</a></p>
 
 <p>These are still early days, I am all excited, happy, anxious and scared, all the same time. Never have I budgeted for things months in advance. Ever since I passed out of college, I have been living in the relative comfort of working under a great team at Serendio where I began my baby steps as a programmer.</p>
 
@@ -63,7 +63,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>So there, Announcing Cruns; Something which we hope will help you to organize your information better.</p>
 
-<p><a href="http://twitter.com/#!/CrunsLabs"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300"></a></p>
+<p><a href="http://twitter.com/#!/CrunsLabs">{% img center http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300 %}</a></p>
 
 <p>Congratulations to the other 153 teams that made it through. Looking forward to meeting you all this January!</p>
 ]]></content>
@@ -99,9 +99,9 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>It was a long, wet weekend with rains lashing through Kerala rather heavily. Nevertheless, I was having lots of fun except for the crash in the mountains near Ooty. That was not fun AT ALL. Detailed logs to follow soon.</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg</a> %}</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg">http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg</a> %}</p>
 ]]></content>
   </entry>
   

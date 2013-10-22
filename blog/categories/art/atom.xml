@@ -4,7 +4,7 @@
   <title><![CDATA[Category: art | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/art/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:32:49+05:30</updated>
+  <updated>2013-10-23T01:28:11+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -31,9 +31,9 @@
     <link href="http://sudharsh.me/blog/2009/01/09/prince-of-the-woodland-realm/"/>
     <updated>2009-01-09T18:53:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/01/09/prince-of-the-woodland-realm</id>
-    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247">http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247</a>"></p>
+    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247">http://sudharsh.files.wordpress.com/2009/01/legolas1.png?w=247</a> %}</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204">http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204">http://sudharsh.files.wordpress.com/2009/01/out.jpeg?w=204</a> %}</p>
 
 <blockquote><p>Legolas Greenleaf long under tree</p>
 

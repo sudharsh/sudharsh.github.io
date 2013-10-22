@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Logs | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/logs/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:32:49+05:30</updated>
+  <updated>2013-10-23T01:28:11+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -162,29 +162,29 @@
 
 <p>The best part is, I met my LKG class teacher out of sheer luck. Woot, its been 14 years and still she remembers me :D (I must have been very very &lsquo;notorius&rsquo;), After all she had the patience to teach me that &lsquo;C&rsquo; follows &lsquo;B&rsquo;&hellip;..</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=512</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc045301.jpg?w=512</a> %}</p>
 
 <p>And not to forget the &lsquo;Anna kada&rsquo; as I used to call it, Still the same&hellip;</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=512</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04529.jpg?w=512</a> %}</p>
 
 <p>NSS school&hellip;</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=512</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc045251.jpg?w=512</a> %}</p>
 
 <p>Tali Shivan Temple.</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=512</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc045191.jpg?w=512</a> %}</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=512</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04433.jpg?w=512</a> %}</p>
 
 <p>Sunset at the beach with little karthik,</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=512</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04459.jpg?w=512</a> %}</p>
 
 <p>&hellip;and, couldn&rsquo;t help myself :P</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=512</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=512">http://sudharsh.files.wordpress.com/2008/12/dsc04535.jpg?w=512</a> %}</p>
 ]]></content>
   </entry>
   
@@ -214,7 +214,7 @@
 
 <p>There is also another important change. The sysfs nodes for backlight and power plugins were hardcoded in their configuration files. So, I came up with some helpers that creates DBus paths automatically based on the device class which they belong to. Here&rsquo;s a picture of today&rsquo;s code in action,</p>
 
-<p><a href="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png"><img class="center" src="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=512"></a></p>
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png">{% img center http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=512 %}</a></p>
 
 <p>Notice the <a href="https://hosted.fedoraproject.org/projects/d-feet/">d-feet DBus</a> debugger towards the lower left? It shows all the automatically created DBus object paths based on the device class which the plugin stands for. And the terminal to the right shows some debug messages. Note how odeviced spits out the current battery status viz. &ldquo;Charging, Discharging&rdquo;. The corresponding &ldquo;battery-status-changed&rdquo; DBus signal is emitted as well (along with &ldquo;low-battery-warning&rdquo; signal which <em>ahem</em> is emitted when battery is low).</p>
 

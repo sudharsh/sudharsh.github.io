@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rants | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/rants/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T00:32:49+05:30</updated>
+  <updated>2013-10-23T01:28:11+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -25,7 +25,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 
 <p>The only bright side is that at least parts of my identity will live on as memories in people close to me if that happens. Coming to think of it, things won&rsquo;t be that bad after all :). As they say,</p>
 
-<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240">http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240</a>"></p>
+<p>{% img center <a href="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240">http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240</a> %}</p>
 ]]></content>
   </entry>
   
@@ -36,7 +36,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
     <id>http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
-<p><img class="center <a" src="href="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg">http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg</a>"></p>
+<p>{% img center <a href="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg">http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg</a> %}</p>
 
 <p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
 
@@ -98,7 +98,7 @@ TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string
     <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T17:22:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
-    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a>"></p>
+    <content type="html"><![CDATA[<p>{% img center <a href="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg">http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg</a> %}</p>
 
 <p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
 
@@ -179,7 +179,7 @@ if __name__ == '__main__':
     <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
     <updated>2009-06-30T10:57:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
-    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif">http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif</a>"></p>
+    <content type="html"><![CDATA[<p>{% img center <a href="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif">http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif</a> %}</p>
 
 <p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
 
