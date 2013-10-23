@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="Started with thunderbird 3.0 automation. Already finished automating the help menu. Now I am in the middle of automating the tools menu. Lets hope &hellip;">
+  <meta name="description" content="Howdie, I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net. Click here to visit the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,215 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/16/gmedcon/">GMedCon</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-16T08:11:00+05:30" pubdate data-updated="true">Nov 16<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/16/gmedcon/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/16/gmedcon/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Howdie,</p>
+
+<p>I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net.</p>
+
+<p><a href="http://gmedcon.sourceforge.net">Click here</a> to visit the project page</p>
+
+<p>xmedcon is a tool that is used to manipulate dicom images, a standard used in medical imagery. If you would like to help please give me a ping</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/10/etk-enhance-quick-and-dirty/">ETK + Enhance, Quick and Dirty</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-10T10:52:00+05:30" pubdate data-updated="true">Nov 10<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/10/etk-enhance-quick-and-dirty/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/10/etk-enhance-quick-and-dirty/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ETK is a gui toolkit similar to gtk and is a part of Enlightenment Foundation Libraries or EFL. The syntax is very similar to GTK with only minor differences. Infact you could even use Glade to design GUI with ETK. For this you need a small but nifty tools called &lsquo;enhance&rsquo; also part of E. Glade btw is a tool which removes the need of manipulating each and every widget manually. It does all these in an efficient manner  leaving the developer to concentrate only on callbacks.</p>
+
+<p>I am very new to ETK+Enhance and dont know which is better. EWL or ETK. If someone could shed light on this,  I would be grateful. Myself, being a novice found the lack of documentation for enhance a bit unnerving. But still I managed to get hold of the concepts. So here is a short tutorial about using &lsquo;enhance&rsquo; to parse your .glade files and use them in your etk source codes.  Comments are welcome.</p>
+
+<p>I assume some knowledge in ETK or atleast GTK&hellip;Lets dig in..</p>
+
+<p>Now create a glade file with the name of project1.glade. Create a simple window with a single button in it. Now in the property window of the button in the Signal tab, add the following information Signal->Clicked, Handler->
+, in our case &ldquo;button_callback&rdquo;</p>
+
+<p>The following code is the famous hello world program using ETK and glade for creating the GUI..</p>
+
+<p>`#include &ldquo;Etk.h&rdquo;</p>
+
+<h1>include &ldquo;Enhance.h&rdquo;</h1>
+
+<p>Enhance <em>en;
+void button_callback(Etk_Object </em>obj, void <em>data)
+{
+printf(&ldquo;Whee THis works\n&rdquo;);
+}
+int main(int argc, char </em>argv[])
+{
+enhance_init();
+etk_init(&amp;argc, &amp;argv);
+en=enhance_new();
+enhance_file_load(en, &ldquo;window1&rdquo;, &ldquo;project1.glade&rdquo;);
+etk_main();
+enhance_free(en);
+enhance_shutdown();
+etk_shutdown();
+return 0;
+}`</p>
+
+<p><code>`
+Ok now a step by step description of whats up
+</code></p>
+
+<h1>include &ldquo;Etk.h&rdquo;</h1>
+
+<h1>include &ldquo;Enhance.h&rdquo;</h1>
+
+<p>Enhance *en;`
+We are just including header files that is required for our program..duh! Anyway the third line, we are creating a pointer for the Enhance datatype. &lsquo;en&rsquo; will be used while loading  our .glade file</p>
+
+<p><code>void button_callback(Etk_Object *obj, void *data)
+{
+printf("Whee THis works\n");
+}</code>
+The above function is the callback function. When we click the &ldquo;button&rdquo; of our program the line within the printf would output to the console. If you dont understand what I am tallking about visit the gtk website and download the tutorial to get an idea of what callbacks and widgets are.
+<code>
+enhance_init();
+etk_init(&amp;argc, &amp;argv);</code>
+We are initialising enhance and etk..
+<code>
+en=enhance_new();</code>
+Remember the pointer &lsquo;en&rsquo; of datatype Enhance. en now becomes a new instance of enhance..</p>
+
+<p><code>enhance_file_load(en, "window1", "project1.glade");</code>
+The above line will load the widget &ldquo;window1&rdquo; from the &ldquo;project1.glade&rdquo; file and &ldquo;en&rdquo; will point th them. You should load each widget, for example, you may have more than one window in your .glade file.
+The remaining lines are self-explainatory..:D</p>
+
+<p>Save the file as hello.c, in the directory containing project1.glade..and compile the program
+<code>gcc -g hello.c  -o hello</code>enhance-config &mdash;libs &mdash;cflags<code></code>pkg-config &mdash;libs &mdash;cflags&#8220;</p>
+
+<p>If all went well, you will be left with the executable called &ldquo;hello&rdquo;..
+run it
+<code>./hello</code>
+You will get a small window with the button with E17 theming  containing the label you had specified while creating the gui with glade. Click on the button and you will see the text &ldquo;Whee THis works&rdquo; output on the console everytime it is clicked.
+<strong>Reference:</strong>
+<a href="http://edevelop.org">E Developers Portal</a>
+<a href="http://people.debian.org/~rleigh/gtk/ogcalc/">Glade and GTK+</a>
+If you find something wrong, which is mostly likely, please comment about them. I am learning ETK/enhance myself.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/07/elive-052/">Elive 0.5.2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-07T13:54:00+05:30" pubdate data-updated="true">Nov 7<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/07/elive-052/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/07/elive-052/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Grr..First GNOME, now KDE getting on to my nerves..No matter what I try i just cant get enough juice out of them..Yesterday I decided I will try E17 but couldnt quite do it because of the time needed to compile all the dependencies one by one..Luckily theres a live cd distro called elive 0.5.2 which attracted my attention. The screenshots were stunning and I could see why the developers were calling it a work of art.</p>
+
+<p>Installer was quite buggy in the sense that you get only Ok and Cancel buttons, the latter one doing the job of the &lsquo;No&rsquo; button. Also from time to time the time interval between two successive dialogs were quite freaky especially during the partition part. That said, the speed of installation is the fastest I have evr experienced..</p>
+
+<p>After Installation the initial boot up time though small was extended by the post-install configuration and after that I was greeted by a very cool login manager called as entrance.</p>
+
+<p>Elive offers two themes by default Elive and Lukas, a light and a dark theme respectively. By the way, eye candy was totally awesome with some sexy animations and effects. All this and my card doesnt even support direct rendering!! E17 is a really light desktop &lsquo;shell&rsquo; but amazingly beautiful&hellip;</p>
+
+<p>All said the desktop does require some bit of playing around. I took around 2 hours to get used to it. But let me assure you, its worth it. Now my desktop is less cluttered and sports a clean look..And this is the first distro I have used which has flash, java and win32 codecs out of the box..
+Go get elive at <a href="http://elivecd.org">Elivecd.org</a>
+More about enlightenment at <a href="http://get-e.org">Get-E</a>
+A detailed review <a href="http://flaviostechnotalk.com/wordpress/index.php/2005/09/04/elive-03-review/">here</a></p>
+
+<p>Heres a screenshot of my desktop showing the snazzy elive panel. Note that everything moves in E17&hellip;too bad I cant show them. Check them out yourself :P</p>
+
+<p><img src="http://sudharsh.files.wordpress.com/2006/11/screenshot11.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -405,162 +614,9 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Configuring BSNL Dataone Broadband in Linux</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-17T13:56:00+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports..</p>
-
-<p>Oh and router=modem in this article&hellip;</p>
-
-<p><strong>DHCP way:</strong></p>
-
-<p>The most simple way of course is to use DHCP to set up your network automatically, In most cases everything gets configured automagically. If not enabled you should start the DHCP server by logging into the admin interface. See the wikipedia article to know more about DHCP.
-<a href="http://en.wikipedia.org/wiki/Dhcp">http://en.wikipedia.org/wiki/Dhcp</a></p>
-
-<p><strong>pppoeconf:</strong></p>
-
-<p>In ubuntu there should be a program called pppoeconf installed by default, just run
-<code>sudo pppoeconf</code>
-You will be taken through a set of screens wherein you will be able to enter the details regarding your dataone account, Mostly configuring the DNS isnt required. Just rememeber that it is <user>@dataone and not <user>@dataone.in</p>
-
-<p>Then to connect use
-<code>pon dsl-provider</code>
-if you have followed the default steps.</p>
-
-<p><code>poff dsl-provider</code>
-to disconnect and
-<code>plog</code>
-to view status</p>
-
-<p>In gentoo this tool is known an rp-pppoe, only the name differs..although its wizard is command line rather than the ncurses based pppoeconf</p>
-
-<p><strong>Configuring the router directly:</strong></p>
-
-<p>Of course another alternative is to use the admin interface available in the router provided. First make sure your box is detecting the ethernet interface correctly</p>
-
-<p>next..
-<code>ifconfig eth0 up 192.168.1.2</code>
-and&hellip;
-<code>route add default gw 192.168.1.1</code></p>
-
-<p>Point your browser to 192.168.1.1 and you should be greeted with the admin interface of your router. I use a Huawei Sterlite WA1003A.</p>
-
-<p>username and password are admin.</p>
-
-<p>After logging in goto Modem Setup, PVC0</p>
-
-<p>select pppoe, fill in the details, save the settings and restart the router&hellip;Your modem should automatically dial-in.</p>
-
-<p>Most distros have gui to configure this stuff, But some of us are smarter than the others and use distros like gentoo..For those users..:P</p>
-
-<p>open up /etc/conf.d/net</p>
-
-<p>and add/modify
-<code>iface_eth0="192.168.1.2 broadcast 192.168.1.255 netmask 255.255.255.0"
-gateway="eth0/192.168.1.1"</code></p>
-
-<p>After saving the file do a
-<code>/etc/init.d/net.eth0 restart</code></p>
-
-<p><strong>If nothing works:</strong>
-So if  these steps dont work..there a last chance. Most of the times resolv.conf is to be blamed, Double check if its ok, Even if you have valid nameservers try putting the following in /etc/resolv.conf.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.1</span>
-</span><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.2</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>These are public nameservers.
-If it still doesnt work..you may have goofed up somewhere..</p>
-
-<p><strong>Note:</strong></p>
-
-<ul>
-<li><p>Configuring the router directly is more convenient since the configuration sits in your router rather than your system. So if you in some point lose your data, all you need to do to configure the internet is to configure the interfaces of the modem. Also  when using pppoeconf,   when I chose to enable the connection during boot time I found that my system was taking more time to boot, but this time delay was not experienced when I configured the connection through the admin interface of the router. Of course if for some reason, if the modem is restarted you need not execute the &lsquo;pon&rsquo; command to connect when you configure the router directly. It automatically connects.</p></li>
-<li><p>Use any one of the methods..not both</p></li>
-<li><p>Sometimes if you have two ethernet interfaces you may need to disable one of them</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/09/20/hello-world/">Hello World!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-09-20T13:50:00+05:30" pubdate data-updated="true">Sep 20<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/09/20/hello-world/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/09/20/hello-world/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Howdie..At last dad gave me broadband connection&hellip;Its been tough without internet for 4 months. Right now I am working on ldtp stuff&hellip;Lets see how it goes. Apart from that my college is turning out to be a nightmare because of ECE dept.
-Anyway..Any new stuff should be started off with &lsquo;Hello World&rsquo; (I dont want to see what happens if we dont)</p>
-
-<blockquote><blockquote><blockquote><p>print &ldquo;Hello World..Welcome to my new blog&rdquo;</p></blockquote></blockquote></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/11/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
