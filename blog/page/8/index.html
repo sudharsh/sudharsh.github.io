@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>42</title>
+  <meta name="author" content="Sudharshan S">
+
+  
+  <meta name="description" content="Here&rsquo;s a pretty trivial script I wrote to inject packages into the openmoko images. sed does all the dirty work for me. I was feeling pretty &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.me/blog/page/8">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="42" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45074307-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">42</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/07/24/adding-packages-to-the-openmoko-image/">Adding Packages to the Openmoko Image</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-07-24T17:30:00+05:30" pubdate data-updated="true">Jul 24<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/07/24/adding-packages-to-the-openmoko-image/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/07/24/adding-packages-to-the-openmoko-image/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here&rsquo;s a pretty trivial script I wrote to inject packages into the openmoko images. sed does all the dirty work for me. I was feeling pretty lazy to edit the task-openmoko.bb each and everytime after it gets reverted after an svn update. So came up with this hack.</p>
+
+<p>The trick is, task-openmoko.bb in oe/packages/tasks contains the list of the apps that will be included in the final image. If your app name is not present in it, your recipe will be parsed correctly and your app will build, but it wont make it to the final image.</p>
+
+<p>Note: Bump up PR in task-openmoko.bb before using the script.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="c"># Sudharshan &quot;Sup3rkiddo&quot; S</span>
+</span><span class='line'><span class="c"># inject, script that injects packages into the OpenMoko standard,</span>
+</span><span class='line'><span class="c"># The sed line does all the stuff, nothing elite...</span>
+</span><span class='line'><span class="c"># The package is grouped under TASK_OPENMOKO_LINUX..after rsync</span>
+</span><span class='line'><span class="c"># The bitbake recipes should be present in the proper place. OE docs for info</span>
+</span><span class='line'><span class="nv">ARGS</span><span class="o">=</span>1
+</span><span class='line'><span class="nv">E_BADARGS</span><span class="o">=</span>65
+</span><span class='line'><span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-ne <span class="s2">&quot;$ARGS&quot;</span> <span class="o">]</span>
+</span><span class='line'><span class="k">then</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Usage: inject &quot;</span>
+</span><span class='line'><span class="nb">exit</span> <span class="nv">$E_BADARGS</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>make update
+</span><span class='line'>make setup
+</span><span class='line'><span class="nb">cd </span>oe/packages/tasks
+</span><span class='line'>mv task-openmoko.bb task-openmoko.bb_bakup
+</span><span class='line'><span class="c"># search for rsync and append the package name after it..[KIDDISH HACK]</span>
+</span><span class='line'>sed <span class="s1">&#39;/rsync \\/ a\ &#39;</span><span class="nv">$1</span><span class="s1">&#39; \\&#39;</span> &gt;task-openmoko.bb
+</span><span class='line'>mv task-openmoko.bb_bakup ~/
+</span><span class='line'><span class="nb">cd</span> ../../../
+</span><span class='line'><span class="c">#make clean-package-$1</span>
+</span><span class='line'>make build-package-<span class="nv">$1</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Done injection..muhahah&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You still have to make sure you have the bitbake recipes in the proper place. As always I am not responsible for dead kittens caused due to the usage of the above script ;)</p>
+
+<p>Links:
+<a href="http://www.bec-systems.com/web/content/view/59/9/"> http://bec-systems.com/web/content/view/59/9/</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/07/21/pottermania/">Pottermania!!!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-07-21T05:44:00+05:30" pubdate data-updated="true">Jul 21<span>st</span>, 2007</time>
+        
+           | <a href="/blog/2007/07/21/pottermania/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/07/21/pottermania/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Not a die hard fan of Harry Potter, but still a fan of J.K&rsquo;s work. Come July 20, and the last and final installment of Harry Potter, just made my friends all excited; that the three of us woke up at 4 in the morning and went to Landmark at Spencer&rsquo;s wanting to get hold of the book first. I was riding my mom&rsquo;s dependable krystal without a license (..and she didn&rsquo;t know). We were in for a ride since there was a long queue outside the bookstore.</p>
+
+<p>Some of the muggles, apparently had slept overnight in the cars parked overnight. We waited, solved the Puzzles and waited, had coffee, waited. Then the counters opened&hellip;Half an hour and some shuffles within the queue later we had the book. The dudes at Landmark gave us some burger, sandwich and some juice. But honestly, I would have preferred Mollaga Bajji with Tea.</p>
+
+<p>The book begins with Snape and Yaxley reporting to Voldemort. And the ending&hellip;.?</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/07/18/missing-somethingbut-what/">Missing something.. But What?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-07-18T17:44:00+05:30" pubdate data-updated="true">Jul 18<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/07/18/missing-somethingbut-what/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/07/18/missing-somethingbut-what/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Theres always a period in your life when you feel weird and know something is wrong. Going through something like that.</p>
+
+<p>Code doesn&rsquo;t come out of my keyboard as it did and life is becoming a little too stressful. Someone out there counsel me.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/06/15/wrapping-up-libgsmd-follow-up/">Wrapping Up Libgsmd (Follow Up)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-06-15T07:51:00+05:30" pubdate data-updated="true">Jun 15<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/06/15/wrapping-up-libgsmd-follow-up/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/06/15/wrapping-up-libgsmd-follow-up/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>w00t, pymoko runs in the qemu. The shared object extension got installed after building the openmoko toolchain from scratch. It did take me a whole day, but at the end it was frigging worth it. Thanks to stefan for pointing me to the solution. Now its party time.</p>
+
+<p>Heres the screenshot where I import the pymoko module, show the available functions by doing a &lsquo;dir(pymoko)&rsquo;, and try to call my number (which obviously wont work) with voice_out_init().</p>
+
+<p>The function call is unsuccessful because the gsm daemon doesnt appear to be running.</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2007/06/screenshot-1.png"><img src="http://sudharsh.files.wordpress.com/2007/06/screenshot-1.thumbnail.png" alt="works" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/06/13/wrapping-up-libgsmd/">Wrapping Up Libgsmd</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-06-13T17:06:00+05:30" pubdate data-updated="true">Jun 13<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/06/13/wrapping-up-libgsmd/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/06/13/wrapping-up-libgsmd/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So, Got myselves busy with <a href="http://www.openmoko.org">Openmoko</a>. Time will tell, if I would be able to get hold of the first device (neo1973) based on the platform. Anyway me and empty_mind had decided to bring our favourite programming, python to the platform. Of course <a href="http://www.openembedded.org">OpenEmbedded</a>, on which OpenMoko is based already provides python, but this time we are into customising the big snake for the Openmoko platform by writing language bindings, optimising runtimes. etc..No doubt fun times ahead.</p>
+
+<p>I have even come up with an extension module that wraps up the Voice Out function of libgsmd. It works on my box but the damn thing isnt getting installed in the final image although it build just fine, so I couldnt really test it out if it works in the device (no..not the real device just the qemu stuff).</p>
+
+<p>Have filed a bug report on this, hopefully it should be fixed.</p>
+
+<p><em>Sigh</em>, heres the screenshot of the error in qemu.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/06/openmoko.png?w=512"></p>
+
+<p><strong>Links:</strong></p>
+
+<p>Dadu&rsquo;s (empty_mind&rsquo;s) blog:<a href="http://http://www.vivekkhurana.com/pymoko/"> http://www.vivekkhurana.com/pymoko/</a>
+The neo1973 phone :  <a href="http://rene.rebe.name/photos/?p=/Computex/2007/img_2208.jpg">http://rene.rebe.name/photos/?p=/Computex/2007/img_2208.jpg</a></p>
+
+<p>Oh gawd, I Promise I will be good..Just send me one of those gadgets to hack and drool on..</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/05/21/of-piracy-and-social-service/">Of Piracy and Social Service</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-05-21T07:06:00+05:30" pubdate data-updated="true">May 21<span>st</span>, 2007</time>
+        
+           | <a href="/blog/2007/05/21/of-piracy-and-social-service/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/05/21/of-piracy-and-social-service/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Take a look at this!</p>
+
+<p><a href="http://www.channelregister.co.uk/2007/05/18/indian_tech_vendors_protest_microsoft/">http://www.channelregister.co.uk/2007/05/18/indian_tech_vendors_protest_microsoft/</a></p>
+
+<p>One of the many WTFs you get once in a while in the tech world. Apparently PC dealers are on a state wide bandh after getting notices from Microsoft for Piracy. And these guys are claiming that they are doing a &ldquo;service&rdquo; to the community by installing illegitimate copies of Windoze.</p>
+
+<p>SITA or South Gujarat Information Technologists Association says, &ldquo;&#8221;Since we are are not charging anything extra for installing the software, it means that we are actually not trading in pirated software. For us this is just a sewa (selfless act) that we are offering to our customers. Besides, the pricing of their operating systems is way too high for the Indian markets.&rdquo;</p>
+
+<p>Yup, while I agree about the pricing of M$ products..And keeping their &ldquo;Ethics&rdquo; (or the lack of it) aside, I somehow feel for M$. Whatever said, Software Piracy is akin to stealing stuff and theres no way you can defend yourself by telling that you are a doing a god damn frigging &ldquo;sewa&rdquo;. Piracy is so rampant that people think that Windoze comes free with their computers. And an association that exists, supporting these Pirates, sheesh!. If you cant afford a software, buy or use something thats Free or costs less. And even if you are using a illegitimate copy of something, just dont fucking go around telling people that you are part of a great liberation revolution or worse, claim that you are doing service to the community by distributing them.</p>
+
+<p>Wondering, if a day will come when pimps will roam around telling that they are doing a &ldquo;sewa&rdquo; to the public. Its high time the Government steps in and stop these guys. (I do my bit when someone asks me to install winxp, I ask them to STFU.)</p>
+
+<p>And my evil mind says that I should try it as a prank on local computer dealers.</p>
+
+<p>And if you are someone I know and have a problem in your wretched boxes, FUCK OFF! I WONT FIX IT unless its running GNU/Linux or something legally bought.</p>
+
+<p>Man, am I feeling a sudden urge to skin these people alive.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/05/08/snake-in-my-mobile/">Snake in My Mobile</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-05-08T14:14:00+05:30" pubdate data-updated="true">May 8<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/05/08/snake-in-my-mobile/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/05/08/snake-in-my-mobile/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Python is a rocking programming language. I was looking forward to try it on my old ngage qd..Sadly it didnt come with any MMC cards. My friend was kind enough to let me have his 64 meg card for a few days. I couldnt be happier :)</p>
+
+<p>I had a few hiccups getting python on my phone. First the sourceforge page for s60 housed py60 ver 1.3.x, which refused to install in my phone. I finally found out the link to the version compatible (1.2) with the Symbian OS in my phone, but I had to register in that site, boy was the website crawling. In the end if you are looking to get python in you Ngage or Ngage QD, you will have to download &ldquo;Python for Series 60 1.2 for S60 <strong>1st </strong>Edition FP1 Devices&rdquo;[1]. Just Unzip the contents, keep the sis file in your mmc and install it like any other s60 application. The python is a pretty old version though, 2.2.2 to be exact.</p>
+
+<p>Here are some screenshots</p>
+
+<p><strong>1.) The Python Interactive Console </strong></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2007/05/scr-shot.jpg"><img src="http://sudharsh.files.wordpress.com/2007/05/scr-shot.thumbnail.jpg" alt="scr-shot.jpg" /></a></p>
+
+<p><strong> 2.) Main Menu?</strong></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2007/05/scr-shotg01.jpg"><img src="http://sudharsh.files.wordpress.com/2007/05/scr-shotg01.thumbnail.jpg" alt="scr-shotg01.jpg" /></a></p>
+
+<p><strong>3.) Sample Scripts</strong></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2007/05/scr-shotg.jpg"><img src="http://sudharsh.files.wordpress.com/2007/05/scr-shotg.thumbnail.jpg" alt="scr-shotg.jpg" /></a></p>
+
+<p><strong>4</strong><strong>.) Keyviewer.py</strong></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2007/05/scr-shotg03.jpg"><img src="http://sudharsh.files.wordpress.com/2007/05/scr-shotg03.thumbnail.jpg" alt="scr-shotg03.jpg" /></a><strong> </strong></p>
+
+<p>Get Python for s60 <a href="http://www.forum.nokia.com/info/sw.nokia.com/id/ee447e84-2851-471a-8387-3434345f2eb0/Python_for_S60.html">here</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/05/02/may-day-madness/">May Day Madness</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-05-02T09:06:00+05:30" pubdate data-updated="true">May 2<span>nd</span>, 2007</time>
+        
+           | <a href="/blog/2007/05/02/may-day-madness/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/05/02/may-day-madness/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Phew..Semesters on May 19 and lotsa stress beating upon me. I decided to cool off by paying a visit to my uncle&rsquo;s house</p>
+
+<p>My cousin had a copy of Digital Fortress..Read it..The hell, Dan Brown has written X11 as &lsquo;X-Eleven&rsquo;&hellip;Nice book though.</p>
+
+<p>Had to wake up really early and attend the annual day function of Dad&rsquo;s office. S Janaki, the playback singer was the chief guest along with Laxmanan, of MMA.</p>
+
+<p>The fun part was in the evening when we paid a visit to the Marina. While having a hell of a time in the waves, My shorts tore where it shouldnt!. And Behold, there I was standing in the water wet, hot and sexy like a swimsuit model. It felt good when everyone was staring at me.</p>
+
+<p>Thank god I was wearing my undies&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/04/15/winesaves-the-day/">Wine&#8230;saves the Day</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-04-15T14:18:00+05:30" pubdate data-updated="true">Apr 15<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/04/15/winesaves-the-day/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/04/15/winesaves-the-day/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Got my Semester practicals on Visual Programming tomorrow and I know bollocks about it. There was an urgent need to work out the lab exercises and get comfy and cozy with the VC++ IDE (Not one of the favourite students around :)) I did have wine around in my box, but never quite used it. If you are wondering what WINE is; Wine is a Free and Open Source Software that allows you to run most Winblows applications on your Linux box, effectively a port of Win32 platform, not an emulator afaik. So in a sense free Windows (I didnt mean Pirated..).</p>
+
+<p>Got an Old CD of VC++ from my friend, popped it in and installed it without a hitch. I did get errors about some DCOM98 crap, but who the hell cares. I am gonna keep it installed for only one day and will be busting it first time after I finish my practicals tomorrow.</p>
+
+<p>WINE: <a href="http://www.winehq.com">http://www.winehq.com</a></p>
+
+<p>Still dont believe me? Click on the thumbnail below..notice the terminal with the output of uname -r? LINUX PWNS!!!!</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/04/untitled.jpg?w=512"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/04/04/barcamp-bangy-day2/">BarCamp Bangy Day2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-04-04T13:06:00+05:30" pubdate data-updated="true">Apr 4<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/04/04/barcamp-bangy-day2/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/04/04/barcamp-bangy-day2/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Day 2 of barcamp was more fun, Met some more people..The day ended with a feedback session which was quite enlightening, The day ended with everyone signing their sigs on the large banner. Boy, did I have to catch lalbagh the next morning to catch the train to home.</p>
+
+<p>My only gripe about the event was that, it turned out to be a platform for giving demonstrations rather than a brainstorming event, where everyone gets to use their neurons to solve ideas and discuss them. Also I could see a trend of start ups investing heavily on web 2.0 with many sessions about social networking.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/9/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/7/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/11/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sudharshan S -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogsudharsh';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

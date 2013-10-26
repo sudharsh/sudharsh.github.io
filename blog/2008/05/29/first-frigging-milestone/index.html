@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>First frigging milestone.. - 42</title>
+  <meta name="author" content="Sudharshan S">
+
+  
+  <meta name="description" content="Why Milestone? Nope, I didn&rsquo;t come up with fancy code or a &ldquo;beautiful&rdquo; one for that matter (Came up with a way to unload plugins). &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.me/blog/2008/05/29/first-frigging-milestone">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="42" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45074307-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">42</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">First Frigging Milestone..</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-29T17:58:00+05:30" pubdate data-updated="true">May 29<span>th</span>, 2008</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Why Milestone? Nope, I didn&rsquo;t come up with fancy code or a &ldquo;beautiful&rdquo; one for that matter (Came up with a way to unload plugins). Milestone, because today was the first day I was squeezing up my half empty head to work around a teency weency problem. In short, I am happy I was actually <strong>thinking</strong> today about squishing a segmentation fault which was bringing the whole house down due to dbus and the kinky wifi plugin.</p>
+
+<p>Now a word of warning. The wifi plugin is a circus freak of sorts. Being the lazy bum I am, I found it a drag to manually get into the trouble of coming up with xml introspection data for the &ldquo;org.freesmartphone.Device.plugins.wifi&rdquo; interface.</p>
+
+<p>Instead I just came up with a grand plan of letting <em>valac</em> generate wifi.c and wifi.h, which I could modify later. Piece of cake? Sure&hellip;</p>
+
+<p>After the wifi plugin is loaded it works pretty well. The keyword being &ldquo;After&rdquo;&hellip;By the way, check the <a href="http://projects.linuxtogo.org/pipermail/smartphones-standards/2008-May/000078.html">progress report</a> which I sent to the <a href="http://projects.linuxtogo.org/pipermail/smartphones-standards/">smartphone-standards</a> list. That should give you an idea of how odeviced works and looks like. In fact, it works pretty satisfactorily discounting the segmentation faults :D, which is <strong>easily </strong>reproducible in the following ways,</p>
+
+<ul>
+<li><p>Don&rsquo;t load the wifi plugin on startup, set enable=0 in odeviced.conf. Instead load it manually after odeviced starts up and begins to idle.</p></li>
+<li><p>If the wifi plugin is already loaded, unload it and then try to load it again.</p></li>
+</ul>
+
+
+<p>Part of this problem might be my arrogance of not to use GTypeModules for dynamically typing the plugins. I need to discuss with my mentor, mickeyl about this once he gets back to business after <a href="http://www.linuxtag.org/2008/en/">LinuxTag</a>.</p>
+
+<p>The barely bare bones powercontrol plugin loads and unloads without any problems, but it doesn&rsquo;t do anything as remotely useful as the wifi plugin!! Just contains an init function that has a printf in it (bleh!, thank goodness it didn&rsquo;t bail out).</p>
+
+<p>Oh and the all important <a href="http://sudharsh.unixpod.com/odeviced-20080529.tar.bz2">tarball</a> is here. Highly effective than laughing gas!</p>
+
+<p>&hellip;Another gdb session beckons</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">sudharsh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-29T17:58:00+05:30" pubdate data-updated="true">May 29<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/bleh/'>bleh</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.me/blog/2008/05/29/first-frigging-milestone/" data-via="zphds" data-counturl="http://sudharsh.me/blog/2008/05/29/first-frigging-milestone/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/05/22/odeviced-progress-report-p/" title="Previous Post: odeviced: progress report :P">&laquo; odeviced: progress report :P</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/06/01/what-motivates-you-motivation/" title="Next Post: "What motivates you? Motivation"">"What motivates you? Motivation" &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/11/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">"Brooks Was Here"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sudharshan S -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogsudharsh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://sudharsh.me/blog/2008/05/29/first-frigging-milestone/';
+        var disqus_url = 'http://sudharsh.me/blog/2008/05/29/first-frigging-milestone/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

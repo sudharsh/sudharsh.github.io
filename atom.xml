@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[42]]></title>
+  <link href="http://sudharsh.me/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-10-23T12:02:59+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
+    <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
+    <updated>2013-08-31T14:44:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
+    <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
+
+<h2>DRY in Jinja</h2>
+
+<p>In my previous <a href="http://jinja.pocoo.org/docs/templates/">Flask</a> projects, <a href="http://jinja.pocoo.org/docs/templates/">Jinja</a> was my templating engine of choice. The <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> flow in Jinja templates consists of setting up a <code>base.html</code> with a common layout markup. The &lsquo;children&rsquo; would then <a href="http://jinja.pocoo.org/docs/templates/#template-inheritance">&lsquo;inherit&rsquo;</a> and optionally override those blocks in their own templates.</p>
+
+<h2>Composition in Hiccup</h2>
+
+<p>However, In the world of Clojure (and therefore Hiccup), functions (duh!) are used to modularize templates.  For example,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">ns </span><span class="nv">foobar.views</span>
+</span><span class='line'>  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">hiccup.core</span> <span class="ss">:as</span> <span class="nv">h</span><span class="p">]</span>
+</span><span class='line'>            <span class="p">[</span><span class="nv">hiccup.page</span> <span class="ss">:as</span> <span class="nv">hp</span><span class="p">]))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">head</span> <span class="p">[</span><span class="nv">title</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">[</span><span class="ss">:head</span>
+</span><span class='line'>   <span class="p">[</span><span class="ss">:title</span> <span class="nv">title</span><span class="p">]</span>
+</span><span class='line'>   <span class="p">(</span><span class="nf">hp/include-css</span> <span class="s">&quot;/static/css/bootstrap.min.css&quot;</span>
+</span><span class='line'>                   <span class="s">&quot;/static/css/bootstrap-theme.min.css&quot;</span><span class="p">)</span>
+</span><span class='line'>   <span class="p">(</span><span class="nf">hp/include-js</span> <span class="s">&quot;/static/js/jquery-1.10.2.min.js&quot;</span>
+</span><span class='line'>                  <span class="s">&quot;/static/js/bootstrap.min.js&quot;</span>
+</span><span class='line'>                  <span class="s">&quot;/static/js/bluth.js&quot;</span><span class="p">)])</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">get-page</span> <span class="p">[</span><span class="nv">title</span> <span class="nv">context</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">hp/html5</span>
+</span><span class='line'>    <span class="c1">;; Since hiccup DSL is just code, we will just inject the</span>
+</span><span class='line'>    <span class="c1">;; &lt;head&gt; right here</span>
+</span><span class='line'>    <span class="p">(</span><span class="nf">head</span> <span class="nv">title</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">;; Rest of the template</span>
+</span><span class='line'>    <span class="c1">;; I&#39;d probably have a (body..) somewhere</span>
+</span><span class='line'>    <span class="p">(</span><span class="nf">body</span> <span class="nv">context</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">;; Rest of the template</span>
+</span><span class='line'><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Multi-methods</h2>
+
+<p>In the above example, there is a chance of repetitiveness of functions like <code>get-page</code> as the number of routes increases. In most cases, there is one (or few) container <code>div</code> that changes across the templates. To avoid this, I have found using <a href="http://clojure.org/multimethods"><code>multimethods</code></a> to be a great way of dispatching templates at runtime.</p>
+
+<p>For instance,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defmulti </span><span class="nv">container</span> <span class="ss">:template</span> <span class="ss">:default</span> <span class="ss">:not-found</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defmethod </span><span class="nv">container</span> <span class="ss">:home</span> <span class="p">[</span><span class="nv">context</span><span class="p">]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:h2</span> <span class="s">&quot;Welcome to the Bluth Company&quot;</span><span class="p">]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:button#queue-button.btn.btn-info</span> <span class="s">&quot;Backup&quot;</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defmethod </span><span class="nv">container</span> <span class="ss">:users</span> <span class="p">[{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">query-params</span><span class="p">]}]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:h2</span> <span class="p">(</span><span class="nb">str </span><span class="nv">query-params</span><span class="p">)])</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">defmethod </span><span class="nv">container</span> <span class="ss">:not-found</span> <span class="p">[</span><span class="nv">context</span><span class="p">]</span>
+</span><span class='line'> <span class="p">[</span><span class="ss">:h2</span> <span class="s">&quot;Generic Content&quot;</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now that I have a group of &lsquo;container&rsquo; divs, I can invoke them from <code>get-page</code> like so,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">get-page</span> <span class="p">[{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">title</span><span class="p">]</span>
+</span><span class='line'>             <span class="ss">:or</span> <span class="p">{</span><span class="nv">title</span> <span class="s">&quot;Bluth Co. - Welcome&quot;</span><span class="p">}</span>
+</span><span class='line'>             <span class="ss">:as</span> <span class="nv">context</span> <span class="p">}]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">hp/html5</span>
+</span><span class='line'>   <span class="p">(</span><span class="nf">head</span> <span class="nv">title</span><span class="p">)</span>
+</span><span class='line'>   <span class="p">[</span><span class="ss">:body</span>
+</span><span class='line'>    <span class="p">[</span><span class="ss">:div#wrap</span>
+</span><span class='line'>     <span class="p">[</span><span class="ss">:div.container</span>
+</span><span class='line'>      <span class="c1">;; Invoke container here</span>
+</span><span class='line'>      <span class="c1">;; and dispatch the right template function</span>
+</span><span class='line'>      <span class="p">(</span><span class="nf">container</span> <span class="nv">context</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">]]]))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Meanwhile, my <code>routes</code> will end up looking something like this,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">get-page</span> <span class="p">{</span> <span class="ss">:template</span> <span class="ss">:home</span> <span class="p">}))</span>
+</span><span class='line'>  <span class="c1">;; Due to the destructuring in get-page,</span>
+</span><span class='line'>  <span class="c1">;; I can pass in arbitrary context to be handled by</span>
+</span><span class='line'>  <span class="c1">;; the container multimethods. In this case, we</span>
+</span><span class='line'>  <span class="c1">;; are passing in the query-params</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/users&quot;</span> <span class="p">[</span><span class="o">&amp;</span> <span class="nv">query-params</span><span class="p">]</span> <span class="p">(</span><span class="nf">get-page</span>
+</span><span class='line'>                                       <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;User list&quot;</span>
+</span><span class='line'>                                        <span class="ss">:template</span> <span class="ss">:users</span>
+</span><span class='line'>                                        <span class="ss">:query-params</span> <span class="nv">query-params</span><span class="p">}))</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">route/not-found</span> <span class="p">(</span><span class="nf">get-page</span>
+</span><span class='line'>                    <span class="p">{</span><span class="ss">:title</span> <span class="s">&quot;Pluto - Not found!&quot;</span>
+</span><span class='line'>                     <span class="ss">:template</span> <span class="ss">:not-found</span><span class="p">}))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you can see, <code>get-page</code> is the point of entry for my templates and the container <code>div</code> is injected according to the dispatched function. In fact, by abusing using <a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">compojure&rsquo;s</a> route destructuring, we can have true runtime dispatching of templates!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">GET</span> <span class="err">&quot;</span><span class="nv">/foo/</span><span class="ss">:template</span> <span class="p">[</span><span class="nv">template</span><span class="p">]</span>
+</span><span class='line'>     <span class="c1">;; We don&#39;t know which container will be invoked until runtime</span>
+</span><span class='line'>     <span class="c1">;; Instead of adding more routes, I can just add more multimethods</span>
+</span><span class='line'>     <span class="p">(</span><span class="nf">get-page</span> <span class="p">{</span><span class="ss">:template</span> <span class="nv">template</span><span class="p">})))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>get-page</code> function isn&rsquo;t going to change much and I can mix and match templates as much as I want.</p>
+
+<p>I must admit that I am super new to Clojure. Therefore I am not sure if this approach is idiomatic enough in the Clojure world. Would love to hear suggestions on how it is usually done.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
+    <link href="http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/"/>
+    <updated>2013-05-26T19:32:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png"></p>
+
+<p>I started working on <a href="https://github.com/sudharsh/cloudcraft">Cloudcraft</a> as a toy project over the weekend. It aims to be an end-to-end toolbelt for managing <a href="http://minecraft.net">minecraft</a> servers on EC2. As of now it&rsquo;s very Alpha quality but it can spawn instances and setup minecraft servers automatically with just a couple of commands. For example in the screenshot below, cloudcraft started the minecraft server on a spawned EC2 instance and reported the address needed for a multiplayer game.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/2-zsh-2013-05-27-00-23-17.jpg"></p>
+
+<p>Autoscaling instances, plugin management, automatic updates are some of the things that are in the pipeline.</p>
+
+<p>The project is on <a href="https://github.com/sudharsh/cloudcraft">github</a> and as usual, suggestions, bug reports, bug fixes are welcome.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[I]]></title>
+    <link href="http://sudharsh.me/blog/2013/05/11/i/"/>
+    <updated>2013-05-11T19:37:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/05/11/i</id>
+    <content type="html"><![CDATA[<p>More than Death, losing my memory scares the shit out of me.
+It makes me queasy to think that all the wonderful experiences I had, the secrets in my head, my tough times and failures can go poof; slowly or in an instant without warning.</p>
+
+<p>Doesn&rsquo;t matter if its due to some fucked up illness like Alzheimer&rsquo;s or a freak accident from sheer bad luck. It is very possible that I won&rsquo;t be <em>me</em> one day.</p>
+
+<p>The only bright side is that at least parts of my identity will live on as memories in people close to me if that happens. Coming to think of it, things won&rsquo;t be that bad after all :). As they say,</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/8x10-keep-calm-carry-on-gray.jpg?w=240"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA["Brooks was here"]]></title>
+    <link href="http://sudharsh.me/blog/2013/04/25/brooks-was-here/"/>
+    <updated>2013-04-25T14:30:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/04/25/brooks-was-here</id>
+    <content type="html"><![CDATA[<p><strong>Minor spoilers ahead</strong></p>
+
+<p>Like many others I love <a href="http://www.imdb.com/title/tt0111161/">Shawshank Redemption</a>. The scene where Brooks is out of prison and is unable to catch up with the world is just plain sad. One of my favorite all time movie scenes that gives me the chills every time.</p>
+
+<p>I keep hoping Brooks found his Freedom.</p>
+
+<iframe width="" height="" src="http://www.youtube.com/embed/kotNxb2YApk ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chile, alla vamos!]]></title>
+    <link href="http://sudharsh.me/blog/2011/10/01/chile-alla-vamos/"/>
+    <updated>2011-10-01T13:13:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2011/10/01/chile-alla-vamos</id>
+    <content type="html"><![CDATA[<p>It all started as a little hack by <a href="http://twitter.com/#%21/cnu">Srini</a> and I at the <a href="http://developer.yahoo.com/hackday/">Yahoo! Openhack</a> Event conducted in Bangalore. The hack by itself wasn&rsquo;t that fancy when compared to the other finalists but we did feel good when our hack got shortlisted for the finals. We wrote a little web app which would index <a href="http://www.delicious.com/">delicious</a> bookmarks and enable Full Text Search on the Content with a neat tagging mechanism.</p>
+
+<p>Meanwhile, applications were open for the second round of <a href="http://www.startupchile.org/about/faqs/">StartupChile</a> program. A seed of 40K equity-free USD and an exotic location, sounded rather interesting. We added some new ideas to the original delicious hack, drafted a nice crisp application and applied a few hours before the deadline.</p>
+
+<p>Fast forward a month, We are delighted to announce that Cruns is one of the <a href="http://www.startupchile.org/154-startups-selected-in-start-up-chiles-2nd-round-of-2011/">154 startups</a> that made it through the 2nd round of the program.</p>
+
+<p><a href="http://startupchile.org"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/sup-logo.png"></a></p>
+
+<p>These are still early days, I am all excited, happy, anxious and scared, all the same time. Never have I budgeted for things months in advance. Ever since I passed out of college, I have been living in the relative comfort of working under a great team at Serendio where I began my baby steps as a programmer.</p>
+
+<p>I have to admit, I am finding myself outside my comfort zone all of a sudden. Something which I hope I will adapt to sooner or later. One thing is for sure, Interesting times wait ahead :)</p>
+
+<p>So there, Announcing Cruns; Something which we hope will help you to organize your information better.</p>
+
+<p><a href="http://twitter.com/#!/CrunsLabs"><img class="center" src="http://sudharsh.files.wordpress.com/2011/10/screenshot-11.png?w=300"></a></p>
+
+<p>Congratulations to the other 153 teams that made it through. Looking forward to meeting you all this January!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Save your staplers!]]></title>
+    <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
+    <updated>2011-02-06T15:45:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
+    <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/office-space.jpg"></p>
+
+<p>The key to &lsquo;<a href="http://en.wikipedia.org/wiki/Bill_Lumbergh">Lumberg Evasion</a>&rsquo; is not only to stay &lsquo;hidden&rsquo; but also to be aware of your boss&#8217; whereabouts. Information is wealth and can potentially save your weekend.</p>
+
+<p>I wanted to check out Pygame and hacked out a little python script which does this. The idea is that you position your webcam (el-cheapo-no-brand webcams sell for peanuts) near your cubicle/desk and get notified if there is some movement in a predefined area. Also works great if you have a laptop and want to know if someone is peeking over your shoulder (yeah, yeah&hellip; I know about mirrors).</p>
+
+<p>The script can detect movements within the red rectangle. Here is how it does this</p>
+
+<ul>
+<li><p>When we start the script, the average color within the red rectangle is determined. This will act as the reference color.</p></li>
+<li><p>Deviations in this average color is monitored in consecutive frames. If its more than a certain threshold, there is some movement.</p></li>
+<li><p>When this happens, play a sound and pop up a little notification</p></li>
+</ul>
+
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/screenshot-22.png"></p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/screenshot-21.png"></p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2011/02/screenshot-211.png"></p>
+
+<p>Of course, it goes without saying that its just a simple hack. Works well if the background color is of an uniform color.</p>
+
+<p>P.S: No, I don&rsquo;t work for an &lsquo;Initech&rsquo;.</p>
+
+<p>P.P.S: If you are one of those &lsquo;Bill Lumberg&rsquo; types, Fuck you!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Over the Hills and not so Far Away]]></title>
+    <link href="http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away/"/>
+    <updated>2010-10-15T19:29:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away</id>
+    <content type="html"><![CDATA[<p>I had been itching to go on a motorbike roadtrip to Kerala. Sitting in the back of the car isn&rsquo;t exactly my idea of a fun and fulfilling roadtrip.</p>
+
+<p>Therefore from Oct 2 &ndash; 10, I was on my motorbike riding through some diverse terrain and landscapes that included arid countrysides, coastal plains, villages, forests, hill stations and plantations of cardamom, sandalwood, rubber and tea.</p>
+
+<p>The 2118 odd kilometers was done on my little 150cc Yamaha FZ16 laden with saddle bags and supplies. Given a chance, I&rsquo;d gladly re-do the same roadtrip again on a more powerful machine.</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2010/10/screenshot-111.png"><img src="http://sudharsh.files.wordpress.com/2010/10/screenshot-111.png" alt="" /></a></p>
+
+<p>My itinerary for the trip was as follows</p>
+
+<ul>
+<li><p><strong>Oct 2, Sat:</strong> Home &ndash; Salem &ndash; Avinashi &ndash; Coonoor</p></li>
+<li><p><strong>Oct 3, Sun:</strong> Coonoor &ndash; <em><em>crash in the mountains</em></em> &ndash; Ooty &ndash; Gudalur &ndash; Sultan Bathery (Wayanad)</p></li>
+<li><p><strong>Oct 4, Mon</strong>: Sultan Bathery &ndash; Kalpetta &ndash; Calicut</p></li>
+<li><p><strong>Oct 5, Tue:</strong> Calicut &ndash; Thrissur &ndash; Chalakudi &ndash; Athirappally/Vazhachal falls</p></li>
+<li><p><strong>Oct 6, Wed:</strong> Athirapally &ndash; Unknown shortcut through rubber plantations &ndash; Kaladi &ndash; Muvattupuzha <em>(Rendezvous with my friends here and was no longer alone)</em> &ndash; Munnar</p></li>
+<li><p><strong>Oct 7, Thur</strong>: Munnar &ndash; Marayoor &ndash; Chinnar &ndash; Offroading at Anaimudi &ndash; Munnar</p></li>
+<li><p><strong>Oct 8, Fri:</strong> Munnar &ndash; Idukki &ndash; Elapara (with lots of detours taking us to awesome spots)</p></li>
+<li><p><strong>Oct 9, Sat:</strong> Elapara &ndash; Vagamon &ndash; Parunthumpara &ndash; Pambanar <em>(Goodbyes over a heavy lunch and was all alone again)</em> &ndash; VandiPeriyar &ndash; Kumily &ndash; Theni &ndash; Madurai</p></li>
+<li><p><strong>Oct 10, Sun:</strong> Madurai &ndash; Trichy &ndash; Home</p></li>
+</ul>
+
+
+<p>It was a long, wet weekend with rains lashing through Kerala rather heavily. Nevertheless, I was having lots of fun except for the crash in the mountains near Ooty. That was not fun AT ALL. Detailed logs to follow soon.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg"></p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[simplejson's simple gotcha]]></title>
+    <link href="http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha/"/>
+    <updated>2010-09-17T18:30:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha</id>
+    <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
+
+<p><img class="center" src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg"></p>
+
+<p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
+
+<p>This is where it gets interesting. Python&rsquo;s json module tries to do something smart when you try to encode a python dictionary into a JSON string. In this case, all the keys are python ints.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
+</span><span class='line'>Out[3]: '{"1": "Foo", "3": "Baz"}'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When I decode it back to a python object&hellip;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
+</span><span class='line'>Out[4]: {u'1': u'Foo', u'3': u'Baz'}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>BAM! The json module silently converts all my integer keys to strings. I, for one, would have preferred an Exception to be raised instead.</p>
+
+<p>Something like this, for example.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>In [19]: class F: pass
+</span><span class='line'>...
+</span><span class='line'>In [20]: f = F()
+</span><span class='line'>In [21]: json.loads(json.dumps({ f : 'Foo', 3: 'Baz'}))
+</span><span class='line'>... snip errors ...
+</span><span class='line'>TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this case, I get the desired behaviour where a &lsquo;TypeError&rsquo; is raised. Stupid example, but you get the idea.</p>
+
+<p>If I am missing something obvious here please do comment. This particular cheekiness of the json module caught me unawares recently. Or maybe I was wrong in expecting the decode operation to return something that is identical to the source.</p>
+
+<p>Interestingly, the json support modules that ship with TurboGears error out if you try to return a dictionary having non-string keys from your controller methods.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Touring, now a Breeze! ]]></title>
+    <link href="http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze/"/>
+    <updated>2010-07-18T16:58:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze</id>
+    <content type="html"><![CDATA[<p>India, is a wonderful place for touring on a motorbike. With terrains ranging from high mountainous North, North Eastern India to the Coastal plains and lush Ghats down South, we sure have a huge load of places to see and experience. Motorbike touring can also be risky since a disproportionate rate of road accidents involve two-wheelers. Therefore it is absolutely necessary for the rider to protect himself on the road with proper riding gears.</p>
+
+<p>The ideal mode of getting riding gear would be to look for clearance sales outside our country and ask the relatives or friends to ship it down to India for us. For people like me, whom the relatives <em>hate</em> to be related to, there are local players like <a href="http://cramster.in">Cramster</a> and <a href="http://planetdsg.com">DSG</a> who provide gear that are priced competitively. I already have a nice helmet but the lack of a proper armoured touring jacket was preventing me from getting adventurous enough to go out on long road trips.</p>
+
+<h4>Requirements</h4>
+
+<p>I wanted a jacket that that could satisfy all the following requirements.</p>
+
+<ul>
+<li><p>Should be made of a fabric that doesn&rsquo;t tear easily protecting me against scraping injuries.</p></li>
+<li><p>Armor in the joints and some padding in the back for protection against hard falls.</p></li>
+<li><p>Since Chennai is not blessed with a good weather, the Jacket shouldn&rsquo;t boil me alive when I am wearing it. Should be bearable in hot weather atleast when the bike is in motion.</p></li>
+<li><p>Extra brownie points for usability in the rains.</p></li>
+</ul>
+
+
+<p>Alpinestars are great but they are simply too expensive for me. <a href="http://www.planetdsg.com/">DSG</a> distributes them in India in case you have saved enough moola to buy one. Be wary of fake imitation Alpinestars gear that are sold here in Chennai for 5 &ndash; 6k. They look genuine but they are, at the end of the day; fake.</p>
+
+<h4>Narrowing down the choices:</h4>
+
+<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsg-maze-jacket-black.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsg-maze-jacket-black.jpg?w=300" alt="" /></a></p>
+
+<p>Taking into account all these and reading user posts from <a href="http://xbhp.com/talkies">xBHP</a> (in addition to rabid googling), I shortlisted DSG Maze and the <a href="http://www.cramster.in/ridinggear.php">Cramster</a> Breezer 2.0. Earlier, I had almost decided to order Maze online, but after seeing the Cramster in action during the <a href="http://www.xbhp.com/talkies/458471-post4443.html">Vedanthangal xBHP G2G</a>, I noticed that the Cramster Breezer 2.0 qualified  as a worthy competition to the more expensive Maze, both of which met my requirements except for the usability in the rains. Also the presence of Leather shoulders and cuffs in Maze was putting me off. They are damn cool and sexy, but leather doesn&rsquo;t go well with rain. To add to the confusion of choices, I learnt that Cramster had released a new all black Breezer 3.0 phasing out the 2nd revision.</p>
+
+<p>The presence of a removable waterproof inner liner was the killer feature for me, which was not present in Breezer 2.0 and Maze (Correct me if I am wrong). Finally, I made the decision and took my little FZ on a road trip to Cramster&rsquo;s Bangalore office yesterday to get the damn jacket. (also some balaclavas for myself and friends). I chose to ride to Bangalore instead of ordering it online since it would give me a chance to test the jacket on my way back ;) (no nagging confusion about choosing the right size as well)</p>
+
+<p>Sorry for the soddy pics.</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsc00170.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsc00170.jpg?w=300" alt="The back" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsc00172.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsc00172.jpg?w=300" alt="" /></a></p>
+
+<p>The Jacket is heavy in the hands but fits snuggly when I wear it. I had to wear the inner lining in Bangalore because of  the windchill in the early hours of dawn when I was leaving the city. Once the sun came out, I removed it and all was well. I am quite happy with the finish and the quality of materials that have gone into this jacket. Like most other jackets, it comes with the Cordura fabric that doesn&rsquo;t tear and 3M reflectors for added visibility to other motorists for spotting you in the dark.</p>
+
+<h4>Verdict:</h4>
+
+<p>Unfortunately, I have no means to compare it with others and offer a shootout of sorts since I haven&rsquo;t really tried any other jacket before. I would love to hear from the users of other jackets. If you are not a fan of an all-black jacket, DSG Maze comes in <a href="http://www.planetdsg.com/dsg-falcon-jacket-red-p-1044.html">red</a> in addition to the all-black version.</p>
+
+<p>Ride hard and ride safe!</p>
+
+<p>P.S: Thanks to <a href="http://twitter.com/sudarsanyes">Sudarsan</a> (no, not me) and Pradeep for allowing me to camp at their place for the weekend.</p>
+
+<p>P.P.S: Thanks to my boss for buying my LCD monitor!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Roadtrip to Pondy]]></title>
+    <link href="http://sudharsh.me/blog/2010/07/05/roadtrip-to-pondy/"/>
+    <updated>2010-07-05T08:31:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/07/05/roadtrip-to-pondy</id>
+    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg?w=219" alt="" /></a></p>
+
+<p>Made an unplanned roadtrip to Pondicherry on my FZ yesterday. Driving on the ECR with the sunset on your right is pure bliss. The weather was good with occasional chilly bursts of sea breeze. Cruised the entire stretch at a comfortable 80km/hr.</p>
+
+<p>Although not as long as my earlier <a href="http://sudharsh.wordpress.com/2009/12/17/road-trip-to-yelagiri/">Yelagiri</a> trip, it was fun nevertheless. The former French colony seems to be at its best charm when it rains :D.</p>
+
+<p>It is amazing how your senses become tuned to the road after riding for an hour or two. Hopefully, I will be doing far more longer trips this winter.</p>
+
+<p>(Sorry for the poor image quality)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Almost a graduate]]></title>
+    <link href="http://sudharsh.me/blog/2010/03/30/almost-a-graduate/"/>
+    <updated>2010-03-30T17:06:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/03/30/almost-a-graduate</id>
+    <content type="html"><![CDATA[<p>4 years ago, I joined a college which had the highest mediocrity rating among the mediocre colleges in TN. To be honest, I didn&rsquo;t have good academics in my high school, so I must say I was quite fortunate to get an undergrad &lsquo;seat&rsquo; for a CS Engineering degree there. Luckily, on the very 2nd day of college, I had enough brains to come to a conclusion that my next 4 years would be spent in an Orwellian Dystopian Parallel Universe where students wore lab coats for CS Labs. (It still beats me, the purpose of a fucking labcoat in a Theoretical Computer Science Lab).</p>
+
+<p>Engineering education in TN is as fucked up as it gets. The fact that <strong><em>Yours Truly</em></strong> will be attending his Convocation ceremony next month and getting a degree certificate is proof enough that its fucked up beyond all recognition.</p>
+
+<p>And did I mention, there will be 50 more new colleges this year in TN alone! Fucking Pathetic&hellip;</p>
+
+<p>Lastly,</p>
+
+<p>[youtube=<a href="http://www.youtube.com/watch?v=jpDQ66r1f9M">http://www.youtube.com/watch?v=jpDQ66r1f9M</a>]</p>
+
+<p>Thanks to <a href="http://krishashok.wordpress.com">Krish Ashok </a>for making a joke out of us poor zombies..</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[24camp - Be there]]></title>
+    <link href="http://sudharsh.me/blog/2010/02/10/24camp-be-there/"/>
+    <updated>2010-02-10T12:19:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2010/02/10/24camp-be-there</id>
+    <content type="html"><![CDATA[<p>Last week, <a href="http://24camp.org/">24camp</a> started out as a means for people to get together and work on interesting projects/ideas.</p>
+
+<p>Serendio will be hosting one this weekend, 13th February. We have place for about 20 &ndash; 25 in our office premises. More information can be found <a href="http://24camp.org/Camp/13Feb2010">here</a>.</p>
+
+<p>You can also participate virtually by logging on to #24camp IRC channel on the Freenode servers. If you want to start a local, group of your own add your group in the wiki page mentioned above.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
+    <link href="http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri/"/>
+    <updated>2009-12-17T14:55:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri</id>
+    <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"><img src="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg" alt="" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"></a>I have been a lurker in the forums of <a href="http://www.xbhp.com/talkies/">xbhp</a>, just gaping in awe as these guys do <a href="http://www.xbhp.com/talkies/tourer/8611-how-sikkim-chapter.html">road trips to far off places</a> complete with triplogs. I knew I wanted to do something like this and was itching to take my FZ for a ride in the great outdoors. The farthest I had been was the trip to A R Rehman&rsquo;s concert at Swarnabhoomi a couple of months ago.</p>
+
+<p>A road trip was imminent and rallied two of my friends for a trip to Yelagiri, A small hill station retreat near Jolarpet. Nothing fancy like the Ooty or Kodai. Just a group of hills with the tallest point close to 1100m. Middle of December with cool weather was just so irresistible.</p>
+
+<p>Alas, my friends couldn&rsquo;t make it and I had to go solo, without any company. The tripmeter at the end of the day read 484.5. Also, logged part of the return trip with TangoGPS in my Freerunner. I have uploaded the <a href="http://www.openstreetmap.org/user/sudharsh/traces/585929">traces to OSM</a>.</p>
+
+<p>I have written a <a href="http://www.xbhp.com/talkies/tourer/10982-chennai-yelagiri-solo-ride-lots-lots-rain.html#post346437">fairly detailed triplog</a> at the xbhp forums. Do read it :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
+    <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
+    <updated>2009-12-06T14:27:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
+    <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
+
+<p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
+
+<ol>
+<li><p> Send messages to your old/unused number whose SIM is in the <a href="http://openmoko.com/freerunner.html">Freerunner</a> (or any other device supported by the <a href="http://wiki.freesmartphone.org">FSO</a> framework)</p></li>
+<li><p> Handle the incoming messages and use <a href="http://code.google.com/p/python-twitter/">python-twitter</a> API (or) raw urllib2 to post updates. Of course, the device should be connected to the internet, you can <a href="http://wiki.openmoko.org/wiki/Usb_networking">tether</a> this device to an old unused computer. Simply put, the Freerunner should be able to access the internet.</p></li>
+</ol>
+
+
+<p>I know this is dumb given cheap GPRS and all, but what the heck; Sundays <em>are</em> reserved for dumb things and I wanted to show off how easy it is to develop and conjure up simple but powerful scripts using open hackable hardware like the Freerunner. So take off your pedantic hats ;)</p>
+
+<p>Here is the actual python code,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># Written By Sudharshan S, http://sudharsh.wordpress.com</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">dbus</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">twitter</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">gobject</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">gobject</span> <span class="kn">import</span> <span class="n">MainLoop</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">dbus.mainloop.glib</span> <span class="kn">import</span> <span class="n">DBusGMainLoop</span>
+</span><span class='line'><span class="n">DBusGMainLoop</span> <span class="p">(</span><span class="n">set_as_default</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Use OAUTH?</span>
+</span><span class='line'><span class="n">USERNAME</span> <span class="o">=</span> <span class="s">&quot;username&quot;</span>
+</span><span class='line'><span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&quot;TweetForwarder&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">TweetForwarder</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="sd">&quot;&quot;&quot;Process Incoming messages and update twitter status</span>
+</span><span class='line'><span class="sd">      if the message startswith &#39;tweet&#39;</span>
+</span><span class='line'><span class="sd">   &quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+</span><span class='line'>       <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Starting up....&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">twitter_api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="c"># Get proxies and add signal handlers</span>
+</span><span class='line'>       <span class="n">bus</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">SystemBus</span><span class="p">()</span>
+</span><span class='line'>       <span class="n">_usage</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;org.freesmartphone.ousaged&quot;</span><span class="p">,</span>
+</span><span class='line'>                               <span class="s">&quot;/org/freesmartphone/Usage&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="n">_proxy</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;org.freesmartphone.ogsmd&quot;</span><span class="p">,</span> \
+</span><span class='line'>                               <span class="s">&quot;/org/freesmartphone/GSM/Device&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">usage_iface</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">_usage</span><span class="p">,</span> <span class="s">&quot;org.freesmartphone.Usage&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">usage_iface</span><span class="o">.</span><span class="n">RequestResource</span><span class="p">(</span><span class="s">&#39;GSM&#39;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">sms_iface</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span> <span class="p">(</span><span class="n">_proxy</span><span class="p">,</span> <span class="s">&quot;org.freesmartphone.GSM.SMS&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">sms_iface</span><span class="o">.</span><span class="n">connect_to_signal</span> <span class="p">(</span><span class="s">&quot;IncomingMessage&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">onIncomingMessage</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">onIncomingMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>       <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Received SMS from </span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">))</span>
+</span><span class='line'>       <span class="c"># We don&#39;t ALL messages to this number to be tweeted</span>
+</span><span class='line'>       <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;tweet &quot;</span><span class="p">):</span>
+</span><span class='line'>           <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Trying to update status : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">message</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span><span class='line'>           <span class="bp">self</span><span class="o">.</span><span class="n">twitter_api</span><span class="o">.</span><span class="n">PostUpdate</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="mi">6</span><span class="p">:])</span>
+</span><span class='line'>           <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Updated Status&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>       <span class="n">loop</span> <span class="o">=</span> <span class="n">MainLoop</span><span class="p">()</span>
+</span><span class='line'>       <span class="n">loop</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">server</span> <span class="o">=</span> <span class="n">TweetForwarder</span><span class="p">(</span><span class="n">USERNAME</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
+
+<p>The script and the accompanying dependency can be downloaded from <a href="http://gitorious.org/dumb-scripts/dumb-scripts/archive-tarball/master">here</a>. Just change the USERNAME and PASSWORD accordingly after scp&#8217;ing the tarball to your device.</p>
+
+<p>Some useful links,</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Come.. Let's Dance]]></title>
+    <link href="http://sudharsh.me/blog/2009/11/22/come-lets-dance/"/>
+    <updated>2009-11-22T19:17:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/11/22/come-lets-dance</id>
+    <content type="html"><![CDATA[<p>Just <a href="http://sudharsh.deviantart.com">another</a> sketch to break the monotony of my life. (Somehow felt good no matter how bad this turned out)</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png"><img src="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png" alt="" /></a></p>
+
+<p>(My scanner sucks)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <updated>2009-10-17T06:18:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
+
+<ol>
+<li><p> Start the code</p></li>
+<li><p> Go out for some tea or movie.</p></li>
+<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
+</ol>
+
+
+<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
+
+<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
+
+<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
+
+<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">twitter</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">username</span> <span class="o">=</span> <span class="s">&quot;dummy_account&quot;</span>
+</span><span class='line'><span class="n">password</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">receiver</span> <span class="o">=</span> <span class="s">&quot;sup3rkiddo&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">sendDM</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">stats</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">PostDirectMessage</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="s">&quot;*Done compiling*&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Error!&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">sendDM</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
+    <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
+    <updated>2009-07-25T17:22:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://sudharsh.files.wordpress.com/2009/07/s1427363078_6936.jpg"></p>
+
+<p>Recently I had to make use of Google&rsquo;s translation engine to translate phrases at work. Given the lazy big bum I am, I found using the Google&rsquo;s web UI a bit tiresome to use. I thought &ldquo;heck, why not write a little jabber bot to make things a bit easier..&rdquo;. (Agreed, writing a bot is nowhere near to the best solution.)</p>
+
+<p>Writing a Jabber bot is incredibly easy with python. You will need the <a href="http://thpinfo.com/2007/python-jabberbot/">JabberBot</a> package, which offers a really really simple and straightforward way to write bots. The little script below proves how easy it is.</p>
+
+<p>The bot translates phrases/sentences using the <a href="http://code.google.com/p/py-gtranslate/">python-pygtrans</a> package. I had to name the script <em>something</em> and Nai Sekar seemed to be a good idea. Apologies if you just went &lsquo;WTF?!&rsquo;.  (I am quite lame when it comes to naming code/function/classes)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Released Under WTFPL</span>
+</span><span class='line'><span class="c"># http://sam.zoy.org/wtfpl/</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">jabberbot</span> <span class="kn">import</span> <span class="n">JabberBot</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">gtrans</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">random</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Gmail uses Jabber, but their TOS doesn&#39;t allow automated scripts. So be warned</span>
+</span><span class='line'><span class="n">username</span> <span class="o">=</span> <span class="s">&#39;yourJabberID@example.com&#39;</span>
+</span><span class='line'><span class="n">password</span> <span class="o">=</span> <span class="s">&#39;password&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Just some famous dialogues from Vadivelu comedy tracks. Might not make sense if you</span>
+</span><span class='line'><span class="c"># don&#39;t know who or what vadivelu is.</span>
+</span><span class='line'><span class="n">error_dialogues</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>    <span class="s">&quot;Nee yaaru kitta paysikittu irrukaynu theriyuma? Sekar ngara oru TERROR kitta&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Saykar settutaan&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Tirisa illana Divya&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Huh.. yennaku body strong basement weeeku&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Naanum rowdy.. naanum rowdy.. naanum rowdy&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Shabba... ippovae kannu kattudae&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Heloooo.. Ennoda biruther maark irukaara&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Don&#39;t worry.. Be gaaapy&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;But andha dealing enaku pudichi irundhuchi&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;lighta...&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Vaynda... Vallikidu.... Azuthuduvane.. Azhuthuduvane&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Sing in the raine... I am swoying in the raine..&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;Helloo.. Prabha wine shop ownerungala? Kadaiya.. yeppo saar tharapeenga?&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot; romba nallavanu enna pathu sollitanmaaaaa...&quot;</span>
+</span><span class='line'><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">NaiSaykarBot</span><span class="p">(</span><span class="n">JabberBot</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">bot_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span><span class='line'>       <span class="sd">&quot;&quot;&quot;Translate the phrase/sentence from the source language to the required language</span>
+</span><span class='line'><span class="sd">          ex: trans en pl Apples grow in trees</span>
+</span><span class='line'><span class="sd">          would translate the above phrase from english to polish</span>
+</span><span class='line'><span class="sd">       &quot;&quot;&quot;</span>
+</span><span class='line'>       <span class="n">split</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span><span class='line'>       <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">split</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span>
+</span><span class='line'>       <span class="n">src_language</span> <span class="o">=</span> <span class="n">split</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span class='line'>       <span class="n">required_language</span> <span class="o">=</span> <span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span class='line'>       <span class="n">phrase</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+</span><span class='line'>       <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">translated</span> <span class="o">=</span> <span class="n">gtrans</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">src_language</span><span class="p">,</span> <span class="n">required_language</span><span class="p">,</span> <span class="n">phrase</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">translated</span>
+</span><span class='line'>       <span class="k">except</span> <span class="n">gtrans</span><span class="o">.</span><span class="n">InvalidLanguage</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">print</span> <span class="s">&quot;Invalid args : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span class='line'>            <span class="c"># Return a random error message</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choic</span> <span class="n">e</span><span class="p">(</span><span class="n">error_dialogues</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># Overridden from JabberBot</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">unknown_command</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">mess</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Unknown Command </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">error_dialogues</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>     <span class="n">bot</span> <span class="o">=</span> <span class="n">NaiSaykarBot</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span><span class='line'>     <span class="n">bot</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
+    <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
+    <updated>2009-06-30T10:57:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif"></p>
+
+<p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># By Sudharshan S, released under WTFPL</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">dbus</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">gobject</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PointyHairedBoss</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boss_id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span> <span class="o">=</span> <span class="n">boss_id</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span>
+</span><span class='line'>        <span class="n">bus</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">SessionBus</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">_pidgin_proxy</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">,</span> \
+</span><span class='line'>                                                       <span class="s">&quot;/im/pidgin/purple/PurpleObject&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">purple</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span> <span class="p">(</span><span class="n">_pidgin_proxy</span><span class="p">,</span> <span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="c"># FIXME:</span>
+</span><span class='line'>        <span class="n">account_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleAccountsGetAllActive</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConversationNew</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">account_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvIm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">start_nonsense</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">question_list</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">question_list</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvImSend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>   <span class="c"># Change the jabber id and the path to your questions, with an optional frequency</span>
+</span><span class='line'>   <span class="n">o</span> <span class="o">=</span> <span class="n">PointyHairedBoss</span><span class="p">(</span><span class="s">&quot;foo@gmail.com&quot;</span><span class="p">,</span> <span class="s">&quot;questions&quot;</span><span class="p">)</span>
+</span><span class='line'>   <span class="n">o</span><span class="o">.</span><span class="n">start_nonsense</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Burn, baby.. Burn]]></title>
+    <link href="http://sudharsh.me/blog/2009/06/21/burn-baby-burn/"/>
+    <updated>2009-06-21T16:15:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/06/21/burn-baby-burn</id>
+    <content type="html"><![CDATA[<p>When it comes to fitness, I am one of those nerdy couch potatoes with a rather rotund tummy. Burning away calories has become an important priority now and boy, do I miss those Lays and the local Iyengar Bakery Bun Butter Jam and Puffs. For the last week, I have been waking up early and jogging for 30-40 minutes (I also got a good pair of running shoes). Should increase the workout time as weeks progress.</p>
+
+<p>Oh, I also got a new job :D&hellip;.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why Python?]]></title>
+    <link href="http://sudharsh.me/blog/2009/05/11/why-python/"/>
+    <updated>2009-05-11T17:26:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/05/11/why-python</id>
+    <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
+
+<iframe width="" height="" src="http://www.youtube.com/embed/2pfwY2TNehw&hl=en&fs=1 ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>Yeah, so basically what I am coming at is simple. Party now, Life is too short to be spent over unnecessary complications. Or in other words <strong><em>Frigging Use Python!!!!</em></strong></p>
+
+<p><img class="center" src="http://imgs.xkcd.com/comics/python.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

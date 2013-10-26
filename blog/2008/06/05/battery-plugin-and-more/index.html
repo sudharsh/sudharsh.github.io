@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Battery Plugin and more.. - 42</title>
+  <meta name="author" content="Sudharshan S">
+
+  
+  <meta name="description" content="After a little chat with mickeyl, I realised that exposing crucial functions like load() and unload() was not that of a good idea considering how &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sudharsh.me/blog/2008/06/05/battery-plugin-and-more">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="42" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45074307-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">42</a></h1>
+  
+    <h2>Code, and a tiny bit of Adventure</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:sudharsh.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Battery Plugin and More..</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-05T12:39:00+05:30" pubdate data-updated="true">Jun 5<span>th</span>, 2008</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After a little chat with <a href="http://www.vanille-media.de/site/index.php/blog/">mickeyl</a>, I realised that exposing crucial functions like load() and unload() was not that of a good idea considering how <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">odeviced</a> is supposed to closely interact with the underlying devices. Consequently there has been some changes over the last week,</p>
+
+<ul>
+<li><p>No DBus interface for the service.</p></li>
+<li><p>Plugins have now access to a set of helper functions. Only two at the moment (Think setting up DBus object paths)</p></li>
+<li><p>Plugins once loaded become resident, that is they cannot be unloaded. If plugins are to be disabled during startup, just remove them from the &ldquo;enable&rdquo; field in the global configuration file.</p></li>
+<li><p>Per plugin configuration. Each plugins now have their own configuration. Makes more sense, since this mean plugins can have greater freedom with their settings. I really like how the newly checked in <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=tree;f=odeviced/plugins/backlight;h=cf890037a9a39f4a801ea9e5984c40af8440fa03;hb=e21a88cf6a35d9ef43a3d0836be26bdae733d670">battery plugin</a> exploits this.</p></li>
+<li><p>Freshly checked in battery plugin. Makes use of sysfs for its functions viz. get_current_brightness, set_brightness, get_maximum_brightness.</p></li>
+</ul>
+
+
+<p><a href="http://en.wikipedia.org/wiki/Sysfs">SysFS</a> (/sys in 2.6.x.x) is sort of similar to the /proc filesystem and acts as an interface for user-space applications to control/access various devices. One of the neat things about sysfs is the fact that all files consist of only a <strong>single</strong> entry. This means I don&rsquo;t have to write a separate parser to extract data from them. So a simple fprintf or fscanf or even the seemingly mundane &ldquo;echo&rdquo; can be used to control the devices.</p>
+
+<p>I am also planning to work on the python shell for odeviced for a while. This will be really convenient for testing the service. Something like this,</p>
+
+<p><code>&gt; Wifi is_on wlan0
+True
+</code></p>
+
+<p>The code can be checked out from <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. I can&rsquo;t wait till I get hold of a FreeRunner to test odeviced out. :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">sudharsh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-05T12:39:00+05:30" pubdate data-updated="true">Jun 5<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sudharsh.me/blog/2008/06/05/battery-plugin-and-more/" data-via="zphds" data-counturl="http://sudharsh.me/blog/2008/06/05/battery-plugin-and-more/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/06/02/the-code-is-in/" title="Previous Post: The code is in...">&laquo; The code is in...</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/06/08/bhootkiddo/" title="Next Post: BhootKiddo..">BhootKiddo.. &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/11/i/">I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/brooks-was-here/">"Brooks Was Here"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/sudharsh">@sudharsh</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'sudharsh',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sudharshan S -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogsudharsh';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://sudharsh.me/blog/2008/06/05/battery-plugin-and-more/';
+        var disqus_url = 'http://sudharsh.me/blog/2008/06/05/battery-plugin-and-more/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
