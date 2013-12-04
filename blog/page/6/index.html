@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="I had been looking for a machine replacing my 4 and a half year old computer which served me really well. I was really keen on buying (my daddy &hellip;">
+  <meta name="description" content="Atlast after sleepness nights, the results are out. I made it to this year&rsquo;s Google Summer of Code. I will be working for the Openmoko project &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,116 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/22/summer-of-code-2008/">Summer of Code 2008</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-22T16:59:00+05:30" pubdate data-updated="true">Apr 22<span>nd</span>, 2008</time>
+        
+           | <a href="/blog/2008/04/22/summer-of-code-2008/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2008/04/22/summer-of-code-2008/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Atlast after sleepness nights, the results are out. I made it to this year&rsquo;s Google Summer of Code. I will be working for the Openmoko project under the mentorship of Mickeyl. Fun times ahead. Will post the details later.</p>
+
+<p>Now where the hell are my books. Got fricking semesters this tuesday :(.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/06/the-fat-penguin-on-sony-vaio-cr/">The Fat Penguin on Sony Vaio CR</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-06T19:29:00+05:30" pubdate data-updated="true">Apr 6<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/04/06/the-fat-penguin-on-sony-vaio-cr/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2008/04/06/the-fat-penguin-on-sony-vaio-cr/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As I said in my earlier post, Vista didn&rsquo;t last long. I was planning to install Gentoo in my Vaio CR 36 but couldnt, as it had problems with the ethernet card ( not to mention the wireless). My option was to install Ubuntu Gutsy as it has very good support for laptops out of the box. But Gutsy couldn&rsquo;t get sound working and hence found a perfect excuse to upgrade to hardy beta.</p>
+
+<p>24 after upgrading to hardy, came to know that beta_1 of gentoo 2008.0 is out. Downloaded the 64 bit mrinimal iso and got it up and running on my laptop. Things that doesn&rsquo;t work in both the distros (as of now. May change as I RTFM more)..</p>
+
+<ul>
+<li><p>Fn keys for the brightness controls. I have a brightness applet in my panel, so no real big deal.</p></li>
+<li><p>The Ricoh webcam. lsusb picks up the device and whats more strange; the <a href="http://wiki.mediati.org/R5u870">r5u870</a> driver gets loaded and the device node &lsquo;/dev/video0&rsquo; is getting created properly. Neither cheese nor camorama could pick up the camera. The device id is &ldquo;05ca:1839&rdquo;, which seems to be well supported. Maybe I am missing something obvious (yes, the firmware files are in place)</p></li>
+<li><p>The fingerprint reader. Its the same as that of the ones from the Thinkpads but thinkfinger doesn&rsquo;t support vaios :S</p></li>
+<li><p>Bluetooth, gets detected by hciconfig but other devices can&rsquo;t see my laptop. (See below)</p></li>
+</ul>
+
+
+<p>If anyone had any luck with the above, please let me know.</p>
+
+<p>What works..</p>
+
+<ul>
+<li><p>DRI with the binary &lsquo;fglrx&rsquo;</p></li>
+<li><p>Sound works well</p></li>
+<li><p>Wireless pwns with the iwl4965 module</p></li>
+<li><p>Ethernet with the realtek modules</p></li>
+<li><p><a href="http://www.gentoo-wiki.com/HOWTO_TuxOnIce">Software suspend to disk (and RAM)</a> using patches from the TuxOnIce project</p></li>
+<li><p>Volume keys and media keys work like a charm.</p></li>
+<li><p>Adobe doesn&rsquo;t offer support for flash on amd64. You can getaway with it by installing a 32 bit firefox binary alongside your 64 bit installation. &lsquo;emerge mozilla-firefox-bin netscape-flash&rsquo; and you are all set.</p></li>
+<li><p>Bluetooth works beautifully. I have had issues with I/O errors with the chipset. But a post to the gentoo forums solved the issue. This VAIO comes with a Broadcom 2046 chipset. Be sure to &lsquo;emerge bluez-firmware&rsquo; just in case. Click <a href="http://forums.gentoo.org/viewtopic-t-687593.html">here</a> for the thread. Be sure to follow the wonderful <a href="http://www.gentoo.org/doc/en/bluetooth-guide.xml">gentoo bluetooth</a> guide. emerge gnome-phone-manager and gnome-bluetooth for extra fun</p></li>
+</ul>
+
+
+<p>The kernel .config and the xorg.conf with hardware acceleration for my laptop is <a href="http://sudharsh.unixpod.com/gentoofoo">here</a>, in case if anyone is interested.</p>
+
+<p>Gentoo-wiki has been a great resource. Information about other vaios <a href="http://www.gentoo-wiki.com/Special:Search?search=sony+vaio&amp;go=Go">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -465,98 +575,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/12/04/friggin-stop-whining/">Friggin&#8217; Stop Whining</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-12-04T11:05:00+05:30" pubdate data-updated="true">Dec 4<span>th</span>, 2007</time>
-        
-           | <a href="/blog/2007/12/04/friggin-stop-whining/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2007/12/04/friggin-stop-whining/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you are a student, and pursuing an undergrad course in Computer Science, and if your friend comes and says, &ldquo;Linux is not user friendly, Windows/Mac is&hellip;&rdquo;, hit them where it hurts and remind them, &ldquo;You are an engineer and supposed to engineer stuff and make them work, not whine about them&rdquo;..</p>
-
-<p>&hellip;.Works everytime</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/11/04/pygsmd-shell-shell-mode-of-libgsmd-tool-in-python/">Pygsmd-shell: Shell Mode of Libgsmd-tool in Python</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-11-04T17:59:00+05:30" pubdate data-updated="true">Nov 4<span>th</span>, 2007</time>
-        
-           | <a href="/blog/2007/11/04/pygsmd-shell-shell-mode-of-libgsmd-tool-in-python/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2007/11/04/pygsmd-shell-shell-mode-of-libgsmd-tool-in-python/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Got some sms and phonebook code in the svn, but not all. So once I had some bindings finished. I decided to write a sort of example script that uses our pygsmd module. libgsmd-tool have always been a friend of mine in knowing whats up with gsmd. Therefore to pay a tribute to my good &ldquo;friend&rdquo;, I came up with a python script that mimics &lsquo;libgsmd-tool -m shell&rsquo;. Of course since pygsmd itself is yet to be completed, the script is incomplete although functional. Its been a long time since I had written a real python script, so if its not pythonic, please comment..The script is already in the svn,  so if you are interested take a look and most importantly test it out and extend it..=D</p>
-
-<p>Heres a more sane version(88) from the <a href="http://projects.openmoko.org/plugins/scmsvn/viewcvs.php/*checkout*/python-gsmd/examples/pygsmd_shell.py?content-type=text%2Fplain&amp;rev=88&amp;root=python-openmoko">svn</a></p>
-
-<p>And the screenshot of pygsmd-shell in action. Notice the AT commands in Phonesim to the right. And the screenshot of the script running in the neo.</p>
-
-<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/pygsmdshell.png"></p>
-
-<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/screenshot-1.png"></p>
-
-<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/screenshot-1.png"></p>
-
-<p>For pygsmd svn repository, <a href="http://projects.openmoko.org/plugins/scmsvn/viewcvs.php/?root=python-openmoko">click here</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -574,6 +592,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Migrating From Wordpress to Octopress</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
       </li>
     
@@ -583,14 +609,6 @@
     
       <li class="post">
         <a href="/blog/2013/05/11/i/">I</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
       </li>
     
   </ul>

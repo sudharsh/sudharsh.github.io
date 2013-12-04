@@ -9,7 +9,13 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="There are two major templating libraries for Clojure, Enlive and Hiccup. Since I am not that much of a designer, I chose Hiccup for my side project &hellip;">
+  <meta name="description" content="Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface 1
+2
+3
+4
+5
+6
+(defn ip-for-interface [interface &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +82,97 @@
   <div id="main">
     <div id="content">
       
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T00:56:00+05:30" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
+        
+           | <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">ip-for-interface</span> <span class="p">[</span><span class="nv">interface</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">(</span><span class="nf">java.net.NetworkInterface/getByName</span> <span class="nv">interface</span><span class="p">)</span>
+</span><span class='line'>              <span class="nv">.getInetAddresses</span>
+</span><span class='line'>              <span class="nv">enumeration-seq</span>
+</span><span class='line'>              <span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">instance? </span><span class="nv">java.net.Inet4Address</span> <span class="nv">%1</span><span class="p">))</span>
+</span><span class='line'>              <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nf">.getHostAddress</span> <span class="nv">%1</span><span class="p">)))))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Of course, fails horribly with an <code>NullPointerException</code> if the interface is not present :)</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Migrating From Wordpress to Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-26T14:33:00+05:30" pubdate data-updated="true">Oct 26<span>th</span>, 2013</time>
+        
+           | <a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wordpress</p>
+</div>
+  
+  
+
+</article>
 
 
     <article class="post">
@@ -672,130 +769,6 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 <p>If I am missing something obvious here please do comment. This particular cheekiness of the json module caught me unawares recently. Or maybe I was wrong in expecting the decode operation to return something that is identical to the source.</p>
 
 <p>Interestingly, the json support modules that ship with TurboGears error out if you try to return a dictionary having non-string keys from your controller methods.</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/18/touring-now-a-breeze/">Touring, Now a Breeze!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-18T16:58:00+05:30" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/07/18/touring-now-a-breeze/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>India, is a wonderful place for touring on a motorbike. With terrains ranging from high mountainous North, North Eastern India to the Coastal plains and lush Ghats down South, we sure have a huge load of places to see and experience. Motorbike touring can also be risky since a disproportionate rate of road accidents involve two-wheelers. Therefore it is absolutely necessary for the rider to protect himself on the road with proper riding gears.</p>
-
-<p>The ideal mode of getting riding gear would be to look for clearance sales outside our country and ask the relatives or friends to ship it down to India for us. For people like me, whom the relatives <em>hate</em> to be related to, there are local players like <a href="http://cramster.in">Cramster</a> and <a href="http://planetdsg.com">DSG</a> who provide gear that are priced competitively. I already have a nice helmet but the lack of a proper armoured touring jacket was preventing me from getting adventurous enough to go out on long road trips.</p>
-
-<h4>Requirements</h4>
-
-<p>I wanted a jacket that that could satisfy all the following requirements.</p>
-
-<ul>
-<li><p>Should be made of a fabric that doesn&rsquo;t tear easily protecting me against scraping injuries.</p></li>
-<li><p>Armor in the joints and some padding in the back for protection against hard falls.</p></li>
-<li><p>Since Chennai is not blessed with a good weather, the Jacket shouldn&rsquo;t boil me alive when I am wearing it. Should be bearable in hot weather atleast when the bike is in motion.</p></li>
-<li><p>Extra brownie points for usability in the rains.</p></li>
-</ul>
-
-
-<p>Alpinestars are great but they are simply too expensive for me. <a href="http://www.planetdsg.com/">DSG</a> distributes them in India in case you have saved enough moola to buy one. Be wary of fake imitation Alpinestars gear that are sold here in Chennai for 5 &ndash; 6k. They look genuine but they are, at the end of the day; fake.</p>
-
-<h4>Narrowing down the choices:</h4>
-
-<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsg-maze-jacket-black.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsg-maze-jacket-black.jpg?w=300" alt="" /></a></p>
-
-<p>Taking into account all these and reading user posts from <a href="http://xbhp.com/talkies">xBHP</a> (in addition to rabid googling), I shortlisted DSG Maze and the <a href="http://www.cramster.in/ridinggear.php">Cramster</a> Breezer 2.0. Earlier, I had almost decided to order Maze online, but after seeing the Cramster in action during the <a href="http://www.xbhp.com/talkies/458471-post4443.html">Vedanthangal xBHP G2G</a>, I noticed that the Cramster Breezer 2.0 qualified  as a worthy competition to the more expensive Maze, both of which met my requirements except for the usability in the rains. Also the presence of Leather shoulders and cuffs in Maze was putting me off. They are damn cool and sexy, but leather doesn&rsquo;t go well with rain. To add to the confusion of choices, I learnt that Cramster had released a new all black Breezer 3.0 phasing out the 2nd revision.</p>
-
-<p>The presence of a removable waterproof inner liner was the killer feature for me, which was not present in Breezer 2.0 and Maze (Correct me if I am wrong). Finally, I made the decision and took my little FZ on a road trip to Cramster&rsquo;s Bangalore office yesterday to get the damn jacket. (also some balaclavas for myself and friends). I chose to ride to Bangalore instead of ordering it online since it would give me a chance to test the jacket on my way back ;) (no nagging confusion about choosing the right size as well)</p>
-
-<p>Sorry for the soddy pics.</p>
-
-<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsc00170.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsc00170.jpg?w=300" alt="The back" /></a></p>
-
-<p><a href="http://sudharsh.files.wordpress.com/2010/07/dsc00172.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/dsc00172.jpg?w=300" alt="" /></a></p>
-
-<p>The Jacket is heavy in the hands but fits snuggly when I wear it. I had to wear the inner lining in Bangalore because of  the windchill in the early hours of dawn when I was leaving the city. Once the sun came out, I removed it and all was well. I am quite happy with the finish and the quality of materials that have gone into this jacket. Like most other jackets, it comes with the Cordura fabric that doesn&rsquo;t tear and 3M reflectors for added visibility to other motorists for spotting you in the dark.</p>
-
-<h4>Verdict:</h4>
-
-<p>Unfortunately, I have no means to compare it with others and offer a shootout of sorts since I haven&rsquo;t really tried any other jacket before. I would love to hear from the users of other jackets. If you are not a fan of an all-black jacket, DSG Maze comes in <a href="http://www.planetdsg.com/dsg-falcon-jacket-red-p-1044.html">red</a> in addition to the all-black version.</p>
-
-<p>Ride hard and ride safe!</p>
-
-<p>P.S: Thanks to <a href="http://twitter.com/sudarsanyes">Sudarsan</a> (no, not me) and Pradeep for allowing me to camp at their place for the weekend.</p>
-
-<p>P.P.S: Thanks to my boss for buying my LCD monitor!</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/05/roadtrip-to-pondy/">Roadtrip to Pondy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-05T08:31:00+05:30" pubdate data-updated="true">Jul 5<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/07/05/roadtrip-to-pondy/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2010/07/05/roadtrip-to-pondy/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg?w=219" alt="" /></a></p>
-
-<p>Made an unplanned roadtrip to Pondicherry on my FZ yesterday. Driving on the ECR with the sunset on your right is pure bliss. The weather was good with occasional chilly bursts of sea breeze. Cruised the entire stretch at a comfortable 80km/hr.</p>
-
-<p>Although not as long as my earlier <a href="http://sudharsh.wordpress.com/2009/12/17/road-trip-to-yelagiri/">Yelagiri</a> trip, it was fun nevertheless. The former French colony seems to be at its best charm when it rains :D.</p>
-
-<p>It is amazing how your senses become tuned to the road after riding for an hour or two. Hopefully, I will be doing far more longer trips this winter.</p>
-
-<p>(Sorry for the poor image quality)</p>
 </div>
   
   

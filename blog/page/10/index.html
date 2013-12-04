@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="Howdie, I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net. Click here to visit the &hellip;">
+  <meta name="description" content="ETK is a gui toolkit similar to gtk and is a part of Enlightenment Foundation Libraries or EFL. The syntax is very similar to GTK with only minor &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,51 +77,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/11/16/gmedcon/">GMedCon</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-11-16T08:11:00+05:30" pubdate data-updated="true">Nov 16<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/11/16/gmedcon/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/11/16/gmedcon/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Howdie,</p>
-
-<p>I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net.</p>
-
-<p><a href="http://gmedcon.sourceforge.net">Click here</a> to visit the project page</p>
-
-<p>xmedcon is a tool that is used to manipulate dicom images, a standard used in medical imagery. If you would like to help please give me a ping</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -614,6 +569,119 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Configuring BSNL Dataone Broadband in Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-17T13:56:00+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports..</p>
+
+<p>Oh and router=modem in this article&hellip;</p>
+
+<p><strong>DHCP way:</strong></p>
+
+<p>The most simple way of course is to use DHCP to set up your network automatically, In most cases everything gets configured automagically. If not enabled you should start the DHCP server by logging into the admin interface. See the wikipedia article to know more about DHCP.
+<a href="http://en.wikipedia.org/wiki/Dhcp">http://en.wikipedia.org/wiki/Dhcp</a></p>
+
+<p><strong>pppoeconf:</strong></p>
+
+<p>In ubuntu there should be a program called pppoeconf installed by default, just run
+<code>sudo pppoeconf</code>
+You will be taken through a set of screens wherein you will be able to enter the details regarding your dataone account, Mostly configuring the DNS isnt required. Just rememeber that it is <user>@dataone and not <user>@dataone.in</p>
+
+<p>Then to connect use
+<code>pon dsl-provider</code>
+if you have followed the default steps.</p>
+
+<p><code>poff dsl-provider</code>
+to disconnect and
+<code>plog</code>
+to view status</p>
+
+<p>In gentoo this tool is known an rp-pppoe, only the name differs..although its wizard is command line rather than the ncurses based pppoeconf</p>
+
+<p><strong>Configuring the router directly:</strong></p>
+
+<p>Of course another alternative is to use the admin interface available in the router provided. First make sure your box is detecting the ethernet interface correctly</p>
+
+<p>next..
+<code>ifconfig eth0 up 192.168.1.2</code>
+and&hellip;
+<code>route add default gw 192.168.1.1</code></p>
+
+<p>Point your browser to 192.168.1.1 and you should be greeted with the admin interface of your router. I use a Huawei Sterlite WA1003A.</p>
+
+<p>username and password are admin.</p>
+
+<p>After logging in goto Modem Setup, PVC0</p>
+
+<p>select pppoe, fill in the details, save the settings and restart the router&hellip;Your modem should automatically dial-in.</p>
+
+<p>Most distros have gui to configure this stuff, But some of us are smarter than the others and use distros like gentoo..For those users..:P</p>
+
+<p>open up /etc/conf.d/net</p>
+
+<p>and add/modify
+<code>iface_eth0="192.168.1.2 broadcast 192.168.1.255 netmask 255.255.255.0"
+gateway="eth0/192.168.1.1"</code></p>
+
+<p>After saving the file do a
+<code>/etc/init.d/net.eth0 restart</code></p>
+
+<p><strong>If nothing works:</strong>
+So if  these steps dont work..there a last chance. Most of the times resolv.conf is to be blamed, Double check if its ok, Even if you have valid nameservers try putting the following in /etc/resolv.conf.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.1</span>
+</span><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.2</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These are public nameservers.
+If it still doesnt work..you may have goofed up somewhere..</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li><p>Configuring the router directly is more convenient since the configuration sits in your router rather than your system. So if you in some point lose your data, all you need to do to configure the internet is to configure the interfaces of the modem. Also  when using pppoeconf,   when I chose to enable the connection during boot time I found that my system was taking more time to boot, but this time delay was not experienced when I configured the connection through the admin interface of the router. Of course if for some reason, if the modem is restarted you need not execute the &lsquo;pon&rsquo; command to connect when you configure the router directly. It automatically connects.</p></li>
+<li><p>Use any one of the methods..not both</p></li>
+<li><p>Sometimes if you have two ethernet interfaces you may need to disable one of them</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -631,6 +699,14 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Migrating From Wordpress to Octopress</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
       </li>
     
@@ -640,14 +716,6 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
     
       <li class="post">
         <a href="/blog/2013/05/11/i/">I</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
       </li>
     
   </ul>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Clojure | 42]]></title>
+  <link href="http://sudharsh.me/blog/categories/clojure/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-12-05T01:01:42+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Getting IP of an interface in Clojure]]></title>
+    <link href="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/"/>
+    <updated>2013-12-05T00:56:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure</id>
+    <content type="html"><![CDATA[<p>Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface</p>
+
+<p>``` clojure
+(defn ip-for-interface [interface]
+  (first (&ndash;>> (java.net.NetworkInterface/getByName interface)</p>
+
+<pre><code>          .getInetAddresses
+          enumeration-seq
+          (filter #(instance? java.net.Inet4Address %1))
+          (map #(.getHostAddress %1)))))
+</code></pre>
+
+<p>```</p>
+
+<p>Of course, fails horribly with an <code>NullPointerException</code> if the interface is not present :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
+    <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
+    <updated>2013-08-31T14:44:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
+    <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
+
+<h2>DRY in Jinja</h2>
+
+<p>In my previous <a href="http://jinja.pocoo.org/docs/templates/">Flask</a> projects, <a href="http://jinja.pocoo.org/docs/templates/">Jinja</a> was my templating engine of choice. The <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> flow in Jinja templates consists of setting up a <code>base.html</code> with a common layout markup. The &lsquo;children&rsquo; would then <a href="http://jinja.pocoo.org/docs/templates/#template-inheritance">&lsquo;inherit&rsquo;</a> and optionally override those blocks in their own templates.</p>
+
+<h2>Composition in Hiccup</h2>
+
+<p>However, In the world of Clojure (and therefore Hiccup), functions (duh!) are used to modularize templates.  For example,</p>
+
+<p>``` clojure
+(ns foobar.views
+  (:require [hiccup.core :as h]</p>
+
+<pre><code>        [hiccup.page :as hp]))
+</code></pre>
+
+<p>(defn head [title]
+  [:head
+   [:title title]
+   (hp/include-css &ldquo;/static/css/bootstrap.min.css&rdquo;</p>
+
+<pre><code>               "/static/css/bootstrap-theme.min.css")
+</code></pre>
+
+<p>   (hp/include-js &ldquo;/static/js/jquery-1.10.2.min.js&rdquo;</p>
+
+<pre><code>              "/static/js/bootstrap.min.js"
+              "/static/js/bluth.js")])
+</code></pre>
+
+<p>(defn get-page [title context]
+  (hp/html5</p>
+
+<pre><code>;; Since hiccup DSL is just code, we will just inject the
+;; &lt;head&gt; right here
+(head title)
+;; Rest of the template
+;; I'd probably have a (body..) somewhere
+(body context)
+;; Rest of the template
+</code></pre>
+
+<p>))
+```</p>
+
+<h2>Multi-methods</h2>
+
+<p>In the above example, there is a chance of repetitiveness of functions like <code>get-page</code> as the number of routes increases. In most cases, there is one (or few) container <code>div</code> that changes across the templates. To avoid this, I have found using <a href="http://clojure.org/multimethods"><code>multimethods</code></a> to be a great way of dispatching templates at runtime.</p>
+
+<p>For instance,</p>
+
+<p>``` clojure</p>
+
+<p>(defmulti container :template :default :not-found)</p>
+
+<p>(defmethod container :home [context]
+ [:h2 &ldquo;Welcome to the Bluth Company&rdquo;]
+ [:button#queue-button.btn.btn-info &ldquo;Backup&rdquo;])</p>
+
+<p>(defmethod container :users [{:keys [query-params]}]
+ [:h2 (str query-params)])</p>
+
+<p>(defmethod container :not-found [context]
+ [:h2 &ldquo;Generic Content&rdquo;])</p>
+
+<p>```</p>
+
+<p>Now that I have a group of &lsquo;container&rsquo; divs, I can invoke them from <code>get-page</code> like so,</p>
+
+<p>``` clojure</p>
+
+<p>(defn get-page [{:keys [title]</p>
+
+<pre><code>         :or {title "Bluth Co. - Welcome"}
+         :as context }]
+</code></pre>
+
+<p>  (hp/html5
+   (head title)
+   [:body</p>
+
+<pre><code>[:div#wrap
+ [:div.container
+  ;; Invoke container here
+  ;; and dispatch the right template function
+  (container context)
+  ]]]))
+</code></pre>
+
+<p>```</p>
+
+<p>Meanwhile, my <code>routes</code> will end up looking something like this,</p>
+
+<p>``` clojure
+(defroutes app-routes
+  (GET &ldquo;/&rdquo; [] (get-page { :template :home }))
+  ;; Due to the destructuring in get-page,
+  ;; I can pass in arbitrary context to be handled by
+  ;; the container multimethods. In this case, we
+  ;; are passing in the query-params
+  (GET &ldquo;/users&rdquo; [&amp; query-params] (get-page</p>
+
+<pre><code>                                   {:title "User list"
+                                    :template :users
+                                    :query-params query-params}))
+</code></pre>
+
+<p>  (route/not-found (get-page</p>
+
+<pre><code>                {:title "Pluto - Not found!"
+                 :template :not-found}))
+</code></pre>
+
+<p>```</p>
+
+<p>As you can see, <code>get-page</code> is the point of entry for my templates and the container <code>div</code> is injected according to the dispatched function. In fact, by abusing using <a href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">compojure&rsquo;s</a> route destructuring, we can have true runtime dispatching of templates!</p>
+
+<p>``` clojure
+(defroutes app-routes
+  (GET &ldquo;/foo/:template [template]</p>
+
+<pre><code> ;; We don't know which container will be invoked until runtime
+ ;; Instead of adding more routes, I can just add more multimethods
+ (get-page {:template template})))
+</code></pre>
+
+<p>```</p>
+
+<p><code>get-page</code> function isn&rsquo;t going to change much and I can mix and match templates as much as I want.</p>
+
+<p>I must admit that I am super new to Clojure. Therefore I am not sure if this approach is idiomatic enough in the Clojure world. Would love to hear suggestions on how it is usually done.</p>
+]]></content>
+  </entry>
+  
+</feed>

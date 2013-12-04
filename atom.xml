@@ -4,7 +4,7 @@
   <title><![CDATA[42]]></title>
   <link href="http://sudharsh.me/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-10-23T12:02:59+05:30</updated>
+  <updated>2013-12-05T01:01:42+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Getting IP of an interface in Clojure]]></title>
+    <link href="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/"/>
+    <updated>2013-12-05T00:56:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure</id>
+    <content type="html"><![CDATA[<p>Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">ip-for-interface</span> <span class="p">[</span><span class="nv">interface</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">(</span><span class="nf">java.net.NetworkInterface/getByName</span> <span class="nv">interface</span><span class="p">)</span>
+</span><span class='line'>              <span class="nv">.getInetAddresses</span>
+</span><span class='line'>              <span class="nv">enumeration-seq</span>
+</span><span class='line'>              <span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">instance? </span><span class="nv">java.net.Inet4Address</span> <span class="nv">%1</span><span class="p">))</span>
+</span><span class='line'>              <span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="p">(</span><span class="nf">.getHostAddress</span> <span class="nv">%1</span><span class="p">)))))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Of course, fails horribly with an <code>NullPointerException</code> if the interface is not present :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating from Wordpress to Octopress]]></title>
+    <link href="http://sudharsh.me/blog/2013/10/26/migrating-from-wordpress-to-octopress/"/>
+    <updated>2013-10-26T14:33:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/10/26/migrating-from-wordpress-to-octopress</id>
+    <content type="html"><![CDATA[<p>Wordpress</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
@@ -948,33 +983,6 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 </span><span class='line'>   <span class="n">o</span><span class="o">.</span><span class="n">start_nonsense</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Burn, baby.. Burn]]></title>
-    <link href="http://sudharsh.me/blog/2009/06/21/burn-baby-burn/"/>
-    <updated>2009-06-21T16:15:00+05:30</updated>
-    <id>http://sudharsh.me/blog/2009/06/21/burn-baby-burn</id>
-    <content type="html"><![CDATA[<p>When it comes to fitness, I am one of those nerdy couch potatoes with a rather rotund tummy. Burning away calories has become an important priority now and boy, do I miss those Lays and the local Iyengar Bakery Bun Butter Jam and Puffs. For the last week, I have been waking up early and jogging for 30-40 minutes (I also got a good pair of running shoes). Should increase the workout time as weeks progress.</p>
-
-<p>Oh, I also got a new job :D&hellip;.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Why Python?]]></title>
-    <link href="http://sudharsh.me/blog/2009/05/11/why-python/"/>
-    <updated>2009-05-11T17:26:00+05:30</updated>
-    <id>http://sudharsh.me/blog/2009/05/11/why-python</id>
-    <content type="html"><![CDATA[<p>Ever had that feeling of insignificance? The feeling that your very existence is a microscopic peanut in the grand scheme of things. By grand, I mean the <a href="http://hhgproject.org/entries/wsogmm.html">Whole Sort of General Mish Mash</a>. I am going through that right now. We are, according to our own theories an extremely smart species, yet for every answer we discover, 10 more questions creep up like one of those annoying LOLCATS shouting <a href="http://icanhascheezburger.com/2009/03/02/funny-pictures-ohai-2/">&lsquo;OH HAI&rsquo;</a>. What the hell is the purpose of life? Why do we exist? What is our place in this infinite Cosmos (See the embedded video)? Its incredibly creepy even to think that our entire life is just a mega-complex probability equation, which most likely is too complex for our puny brains to comprehend.</p>
-
-<iframe width="" height="" src="http://www.youtube.com/embed/2pfwY2TNehw&hl=en&fs=1 ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p>Yeah, so basically what I am coming at is simple. Party now, Life is too short to be spent over unnecessary complications. Or in other words <strong><em>Frigging Use Python!!!!</em></strong></p>
-
-<p><img class="center" src="http://imgs.xkcd.com/comics/python.png"></p>
 ]]></content>
   </entry>
   

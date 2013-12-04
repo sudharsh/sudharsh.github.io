@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Code | 42]]></title>
+  <link href="http://sudharsh.me/blog/categories/code/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-12-05T01:01:42+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating from Wordpress to Octopress]]></title>
+    <link href="http://sudharsh.me/blog/2013/10/26/migrating-from-wordpress-to-octopress/"/>
+    <updated>2013-10-26T14:33:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/10/26/migrating-from-wordpress-to-octopress</id>
+    <content type="html"><![CDATA[<p>Wordpress</p>
+]]></content>
+  </entry>
+  
+</feed>

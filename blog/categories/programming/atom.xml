@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programming | 42]]></title>
+  <link href="http://sudharsh.me/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-12-05T01:01:42+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Getting IP of an interface in Clojure]]></title>
+    <link href="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/"/>
+    <updated>2013-12-05T00:56:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure</id>
+    <content type="html"><![CDATA[<p>Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface</p>
+
+<p>``` clojure
+(defn ip-for-interface [interface]
+  (first (&ndash;>> (java.net.NetworkInterface/getByName interface)</p>
+
+<pre><code>          .getInetAddresses
+          enumeration-seq
+          (filter #(instance? java.net.Inet4Address %1))
+          (map #(.getHostAddress %1)))))
+</code></pre>
+
+<p>```</p>
+
+<p>Of course, fails horribly with an <code>NullPointerException</code> if the interface is not present :)</p>
+]]></content>
+  </entry>
+  
+</feed>

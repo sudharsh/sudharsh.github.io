@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: neo1973 | 42]]></title>
+  <link href="http://sudharsh.me/blog/categories/neo1973/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-12-05T01:01:42+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
+    <link href="http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009/"/>
+    <updated>2009-04-05T13:56:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009</id>
+    <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
+
+<p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
+
+<p>For more, check this recent blog entry by <a href="http://www.vanille-media.de/site/index.php/2009/04/04/back-from-switzerland/">Mickey</a>.</p>
+
+<p>Patches all the way :D&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SHR, fsod and certain other things.]]></title>
+    <link href="http://sudharsh.me/blog/2008/11/23/shr-fsod-and-certain-other-things/"/>
+    <updated>2008-11-23T06:58:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
+    <content type="html"><![CDATA[<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
+
+<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225">http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225</a>"></p>
+
+<p>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
+
+<p>As for fsod, I could really use some help especially with autotools. I managed to set up a preliminary a python scripting interface so that fsod can load python scripts. But that&rsquo;s as far as I got. Apparently DBus needs a mainloop to be setup for exporting objects on the system bus. And since GObject introspection in python seems to be absent at the moment, I had to create bindings to my code. This process is documented and explained <a href="http://www.ibm.com/developerworks/linux/library/l-wrap/">here</a>. But still, I am at a loss as to how to pass the DBus connection object from the mainloop to the python scripts. If someone knows how to do this, please poke me.</p>
+
+<p>The code could be found <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. (src/subsystems/Python especially can use some love)</p>
+
+<p>Update: I made a package out of today&rsquo;s tree. Find it <a href="http://sudharsh.mukt.in/fsod_0.1-r0_armv4t.opk">here</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fsod status]]></title>
+    <link href="http://sudharsh.me/blog/2008/10/20/fsod-status/"/>
+    <updated>2008-10-20T17:37:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/10/20/fsod-status</id>
+    <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
+
+<p>The current code base is written in <a href="http://live.gnome.org/Vala">vala</a> (and C where it is required) which unfortunately lacks certain features of <a href="http://dbus.freedesktop.org/">DBus</a> like async callbacks and some method signatures at the moment (I may be horribly wrong. I would be glad if someone points out in that case. The mailing list discussion on async support <a href="http://mail.gnome.org/archives/vala-list/2008-October/msg00057.html">here</a>). But at the same time, writing GObject code in vala is infinitely easier and lots of fun too :D.</p>
+
+<p>It would be also be pretty awesome if fsod could support loading python plugins, kind of like what gedit does. The GSM code especially could benefit from this since there is not much to gain in terms of performance here.</p>
+
+<p>As for fsod, the sources are available <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. In case anyone wants to get hold of a opk of the current code to install on the Freerunner, it is available <a href="http://sudharsh.mukt.in/fsod-preview_armv4t.opk">here</a>. Comments are welcome</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Summer ends but the insanity continues.]]></title>
+    <link href="http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
+    <updated>2008-09-12T13:44:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a>"></p>
+
+<p>In Chennai we have three seasons, summer (nov-march), f***ing hot summer (april &ndash; june), a mildly wet but still hot summer (july-oct). In case you are wondering where I am pointlessly heading to, I was talking about the <a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> which ended successfully for me :D; the code which I submitted was only about 56KB which means I was the laziest among the <a href="http://code.google.com/soc/2008/openmoko/about.html">9 other GSoC'ers</a> for <a href="http://www.openmoko.com">Openmoko</a>. On the whole, I think Openmoko had a wonderful SoC this year.</p>
+
+<p>I will continue working on the freesmartphone.org initiative and do my little bit to help around. I was planning to release the ipks along with FSO milestone 3, but it turned out that my build tree wouldn&rsquo;t let me to do that without a fight (at `NOTE: Running task 256 of 718' now), will post the link once I have the packages. Get it <a href="http://sudharsh.mukt.in/odeviced_0.1-r0_armv4t.opk">here</a>. (Thanks to mukt.in team for hosting it)</p>
+
+<p>Meanwhile, <a href="http://softwarefreedomday.org/">Software Freedom Day</a> will be celebrated worldwide on September 20 (third saturday of September) and the <a href="http://www.ae.iitm.ac.in/mailman/listinfo/ilugc">ILUG-C</a> gang will be there at Kamban Engineering College, Thiruvannamalai this year. So if you are in Chennai at that time and want to do something fun for the weekend, please volunteer!.</p>
+
+<p>P.S: I am planning to give away my Freerunner for free, first to comment this post gets it..</p>
+
+<p>..NOT!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[odeviced: Accelerometers, PowerControl, IdleNotifiers and Input plugins]]></title>
+    <link href="http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
+    <updated>2008-08-16T17:02:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a>"></p>
+
+<p>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
+
+<ul>
+<li><p>Accelerometer plugin for Freerunner. Now you can use odeviced to retrieve accelerometer values for the position of the device along the x,y,z axes.</p></li>
+<li><p>Completed Powercontrol plugin. Kept putting this off, but got myself to complete it today.</p></li>
+<li><p>IdleNotifiers enabling apps to keep track of the state of the device viz. IDLE, BUSY&hellip;etc</p></li>
+<li><p>Input plugin for signalling input events on DBus. Like button presses, etc. Should make this asynchrounous once vala offers support for async DBus on the server side (&lsquo;read&rsquo; systemcall can block)</p></li>
+<li><p>Initial Audio plugin, am keeping this as a TODO outside GSoC.</p></li>
+</ul>
+
+
+<p>The daemon is far from complete and GSoC was meant to be just the beginning to get the basics right. Integration of odeviced as a subsytem of a frameworkd implementation (theres already a python implementation) in C is something I am looking forward to contribute in the next few months. It would be uber cool, if someone lends a helping hand for now to make odeviced work on other devices on which openmoko (and FSO) can run.</p>
+
+<p>I am not sure if people will find this interesting, but still</p>
+
+<ul>
+<li><p>The plugins average around 14kB in size, with powercontrol being the biggest of all. (25KB)</p></li>
+<li><p>The main odeviced binary is around 26KB, which IMO, is quite teency weency.</p></li>
+</ul>
+
+
+<p>(But given the fact that the code links against GLib and DBus, I have no idea if these numbers mean anything at all. I would be grateful if anyone thinks this is something to cheer about)</p>
+
+<p>P.S: I am looking for a temporary place to host the ipks for the lazy ones, will post the link once I get that. Meanwhile, get the code <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

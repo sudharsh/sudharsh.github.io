@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports.. Oh and router=modem in this article&hellip; DHCP &hellip;">
+  <meta name="description" content="Howdie..At last dad gave me broadband connection&hellip;Its been tough without internet for 4 months. Right now I am working on ldtp stuff&hellip; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,7 +83,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Configuring BSNL Dataone Broadband in Linux</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/09/20/hello-world/">Hello World!</a></h1>
     
     
       <p class="meta">
@@ -99,541 +99,20 @@
   
 
 
-<time datetime="2006-10-17T13:56:00+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+<time datetime="2006-09-20T13:50:00+05:30" pubdate data-updated="true">Sep 20<span>th</span>, 2006</time>
         
-           | <a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports..</p>
-
-<p>Oh and router=modem in this article&hellip;</p>
-
-<p><strong>DHCP way:</strong></p>
-
-<p>The most simple way of course is to use DHCP to set up your network automatically, In most cases everything gets configured automagically. If not enabled you should start the DHCP server by logging into the admin interface. See the wikipedia article to know more about DHCP.
-<a href="http://en.wikipedia.org/wiki/Dhcp">http://en.wikipedia.org/wiki/Dhcp</a></p>
-
-<p><strong>pppoeconf:</strong></p>
-
-<p>In ubuntu there should be a program called pppoeconf installed by default, just run
-<code>sudo pppoeconf</code>
-You will be taken through a set of screens wherein you will be able to enter the details regarding your dataone account, Mostly configuring the DNS isnt required. Just rememeber that it is <user>@dataone and not <user>@dataone.in</p>
-
-<p>Then to connect use
-<code>pon dsl-provider</code>
-if you have followed the default steps.</p>
-
-<p><code>poff dsl-provider</code>
-to disconnect and
-<code>plog</code>
-to view status</p>
-
-<p>In gentoo this tool is known an rp-pppoe, only the name differs..although its wizard is command line rather than the ncurses based pppoeconf</p>
-
-<p><strong>Configuring the router directly:</strong></p>
-
-<p>Of course another alternative is to use the admin interface available in the router provided. First make sure your box is detecting the ethernet interface correctly</p>
-
-<p>next..
-<code>ifconfig eth0 up 192.168.1.2</code>
-and&hellip;
-<code>route add default gw 192.168.1.1</code></p>
-
-<p>Point your browser to 192.168.1.1 and you should be greeted with the admin interface of your router. I use a Huawei Sterlite WA1003A.</p>
-
-<p>username and password are admin.</p>
-
-<p>After logging in goto Modem Setup, PVC0</p>
-
-<p>select pppoe, fill in the details, save the settings and restart the router&hellip;Your modem should automatically dial-in.</p>
-
-<p>Most distros have gui to configure this stuff, But some of us are smarter than the others and use distros like gentoo..For those users..:P</p>
-
-<p>open up /etc/conf.d/net</p>
-
-<p>and add/modify
-<code>iface_eth0="192.168.1.2 broadcast 192.168.1.255 netmask 255.255.255.0"
-gateway="eth0/192.168.1.1"</code></p>
-
-<p>After saving the file do a
-<code>/etc/init.d/net.eth0 restart</code></p>
-
-<p><strong>If nothing works:</strong>
-So if  these steps dont work..there a last chance. Most of the times resolv.conf is to be blamed, Double check if its ok, Even if you have valid nameservers try putting the following in /etc/resolv.conf.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.1</span>
-</span><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.2</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>These are public nameservers.
-If it still doesnt work..you may have goofed up somewhere..</p>
-
-<p><strong>Note:</strong></p>
-
-<ul>
-<li><p>Configuring the router directly is more convenient since the configuration sits in your router rather than your system. So if you in some point lose your data, all you need to do to configure the internet is to configure the interfaces of the modem. Also  when using pppoeconf,   when I chose to enable the connection during boot time I found that my system was taking more time to boot, but this time delay was not experienced when I configured the connection through the admin interface of the router. Of course if for some reason, if the modem is restarted you need not execute the &lsquo;pon&rsquo; command to connect when you configure the router directly. It automatically connects.</p></li>
-<li><p>Use any one of the methods..not both</p></li>
-<li><p>Sometimes if you have two ethernet interfaces you may need to disable one of them</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/13/just-get-alongmozilla-debian/">Mozilla vs. Debian..Jus Get Along</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-13T12:47:00+05:30" pubdate data-updated="true">Oct 13<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/13/just-get-alongmozilla-debian/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/13/just-get-alongmozilla-debian/">Comments</a>
+           | <a href="/blog/2006/09/20/hello-world/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/09/20/hello-world/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.internetnews.com/dev-news/article.php/3634591">http://www.internetnews.com/dev-news/article.php/3634591</a></p>
+  <div class="entry-content"><p>Howdie..At last dad gave me broadband connection&hellip;Its been tough without internet for 4 months. Right now I am working on ldtp stuff&hellip;Lets see how it goes. Apart from that my college is turning out to be a nightmare because of ECE dept.
+Anyway..Any new stuff should be started off with &lsquo;Hello World&rsquo; (I dont want to see what happens if we dont)</p>
 
-<p>Mozilla vs. Debian&hellip; I guess a major clash of egos is taking place between two giants. This time it is serious; KDE  vs. GNOME, Ubuntu vs. Debian, and all other flames wars have been taking place for eons but without serious consequences. The latest Mozilla. vs Debian tussle comes at a very tense time. Firefox has been gaining its share of the pie slowly and steadily, and Debian and its derivatives especially Ubuntu is coming up like a dream..</p>
-
-<p>These two are FOSS organisations (now wouldnt want to discuss the FOSS&#8217;ness about Mozilla) and the tussle between two would be a big relief for IE. Just my 2 cents I always think that major FOSS innovations start from GNU/Linux and gradually spreads to other platforms with Windows somewhere in the middle. Taking into account this clash between the two, I am sure the supporters of the respective organisation would boycott the opposition..And hence user base will change. This is bad..Firefox&rsquo;s image would be dented in my opinion..And this would inevitably open doors for IE7 to push forward. Moreover users of Debian and its derivatives are more attached to their OS and I dont think people would switch to another distro because of a name. Here people == end users.</p>
-
-<p>As if the never ending Proprietary vs. Free Softwares were not enough, the tussle between the two organisations has been provoked, not by the <em>other</em> side but by themselves. Clashes between two organisations that are Open Source, is unhealthy for the community. If ever FOSS goes down, it will not be because of the competition with the Proprietary World, but because of the misunderstandings that take place in the community.</p>
-
-<p>No community can sustain itself if it is plagued with clashes like this</p>
-
-<p>In short, Jus get along guys, Bill is grinning at us..:D</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/07/the-pink-swirl-01/">The Pink Swirl 0.1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-07T14:29:00+05:30" pubdate data-updated="true">Oct 7<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/07/the-pink-swirl-01/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/07/the-pink-swirl-01/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>..Check this out</p>
-
-<p><a href="http://www.kde-look.org/content/show.php?content=46918">The Pink Swirl</a></p>
-
-<p>My first artwork submission :D..</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/06/rapid-fire-created-a-rampage-in-my-brain/">Rapid Fire Created a Rampage in My Brain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-06T14:45:00+05:30" pubdate data-updated="true">Oct 6<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/06/rapid-fire-created-a-rampage-in-my-brain/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/06/rapid-fire-created-a-rampage-in-my-brain/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hi,</p>
-
-<p>Went to Valliyamai Engineering College for a symposium called neoRampage. Aptly named</p>
-
-<p>Participated in all the competitions of the second day</p>
-
-<p>Dumb C:</p>
-
-<p>Our team found out two of the 4 clues, but sadly not enough to go through the next round</p>
-
-<p>Quake and NFS UG2:</p>
-
-<p>Wow..been a year since I had gamed. Played quake pretty well. Managed to get frag 5 times,..NFS UG2..Winner in the 1st round.:) 4th in the second..:(</p>
-
-<p>Quiz:</p>
-
-<p>Qualified for the last around after a tiring 1st round. 1st place till the last round. 3rd in the last..@#!@$ :(</p>
-
-<p>Anyways the day was not one of the greatest today. Last night I had changed my broadband login id from <user>@dataone to <user>@dataone.in&hellip;Couldnt connect..</p>
-
-<p>Had to take help from BSNL Tech Support to figure that ouy. Self-Respect at the lowest..</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/04/i-v-ahoy/">I v Ahoy!!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-04T17:05:00+05:30" pubdate data-updated="true">Oct 4<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/04/i-v-ahoy/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/04/i-v-ahoy/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Went for an industrial visit to HCL technologies near Pondycherry,</p>
-
-<p>Its an assembly line where they assemble Desktops, Notebooks and Servers (the last ones made me cry&hellip;)</p>
-
-<p>A kind lady led us through the entire assembly line. The tour lasted for 45 minutes..It was kinda cool actually with all the peripherals and juicy stuff lying around..I tried to nick a server board, but it was too large and I gave up..Got some nuts and bolts though&hellip;:)</p>
-
-<p>The desktop assembly line was pretty obvious, motherboards, replications and all..</p>
-
-<p>The servers were a whole new story..They showed us a monster of a machine with some 8 &ndash; 10 hot swappable HD, huge gigs of RAM, and a Cabinet that looked like a small refrigerator..8 lakhs was the price..(Started saving for it ASAP)&hellip;Oh and btw the fact that customers wanted Linux in these machines didnt come out as a surprise..</p>
-
-<p>And not to mention some slick notebooks.. All these guys testing these stuff out made me kinda jealous.
-So in a 14 hour trip if 2 hours were spent for I V, what happened to the remaining time?&hellip;Would like to remind you that we went to Pondy, Take the hint&hellip;:)</p>
-
-<p>Returned home really late&hellip;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/02/3-kms-in-1-hour/">3 Kms in 1 Hour</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-02T12:07:00+05:30" pubdate data-updated="true">Oct 2<span>nd</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/02/3-kms-in-1-hour/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/02/3-kms-in-1-hour/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yup, thats right..Thats how long it took for me to travel from my grandmas house to mine. The roads nearby look like they have been hit by 10.5 earthquake..Stupid Corporation lays a road, and turns them upside down two weeks after.</p>
-
-<p>I had the misfortune of navigating through one of the most horrible roads constructed in human history. I am just thankful I returned in one piece. My vehicle, (rather my mom&rsquo;s; a bajaj spirit) was not so lucky, On reaching home, the garland put on it for the Durga pooja was reduced to a single thread, and the centre stand crippled like it was infected with polio.</p>
-
-<p>WRC, Listen up and listen tight. You guys should consider Chromepet for the next years&#8217; rally championship. (Oh wait..that might not be safe for the drivers..)</p>
-
-<p>And as for the TN Government, you can take my middle finger of my left hand..:)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/01/10/">No Content Found</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-01T16:25:00+05:30" pubdate data-updated="true">Oct 1<span>st</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/01/10/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/01/10/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>Your EQ is 127</strong></p>
-
-<p><img src="http://images.blogthings.com/whatsyoureqquiz/emotions.jpg" alt="" /> 50 or less: Thanks for answering honestly. Now get yourself a shrink, quick!
-51-70: When it comes to understanding human emotions, you&rsquo;d have better luck understanding Chinese.
-71-90: You&rsquo;ve got more emotional intelligence than the average frat boy. Barely.
-91-110: You&rsquo;re average. It&rsquo;s easy to predict how you&rsquo;ll react to things. But anyone could have guessed that.
-111-130: You usually have it going on emotionally, but roadblocks tend to land you on your butt.
-131-150: You are remarkable when it comes to relating with others. Only the biggest losers get under your skin.
-150+: Two possibilities &ndash; you&rsquo;ve either out &ldquo;Dr. Phil-ed&rdquo; Dr. Phil&hellip; or you&rsquo;re a dirty liar.</p>
-
-<p><a href="http://www.blogthings.com/whatsyoureqquiz/">What&rsquo;s Your EQ (Emotional Intelligence Quotient)?</a></p>
-
-<p>WOW, Probably my highest score in a long long time..</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/09/30/linux-geek-windoze-n00b/">Linux Geek, Windoze N00b</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-09-30T13:28:00+05:30" pubdate data-updated="true">Sep 30<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/09/30/linux-geek-windoze-n00b/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/09/30/linux-geek-windoze-n00b/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Now I dont call myself much of a linux geek, but atleast I know GNU/Linux more than some of the others.</p>
-
-<p>Today By the way went to CRIS, Centre for Railways Information Systems, along with tuxmaniac to give a hands on training in <a href="http://www.eclipse.org">Eclipse</a>, &amp; <a href="http://www.eclipse.org/cdt">CDT</a>.</p>
-
-<p>techno_freak and Dr. Sreenivasan, both from <a href="http://nrcfoss.org.in">NRCFOSS</a> accompanied us, since it was AU-KBC which was instrumental in organizing this event</p>
-
-<p>This is where the fun starts. There were about 10 people for the event. All the boxes were running doze. We struggled installing CDT, of course its just a matter of extracting it correctly, but it was alien to us. I had never used doze as as primary OS  for a long long time, 1 year to be exact.</p>
-
-<p>First stop, since CDT requires cygwin or Mingw32 to run, we had trouble configuring gcc, gdb to work properly with Eclipse. And the most frustrating was, the fact Eclipse forgot the changes we made to the environment variables and location of the gcc compilers everytime we restart or create a new project. Must be some bug, dunno.</p>
-
-<p>After using all our neurons, and doing some hacks for about..hmmm an hour we dived into the topic, Of course the guys there helped us! tuxmaniac started off with slides about Eclipse and IDEs in general and then I showed installation, configuration and general working of Eclipse and CDT. After lunch, we came back and tuxmaniac started a session about debugging in gdb. We got really silly messages and wasted about half an hour, telling eclipse where gdb was located again and again..</p>
-
-<p>tuxmaniac showed off aiglx on his dapper amidst ooohs and aaahs of the audience..Now thats an area I am comfortable..</p>
-
-<p>All said, it was a nice experience as we were able to expose the people there to  eclipse and cdt at a basic level. Looks like they would contact us again, lets see.</p>
-
-<p>But the best part was, the people themselves got to solve all the troubles with our help.. (yeah right)</p>
-
-<p>Doesnt it jus show..Linux is user friendly..I missed my terminal for a whole day..Returning home I am dazed and swear that I am not gonna use doze again&hellip;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/09/30/edgy-beta/">Edgy Beta</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-09-30T13:02:00+05:30" pubdate data-updated="true">Sep 30<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/09/30/edgy-beta/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/09/30/edgy-beta/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Felt like doing an &lsquo;sudo apt-get dist-upgrade&rsquo; to upgrade to edgy,</p>
-
-<p>Edgy, by the way is the yet to be released version of ubuntu..<a href="http://www.ubuntu.com">Check her out</a></p>
-
-<p>Heres what I did,</p>
-
-<p>First, replace all instances of dapper in source.list to edgy</p>
-
-<p>Second, sudo apt-get update</p>
-
-<p>and finally sudo apt-get dist-upgrade</p>
-
-<p>Just make sure , you have the *buntu-desktop installed, otherwise the upgrade will break..</p>
-
-<p>Edgy packs with all the latest stuff, Firefox Bon Echo, GNOME 2.16, KDE 3.5.4 and pretty much the latest software, The bootsplash is nothing short of slick..</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/09/27/hating-java-for-another-reason/">Hating Java for Another Reason</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-09-27T13:06:00+05:30" pubdate data-updated="true">Sep 27<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/09/27/hating-java-for-another-reason/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/09/27/hating-java-for-another-reason/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Remember the Java seminar i was talking about&hellip;.I turned out to be a total mess&hellip;Yeah rite..how would people listen to someone who sits on the last bench and makes the classroom a total chaos for the lecturers..</p>
-
-<p>Besided Eclipse and OO, both of them based on java (I think) runs slooooowww on my box.. I dont get it..Why does portability matter when you cant support a somewhat older hardware ..Mine is just two years old btw..</p>
+<blockquote><blockquote><blockquote><p>print &ldquo;Hello World..Welcome to my new blog&rdquo;</p></blockquote></blockquote></blockquote>
 </div>
   
   
@@ -642,8 +121,6 @@ So in a 14 hour trip if 2 hours were spent for I V, what happened to the remaini
     </article>
   
   <div class="pagination">
-    
-      <a class="prev" href="/blog/page/12/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -658,6 +135,14 @@ So in a 14 hour trip if 2 hours were spent for I V, what happened to the remaini
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Migrating From Wordpress to Octopress</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
       </li>
     
@@ -667,14 +152,6 @@ So in a 14 hour trip if 2 hours were spent for I V, what happened to the remaini
     
       <li class="post">
         <a href="/blog/2013/05/11/i/">I</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
       </li>
     
   </ul>
