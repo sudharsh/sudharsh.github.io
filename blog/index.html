@@ -9,13 +9,8 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface 1
-2
-3
-4
-5
-6
-(defn ip-for-interface [interface &hellip;">
+  <meta name="description" content="I gifted myself an Arduino Starter Kit from Simplelabs to kill some time during the weekends.
+Needless to say, I felt really proud of myself once I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +82,631 @@
     <article class="post">
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/12/07/jenkins-build-status-on-arduino/">Jenkins Build Status on Arduino</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T22:58:00+05:30" pubdate data-updated="true">Dec 7<span>th</span>, 2013</time>
+        
+           | <a href="/blog/2013/12/07/jenkins-build-status-on-arduino/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2013/12/07/jenkins-build-status-on-arduino/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I gifted myself an Arduino Starter Kit from <a href="http://www.simplelabs.co.in">Simplelabs</a> to kill some time during the weekends.
+Needless to say, I felt really proud of myself once I got the <a href="http://arduino.cc/en/tutorial/blink">LED blink example</a> working without breaking anything.</p>
+
+<p>My next project was a simple <a href="http://jenkins-ci.org/">Jenkins</a> build monitor, very popular amongst the Arduino beginners out there who write code.</p>
+
+<p>Here is my version of this hack. In addition to the usual &lsquo;traffic light&rsquo;, I also plonked on a 16x2 LCD to the circuit which displays the build number along with the status. Scroll down to the end of this post to see this in action.</p>
+
+<h2>Schema</h2>
+
+<p><img src="/images/Jenkins.png" /></p>
+
+<p>I used <a href="http://fritzing.org/">Fritzing</a> to draw this schema and I know it&rsquo;s a little bit ugly.</p>
+
+<p>Anyway, successful builds turn on the Green LED; Unstable builds, yellow; Failed builds, red and my favorite of all, builds in progress makes the LEDs turn into <a href="http://en.wikipedia.org/wiki/KITT">KITT</a> from Knight Rider :P.</p>
+
+<h2>Code</h2>
+
+<p>The code is pretty simple. There is a Python script that uses the Jenkins REST API to get the latest build and its status for a given a job.
+This is translated into a crude command for the Arduino board to pick up using the Serial interface.</p>
+
+<h4>Python side of things</h4>
+
+<figure class='code'><figcaption><span> (jenkins_status.py)</span> <a href='/downloads/code/jenkins_status.py'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c"># Copyright 2013 Sudharshan S</span>
+</span><span class='line'><span class="c"># This work is free. You can redistribute it and/or modify it under the</span>
+</span><span class='line'><span class="c"># terms of the Do What The Fuck You Want To Public License, Version 2,</span>
+</span><span class='line'><span class="c"># as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">glob</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">serial</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">jenkinsapi.jenkins</span> <span class="kn">import</span> <span class="n">Jenkins</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">led_states</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s">&quot;BLINKING&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;ALWAYS&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;OFF&quot;</span><span class="p">:</span> <span class="mi">4</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">led_pins</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s">&quot;RED&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;YELLOW&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;GREEN&quot;</span><span class="p">:</span> <span class="mi">8</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># LED behaviour for each Jenkins State</span>
+</span><span class='line'><span class="n">jenkins_states</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s">&quot;SUCCESS&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;GREEN&quot;</span><span class="p">:</span> <span class="s">&quot;ALWAYS&quot;</span><span class="p">},</span>
+</span><span class='line'>    <span class="s">&quot;FAILURE&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;RED&quot;</span><span class="p">:</span> <span class="s">&quot;ALWAYS&quot;</span><span class="p">},</span>
+</span><span class='line'>    <span class="s">&quot;UNSTABLE&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;YELLOW&quot;</span><span class="p">:</span> <span class="s">&quot;ALWAYS&quot;</span><span class="p">},</span>
+</span><span class='line'>    <span class="s">&quot;RUNNING&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&quot;GREEN&quot;</span> <span class="p">:</span> <span class="s">&quot;BLINKING&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&quot;RED&quot;</span>   <span class="p">:</span> <span class="s">&quot;BLINKING&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s">&quot;YELLOW&quot;</span><span class="p">:</span> <span class="s">&quot;BLINKING&quot;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="s">&quot;NOT_BUILT&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s">&quot;YELLOW&quot;</span><span class="p">:</span> <span class="s">&quot;BLINKING&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">ttymodem</span><span class="p">(</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">9600</span><span class="p">):</span>
+</span><span class='line'>    <span class="c"># Change this Glob if you are using Linux</span>
+</span><span class='line'>    <span class="n">devices</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&quot;/dev/tty.usbmodem*&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="n">devices</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;Probably modem not connected&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">board</span> <span class="o">=</span> <span class="n">devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="n">baudrate</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">job</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;Connecting to the jenkins url: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">j</span> <span class="o">=</span> <span class="n">Jenkins</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">j</span><span class="p">[</span><span class="n">job</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">padded</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">padding</span><span class="p">)</span>
+</span><span class='line'>    <span class="c"># The first character of every line that is sent to the board</span>
+</span><span class='line'>    <span class="c"># is a &#39;command&#39; that will be read by the Arduino Sketch to do</span>
+</span><span class='line'>    <span class="c"># something</span>
+</span><span class='line'>    <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;{0}{1}</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">padded</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;Writing message --{0}--&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span><span class='line'>    <span class="n">board</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">get_leds</span><span class="p">(</span><span class="n">build_state</span><span class="p">):</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Given a build state, get the line messages to be sent to the board</span>
+</span><span class='line'><span class="sd">    For now, just handle RUNNING, FAILURE and SUCCESS builds&quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="n">commands</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">build_state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">jenkins_states</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">commands</span>
+</span><span class='line'>    <span class="n">led_behaviour</span> <span class="o">=</span> <span class="n">jenkins_states</span><span class="p">[</span><span class="n">build_state</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">led_color</span><span class="p">,</span> <span class="n">led_state</span> <span class="ow">in</span> <span class="n">led_behaviour</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span class='line'>        <span class="n">pin</span> <span class="o">=</span> <span class="n">led_pins</span><span class="p">[</span><span class="n">led_color</span><span class="p">]</span>
+</span><span class='line'>        <span class="n">state</span> <span class="o">=</span> <span class="n">led_states</span><span class="p">[</span><span class="n">led_state</span><span class="p">]</span>
+</span><span class='line'>        <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pin</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">commands</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">poll_interval</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;Sleeping for a bit&quot;</span>
+</span><span class='line'>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;Poll interval set to {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">poll_interval</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">build</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get_last_build_or_none</span><span class="p">()</span>
+</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="n">build</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">print</span> <span class="s">&quot;No build found&quot;</span>
+</span><span class='line'>            <span class="k">continue</span>
+</span><span class='line'>        <span class="n">build_status</span> <span class="o">=</span> <span class="n">build</span><span class="o">.</span><span class="n">get_status</span><span class="p">()</span>
+</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="n">build_status</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">build_status</span> <span class="o">=</span> <span class="s">&quot;RUNNING&quot;</span> <span class="k">if</span> <span class="n">build</span><span class="o">.</span><span class="n">is_running</span> <span class="k">else</span> <span class="s">&quot;QUEUED&quot;</span>
+</span><span class='line'>        <span class="n">status</span> <span class="o">=</span> <span class="s">&quot;{0} - {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">build_status</span><span class="p">,</span> <span class="n">build</span><span class="o">.</span><span class="n">get_number</span><span class="p">())</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Writing build status {0} to the board&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">write</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">led_commands</span> <span class="o">=</span> <span class="n">get_leds</span><span class="p">(</span><span class="n">build_status</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">led_commands</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">write</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">build_status</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&quot;RUNNING&quot;</span><span class="p">,</span> <span class="s">&quot;NOT_BUILT&quot;</span><span class="p">]:</span>
+</span><span class='line'>            <span class="c"># Continuosly bombard the board with the</span>
+</span><span class='line'>            <span class="c"># blink commands. Looks Knight Riderish</span>
+</span><span class='line'>            <span class="k">pass</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">poll_interval</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="c"># Run this like so</span>
+</span><span class='line'>    <span class="c"># python jenkins_status.py &lt;jenkins_url&gt; &lt;job_name&gt;</span>
+</span><span class='line'>    <span class="c"># eg: $ python jenkins_status.py https://builds.apache.org Kafra</span>
+</span><span class='line'>    <span class="n">url</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">job_name</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'>    <span class="n">board</span> <span class="o">=</span> <span class="n">ttymodem</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">job</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">job_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">write</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">job_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">write</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Connecting...&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">loop</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">job</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>The &lsquo;Sketch&rsquo;</h4>
+
+<figure class='code'><figcaption><span> (jenkins.ino)</span> <a href='/downloads/code/jenkins.ino'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cm">/*</span>
+</span><span class='line'><span class="cm">  Copyright 2013 Sudharshan S</span>
+</span><span class='line'><span class="cm">  This work is free. You can redistribute it and/or modify it under the</span>
+</span><span class='line'><span class="cm">  terms of the Do What The Fuck You Want To Public License, Version 2,</span>
+</span><span class='line'><span class="cm">  as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="cp">#include &lt;LiquidCrystal.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;Serial.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">LiquidCrystal</span> <span class="n">lcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* The input data to the board */</span>
+</span><span class='line'><span class="n">String</span> <span class="n">d_input</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">print_lcd</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">led_pins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span> <span class="p">};</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">led_state</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#define LCD_BACKLIGHT_PIN 13</span>
+</span><span class='line'><span class="cp">#define LED_COUNT 3</span>
+</span><span class='line'><span class="cp">#define BAUD_RATE 9600</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">enum</span> <span class="n">SerialCommands</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// LCD Cursor control</span>
+</span><span class='line'>    <span class="n">LCD_SET_ROW_FIRST</span> <span class="o">=</span> <span class="mh">0x30</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">LCD_SET_ROW_SECOND</span> <span class="o">=</span> <span class="mh">0x31</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// LED States</span>
+</span><span class='line'>    <span class="n">LED_SET_BLINKING</span> <span class="o">=</span> <span class="mh">0x32</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">LED_SET_ALWAYS</span> <span class="o">=</span> <span class="mh">0x33</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">LED_SET_OFF</span> <span class="o">=</span> <span class="mh">0x34</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// LED PINs</span>
+</span><span class='line'>    <span class="n">LED_RED</span> <span class="o">=</span> <span class="mh">0x36</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">LED_YELLOW</span> <span class="o">=</span> <span class="mh">0x37</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">LED_GREEN</span> <span class="o">=</span> <span class="mh">0x38</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">setup</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Init Serial</span>
+</span><span class='line'>    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">BAUD_RATE</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// LCD Display initialization</span>
+</span><span class='line'>    <span class="n">pinMode</span><span class="p">(</span><span class="n">LCD_BACKLIGHT_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LCD_BACKLIGHT_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">lcd</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">lcd</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Waiting...&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;for Input&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Activate all the LEDs</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LED_COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">pinMode</span><span class="p">(</span><span class="n">led_pins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">OUTPUT</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">led_pins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">HIGH</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">command_mode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">last_led</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">last_led_state</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Switch off all LEDs</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">clearLEDs</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LED_COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">led_pins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">LOW</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">clearLCD</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">d_input</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">print_lcd</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* Every input line to the board starts with a single character</span>
+</span><span class='line'><span class="cm">   which acts as the command to be executed.</span>
+</span><span class='line'><span class="cm">   In our case, these commands do one of the following</span>
+</span><span class='line'><span class="cm">   - Set LCD cursor to corresponding row</span>
+</span><span class='line'><span class="cm">   - Set the LED whose state has to be changed</span>
+</span><span class='line'><span class="cm">   - Set the state of the LED</span>
+</span><span class='line'><span class="cm">   Granted, we can have only 9 commands in this implementation ;)</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">execCommand</span><span class="p">(</span><span class="kt">int</span> <span class="n">command</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">switch</span><span class="p">(</span><span class="n">command</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LCD_SET_ROW_FIRST:</span>
+</span><span class='line'>        <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Setting cursor to Row 0&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LCD_SET_ROW_SECOND:</span>
+</span><span class='line'>        <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Setting cursor to Row 1&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LED_SET_BLINKING:</span>
+</span><span class='line'>        <span class="c1">// Cue the Knight Rider theme music</span>
+</span><span class='line'>        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">last_led</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">last_led</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LED_SET_ALWAYS:</span>
+</span><span class='line'>        <span class="n">clearLEDs</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">last_led</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LED_SET_OFF:</span>
+</span><span class='line'>        <span class="n">clearLEDs</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">last_led</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LED_RED:</span>
+</span><span class='line'>        <span class="n">last_led</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LED_YELLOW:</span>
+</span><span class='line'>        <span class="n">last_led</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="nl">LED_GREEN:</span>
+</span><span class='line'>        <span class="n">last_led</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">readSerial</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kt">char</span> <span class="n">recvd</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+</span><span class='line'>        <span class="cm">/* The first character of each line to the board</span>
+</span><span class='line'><span class="cm">           is the command to be executed</span>
+</span><span class='line'><span class="cm">        */</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">command_mode</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">execCommand</span><span class="p">(</span><span class="n">recvd</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">command_mode</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">switch</span><span class="p">(</span><span class="n">recvd</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="sc">&#39;\n&#39;</span><span class="o">:</span>
+</span><span class='line'>            <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Board received: &quot;</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">d_input</span><span class="p">);</span>
+</span><span class='line'>            <span class="c1">// Setting this flag flushes the data onto the LCD</span>
+</span><span class='line'>            <span class="n">print_lcd</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">command_mode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>            <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">default</span><span class="o">:</span>
+</span><span class='line'>            <span class="n">d_input</span> <span class="o">+=</span> <span class="n">recvd</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">loop</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">readSerial</span><span class="p">();</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">print_lcd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">d_input</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">clearLCD</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>In Action</h2>
+
+<p>Here it is in action. As you can see, the LCD displays the Job, the last build number and its state.
+The wiring is a huge mess, but hey, it works! :)</p>
+
+<p><img src="/images/20131207_184155.jpg" /></p>
+
+<h2>Components used</h2>
+
+<ul>
+<li>Arduino UNO R3</li>
+<li>5 220-ohm resistors</li>
+<li>3 LEDs; Green, Red and Yellow</li>
+<li>A bunch of wires</li>
+<li>HD44780 <a href="http://www.adafruit.com/products/181">16x2 LCD</a></li>
+</ul>
+
+
+<p>Next step, maybe build a bigger housing for the entire system.</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a></h1>
     
     
@@ -131,43 +751,6 @@
 
 
 <p>Of course, fails horribly with an <code>NullPointerException</code> if the interface is not present :)</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Migrating From Wordpress to Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-26T14:33:00+05:30" pubdate data-updated="true">Oct 26<span>th</span>, 2013</time>
-        
-           | <a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wordpress</p>
 </div>
   
   

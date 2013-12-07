@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="ETK is a gui toolkit similar to gtk and is a part of Enlightenment Foundation Libraries or EFL. The syntax is very similar to GTK with only minor &hellip;">
+  <meta name="description" content="I use glade to design UI for my project. So one day when I came to know that Glade3 has been released (rather late, actually) I decided to give it a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,139 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/26/glade-3-and-libglade/">Glade 3 and Libglade</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-26T17:53:00+05:30" pubdate data-updated="true">Nov 26<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/26/glade-3-and-libglade/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/26/glade-3-and-libglade/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I use glade to design UI for my project. So one day when I came to know that Glade3 has been released (rather late, actually) I decided to give it a shot. Glade 3 has its UI cranked so that you can efficiently create UI for your project..:|.. Anyway I dont know if it is just me but Glade 3 is slower than its predecessor and also crashed once in a while, especially when I was working with the design of the menu structure. On a happier note though, the crappy source code generation &ldquo;feature&rdquo; has been completely removed.. Yup&hellip;Glade2 had this feature wherein you could generate all the callback code..(That gave me nightmares..)</p>
+
+<p>So with Glade, it is recommended to use libglade (and out of my own experience) to load the glade file during program execution. This has some advantages from the code generation.. First you carry less source code and somehow I felt it made my program clean. Secondly you dont have to recompile the entire project when you make changes to the UI. This is because the code generation in glade creates a separate source file called interface.c where all the UI code gets in by default as though you have hand coded them. But with libglade that doesnt exist since glade xml gets loaded during runtime kinda like in PyGTk if you know it.</p>
+
+<p>Oh..and if you get the warning like
+<code>libglade-WARNING: couldn't find the signal handler "some_signal_handler"</code>
+This is because libglade couldnt find the symbols properly. Just add the &ldquo;&mdash;export-dynamic&rdquo; flag while compiling and you are done.</p>
+
+<p><strong>References:</strong>
+<a href="http://glade.gnome.org/">Glade UI Builder</a>
+<a href="http://www.jamesh.id.au/software/libglade/">libglade</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/19/learning-from-mistakesthe-hard-way/">Learning From Mistakes.. The Hard Way</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-19T07:38:00+05:30" pubdate data-updated="true">Nov 19<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/19/learning-from-mistakesthe-hard-way/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/19/learning-from-mistakesthe-hard-way/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There are times when you screw so bad that you will never ever do that again. Yesterday an innocent rm * -rf deleted my full workspace and all my gMedCon Project files went kaput. A Whole week of work down the drain. gMedCon CVS at sourceforge is dead now thanks to me after my decision to cleanup the repository. So no backup code there either. I  have to start evrything from scratch. Thankfully glade3 doesnt have code generation, to mess stuff up.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/16/gmedcon/">GMedCon</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-16T08:11:00+05:30" pubdate data-updated="true">Nov 16<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/16/gmedcon/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/16/gmedcon/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Howdie,</p>
+
+<p>I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net.</p>
+
+<p><a href="http://gmedcon.sourceforge.net">Click here</a> to visit the project page</p>
+
+<p>xmedcon is a tool that is used to manipulate dicom images, a standard used in medical imagery. If you would like to help please give me a ping</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -473,215 +606,6 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/21/happy-diwali/">Happy Diwali!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-21T02:29:00+05:30" pubdate data-updated="true">Oct 21<span>st</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/21/happy-diwali/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/21/happy-diwali/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Everyone, Happy Diwali..</p>
-
-<p>Finally Gentoo irritated me to an extent that I have fully switched to Edgy. No offence meant, but gentoo is a great distro if you have the time and patience to cut it. But sadly I don&rsquo;t have either. 6 months of relationship with gentoo was insightful..</p>
-
-<p>Spent the whole night yesterday installing and configuring Edgy.</p>
-
-<p>First installed from the dapper cds</p>
-
-<p>Then dist-upgraded to edgy and after that installed kubuntu-desktop and removed GNOME..</p>
-
-<p>Let me tell you, upstart is kick ass application. Boots to my desktop really really fast.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/17/oracle-linux/">Oracle Linux?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-17T16:54:00+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/17/oracle-linux/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/17/oracle-linux/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Oracle is going to release its own Linux distribution if the following article is to be believed..</p>
-
-<p><a href="http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811">http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811</a></p>
-
-<p>RedHat and Novell will definitely find this interesting. Am kinda wondering, if Oracle were to release its own distribution, Linux will become more famous. I guess its the &lsquo;ORACLE&rsquo; name&hellip;.</p>
-
-<p>Of course it would be an expensive-enterprise-kinda-distro, Would be really interesting to see what happens&hellip;An Oracle Database Server running on an Oracle developed OS does instill some curiosity,..</p>
-
-<p>Hmm..Wondering whether they would go in for GNOME or KDE as the default DE..</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Configuring BSNL Dataone Broadband in Linux</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-17T13:56:00+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/17/configuring-bsnl-dataone-broadband-in-linux/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Whatever you do..insist on an ethernet based router&hellip;You save a lot of aspirin and usb ports..</p>
-
-<p>Oh and router=modem in this article&hellip;</p>
-
-<p><strong>DHCP way:</strong></p>
-
-<p>The most simple way of course is to use DHCP to set up your network automatically, In most cases everything gets configured automagically. If not enabled you should start the DHCP server by logging into the admin interface. See the wikipedia article to know more about DHCP.
-<a href="http://en.wikipedia.org/wiki/Dhcp">http://en.wikipedia.org/wiki/Dhcp</a></p>
-
-<p><strong>pppoeconf:</strong></p>
-
-<p>In ubuntu there should be a program called pppoeconf installed by default, just run
-<code>sudo pppoeconf</code>
-You will be taken through a set of screens wherein you will be able to enter the details regarding your dataone account, Mostly configuring the DNS isnt required. Just rememeber that it is <user>@dataone and not <user>@dataone.in</p>
-
-<p>Then to connect use
-<code>pon dsl-provider</code>
-if you have followed the default steps.</p>
-
-<p><code>poff dsl-provider</code>
-to disconnect and
-<code>plog</code>
-to view status</p>
-
-<p>In gentoo this tool is known an rp-pppoe, only the name differs..although its wizard is command line rather than the ncurses based pppoeconf</p>
-
-<p><strong>Configuring the router directly:</strong></p>
-
-<p>Of course another alternative is to use the admin interface available in the router provided. First make sure your box is detecting the ethernet interface correctly</p>
-
-<p>next..
-<code>ifconfig eth0 up 192.168.1.2</code>
-and&hellip;
-<code>route add default gw 192.168.1.1</code></p>
-
-<p>Point your browser to 192.168.1.1 and you should be greeted with the admin interface of your router. I use a Huawei Sterlite WA1003A.</p>
-
-<p>username and password are admin.</p>
-
-<p>After logging in goto Modem Setup, PVC0</p>
-
-<p>select pppoe, fill in the details, save the settings and restart the router&hellip;Your modem should automatically dial-in.</p>
-
-<p>Most distros have gui to configure this stuff, But some of us are smarter than the others and use distros like gentoo..For those users..:P</p>
-
-<p>open up /etc/conf.d/net</p>
-
-<p>and add/modify
-<code>iface_eth0="192.168.1.2 broadcast 192.168.1.255 netmask 255.255.255.0"
-gateway="eth0/192.168.1.1"</code></p>
-
-<p>After saving the file do a
-<code>/etc/init.d/net.eth0 restart</code></p>
-
-<p><strong>If nothing works:</strong>
-So if  these steps dont work..there a last chance. Most of the times resolv.conf is to be blamed, Double check if its ok, Even if you have valid nameservers try putting the following in /etc/resolv.conf.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.1</span>
-</span><span class='line'><span class="err">nameserver</span> <span class="err">4.2.2.2</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>These are public nameservers.
-If it still doesnt work..you may have goofed up somewhere..</p>
-
-<p><strong>Note:</strong></p>
-
-<ul>
-<li><p>Configuring the router directly is more convenient since the configuration sits in your router rather than your system. So if you in some point lose your data, all you need to do to configure the internet is to configure the interfaces of the modem. Also  when using pppoeconf,   when I chose to enable the connection during boot time I found that my system was taking more time to boot, but this time delay was not experienced when I configured the connection through the admin interface of the router. Of course if for some reason, if the modem is restarted you need not execute the &lsquo;pon&rsquo; command to connect when you configure the router directly. It automatically connects.</p></li>
-<li><p>Use any one of the methods..not both</p></li>
-<li><p>Sometimes if you have two ethernet interfaces you may need to disable one of them</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -699,11 +623,11 @@ If it still doesnt work..you may have goofed up somewhere..</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a>
+        <a href="/blog/2013/12/07/jenkins-build-status-on-arduino/">Jenkins Build Status on Arduino</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/10/26/migrating-from-wordpress-to-octopress/">Migrating From Wordpress to Octopress</a>
+        <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a>
       </li>
     
       <li class="post">
