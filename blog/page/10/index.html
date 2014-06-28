@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="Howdie, I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at sourceforge.net. Click here to visit the &hellip;">
+  <meta name="description" content="I use glade to design UI for my project. So one day when I came to know that Glade3 has been released (rather late, actually) I decided to give it a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,94 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/26/glade-3-and-libglade/">Glade 3 and Libglade</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-26T17:53:00+05:30" pubdate data-updated="true">Nov 26<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/26/glade-3-and-libglade/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/26/glade-3-and-libglade/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I use glade to design UI for my project. So one day when I came to know that Glade3 has been released (rather late, actually) I decided to give it a shot. Glade 3 has its UI cranked so that you can efficiently create UI for your project..:|.. Anyway I dont know if it is just me but Glade 3 is slower than its predecessor and also crashed once in a while, especially when I was working with the design of the menu structure. On a happier note though, the crappy source code generation &ldquo;feature&rdquo; has been completely removed.. Yup&hellip;Glade2 had this feature wherein you could generate all the callback code..(That gave me nightmares..)</p>
+
+<p>So with Glade, it is recommended to use libglade (and out of my own experience) to load the glade file during program execution. This has some advantages from the code generation.. First you carry less source code and somehow I felt it made my program clean. Secondly you dont have to recompile the entire project when you make changes to the UI. This is because the code generation in glade creates a separate source file called interface.c where all the UI code gets in by default as though you have hand coded them. But with libglade that doesnt exist since glade xml gets loaded during runtime kinda like in PyGTk if you know it.</p>
+
+<p>Oh..and if you get the warning like
+<code>libglade-WARNING: couldn't find the signal handler "some_signal_handler"</code>
+This is because libglade couldnt find the symbols properly. Just add the &ldquo;&mdash;export-dynamic&rdquo; flag while compiling and you are done.</p>
+
+<p><strong>References:</strong>
+<a href="http://glade.gnome.org/">Glade UI Builder</a>
+<a href="http://www.jamesh.id.au/software/libglade/">libglade</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/19/learning-from-mistakesthe-hard-way/">Learning From Mistakes.. The Hard Way</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-19T07:38:00+05:30" pubdate data-updated="true">Nov 19<span>th</span>, 2006</time>
+        
+           | <a href="/blog/2006/11/19/learning-from-mistakesthe-hard-way/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2006/11/19/learning-from-mistakesthe-hard-way/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There are times when you screw so bad that you will never ever do that again. Yesterday an innocent rm * -rf deleted my full workspace and all my gMedCon Project files went kaput. A Whole week of work down the drain. gMedCon CVS at sourceforge is dead now thanks to me after my decision to cleanup the repository. So no backup code there either. I  have to start evrything from scratch. Thankfully glade3 doesnt have code generation, to mess stuff up.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -518,102 +606,6 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/21/happy-diwali/">Happy Diwali!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-21T02:29:00+05:30" pubdate data-updated="true">Oct 21<span>st</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/21/happy-diwali/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/21/happy-diwali/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Everyone, Happy Diwali..</p>
-
-<p>Finally Gentoo irritated me to an extent that I have fully switched to Edgy. No offence meant, but gentoo is a great distro if you have the time and patience to cut it. But sadly I don&rsquo;t have either. 6 months of relationship with gentoo was insightful..</p>
-
-<p>Spent the whole night yesterday installing and configuring Edgy.</p>
-
-<p>First installed from the dapper cds</p>
-
-<p>Then dist-upgraded to edgy and after that installed kubuntu-desktop and removed GNOME..</p>
-
-<p>Let me tell you, upstart is kick ass application. Boots to my desktop really really fast.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/10/17/oracle-linux/">Oracle Linux?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-17T16:54:00+05:30" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/10/17/oracle-linux/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/10/17/oracle-linux/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Oracle is going to release its own Linux distribution if the following article is to be believed..</p>
-
-<p><a href="http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811">http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811</a></p>
-
-<p>RedHat and Novell will definitely find this interesting. Am kinda wondering, if Oracle were to release its own distribution, Linux will become more famous. I guess its the &lsquo;ORACLE&rsquo; name&hellip;.</p>
-
-<p>Of course it would be an expensive-enterprise-kinda-distro, Would be really interesting to see what happens&hellip;An Oracle Database Server running on an Oracle developed OS does instill some curiosity,..</p>
-
-<p>Hmm..Wondering whether they would go in for GNOME or KDE as the default DE..</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -631,6 +623,14 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/07/jenkins-build-status-on-arduino/">Jenkins Build Status on Arduino</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
       </li>
     
@@ -640,14 +640,6 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
     
       <li class="post">
         <a href="/blog/2013/05/11/i/">I</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
       </li>
     
   </ul>

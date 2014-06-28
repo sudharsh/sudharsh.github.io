@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="So, here I am writing from kushal&rsquo;s place with my friend&rsquo;s lappy with wireless internet. Barcamps1 are a way for people to unwind with &hellip;">
+  <meta name="description" content="Got my Semester practicals on Visual Programming tomorrow and I know bollocks about it. There was an urgent need to work out the lab exercises and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,94 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/04/15/winesaves-the-day/">Wine&#8230;saves the Day</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-04-15T14:18:00+05:30" pubdate data-updated="true">Apr 15<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/04/15/winesaves-the-day/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/04/15/winesaves-the-day/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Got my Semester practicals on Visual Programming tomorrow and I know bollocks about it. There was an urgent need to work out the lab exercises and get comfy and cozy with the VC++ IDE (Not one of the favourite students around :)) I did have wine around in my box, but never quite used it. If you are wondering what WINE is; Wine is a Free and Open Source Software that allows you to run most Winblows applications on your Linux box, effectively a port of Win32 platform, not an emulator afaik. So in a sense free Windows (I didnt mean Pirated..).</p>
+
+<p>Got an Old CD of VC++ from my friend, popped it in and installed it without a hitch. I did get errors about some DCOM98 crap, but who the hell cares. I am gonna keep it installed for only one day and will be busting it first time after I finish my practicals tomorrow.</p>
+
+<p>WINE: <a href="http://www.winehq.com">http://www.winehq.com</a></p>
+
+<p>Still dont believe me? Click on the thumbnail below..notice the terminal with the output of uname -r? LINUX PWNS!!!!</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/04/untitled.jpg?w=512"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/04/04/barcamp-bangy-day2/">BarCamp Bangy Day2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-04-04T13:06:00+05:30" pubdate data-updated="true">Apr 4<span>th</span>, 2007</time>
+        
+           | <a href="/blog/2007/04/04/barcamp-bangy-day2/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2007/04/04/barcamp-bangy-day2/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Day 2 of barcamp was more fun, Met some more people..The day ended with a feedback session which was quite enlightening, The day ended with everyone signing their sigs on the large banner. Boy, did I have to catch lalbagh the next morning to catch the train to home.</p>
+
+<p>My only gripe about the event was that, it turned out to be a platform for giving demonstrations rather than a brainstorming event, where everyone gets to use their neurons to solve ideas and discuss them. Also I could see a trend of start ups investing heavily on web 2.0 with many sessions about social networking.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -491,94 +579,6 @@ Portage, probably on par with with Debian Package Management used in Debian, Ubu
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/11/26/glade-3-and-libglade/">Glade 3 and Libglade</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-11-26T17:53:00+05:30" pubdate data-updated="true">Nov 26<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/11/26/glade-3-and-libglade/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/11/26/glade-3-and-libglade/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I use glade to design UI for my project. So one day when I came to know that Glade3 has been released (rather late, actually) I decided to give it a shot. Glade 3 has its UI cranked so that you can efficiently create UI for your project..:|.. Anyway I dont know if it is just me but Glade 3 is slower than its predecessor and also crashed once in a while, especially when I was working with the design of the menu structure. On a happier note though, the crappy source code generation &ldquo;feature&rdquo; has been completely removed.. Yup&hellip;Glade2 had this feature wherein you could generate all the callback code..(That gave me nightmares..)</p>
-
-<p>So with Glade, it is recommended to use libglade (and out of my own experience) to load the glade file during program execution. This has some advantages from the code generation.. First you carry less source code and somehow I felt it made my program clean. Secondly you dont have to recompile the entire project when you make changes to the UI. This is because the code generation in glade creates a separate source file called interface.c where all the UI code gets in by default as though you have hand coded them. But with libglade that doesnt exist since glade xml gets loaded during runtime kinda like in PyGTk if you know it.</p>
-
-<p>Oh..and if you get the warning like
-<code>libglade-WARNING: couldn't find the signal handler "some_signal_handler"</code>
-This is because libglade couldnt find the symbols properly. Just add the &ldquo;&mdash;export-dynamic&rdquo; flag while compiling and you are done.</p>
-
-<p><strong>References:</strong>
-<a href="http://glade.gnome.org/">Glade UI Builder</a>
-<a href="http://www.jamesh.id.au/software/libglade/">libglade</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/11/19/learning-from-mistakesthe-hard-way/">Learning From Mistakes.. The Hard Way</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-11-19T07:38:00+05:30" pubdate data-updated="true">Nov 19<span>th</span>, 2006</time>
-        
-           | <a href="/blog/2006/11/19/learning-from-mistakesthe-hard-way/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2006/11/19/learning-from-mistakesthe-hard-way/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There are times when you screw so bad that you will never ever do that again. Yesterday an innocent rm * -rf deleted my full workspace and all my gMedCon Project files went kaput. A Whole week of work down the drain. gMedCon CVS at sourceforge is dead now thanks to me after my decision to cleanup the repository. So no backup code there either. I  have to start evrything from scratch. Thankfully glade3 doesnt have code generation, to mess stuff up.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -596,6 +596,14 @@ This is because libglade couldnt find the symbols properly. Just add the &ldquo;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/07/jenkins-build-status-on-arduino/">Jenkins Build Status on Arduino</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/">Getting IP of an Interface in Clojure</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/">Hiccup: Organizing Templates Using Multimethods</a>
       </li>
     
@@ -605,14 +613,6 @@ This is because libglade couldnt find the symbols properly. Just add the &ldquo;
     
       <li class="post">
         <a href="/blog/2013/05/11/i/">I</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/25/brooks-was-here/">&#8220;Brooks Was Here&#8221;</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/01/chile-alla-vamos/">Chile, Alla Vamos!</a>
       </li>
     
   </ul>

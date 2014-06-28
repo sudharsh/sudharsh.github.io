@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: gsoc | 42]]></title>
+  <link href="http://sudharsh.me/blog/categories/gsoc/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-12-08T00:24:16+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
+    <link href="http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009/"/>
+    <updated>2009-04-05T13:56:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009</id>
+    <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
+
+<p>On a brighter note, FSO has started work on the Vala/C implemention of the reference Python implementation named <a href="http://git.freesmartphone.org/?p=cornucopia.git;a=summary">cornucopia</a>, which mainly aims at the general defragmentation of all the middleware code out there for handheld devices. Whats more, the first subsystem to be ported to this new codebase will be odeviced, which happened to be my project for the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">Google Summer of Code 2008</a>.</p>
+
+<p>For more, check this recent blog entry by <a href="http://www.vanille-media.de/site/index.php/2009/04/04/back-from-switzerland/">Mickey</a>.</p>
+
+<p>Patches all the way :D&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Summer ends but the insanity continues.]]></title>
+    <link href="http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues/"/>
+    <updated>2008-09-12T13:44:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/09/12/summer-ends-but-the-insanity-continues</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg">http://sudharsh.files.wordpress.com/2008/09/gsoc_198x128.jpg</a>"></p>
+
+<p>In Chennai we have three seasons, summer (nov-march), f***ing hot summer (april &ndash; june), a mildly wet but still hot summer (july-oct). In case you are wondering where I am pointlessly heading to, I was talking about the <a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> which ended successfully for me :D; the code which I submitted was only about 56KB which means I was the laziest among the <a href="http://code.google.com/soc/2008/openmoko/about.html">9 other GSoC'ers</a> for <a href="http://www.openmoko.com">Openmoko</a>. On the whole, I think Openmoko had a wonderful SoC this year.</p>
+
+<p>I will continue working on the freesmartphone.org initiative and do my little bit to help around. I was planning to release the ipks along with FSO milestone 3, but it turned out that my build tree wouldn&rsquo;t let me to do that without a fight (at `NOTE: Running task 256 of 718' now), will post the link once I have the packages. Get it <a href="http://sudharsh.mukt.in/odeviced_0.1-r0_armv4t.opk">here</a>. (Thanks to mukt.in team for hosting it)</p>
+
+<p>Meanwhile, <a href="http://softwarefreedomday.org/">Software Freedom Day</a> will be celebrated worldwide on September 20 (third saturday of September) and the <a href="http://www.ae.iitm.ac.in/mailman/listinfo/ilugc">ILUG-C</a> gang will be there at Kamban Engineering College, Thiruvannamalai this year. So if you are in Chennai at that time and want to do something fun for the weekend, please volunteer!.</p>
+
+<p>P.S: I am planning to give away my Freerunner for free, first to comment this post gets it..</p>
+
+<p>..NOT!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[odeviced: Accelerometers, PowerControl, IdleNotifiers and Input plugins]]></title>
+    <link href="http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins/"/>
+    <updated>2008-08-16T17:02:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/08/16/odeviced-accelerometers-powercontrol-idlenotifiers-and-input-plugins</id>
+    <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png">http://sudharsh.files.wordpress.com/2008/08/screenshot-1.png</a>"></p>
+
+<p>Phew. GSoC 2008 program is going to end in a couple of days and boy, did I have fun. Most of the code for the second phase was actually pushed last week. Anyway, here are the updates.</p>
+
+<ul>
+<li><p>Accelerometer plugin for Freerunner. Now you can use odeviced to retrieve accelerometer values for the position of the device along the x,y,z axes.</p></li>
+<li><p>Completed Powercontrol plugin. Kept putting this off, but got myself to complete it today.</p></li>
+<li><p>IdleNotifiers enabling apps to keep track of the state of the device viz. IDLE, BUSY&hellip;etc</p></li>
+<li><p>Input plugin for signalling input events on DBus. Like button presses, etc. Should make this asynchrounous once vala offers support for async DBus on the server side (&lsquo;read&rsquo; systemcall can block)</p></li>
+<li><p>Initial Audio plugin, am keeping this as a TODO outside GSoC.</p></li>
+</ul>
+
+
+<p>The daemon is far from complete and GSoC was meant to be just the beginning to get the basics right. Integration of odeviced as a subsytem of a frameworkd implementation (theres already a python implementation) in C is something I am looking forward to contribute in the next few months. It would be uber cool, if someone lends a helping hand for now to make odeviced work on other devices on which openmoko (and FSO) can run.</p>
+
+<p>I am not sure if people will find this interesting, but still</p>
+
+<ul>
+<li><p>The plugins average around 14kB in size, with powercontrol being the biggest of all. (25KB)</p></li>
+<li><p>The main odeviced binary is around 26KB, which IMO, is quite teency weency.</p></li>
+</ul>
+
+
+<p>(But given the fact that the code links against GLib and DBus, I have no idea if these numbers mean anything at all. I would be grateful if anyone thinks this is something to cheer about)</p>
+
+<p>P.S: I am looking for a temporary place to host the ipks for the lazy ones, will post the link once I get that. Meanwhile, get the code <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Woot..Passed the mid-term evals]]></title>
+    <link href="http://sudharsh.me/blog/2008/07/17/wootpassed-the-mid-term-evals/"/>
+    <updated>2008-07-17T13:51:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/07/17/wootpassed-the-mid-term-evals</id>
+    <content type="html"><![CDATA[<p>After a week&rsquo;s waiting my mentor informed me that I had passed the mid-term evaluations. (he said that my performance for the first phase exceeded his expectations. :D ).</p>
+
+<p>Its been a long time since I actually blogged about the progress. After I got the Freerunner in my hand (muhuhahahaa), it was more fun since there were subtle changes in the way the code ran on the device. Tracking down segfaults was uber awesome.</p>
+
+<p>Plugins are now written <em>entirely</em> in vala. Earlier, this used to be an ugly abomination of hand-written and vala generated C code. Now, where good ol' C is necessary, .vapis' have been added that wrap around code written in C.</p>
+
+<p>Additionally plugins for rtc, input and led were added. Input plugin is incomplete though. The code isn&rsquo;t perfect yet, so need to refine them and make them a bit tight in some places. rtc and led especially needs some tweaks.</p>
+
+<p>I guess most of the second phase will be spent on syncing with frameworkd. Now, the python device daemons have been integrated into a single daemon with odeviced as one of the subsytems. (Earlier this was separate). The python daemon is uber-cool by itself, but imagine a C implementation of the entire frameworkd. Light on resources and excellent in performance, if done <strong>right</strong>.</p>
+
+<p>Git repository <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finally, The Freerunner is here..]]></title>
+    <link href="http://sudharsh.me/blog/2008/06/25/finally-the-freerunner-is-here/"/>
+    <updated>2008-06-25T12:09:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2008/06/25/finally-the-freerunner-is-here</id>
+    <content type="html"><![CDATA[<p>Wow, DHL dudes are fast. They took just 4 days to ship the device considering there was a sunday in-between. Thanks to Daniel for sending the devices to the SoC'ers.</p>
+
+<p>I don&rsquo;t have a dedicated camera, so pics are a bit sucky</p>
+
+<p>(Evil maniacal laughter) Here are the pics&hellip;muhuhahaha</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/image0021.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image0021.jpg?w=128" alt="" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/image0051.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image0051.jpg?w=128" alt="" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/image006.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image006.jpg?w=128" alt="" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/image007.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image007.jpg?w=128" alt="" /></a></p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/image008.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image008.jpg?w=128" alt="" /></a></p>
+]]></content>
+  </entry>
+  
+</feed>

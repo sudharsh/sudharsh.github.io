@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: qtopia | 42]]></title>
+  <link href="http://sudharsh.me/blog/categories/qtopia/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2013-12-08T00:24:16+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[qtopia on neo]]></title>
+    <link href="http://sudharsh.me/blog/2007/09/19/qtopia-on-neo/"/>
+    <updated>2007-09-19T16:24:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2007/09/19/qtopia-on-neo</id>
+    <content type="html"><![CDATA[<p>Forget the commercial crap talk aimed at Trolltech, but they have just announced support for FIC neo1973. For those of you who dont what neo is, it the first device that will run the OpenMoko stack. The announcement comes as a surprise since Trolltech is opening up Qtopia Phone Edition, which was non-free previously, under GPL. Just like QT, theres also a separate commercial license.</p>
+
+<p>I even got to flash the preview build of qtopia and I must admit that its ahead of Openmoko, if the age of qtopia platform is to ignored. I could make calls on the neo with qtopia running on it.  I had to struggle with the keyboard since switching between character set is done by scrolling an invisible line to the left of the screen. Otherwise its Ok, all said I somehow like the Orange + Black interface for Openmoko and much work has been done in the OM 2007.2 builds.</p>
+
+<p>This is really interesting since buyers of neo would get a chance to flash whatever they want, qtopia or OM, so the freed phone is all set to rock. Expect another holy flame war? Openmoko vs. Qtopia..Naaa I don&rsquo;t think so..=)</p>
+
+<p>Anyway the links here:
+<a href="http://trolltech.com/company/newsroom/announcements/press.2007-09-17.9260755578">http://trolltech.com/company/newsroom/announcements/press.2007-09-17.9260755578</a></p>
+
+<p>Get the images here:
+<a href="http://www.qtopia.net/modules/devices/openmoko.php">http://www.qtopia.net/modules/devices/openmoko.php </a></p>
+
+<p>More info on running qtopia on neo:
+<a href="http://wiki.openmoko.org/wiki/Qtopia_on_Neo_1973">http://wiki.openmoko.org/wiki/Qtopia_on_Neo_1973 </a></p>
+]]></content>
+  </entry>
+  
+</feed>
