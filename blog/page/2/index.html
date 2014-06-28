@@ -9,7 +9,7 @@
   <meta name="author" content="Sudharshan S">
 
   
-  <meta name="description" content="I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON &hellip;">
+  <meta name="description" content="India, is a wonderful place for touring on a motorbike. With terrains ranging from high mountainous North, North Eastern India to the Coastal plains &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,89 +77,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/17/simplejsons-simple-gotcha/">Simplejson&#8217;s Simple Gotcha</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-17T18:30:00+05:30" pubdate data-updated="true">Sep 17<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/09/17/simplejsons-simple-gotcha/#disqus_thread"
-             data-disqus-identifier="http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
-
-<p><img class="center" src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg"></p>
-
-<p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
-
-<p>This is where it gets interesting. Python&rsquo;s json module tries to do something smart when you try to encode a python dictionary into a JSON string. In this case, all the keys are python ints.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
-</span><span class='line'>Out[3]: '{"1": "Foo", "3": "Baz"}'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>When I decode it back to a python object&hellip;</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
-</span><span class='line'>Out[4]: {u'1': u'Foo', u'3': u'Baz'}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>BAM! The json module silently converts all my integer keys to strings. I, for one, would have preferred an Exception to be raised instead.</p>
-
-<p>Something like this, for example.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>In [19]: class F: pass
-</span><span class='line'>...
-</span><span class='line'>In [20]: f = F()
-</span><span class='line'>In [21]: json.loads(json.dumps({ f : 'Foo', 3: 'Baz'}))
-</span><span class='line'>... snip errors ...
-</span><span class='line'>TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In this case, I get the desired behaviour where a &lsquo;TypeError&rsquo; is raised. Stupid example, but you get the idea.</p>
-
-<p>If I am missing something obvious here please do comment. This particular cheekiness of the json module caught me unawares recently. Or maybe I was wrong in expecting the decode operation to return something that is identical to the source.</p>
-
-<p>Interestingly, the json support modules that ship with TurboGears error out if you try to return a dictionary having non-string keys from your controller methods.</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -912,6 +829,116 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/">Give Your Boss the Illusion of Managing You&#8230; With Pidgin and Dbus</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-30T10:57:00+05:30" pubdate data-updated="true">Jun 30<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/#disqus_thread"
+             data-disqus-identifier="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif"></p>
+
+<p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># By Sudharshan S, released under WTFPL</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">dbus</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">gobject</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PointyHairedBoss</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boss_id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span> <span class="o">=</span> <span class="n">boss_id</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span>
+</span><span class='line'>        <span class="n">bus</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">SessionBus</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">_pidgin_proxy</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">,</span> \
+</span><span class='line'>                                                       <span class="s">&quot;/im/pidgin/purple/PurpleObject&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">purple</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span> <span class="p">(</span><span class="n">_pidgin_proxy</span><span class="p">,</span> <span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="c"># FIXME:</span>
+</span><span class='line'>        <span class="n">account_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleAccountsGetAllActive</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConversationNew</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">account_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvIm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">start_nonsense</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">question_list</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">question_list</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvImSend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>   <span class="c"># Change the jabber id and the path to your questions, with an optional frequency</span>
+</span><span class='line'>   <span class="n">o</span> <span class="o">=</span> <span class="n">PointyHairedBoss</span><span class="p">(</span><span class="s">&quot;foo@gmail.com&quot;</span><span class="p">,</span> <span class="s">&quot;questions&quot;</span><span class="p">)</span>
+</span><span class='line'>   <span class="n">o</span><span class="o">.</span><span class="n">start_nonsense</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -929,10 +956,6 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/06/20/on-go/">On Go</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2013/12/07/jenkins-build-status-on-arduino/">Jenkins Build Status on Arduino</a>
       </li>
     
@@ -946,6 +969,10 @@
     
       <li class="post">
         <a href="/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/">Cloudcraft: Easy Minecraft Server Management</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/11/i/">I</a>
       </li>
     
   </ul>

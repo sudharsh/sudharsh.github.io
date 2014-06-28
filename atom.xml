@@ -4,7 +4,7 @@
   <title><![CDATA[42]]></title>
   <link href="http://sudharsh.me/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-06-28T15:21:29+05:30</updated>
+  <updated>2014-06-28T15:27:09+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[On Go]]></title>
-    <link href="http://sudharsh.me/blog/2014/06/20/on-go/"/>
-    <updated>2014-06-20T18:40:31+05:30</updated>
-    <id>http://sudharsh.me/blog/2014/06/20/on-go</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins Build Status on Arduino]]></title>
@@ -1498,6 +1489,86 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 </span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
 </span><span class='line'>     <span class="n">bot</span> <span class="o">=</span> <span class="n">NaiSaykarBot</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
 </span><span class='line'>     <span class="n">bot</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Give Your Boss the Illusion of Managing You... With Pidgin and Dbus]]></title>
+    <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
+    <updated>2009-06-30T10:57:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif"></p>
+
+<p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># By Sudharshan S, released under WTFPL</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">dbus</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">gobject</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PointyHairedBoss</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boss_id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span> <span class="o">=</span> <span class="n">boss_id</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span>
+</span><span class='line'>        <span class="n">bus</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">SessionBus</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">_pidgin_proxy</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">,</span> \
+</span><span class='line'>                                                       <span class="s">&quot;/im/pidgin/purple/PurpleObject&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">purple</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span> <span class="p">(</span><span class="n">_pidgin_proxy</span><span class="p">,</span> <span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="c"># FIXME:</span>
+</span><span class='line'>        <span class="n">account_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleAccountsGetAllActive</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConversationNew</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">account_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvIm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">start_nonsense</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">question_list</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">question_list</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvImSend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>   <span class="c"># Change the jabber id and the path to your questions, with an optional frequency</span>
+</span><span class='line'>   <span class="n">o</span> <span class="o">=</span> <span class="n">PointyHairedBoss</span><span class="p">(</span><span class="s">&quot;foo@gmail.com&quot;</span><span class="p">,</span> <span class="s">&quot;questions&quot;</span><span class="p">)</span>
+</span><span class='line'>   <span class="n">o</span><span class="o">.</span><span class="n">start_nonsense</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
