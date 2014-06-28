@@ -4,7 +4,7 @@
   <title><![CDATA[42]]></title>
   <link href="http://sudharsh.me/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2013-12-08T00:24:16+05:30</updated>
+  <updated>2014-06-28T15:21:29+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Go]]></title>
+    <link href="http://sudharsh.me/blog/2014/06/20/on-go/"/>
+    <updated>2014-06-20T18:40:31+05:30</updated>
+    <id>http://sudharsh.me/blog/2014/06/20/on-go</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins Build Status on Arduino]]></title>
@@ -611,7 +620,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Getting IP of an interface in Clojure]]></title>
+    <title type="html"><![CDATA[Getting IP of an Interface in Clojure]]></title>
     <link href="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/"/>
     <updated>2013-12-05T00:56:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure</id>
@@ -637,7 +646,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
+    <title type="html"><![CDATA[Hiccup: Organizing Templates Using Multimethods]]></title>
     <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
     <updated>2013-08-31T14:44:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
@@ -813,7 +822,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
+    <title type="html"><![CDATA[Cloudcraft: Easy Minecraft Server Management]]></title>
     <link href="http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/"/>
     <updated>2013-05-26T19:32:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management</id>
@@ -846,7 +855,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA["Brooks was here"]]></title>
+    <title type="html"><![CDATA["Brooks Was Here"]]></title>
     <link href="http://sudharsh.me/blog/2013/04/25/brooks-was-here/"/>
     <updated>2013-04-25T14:30:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/04/25/brooks-was-here</id>
@@ -864,7 +873,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Chile, alla vamos!]]></title>
+    <title type="html"><![CDATA[Chile, Alla Vamos!]]></title>
     <link href="http://sudharsh.me/blog/2011/10/01/chile-alla-vamos/"/>
     <updated>2011-10-01T13:13:00+05:30</updated>
     <id>http://sudharsh.me/blog/2011/10/01/chile-alla-vamos</id>
@@ -889,7 +898,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Save your staplers!]]></title>
+    <title type="html"><![CDATA[Save Your Staplers!]]></title>
     <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
     <updated>2011-02-06T15:45:00+05:30</updated>
     <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
@@ -925,7 +934,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Over the Hills and not so Far Away]]></title>
+    <title type="html"><![CDATA[Over the Hills and Not So Far Away]]></title>
     <link href="http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away/"/>
     <updated>2010-10-15T19:29:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away</id>
@@ -961,7 +970,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[simplejson's simple gotcha]]></title>
+    <title type="html"><![CDATA[Simplejson's Simple Gotcha]]></title>
     <link href="http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha/"/>
     <updated>2010-09-17T18:30:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha</id>
@@ -1014,7 +1023,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Touring, now a Breeze! ]]></title>
+    <title type="html"><![CDATA[Touring, Now a Breeze!]]></title>
     <link href="http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze/"/>
     <updated>2010-07-18T16:58:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze</id>
@@ -1082,7 +1091,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Almost a graduate]]></title>
+    <title type="html"><![CDATA[Almost a Graduate]]></title>
     <link href="http://sudharsh.me/blog/2010/03/30/almost-a-graduate/"/>
     <updated>2010-03-30T17:06:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/03/30/almost-a-graduate</id>
@@ -1101,7 +1110,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[24camp - Be there]]></title>
+    <title type="html"><![CDATA[24camp - Be There]]></title>
     <link href="http://sudharsh.me/blog/2010/02/10/24camp-be-there/"/>
     <updated>2010-02-10T12:19:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/02/10/24camp-be-there</id>
@@ -1114,7 +1123,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
+    <title type="html"><![CDATA[Road Trip to Yelagiri]]></title>
     <link href="http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri/"/>
     <updated>2009-12-17T14:55:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri</id>
@@ -1288,7 +1297,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <title type="html"><![CDATA[Konsole Monitoring With Twitter and Python]]></title>
     <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
     <updated>2009-10-17T06:18:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
@@ -1357,7 +1366,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
+    <title type="html"><![CDATA[Nai Sekar, Your Not-so-friendly Translation Bot..]]></title>
     <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T17:22:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
@@ -1489,86 +1498,6 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 </span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
 </span><span class='line'>     <span class="n">bot</span> <span class="o">=</span> <span class="n">NaiSaykarBot</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
 </span><span class='line'>     <span class="n">bot</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
-    <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
-    <updated>2009-06-30T10:57:00+05:30</updated>
-    <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/50000/9000/500/59569/59569.strip.gif"></p>
-
-<p>Oh yeah!. With the power of DBus and libpurple APIs it is possible to give your boss the illusion of managing you. Just run the following script (under <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>). Tested with jabber accounts in a live office environment :P.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'><span class="c"># By Sudharshan S, released under WTFPL</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">dbus</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">gobject</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">PointyHairedBoss</span><span class="p">:</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boss_id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span> <span class="o">=</span> <span class="n">boss_id</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span>
-</span><span class='line'>        <span class="n">bus</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">SessionBus</span><span class="p">()</span>
-</span><span class='line'>        <span class="n">_pidgin_proxy</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">,</span> \
-</span><span class='line'>                                                       <span class="s">&quot;/im/pidgin/purple/PurpleObject&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">purple</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span> <span class="p">(</span><span class="n">_pidgin_proxy</span><span class="p">,</span> <span class="s">&quot;im.pidgin.purple.PurpleService&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="c"># FIXME:</span>
-</span><span class='line'>        <span class="n">account_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleAccountsGetAllActive</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConversationNew</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">account_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_id</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvIm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_conversation</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">start_nonsense</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">question_list</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">question_list</span><span class="p">:</span>
-</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">purple</span><span class="o">.</span><span class="n">PurpleConvImSend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss_im</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span class='line'>   <span class="c"># Change the jabber id and the path to your questions, with an optional frequency</span>
-</span><span class='line'>   <span class="n">o</span> <span class="o">=</span> <span class="n">PointyHairedBoss</span><span class="p">(</span><span class="s">&quot;foo@gmail.com&quot;</span><span class="p">,</span> <span class="s">&quot;questions&quot;</span><span class="p">)</span>
-</span><span class='line'>   <span class="n">o</span><span class="o">.</span><span class="n">start_nonsense</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
