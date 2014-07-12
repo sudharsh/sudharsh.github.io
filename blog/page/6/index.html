@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Apr 22nd, 2008 Events, FOSS and Linux, bleh, gsoc, linux, neo1973, odeviced, openmoko Comments Summer of Code 2008 Atlast after sleepness nights, &hellip;">
+	<meta name="description" content="Apr 24th, 2008 FOSS and Linux, Rants, embedded, gsoc, linux, neo1973, odeviced, openmoko Comments Odeviced: Device Daemon for the FreeRunner Man, &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,68 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-24T13:26:00+05:30" data-updated="true" itemprop="datePublished">Apr 24<span>th</span>, 2008</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2008/04/24/odeviced-device-daemon-for-the-freerunner/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2008/04/24/odeviced-device-daemon-for-the-freerunner/" itemprop="url">Odeviced: Device Daemon for the FreeRunner</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Man, its quite difficult to sneak up and write a blog post when semesters are around the corner. So as mentioned in the last post, my project for this summer would be to write a device daemon for the Openmoko platform. We already have neod offering keypad and power management, but its not that elegant. Hence I proposed a DBUS replacement as a SoC project which got through.</p>
+
+<p>So, heres a <a href="http://sudharsh.unixpod.com/googsoc.pdf">pdf</a> of the proposed <em>ahem</em> architecture. (Boy, I love that word. Sounds enterprisey). it looks a bit sucky since I did it using a touchpad, but hey, something is better than nothing.</p>
+
+<p>I was looking at pulseaudio code for a while and liked it pretty much. So naturally, odeviced will borrow ideas from pulseaudio a bit heavily. My idea of odeviced is as follows,</p>
+
+<ul>
+<li><p>A dbus service with support for loadable plugins.</p></li>
+<li><p>These plugins can be arbitrary, from managing power, gps to controlling the uber secret laser katana in the FreeRunner (oops. I let the secret out)</p></li>
+<li><p>And of course, some user space applications may want to know whats going on under the hood. So expose some sort of api from the dbus service.</p></li>
+</ul>
+
+
+<p>Initially for the SoC, I will be working for full odeviced support for the FreeRunner, and maybe later on write plugins for other devices as well. Especially for the ones from Motorola.</p>
+
+<p>For the implementation, here are the things I need to learn over the next month</p>
+
+<ul>
+<li><p>Vala, its a cool language built around GLib.</p></li>
+<li><p>DBUS, My experience with dbus is now limited to the tutorial code</p></li>
+<li><p>Prolly some HAL and udev and touch upon the kernel stuff if need arises</p></li>
+<li><p>&hellip;and <em>cough</em> to manage my time and write good code&hellip;</p></li>
+</ul>
+
+
+<p>Heres the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">abstract</a> of my proposal. Thanks to <a href="http://tuxmaniac.com">tuxmaniac</a>, <a href="http://prashblog.com">Casanova</a>, <a href="http://technofreakatchennai.wordpress.com">techno_freak</a>, <a href="http://www.raja-gopal.com/">tuxplorer</a>, <a href="http://pygi.wordpress.com/">pygi</a> and many more for proofreading my proposal which at the beginning looked like a love letter written by a 5 year old.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -532,49 +594,6 @@
 <p>P.S: SVN in projects.openmoko.org seems to be down. So I was not able to commit these example scripts.</p>
 
 <p>Goofup: I did it again..The SMSTool is written by <a href="http://mput.de/blog/">kriss</a> and maintaned by alessandro</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-12-17T15:48:00+05:30" data-updated="true" itemprop="datePublished">Dec 17<span>th</span>, 2007</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2007/12/17/add-personality-to-your-already-powerful-firefox/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2007/12/17/add-personality-to-your-already-powerful-firefox/" itemprop="url">Add Personality to Your Already Powerful Firefox</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>I dunno if it adds functionality to your already functional firefox, but still its damn cute and quite interesting from the technical point of view. Add a new &ldquo;persona&rdquo; to your browser on the fly. No crashes bringing down the house although, I am not able to resize the browser. Only a matter of time before someone comes up with a LOLCAT persona..</p>
-
-<p>Heres a cute screenshot</p>
-
-<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/12/screenshot.thumbnail.png"></p>
-
-<p>Get it <a href="http://labs.mozilla.com/2007/12/personas-for-firefox/">here </a>.</p>
 
 		
 		

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Productivity | 42]]></title>
+  <link href="http://sudharsh.me/blog/categories/productivity/atom.xml" rel="self"/>
+  <link href="http://sudharsh.me/"/>
+  <updated>2014-07-12T21:06:16+05:30</updated>
+  <id>http://sudharsh.me/</id>
+  <author>
+    <name><![CDATA[Sudharshan S]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pen and Paper]]></title>
+    <link href="http://sudharsh.me/blog/2014/07/12/pen-and-notebook/"/>
+    <updated>2014-07-12T19:46:38+05:30</updated>
+    <id>http://sudharsh.me/blog/2014/07/12/pen-and-notebook</id>
+    <content type="html"><![CDATA[<p>I am one of those people with a very volatile memory. Unless I jot down things even if it is as mundane as getting a haircut, I find myself with a nagging sense of incompleteness in my head. It is a very uncomfortable feeling to have.</p>
+
+<p>I had been trying to use <a href="http://evernote.com/">Evernote</a>, <a href="https://www.wunderlist.com/en/">Wunderlist</a> and <a href="http://orgmode.org/"><code>org-mode</code></a> to help solve this. No god damn luck. Only <code>org-mode</code> worked for me in the beginning but I found myself slowly starting to worry about how to format my fricking lists instead.</p>
+
+<p>My brain had started to <a href="http://www.urbandictionary.com/define.php?term=bikeshedding">bikeshed</a> with itself!</p>
+
+<p>For me, these tools turned out to be hard to focus with. And lo! I fell back to using a Pen and a Notebook instead.</p>
+
+<p><img class="centre" src="/images/notebook.jpg"></p>
+
+<p>Writing down todo lists feels much more satisfying than typing them. The contents somehow &lsquo;sticks&rsquo; to my head and I don&rsquo;t need reminders on my phone anymore (which I mostly used to ignore anyways).</p>
+
+<p>Of course, there are a lot of productivity problems solved successfully by software but I have come to a conclusion that simple personal todo lists is NOT one of them.</p>
+
+<p>Pen and Paper beats the Computer in this case.</p>
+]]></content>
+  </entry>
+  
+</feed>

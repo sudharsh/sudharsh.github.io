@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Jun 10th, 2008 FOSS and Linux, Rants, embedded, freesmartphone.org, gsoc, linux, neo1973, odeviced, openmoko Comments I Got a Job at Google *glee* ( &hellip;">
+	<meta name="description" content="Jun 13th, 2008 FOSS and Linux, Logs, embedded, freesmartphone.org, gsoc, linux, neo1973, odeviced, openmoko Comments Odeviced: More Sysfs Abuse ( &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,53 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-13T16:36:00+05:30" data-updated="true" itemprop="datePublished">Jun 13<span>th</span>, 2008</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/" itemprop="url">Odeviced: More Sysfs Abuse (Screenshot Attached! :P)</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>A few days gone by, and endless wrestling with git wherein I was not able to push code. Turned out, I was using the wrong URL to push ..doh!</p>
+
+<p>But anyway, the <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">code</a> is beginning to stabilise a bit (Read no unexpected segfaults, only expected ones..). The last few days were spent in changing the method names in accordance with OTAPI naming conventions after my mentor went through my code.</p>
+
+<p>There is also another important change. The sysfs nodes for backlight and power plugins were hardcoded in their configuration files. So, I came up with some helpers that creates DBus paths automatically based on the device class which they belong to. Here&rsquo;s a picture of today&rsquo;s code in action,</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png"><img class="center" src="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=512"></a></p>
+
+<p>Notice the <a href="https://hosted.fedoraproject.org/projects/d-feet/">d-feet DBus</a> debugger towards the lower left? It shows all the automatically created DBus object paths based on the device class which the plugin stands for. And the terminal to the right shows some debug messages. Note how odeviced spits out the current battery status viz. &ldquo;Charging, Discharging&rdquo;. The corresponding &ldquo;battery-status-changed&rdquo; DBus signal is emitted as well (along with &ldquo;low-battery-warning&rdquo; signal which <em>ahem</em> is emitted when battery is low).</p>
+
+<p>For more follow this <a href="http://lists.openmoko.org/pipermail/openmoko-devel/2008-June/003002.html">thread</a>..</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -605,68 +652,6 @@ enable=1`</p></li>
 <p>On the brighter side, I may get to read Peter Norvig&rsquo;s a second time for the back paper. Well, rationalization is the solution to all of world&rsquo;s problems ;).</p>
 
 <p>But somehow, I didn&rsquo;t feel bad about it&hellip;..<em>shit</em></p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-04-24T13:26:00+05:30" data-updated="true" itemprop="datePublished">Apr 24<span>th</span>, 2008</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2008/04/24/odeviced-device-daemon-for-the-freerunner/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2008/04/24/odeviced-device-daemon-for-the-freerunner/" itemprop="url">Odeviced: Device Daemon for the FreeRunner</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Man, its quite difficult to sneak up and write a blog post when semesters are around the corner. So as mentioned in the last post, my project for this summer would be to write a device daemon for the Openmoko platform. We already have neod offering keypad and power management, but its not that elegant. Hence I proposed a DBUS replacement as a SoC project which got through.</p>
-
-<p>So, heres a <a href="http://sudharsh.unixpod.com/googsoc.pdf">pdf</a> of the proposed <em>ahem</em> architecture. (Boy, I love that word. Sounds enterprisey). it looks a bit sucky since I did it using a touchpad, but hey, something is better than nothing.</p>
-
-<p>I was looking at pulseaudio code for a while and liked it pretty much. So naturally, odeviced will borrow ideas from pulseaudio a bit heavily. My idea of odeviced is as follows,</p>
-
-<ul>
-<li><p>A dbus service with support for loadable plugins.</p></li>
-<li><p>These plugins can be arbitrary, from managing power, gps to controlling the uber secret laser katana in the FreeRunner (oops. I let the secret out)</p></li>
-<li><p>And of course, some user space applications may want to know whats going on under the hood. So expose some sort of api from the dbus service.</p></li>
-</ul>
-
-
-<p>Initially for the SoC, I will be working for full odeviced support for the FreeRunner, and maybe later on write plugins for other devices as well. Especially for the ones from Motorola.</p>
-
-<p>For the implementation, here are the things I need to learn over the next month</p>
-
-<ul>
-<li><p>Vala, its a cool language built around GLib.</p></li>
-<li><p>DBUS, My experience with dbus is now limited to the tutorial code</p></li>
-<li><p>Prolly some HAL and udev and touch upon the kernel stuff if need arises</p></li>
-<li><p>&hellip;and <em>cough</em> to manage my time and write good code&hellip;</p></li>
-</ul>
-
-
-<p>Heres the <a href="http://code.google.com/soc/2008/openmoko/appinfo.html?csaid=C4E490026007DA79">abstract</a> of my proposal. Thanks to <a href="http://tuxmaniac.com">tuxmaniac</a>, <a href="http://prashblog.com">Casanova</a>, <a href="http://technofreakatchennai.wordpress.com">techno_freak</a>, <a href="http://www.raja-gopal.com/">tuxplorer</a>, <a href="http://pygi.wordpress.com/">pygi</a> and many more for proofreading my proposal which at the beginning looked like a love letter written by a 5 year old.</p>
 
 		
 		

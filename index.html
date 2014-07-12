@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Dec 7th, 2013 Arduino, Programming, Python Comments Jenkins Build Status on Arduino I gifted myself an Arduino Starter Kit from Simplelabs to kill &hellip;">
+	<meta name="description" content="Jul 12th, 2014 Life, Productivity Comments Pen and Paper I am one of those people with a very volatile memory. Unless I jot down things even if it &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,57 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-12T19:46:38+05:30" data-updated="true" itemprop="datePublished">Jul 12<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/life/'>Life</a>, <a class='category' href='/blog/categories/productivity/'>Productivity</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2014/07/12/pen-and-notebook/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/07/12/pen-and-notebook/" itemprop="url">Pen and Paper</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I am one of those people with a very volatile memory. Unless I jot down things even if it is as mundane as getting a haircut, I find myself with a nagging sense of incompleteness in my head. It is a very uncomfortable feeling to have.</p>
+
+<p>I had been trying to use <a href="http://evernote.com/">Evernote</a>, <a href="https://www.wunderlist.com/en/">Wunderlist</a> and <a href="http://orgmode.org/"><code>org-mode</code></a> to help solve this. No god damn luck. Only <code>org-mode</code> worked for me in the beginning but I found myself slowly starting to worry about how to format my fricking lists instead.</p>
+
+<p>My brain had started to <a href="http://www.urbandictionary.com/define.php?term=bikeshedding">bikeshed</a> with itself!</p>
+
+<p>For me, these tools turned out to be hard to focus with. And lo! I fell back to using a Pen and a Notebook instead.</p>
+
+<p><img class="centre" src="/images/notebook.jpg"></p>
+
+<p>Writing down todo lists feels much more satisfying than typing them. The contents somehow &lsquo;sticks&rsquo; to my head and I don&rsquo;t need reminders on my phone anymore (which I mostly used to ignore anyways).</p>
+
+<p>Of course, there are a lot of productivity problems solved successfully by software but I have come to a conclusion that simple personal todo lists is NOT one of them.</p>
+
+<p>Pen and Paper beats the Computer in this case.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -1297,87 +1348,6 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 <p><img class="center" src="http://sudharsh.files.wordpress.com/2010/10/dsc00470.jpg"></p>
 
 <p><img class="center" src="http://sudharsh.files.wordpress.com/2010/10/dsc00457.jpg"></p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-17T18:30:00+05:30" data-updated="true" itemprop="datePublished">Sep 17<span>th</span>, 2010</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2010/09/17/simplejsons-simple-gotcha/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2010/09/17/simplejsons-simple-gotcha/" itemprop="url">Simplejson&#8217;s Simple Gotcha</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
-
-<p><img class="center" src="http://farm3.static.flickr.com/2551/3763158824_e2f57810c4.jpg"></p>
-
-<p>If you take a closer look at the spec above, you will notice that the keys for a JSON &lsquo;dictionary&rsquo; should be strings. I have a feeling that programmers like me whose language-of-mass-destruction is python are likely to overlook this minor gotcha.</p>
-
-<p>This is where it gets interesting. Python&rsquo;s json module tries to do something smart when you try to encode a python dictionary into a JSON string. In this case, all the keys are python ints.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>In [3]: json.dumps({ 1 : 'Foo', 3: 'Baz'})
-</span><span class='line'>Out[3]: '{"1": "Foo", "3": "Baz"}'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>When I decode it back to a python object&hellip;</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>In [4]: json.loads(json.dumps({ 1 : 'Foo', 3: 'Baz'}))
-</span><span class='line'>Out[4]: {u'1': u'Foo', u'3': u'Baz'}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>BAM! The json module silently converts all my integer keys to strings. I, for one, would have preferred an Exception to be raised instead.</p>
-
-<p>Something like this, for example.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>In [19]: class F: pass
-</span><span class='line'>...
-</span><span class='line'>In [20]: f = F()
-</span><span class='line'>In [21]: json.loads(json.dumps({ f : 'Foo', 3: 'Baz'}))
-</span><span class='line'>... snip errors ...
-</span><span class='line'>TypeError: key &lt;__main__.F instance at 0x92b4b2c&gt; is not a string</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In this case, I get the desired behaviour where a &lsquo;TypeError&rsquo; is raised. Stupid example, but you get the idea.</p>
-
-<p>If I am missing something obvious here please do comment. This particular cheekiness of the json module caught me unawares recently. Or maybe I was wrong in expecting the decode operation to return something that is identical to the source.</p>
-
-<p>Interestingly, the json support modules that ship with TurboGears error out if you try to return a dictionary having non-string keys from your controller methods.</p>
 
 		
 		

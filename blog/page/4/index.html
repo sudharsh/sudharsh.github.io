@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Nov 4th, 2008 College, Life, Rants Comments Exams Again&#8230;:/ Semesters start this friday, Nov 7th. :(. So will be missing in action for the next &hellip;">
+	<meta name="description" content="Nov 23rd, 2008 FOSS and Linux, Python, freesmartphone.org, linux, neo1973, openmoko Comments SHR, Fsod and Certain Other Things. SHR (Stable Hybrid &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,53 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-23T06:58:00+05:30" data-updated="true" itemprop="datePublished">Nov 23<span>rd</span>, 2008</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2008/11/23/shr-fsod-and-certain-other-things/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2008/11/23/shr-fsod-and-certain-other-things/" itemprop="url">SHR, Fsod and Certain Other Things.</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/11/screenshot-11.png?w=225"></p>
+
+<p>Hmm..Someone seems to have mapped Chitlapakkam and East Tambaram a bit for <a href="http://openstreetmap.org/">OSM</a>. Wondering who that is. :)</p>
+
+<p>As for fsod, I could really use some help especially with autotools. I managed to set up a preliminary a python scripting interface so that fsod can load python scripts. But that&rsquo;s as far as I got. Apparently DBus needs a mainloop to be setup for exporting objects on the system bus. And since GObject introspection in python seems to be absent at the moment, I had to create bindings to my code. This process is documented and explained <a href="http://www.ibm.com/developerworks/linux/library/l-wrap/">here</a>. But still, I am at a loss as to how to pass the DBus connection object from the mainloop to the python scripts. If someone knows how to do this, please poke me.</p>
+
+<p>The code could be found <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>. (src/subsystems/Python especially can use some love)</p>
+
+<p>Update: I made a package out of today&rsquo;s tree. Find it <a href="http://sudharsh.mukt.in/fsod_0.1-r0_armv4t.opk">here</a>.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -536,53 +583,6 @@
 <p><a href="http://sudharsh.files.wordpress.com/2008/06/image007.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image007.jpg?w=128" alt="" /></a></p>
 
 <p><a href="http://sudharsh.files.wordpress.com/2008/06/image008.jpg"><img src="http://sudharsh.files.wordpress.com/2008/06/image008.jpg?w=128" alt="" /></a></p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-06-13T16:36:00+05:30" data-updated="true" itemprop="datePublished">Jun 13<span>th</span>, 2008</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2008/06/13/odeviced-more-sysfs-abuse-screenshot-attached-p/" itemprop="url">Odeviced: More Sysfs Abuse (Screenshot Attached! :P)</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>A few days gone by, and endless wrestling with git wherein I was not able to push code. Turned out, I was using the wrong URL to push ..doh!</p>
-
-<p>But anyway, the <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">code</a> is beginning to stabilise a bit (Read no unexpected segfaults, only expected ones..). The last few days were spent in changing the method names in accordance with OTAPI naming conventions after my mentor went through my code.</p>
-
-<p>There is also another important change. The sysfs nodes for backlight and power plugins were hardcoded in their configuration files. So, I came up with some helpers that creates DBus paths automatically based on the device class which they belong to. Here&rsquo;s a picture of today&rsquo;s code in action,</p>
-
-<p><a href="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png"><img class="center" src="http://sudharsh.files.wordpress.com/2008/06/screenshot1.png?w=512"></a></p>
-
-<p>Notice the <a href="https://hosted.fedoraproject.org/projects/d-feet/">d-feet DBus</a> debugger towards the lower left? It shows all the automatically created DBus object paths based on the device class which the plugin stands for. And the terminal to the right shows some debug messages. Note how odeviced spits out the current battery status viz. &ldquo;Charging, Discharging&rdquo;. The corresponding &ldquo;battery-status-changed&rdquo; DBus signal is emitted as well (along with &ldquo;low-battery-warning&rdquo; signal which <em>ahem</em> is emitted when battery is low).</p>
-
-<p>For more follow this <a href="http://lists.openmoko.org/pipermail/openmoko-devel/2008-June/003002.html">thread</a>..</p>
 
 		
 		
