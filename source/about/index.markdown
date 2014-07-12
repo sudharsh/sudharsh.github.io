@@ -1,20 +1,25 @@
 ---
-author: sudharsh
-comments: true
-date: 2006-09-20 13:24:44+00:00
 layout: page
-slug: about
-title: about me
-wordpress_id: 2
+title: "about"
+date: 2012-07-24 03:16
+comments: true
+sharing: false
+footer: false
 ---
 
-{% img center http://sudharsh.files.wordpress.com/2008/02/face1.png %}
+[Pythonista](http://python.org) who secretly likes Ruby's syntax and likes to annoy Ruby programmers.
+
+Motorcycle Lover who likes Royal Enfield but finds some its owners obnoxious and annoying
+
+Budding [gopher](http://golang.org) likely suffering from some form of [ADHD](https://en.wikipedia.org/wiki/ADHD).
+
+Tone deaf bathroom singer who finds [Louis CK](https://www.youtube.com/results?search_query=louis+ck), [Carlin](https://www.youtube.com/results?search_query=george+carlin) and [Goundamani](https://www.youtube.com/results?search_query=goundamani) hilarious. 
+
+Recent [Kindle owner](https://www.goodreads.com/review/list/28616278) into the [Discworld](https://en.wikipedia.org/wiki/Discworld) series.
+
+Engineer at [Apigee](http://apigee.com) who prefers curd rice for lunch.
 
 
 
 
-Trying hard not to be an EPICFAIL since birth. Motorcycle lover, Reddit addict, Computer programmer.
-
-
-[zphds](http://twitter.com/zphds) on Twitter and Freenode.
 

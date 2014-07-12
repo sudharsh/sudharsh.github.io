@@ -4,7 +4,7 @@
 
 url: http://sudharsh.me
 title: "42"
-subtitle: Code, and a tiny bit of Adventure
+subtitle: Code, and a tiny flippin bit of Adventure
 author: Sudharshan S
 simple_search: http://google.com/search
 description:
@@ -20,6 +20,7 @@ subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
+email_md5: 16cc3864b1764a9e45a76ef4724ff7bb 
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -69,7 +70,7 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user: "@zphds"
+twitter_user: "zphds"
 twitter_tweet_button: true
 
 # Google +1
@@ -98,3 +99,5 @@ google_analytics_tracking_id: "UA-45074307-1"
 
 # Facebook Like
 facebook_like: false
+
+linkedin_user: sudharshan-s/8/449/958
