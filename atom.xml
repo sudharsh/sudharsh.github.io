@@ -4,7 +4,7 @@
   <title><![CDATA[42]]></title>
   <link href="http://sudharsh.me/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-06-28T15:27:09+05:30</updated>
+  <updated>2014-07-12T18:39:15+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -611,7 +611,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Getting IP of an Interface in Clojure]]></title>
+    <title type="html"><![CDATA[Getting IP of an interface in Clojure]]></title>
     <link href="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/"/>
     <updated>2013-12-05T00:56:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure</id>
@@ -637,7 +637,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Hiccup: Organizing Templates Using Multimethods]]></title>
+    <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
     <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
     <updated>2013-08-31T14:44:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
@@ -813,7 +813,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Cloudcraft: Easy Minecraft Server Management]]></title>
+    <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
     <link href="http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/"/>
     <updated>2013-05-26T19:32:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management</id>
@@ -846,7 +846,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA["Brooks Was Here"]]></title>
+    <title type="html"><![CDATA["Brooks was here"]]></title>
     <link href="http://sudharsh.me/blog/2013/04/25/brooks-was-here/"/>
     <updated>2013-04-25T14:30:00+05:30</updated>
     <id>http://sudharsh.me/blog/2013/04/25/brooks-was-here</id>
@@ -864,7 +864,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Chile, Alla Vamos!]]></title>
+    <title type="html"><![CDATA[Chile, alla vamos!]]></title>
     <link href="http://sudharsh.me/blog/2011/10/01/chile-alla-vamos/"/>
     <updated>2011-10-01T13:13:00+05:30</updated>
     <id>http://sudharsh.me/blog/2011/10/01/chile-alla-vamos</id>
@@ -889,7 +889,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Save Your Staplers!]]></title>
+    <title type="html"><![CDATA[Save your staplers!]]></title>
     <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
     <updated>2011-02-06T15:45:00+05:30</updated>
     <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
@@ -925,7 +925,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Over the Hills and Not So Far Away]]></title>
+    <title type="html"><![CDATA[Over the Hills and not so Far Away]]></title>
     <link href="http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away/"/>
     <updated>2010-10-15T19:29:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away</id>
@@ -961,7 +961,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Simplejson's Simple Gotcha]]></title>
+    <title type="html"><![CDATA[simplejson's simple gotcha]]></title>
     <link href="http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha/"/>
     <updated>2010-09-17T18:30:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha</id>
@@ -1014,7 +1014,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Touring, Now a Breeze!]]></title>
+    <title type="html"><![CDATA[Touring, now a Breeze! ]]></title>
     <link href="http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze/"/>
     <updated>2010-07-18T16:58:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze</id>
@@ -1082,7 +1082,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Almost a Graduate]]></title>
+    <title type="html"><![CDATA[Almost a graduate]]></title>
     <link href="http://sudharsh.me/blog/2010/03/30/almost-a-graduate/"/>
     <updated>2010-03-30T17:06:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/03/30/almost-a-graduate</id>
@@ -1101,7 +1101,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[24camp - Be There]]></title>
+    <title type="html"><![CDATA[24camp - Be there]]></title>
     <link href="http://sudharsh.me/blog/2010/02/10/24camp-be-there/"/>
     <updated>2010-02-10T12:19:00+05:30</updated>
     <id>http://sudharsh.me/blog/2010/02/10/24camp-be-there</id>
@@ -1114,7 +1114,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Road Trip to Yelagiri]]></title>
+    <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
     <link href="http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri/"/>
     <updated>2009-12-17T14:55:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri</id>
@@ -1288,7 +1288,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Konsole Monitoring With Twitter and Python]]></title>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
     <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
     <updated>2009-10-17T06:18:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
@@ -1357,7 +1357,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Nai Sekar, Your Not-so-friendly Translation Bot..]]></title>
+    <title type="html"><![CDATA[Nai Sekar, your not-so-friendly translation bot..]]></title>
     <link href="http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot/"/>
     <updated>2009-07-25T17:22:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/07/25/nai-sekar-your-not-so-friendly-translation-bot</id>
@@ -1495,7 +1495,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Give Your Boss the Illusion of Managing You... With Pidgin and Dbus]]></title>
+    <title type="html"><![CDATA[Give your boss the illusion of managing you... with pidgin and dbus]]></title>
     <link href="http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus/"/>
     <updated>2009-06-30T10:57:00+05:30</updated>
     <id>http://sudharsh.me/blog/2009/06/30/give-your-boss-the-illusion-of-managing-you-with-pidgin-and-dbus</id>
