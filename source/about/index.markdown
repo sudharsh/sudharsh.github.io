@@ -7,7 +7,7 @@ sharing: false
 footer: false
 ---
 
-[Pythonista](http://python.org) who secretly likes Ruby's syntax and likes to annoy Ruby programmers.
+[Pythonista](http://python.org) who secretly admires Ruby's syntax and likes to annoy Ruby programmers.
 
 Motorcycle Lover who likes Royal Enfield but finds some its owners obnoxious and annoying
 
