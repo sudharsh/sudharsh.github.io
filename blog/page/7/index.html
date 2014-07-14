@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Dec 17th, 2007 FOSS and Linux, Tips Comments Add Personality to Your Already Powerful Firefox I dunno if it adds functionality to your already &hellip;">
+	<meta name="description" content="Dec 26th, 2007 FOSS and Linux, Logs, Python, embedded, linux, neo1973, openmoko Comments SMSHack&#8230;how Not to Design GUIs I got to test some &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,15 +72,15 @@
 		
 		
 		
-			<a class="twitter" href="http://twitter.com/zphds" title="Twitter">Twitter</a>
+			<a class="twitter" href="http://twitter.com/zphds" title="Twitter" target="_blank">Twitter</a>
 		
 		
-			<a class="github" href="https://github.com/sudharsh" title="GitHub">GitHub</a>
+			<a class="github" href="https://github.com/sudharsh" title="GitHub" target="_blank">GitHub</a>
 		
 		
 		
 		
-			<a class="linkedin" href="http://www.linkedin.com/pub/sudharshan-s/8/449/958" title="LinkedIn">LinkedIn</a>
+			<a class="linkedin" href="http://www.linkedin.com/pub/sudharshan-s/8/449/958" title="LinkedIn" target="_blank">LinkedIn</a>
 		
 		
 		
@@ -90,7 +90,7 @@
 		
     	
     	
-			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+			<a class="rss" href="/atom.xml" title="RSS" target="_blank">RSS</a>
 		
 	</div>
 </nav>
@@ -104,6 +104,53 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-26T21:01:00+05:30" data-updated="true" itemprop="datePublished">Dec 26<span>th</span>, 2007</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2007/12/26/smshackhow-not-to-design-guis/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2007/12/26/smshackhow-not-to-design-guis/" itemprop="url">SMSHack&#8230;how Not to Design GUIs</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I got to test some code in the neo and found that sms sending using pygsmd works quite well!!..Also I was looking for an opportunity to brush up my 2 hour stint with pyGTK which I had a long long time ago. What better reason than to create a dirty, scrawny, crufty, fugly GUI for sending SMS. Heres a screenshot of the GUI in action taken from the neo itself. It doesnt really follow any GUI guidelines (who would care at 2:30 AM)&hellip;When you click SendSMS, it calls pygsmd.sms.send() and sends your message..and when you click Quit button, the obvious thing happens.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/12/screenshot-1.png"></p>
+
+<p>Oh there is also this another more better looking tool called <a href="http://wiki.openmoko.org/wiki/SMSTool">SMSTool</a> by alessandro, you might want to check that out as well if you want, it achieves its purpose in a weird sort of interesting way. It communicates with libgsmd-tool in shell mode through python subprocesses.</p>
+
+<p>If anyone is willing to modify the GUI and make it look more humane, be my guest..It ofcourse depends on pygtk and its dependencies</p>
+
+<p>P.S: SVN in projects.openmoko.org seems to be down. So I was not able to commit these example scripts.</p>
+
+<p>Goofup: I did it again..The SMSTool is written by <a href="http://mput.de/blog/">kriss</a> and maintaned by alessandro</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -524,47 +571,6 @@
 <p>I immediately pried open the device to see what was inside, the back side was easily removable. Hmm..That could be dangerous since if the device falls down the back panel would come off easily (I wasn&rsquo;t allowed to test the theory..). Put the battery in and booted the device. I was welcomed by a gentle vibration and a glorious splash screen that looked gorgeous on the high res screen. The bootup was ofcourse continued till a kernel panic with an error that init could not be found. Really looking forward to flash this baby and start coding&hellip;</p>
 
 <p>Check my<a href="http://www.flickr.com/photos/7611195@N06/1397515670/"> flickr</a> for more pics and this <a href="http://www.youtube.com/watch?v=ycl1rlyKQGA">video clip</a> with the neo booting up</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-13T15:15:00+05:30" data-updated="true" itemprop="datePublished">Sep 13<span>th</span>, 2007</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2007/09/13/finally-the-openmoko-kit-is-here/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2007/09/13/finally-the-openmoko-kit-is-here/" itemprop="url">Finally the Openmoko Kit Is Here</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>After weeks of waiting and sleepless nights guessing where our Openmoko advanced kit (Big thanks to NRCFOSS and Dr. Sreenivasan for sponsoring us the device) was, the kit has finally reached MIT and I got to touch the freed phone. The phone is quite handy and not as heavy as I expected it to be. Pics of the kit soon, when I go there on Monday.</p>
-
-<p>The project roadmap is here. <a href="http://projects.openmoko.org/docman/view.php/14/5/python-openmoko-roadmap.pdf">http://projects.openmoko.org/docman/view.php/14/5/python-openmoko-roadmap.pdf</a></p>
-
-<p>We are aware of how OpenEmbedded already has support for python, but one of our major areas of interests is optimizing the core, stripping it down kinda like what Nokia did for their Symbian based smartphones&hellip;Hop in if you are interested..</p>
 
 		
 		

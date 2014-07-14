@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Nov 16th, 2006 Comments GMedCon Howdie, I am pleased to announce that gmedcon, a port of xmedcon to gtk2.0 and libglade has been hosted at &hellip;">
+	<meta name="description" content="Nov 26th, 2006 FOSS and Linux, Tips Comments Glade 3 and Libglade I use glade to design UI for my project. So one day when I came to know that &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,15 +72,15 @@
 		
 		
 		
-			<a class="twitter" href="http://twitter.com/zphds" title="Twitter">Twitter</a>
+			<a class="twitter" href="http://twitter.com/zphds" title="Twitter" target="_blank">Twitter</a>
 		
 		
-			<a class="github" href="https://github.com/sudharsh" title="GitHub">GitHub</a>
+			<a class="github" href="https://github.com/sudharsh" title="GitHub" target="_blank">GitHub</a>
 		
 		
 		
 		
-			<a class="linkedin" href="http://www.linkedin.com/pub/sudharshan-s/8/449/958" title="LinkedIn">LinkedIn</a>
+			<a class="linkedin" href="http://www.linkedin.com/pub/sudharshan-s/8/449/958" title="LinkedIn" target="_blank">LinkedIn</a>
 		
 		
 		
@@ -90,7 +90,7 @@
 		
     	
     	
-			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+			<a class="rss" href="/atom.xml" title="RSS" target="_blank">RSS</a>
 		
 	</div>
 </nav>
@@ -104,6 +104,53 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-26T17:53:00+05:30" data-updated="true" itemprop="datePublished">Nov 26<span>th</span>, 2006</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2006/11/26/glade-3-and-libglade/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2006/11/26/glade-3-and-libglade/" itemprop="url">Glade 3 and Libglade</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I use glade to design UI for my project. So one day when I came to know that Glade3 has been released (rather late, actually) I decided to give it a shot. Glade 3 has its UI cranked so that you can efficiently create UI for your project..:|.. Anyway I dont know if it is just me but Glade 3 is slower than its predecessor and also crashed once in a while, especially when I was working with the design of the menu structure. On a happier note though, the crappy source code generation &ldquo;feature&rdquo; has been completely removed.. Yup&hellip;Glade2 had this feature wherein you could generate all the callback code..(That gave me nightmares..)</p>
+
+<p>So with Glade, it is recommended to use libglade (and out of my own experience) to load the glade file during program execution. This has some advantages from the code generation.. First you carry less source code and somehow I felt it made my program clean. Secondly you dont have to recompile the entire project when you make changes to the UI. This is because the code generation in glade creates a separate source file called interface.c where all the UI code gets in by default as though you have hand coded them. But with libglade that doesnt exist since glade xml gets loaded during runtime kinda like in PyGTk if you know it.</p>
+
+<p>Oh..and if you get the warning like
+<code>libglade-WARNING: couldn't find the signal handler "some_signal_handler"</code>
+This is because libglade couldnt find the symbols properly. Just add the &ldquo;&mdash;export-dynamic&rdquo; flag while compiling and you are done.</p>
+
+<p><strong>References:</strong>
+<a href="http://glade.gnome.org/">Glade UI Builder</a>
+<a href="http://www.jamesh.id.au/software/libglade/">libglade</a></p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -565,47 +612,6 @@ This is what really pisses me off..Everything around me is sticky and wet..My mo
 <p>Then dist-upgraded to edgy and after that installed kubuntu-desktop and removed GNOME..</p>
 
 <p>Let me tell you, upstart is kick ass application. Boots to my desktop really really fast.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-17T16:54:00+05:30" data-updated="true" itemprop="datePublished">Oct 17<span>th</span>, 2006</time></div>
-		<div class="tags">
-
-</div>
-		
-			<span class="comments"><a href="/blog/2006/10/17/oracle-linux/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2006/10/17/oracle-linux/" itemprop="url">Oracle Linux?</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Oracle is going to release its own Linux distribution if the following article is to be believed..</p>
-
-<p><a href="http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811">http://www.cbronline.com/article_news.asp?guid=AC31F249-770C-4541-AFCC-186A757F3811</a></p>
-
-<p>RedHat and Novell will definitely find this interesting. Am kinda wondering, if Oracle were to release its own distribution, Linux will become more famous. I guess its the &lsquo;ORACLE&rsquo; name&hellip;.</p>
-
-<p>Of course it would be an expensive-enterprise-kinda-distro, Would be really interesting to see what happens&hellip;An Oracle Database Server running on an Oracle developed OS does instill some curiosity,..</p>
-
-<p>Hmm..Wondering whether they would go in for GNOME or KDE as the default DE..</p>
 
 		
 		
