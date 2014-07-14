@@ -20,52 +20,52 @@
 <nav id="sub-nav">
 	<div class="social">
 		{% if site.email %}
-			<a class="email" href="mailto:{{ site.email }}" title="Email">Email</a>
+			<a class="email" href="mailto:{{ site.email }}" title="Email" target="_blank">Email</a>
 		{% endif %}
 		{% if site.facebook_user %}
-			<a class="facebook" href="http://www.facebook.com/{{ site.facebook_user }}" title="Facebook">Facebook</a>
+			<a class="facebook" href="http://www.facebook.com/{{ site.facebook_user }}" title="Facebook" target="_blank">Facebook</a>
 		{% endif %}
 		{% if site.googleplus_user and site.googleplus_hidden == false %}
-			<a class="google" href="https://plus.google.com/{{ site.googleplus_user }}" rel="author" title="Google+">Google+</a>
+			<a class="google" href="https://plus.google.com/{{ site.googleplus_user }}" rel="author" title="Google+" target="_blank">Google+</a>
 		{% endif %}
 		{% if site.twitter_user %}
-			<a class="twitter" href="http://twitter.com/{{ site.twitter_user }}" title="Twitter">Twitter</a>
+			<a class="twitter" href="http://twitter.com/{{ site.twitter_user }}" title="Twitter" target="_blank">Twitter</a>
 		{% endif %}
 		{% if site.github_user %}
-			<a class="github" href="https://github.com/{{ site.github_user }}" title="GitHub">GitHub</a>
+			<a class="github" href="https://github.com/{{ site.github_user }}" title="GitHub" target="_blank">GitHub</a>
 		{% endif %}
 		{% if site.coderwall_user %}
-			<a class="coderwall" href="https://coderwall.com/{{ site.coderwall_user }}" title="Coderwall">Coderwall</a>
+			<a class="coderwall" href="https://coderwall.com/{{ site.coderwall_user }}" title="Coderwall" target="_blank">Coderwall</a>
 		{% endif %}
 		{% if site.stackoverflow_user and site.stackoverflow_user_id %}
-		  <a class="stackoverflow" href="http://stackoverflow.com/users/{{site.stackoverflow_user_id}}/{{site.stackoverflow_user}}" title="StackOverflow"></a>
+		  <a class="stackoverflow" href="http://stackoverflow.com/users/{{site.stackoverflow_user_id}}/{{site.stackoverflow_user}}" title="StackOverflow" target="_blank"></a>
 		{% endif %}
 		{% if site.linkedin_user %}
-			<a class="linkedin" href="http://www.linkedin.com/pub/{{ site.linkedin_user }}" title="LinkedIn">LinkedIn</a>
+			<a class="linkedin" href="http://www.linkedin.com/pub/{{ site.linkedin_user }}" title="LinkedIn" target="_blank">LinkedIn</a>
 		{% endif %}
 		{% if site.pinterest_user %}
-			<a class="pinterest" href="https://pinterest.com/{{ site.pinterest_user }}" title="Pinterest">Pinterest</a>
+			<a class="pinterest" href="https://pinterest.com/{{ site.pinterest_user }}" title="Pinterest" target="_blank">Pinterest</a>
 		{% endif %}
 		{% if site.delicious_user %}
-			<a class="delicious" href="http://delicious.com/{{ site.delicious_user }}" title="Delicious">Delicious</a>
+			<a class="delicious" href="http://delicious.com/{{ site.delicious_user }}" title="Delicious" target="_blank">Delicious</a>
 		{% endif %}
 		{% if site.pinboard_user %}
-			<a class="pinboard" href="https://pinboard.in/u:{{ site.pinboard_user }}" title="Pinboard">Pinboard</a>
+			<a class="pinboard" href="https://pinboard.in/u:{{ site.pinboard_user }}" title="Pinboard" target="_blank">Pinboard</a>
 		{% endif %}
 		{% if site.douban_user %}
-			<a class="douban" href="https://www.douban.com/people/{{ site.douban_user }}" title="Douban">Douban</a>
+			<a class="douban" href="https://www.douban.com/people/{{ site.douban_user }}" title="Douban" target="_blank">Douban</a>
 		{% endif %}
 		{% if site.quora_user %}
-			<a class="quora" href="https://quora.com/{{ site.quora_user }}" title="Quora">Quora</a>
+			<a class="quora" href="https://quora.com/{{ site.quora_user }}" title="Quora" target="_blank">Quora</a>
 		{% endif %}
 		{% if site.instagram_user %}
-			<a class="instagram" href="https://instagram.com/{{ site.instagram_user }}" title="Instagram">Instagram</a>
+			<a class="instagram" href="https://instagram.com/{{ site.instagram_user }}" title="Instagram" target="_blank">Instagram</a>
 		{% endif %}
     	{% if site.behance_user %}
-			<a class="behance" href="https://www.behance.net/{{ site.behance_user }}" title="Behance">Behance</a>
+			<a class="behance" href="https://www.behance.net/{{ site.behance_user }}" title="Behance" target="_blank">Behance</a>
 		{% endif %}
     	{% if site.subscribe_rss %}
-			<a class="rss" href="{{ site.subscribe_rss }}" title="RSS">RSS</a>
+			<a class="rss" href="{{ site.subscribe_rss }}" title="RSS" target="_blank">RSS</a>
 		{% endif %}
 	</div>
 </nav>
