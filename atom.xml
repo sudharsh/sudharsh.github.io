@@ -4,7 +4,7 @@
   <title><![CDATA[42]]></title>
   <link href="http://sudharsh.me/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-08-18T22:34:00+05:30</updated>
+  <updated>2014-08-18T22:42:15+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -12,40 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[The Royal Affair]]></title>
-    <link href="http://sudharsh.me/blog/2014/08/18/the-royal-pain/"/>
-    <updated>2014-08-18T23:21:05+05:30</updated>
-    <id>http://sudharsh.me/blog/2014/08/18/the-royal-pain</id>
-    <content type="html"><![CDATA[<p>I was never a big fan of <a href="http://en.wikipedia.org/wiki/Royal_Enfield">Royal Enfields</a></p>
-
-<p>I happened to get hold of a <a href="http://royalenfield.com/motorcycles/classic-desert-storm/">Classic 500 Desert Storm</a> for a short ride to Wayanad recently. I have to admit I started the ride with a very unfair negative bias towards the machine. I hated the handling, the brakes, the vibrations and even the turd-sandwich colour. But as the miles were being munched, it grew on me and I was actually enjoying myself.</p>
-
-<p><img class="centre" src="http://sudharsh.me/images/G0030892.jpg"></p>
-
-<p>This bike had this knack of preventing me from pushing my limits. Instead it was demanding me to take it slow, relax and soak myself into the environment. As the milestones whizzed past me, I found myself not really caring about the vibrations or the uninspiring brakes or the boat-like handling; things that I felt were big deal-breakers for me in the beginning.</p>
-
-<p>Towards the end of the ride, I realised it&rsquo;s not the machines I was having a problem with. But the RE fans who always seem to fall into these two polarising buckets.</p>
-
-<ul>
-<li>On one hand we have the rabid fanboys with a hardon for these bikes who bought them just because it comes with a very <em>fast</em> 350cc mill and surprise! has very less number of plastic parts. I always find them loaded with this <strong>Master Race</strong> mentality just because they happen to own a Royal Enfield. Screw these guys. They are a Royal Pain in the Ass to deal with.</li>
-<li>On the other hand, I love talking to those Bull owners who take a lot of pride in their machines, at times to a point of being very vocal but are ready to acknowledge the fact that Royal Enfields aren&rsquo;t perfect; that they might not be the best tourer out there (IMO they are not), that it&rsquo;s the awesome legacy that they are owning.</li>
-</ul>
-
-
-<p><img class="centre" src="http://sudharsh.me/images/royalenfield2.jpg"></p>
-
-<p>You could argue there are fanatics for any brand, motorcycles or otherwise, out there. But the thing is, nowhere have I seen this much of a stark contrast in a fanbase before, where I despise one set of the populace and have complete respect for the other. (I am guilty of being in the first category myself when it comes to Apple notebooks :D)</p>
-
-<p>I like Royal Enfields now. I love its iconic thump and the styling that remains faithful to its roots. I love the posture and the sheer road presence that these machines ooze out. I enjoyed being respected on the road a lot more than the other bikes of seemingly lesser pedigree. Heck! I even love their classy promotional videos,</p>
-
-<iframe width="" height="" src="http://www.youtube.com/embed/goOu4aNsOKU ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p>However, for the love of all things holy, Dear RE owners, <strong>please stop pretending it&rsquo;s the best motorcycle out there</strong>. It&rsquo;s not!</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Royal Affair]]></title>
@@ -72,7 +38,10 @@
 
 <p>You could argue there are fanatics for any brand, motorcycles or otherwise, out there. But the thing is, nowhere have I seen this much of a stark contrast in a fanbase before, where I despise one set of the populace and have complete respect for the other. (I am guilty of being in the first category myself when it comes to Apple notebooks :D)</p>
 
-<p>I like Royal Enfields now. I love its iconic thump and the styling that remains faithful to its roots. I love the posture and the sheer road presence that these machines ooze out. I enjoyed being respected on the road a lot more than the other bikes of seemingly lesser pedigree.</p>
+<p>I like Royal Enfields now. I love its iconic thump and the styling that remains faithful to its roots. I love the posture and the sheer road presence that these machines ooze out. I enjoyed being respected on the road a lot more than the other bikes of seemingly lesser pedigree. Heck! I even love their classy promotional videos,</p>
+
+<iframe width="" height="" src="http://www.youtube.com/embed/goOu4aNsOKU ?feature=player_detailpage" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
 
 <p>However, for the love of all things holy, Dear RE owners, <strong>please stop pretending it&rsquo;s the best motorcycle out there</strong>. It&rsquo;s not!</p>
 ]]></content>
@@ -1372,6 +1341,75 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 <p><a href="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png"><img src="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png" alt="" /></a></p>
 
 <p>(My scanner sucks)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
+    <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
+    <updated>2009-10-17T06:18:00+05:30</updated>
+    <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
+    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
+
+<ol>
+<li><p> Start the code</p></li>
+<li><p> Go out for some tea or movie.</p></li>
+<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
+</ol>
+
+
+<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
+
+<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
+
+<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
+
+<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">twitter</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">username</span> <span class="o">=</span> <span class="s">&quot;dummy_account&quot;</span>
+</span><span class='line'><span class="n">password</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">receiver</span> <span class="o">=</span> <span class="s">&quot;sup3rkiddo&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">sendDM</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">stats</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">PostDirectMessage</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="s">&quot;*Done compiling*&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Error!&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">sendDM</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
 ]]></content>
   </entry>
   

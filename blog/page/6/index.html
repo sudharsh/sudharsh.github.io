@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="May 18th, 2008 FOSS and Linux, Logs, embedded, gsoc, linux, neo1973, odeviced, openmoko Comments Fun With Vala and DBus After the lousy semester &hellip;">
+	<meta name="description" content="Apr 30th, 2008 College, Life, Rants, bleh Comments A Debacle of an Exam&#8230; One of the Life&rsquo;s greatest ironies. I actually enjoyed studying &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,101 +104,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-05-18T15:32:00+05:30" data-updated="true" itemprop="datePublished">May 18<span>th</span>, 2008</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2008/05/18/fun-with-vala-and-dbus/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2008/05/18/fun-with-vala-and-dbus/" itemprop="url">Fun With Vala and DBus</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>After the lousy semester exams, I decided put in some time to learn <a href="http://live.gnome.org/Vala">vala</a> and <a href="http://freedesktop.org/wiki/Software/dbus">dbus</a> to cheer me up. For the unitiated,</p>
-
-<ul>
-<li><p>&lsquo;<em>Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C.</em>&rsquo;</p></li>
-<li><p>DBus is a low latency IPC system with less overhead with emphasis on desktop applications</p></li>
-</ul>
-
-
-<p>I must say the folks at #vala in GimpNet has been patient with me, especially considering the silly questions I had been asking for the last couple of days. I should get commit access to the git repositories of freesmartphone.org in a short while as well :D.</p>
-
-<p>I learned a couple of things on the way. Especially the KeyFile API from the <a href="http://library.gnome.org/devel/glib/">GLib</a> library really rocked. Note that odeviced would have configuration file sitting in &lsquo;/etc&rsquo; containing various settings like plugins to be loaded, their own internal switches and so on. I would have almost &ldquo;reinvented the wheel&rdquo; trying to reimplement stuff thats already provided by GLib if I hadn&rsquo;t browsed through the API reference of GLib. Implementing something like the above for odeviced in vala looks something like this,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='vala'><span class='line'><span class="p">....</span>
-</span><span class='line'><span class="kd">private</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFile</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFile</span><span class="p">();</span>
-</span><span class='line'><span class="kd">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">plugins</span><span class="p">;</span>
-</span><span class='line'><span class="kd">private</span> <span class="kt">string</span> <span class="n">dev_name</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">();</span>
-</span><span class='line'><span class="p">......</span>
-</span><span class='line'><span class="cm">/* vala will warn you if you dont put this under a try, catch block */</span>
-</span><span class='line'><span class="n">file</span><span class="p">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="s">&quot;/etc/odeviced.conf&quot;</span><span class="p">,</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFileFlags</span><span class="p">.</span><span class="n">NONE</span><span class="p">);</span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">has_group</span><span class="p">(</span><span class="s">&quot;odeviced&quot;</span><span class="p">))</span>
-</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="n">dev_name</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="n">get_string</span><span class="p">(</span><span class="s">&quot;odeviced&quot;</span><span class="p">,</span> <span class="s">&quot;device_name&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="n">plugins</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="n">get_groups</span><span class="p">();</span>
-</span><span class='line'><span class="n">_load</span><span class="p">(</span><span class="n">plugins</span><span class="p">);</span>
-</span><span class='line'><span class="p">....</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Of course, the corresponding configuration file will look something like this,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[odeviced]</span>
-</span><span class='line'><span class="na">device_name</span><span class="o">=</span><span class="s">FreeRunner</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">[powercontrol]</span>
-</span><span class='line'><span class="na">enable</span><span class="o">=</span><span class="s">1</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In the above example, things within &lsquo;[&rsquo; and &lsquo;]&rsquo; are group names and each of these groups consist of a key-value pair.</p>
-
-<p>As for the dbus part, each plugin would set up dbus objects on their own. GModule library will be used to load the <em>.so</em> libraries. So we&rsquo;d have object paths like <code>/org/freesmartphone/Device/powercontroller</code>. And of course, odeviced will be on the System Bus.</p>
-
-<p>On a related note, the &ldquo;surprise&rdquo; gift is on its way :D.</p>
-
-		
-		
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -636,6 +541,57 @@
 <p><a href="http://flickr.com/search/?q=fossconf">http://flickr.com/search/?q=fossconf</a></p>
 
 <p><a href="http://picasaweb.google.co.uk/tshrinivasan/FossConfDayOne">http://picasaweb.google.co.uk/tshrinivasan/FossConfDayOne</a></p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-20T16:43:00+05:30" data-updated="true" itemprop="datePublished">Jan 20<span>th</span>, 2008</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/life/'>Life</a>, <a class='category' href='/blog/categories/bleh/'>bleh</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2008/01/20/ratatooo-ey/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2008/01/20/ratatooo-ey/" itemprop="url">Ratatooo-ey</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Rats and mice are not funny. I admit it, I am not a guy a pest eradication centre will die for.</p>
+
+<p>So, there I was, home alone with a big bottle of orange juice peacefully fighting with some python spaghetti I call code.</p>
+
+<p>&ldquo;Drip&rdquo;</p>
+
+<p>&ldquo;Drip&rdquo;</p>
+
+<p>&hellip;..</p>
+
+<p>Frigging tap started leaking suddenly, went to investigate and out of my anger, broke it. There I was, drenched above the equator. I did manage to fix the leaky tap, (by the way it was 3 in the morning). And there, a goddamn cute little rat came out of nowhere and scurried over my toes and finally ended up under the refrigetator. Of course, I was pretty freaked out and in the process knocked over a few kitchen stuff.</p>
+
+<p>Well I should have said &ldquo;bleh&rdquo;, and gotten back to my work. But I was not to be pwned by a sneaky rat. Took the <a href="http://openmoko.com/products-neo-base-00-stdkit.html">stylus</a> that came with the OpenMoko Kit, opened the front door for my furry friend to get out of my property. I switched on the torchlight + led laser thingy that comes with the stylus and pointed it right at the rat. Of course it was irritated but stayed put, and for a second, I thought I saw something moving by the front door. DAMN!. Another critter&hellip;I gave up, closed all doors and went to sleep&hellip;&hellip;&hellip;..</p>
+
+<p>Now I got two rats somewhere in my house, watching over&hellip;..Remember next time you have a weird feeling, that schizophrenic experience, It must be the RATS&hellip;</p>
 
 		
 		
