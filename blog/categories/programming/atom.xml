@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-08-18T22:42:15+05:30</updated>
+  <updated>2014-11-05T23:37:39+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pebble and the Bullshit of Fitness Trackers]]></title>
+    <link href="http://sudharsh.me/blog/2014/11/05/pebble/"/>
+    <updated>2014-11-05T21:51:14+05:30</updated>
+    <id>http://sudharsh.me/blog/2014/11/05/pebble</id>
+    <content type="html"><![CDATA[<p>After countless unsuccessful attempts of getting fit by waking up early in the morning and run around the neighbourhood, realisation dawned on me. I needed some extra motivation to help me get started.</p>
+
+<p>The timing was perfect as I got that motivation (or atleast I thought I did) in the form of a very thoughtful <a href="http://getpebble.com">gift</a> from someone very special to me.</p>
+
+<p><img class="centre" src="/images/pebble.jpg"></p>
+
+<p>Unfortunately, my Laziness has been trouncing my Motivation without any hint of mercy whatsoever.</p>
+
+<p>That said, I absolutely adore this little bugger of a gadget that has seamlessly merged into my daily routine.</p>
+
+<p>Has a long battery life, is <a href="https://developer.getpebble.com/">hackable</a>, has customizable faces, syncs with my phone and has a rather nice app ecosystem.</p>
+
+<p>However, if you are like me and somehow think that splurging money on a <a href="http://www.microsoft.com/microsoft-band/en-us">smart wearable</a> with <a href="https://jawbone.com/">sensors</a> is going to make you wake up in the morning and go do that run that you had been procastinating all along, please! Don&rsquo;t kid yourself.</p>
+
+<p><img class="centre" src="/images/dog_and_me.jpg"></p>
+
+<p>No gadget with any fancy wizardry is going to solve the vice of Laziness. This is a challenge at a more human level.</p>
+
+<p>A challenge that millions including me, face every morning at 6.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins Build Status on Arduino]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[42]]></title>
   <link href="http://sudharsh.me/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-08-18T22:42:15+05:30</updated>
+  <updated>2014-11-05T23:37:39+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pebble and the Bullshit of Fitness Trackers]]></title>
+    <link href="http://sudharsh.me/blog/2014/11/05/pebble/"/>
+    <updated>2014-11-05T21:51:14+05:30</updated>
+    <id>http://sudharsh.me/blog/2014/11/05/pebble</id>
+    <content type="html"><![CDATA[<p>After countless unsuccessful attempts of getting fit by waking up early in the morning and run around the neighbourhood, realisation dawned on me. I needed some extra motivation to help me get started.</p>
+
+<p>The timing was perfect as I got that motivation (or atleast I thought I did) in the form of a very thoughtful <a href="http://getpebble.com">gift</a> from someone very special to me.</p>
+
+<p><img class="centre" src="http://sudharsh.me/images/pebble.jpg"></p>
+
+<p>Unfortunately, my Laziness has been trouncing my Motivation without any hint of mercy whatsoever.</p>
+
+<p>That said, I absolutely adore this little bugger of a gadget that has seamlessly merged into my daily routine.</p>
+
+<p>Has a long battery life, is <a href="https://developer.getpebble.com/">hackable</a>, has customizable faces, syncs with my phone and has a rather nice app ecosystem.</p>
+
+<p>However, if you are like me and somehow think that splurging money on a <a href="http://www.microsoft.com/microsoft-band/en-us">smart wearable</a> with <a href="https://jawbone.com/">sensors</a> is going to make you wake up in the morning and go do that run that you had been procastinating all along, please! Don&rsquo;t kid yourself.</p>
+
+<p><img class="centre" src="http://sudharsh.me/images/dog_and_me.jpg"></p>
+
+<p>No gadget with any fancy wizardry is going to solve the vice of Laziness. This is a challenge at a more human level.</p>
+
+<p>A challenge that millions including me, face every morning at 6.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Royal Affair]]></title>
@@ -1341,75 +1368,6 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 <p><a href="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png"><img src="http://sudharsh.files.wordpress.com/2009/11/lets_dance.png" alt="" /></a></p>
 
 <p>(My scanner sucks)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Konsole monitoring with twitter and python]]></title>
-    <link href="http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python/"/>
-    <updated>2009-10-17T06:18:00+05:30</updated>
-    <id>http://sudharsh.me/blog/2009/10/17/konsole-monitoring-with-twitter-and-python</id>
-    <content type="html"><![CDATA[<p>This happens to me all the time, especially when running programs that takes hours to complete.</p>
-
-<ol>
-<li><p> Start the code</p></li>
-<li><p> Go out for some tea or movie.</p></li>
-<li><p> When you come back, you find that the program had decided to piss you off by crashing 2 seconds after you went away from the keyboard.</p></li>
-</ol>
-
-
-<p>The amount of cuss words thrown at the code/program is directly proportional to the silliness of the cause of the crash or error. Even more, if its a typo. Now that twitter allows tweets to be sent to Bharti AirTel (Boohoo others) numbers, and add Python + python-twitter + konsole (Terminal emulator from KDE) to the mix, you can get a very rudimentary notification system which can DM you when konsole activity changes.</p>
-
-<p>To do this, First Enable &lsquo;Monitor for Silence&rsquo; in &lsquo;View&rsquo; Menu</p>
-
-<p>Then  &lsquo;Settings&rsquo; &ndash;> &lsquo;Configure Notifications&rsquo;. In the dialog that pops us, configure the notifications such that it executes a python script. The dialog should look something like this,</p>
-
-<p><a href="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png"><img src="http://sudharsh.files.wordpress.com/2009/10/multi_sentiment2.png?w=247" alt="dialog" /></a></p>
-
-<p>The real deal is in the script. It uses the python-twitter module to send a DM from a dummy account to whatever account you want the notifications to go to.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">twitter</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">username</span> <span class="o">=</span> <span class="s">&quot;dummy_account&quot;</span>
-</span><span class='line'><span class="n">password</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">receiver</span> <span class="o">=</span> <span class="s">&quot;sup3rkiddo&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">sendDM</span><span class="p">():</span>
-</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">stats</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">PostDirectMessage</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="s">&quot;*Done compiling*&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">except</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Error!&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">sendDM</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p>Thats it! Simple but useful ;p (Of course, change the message according your needs)</p>
 ]]></content>
   </entry>
   
