@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="May 21st, 2007 Government, Politics, Rants Comments Of Piracy and Social Service Take a look at this! http://www.channelregister.co.uk/2007/05/18/ &hellip;">
+	<meta name="description" content="Jun 15th, 2007 FOSS and Linux, Python, openmoko Comments Wrapping Up Libgsmd (Follow Up) w00t, pymoko runs in the qemu. The shared object extension &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,101 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-06-15T07:51:00+05:30" data-updated="true" itemprop="datePublished">Jun 15<span>th</span>, 2007</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2007/06/15/wrapping-up-libgsmd-follow-up/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2007/06/15/wrapping-up-libgsmd-follow-up/" itemprop="url">Wrapping Up Libgsmd (Follow Up)</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>w00t, pymoko runs in the qemu. The shared object extension got installed after building the openmoko toolchain from scratch. It did take me a whole day, but at the end it was frigging worth it. Thanks to stefan for pointing me to the solution. Now its party time.</p>
+
+<p>Heres the screenshot where I import the pymoko module, show the available functions by doing a &lsquo;dir(pymoko)&rsquo;, and try to call my number (which obviously wont work) with voice_out_init().</p>
+
+<p>The function call is unsuccessful because the gsm daemon doesnt appear to be running.</p>
+
+<p><a href="http://sudharsh.files.wordpress.com/2007/06/screenshot-1.png"><img src="http://sudharsh.files.wordpress.com/2007/06/screenshot-1.thumbnail.png" alt="works" /></a></p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-06-13T17:06:00+05:30" data-updated="true" itemprop="datePublished">Jun 13<span>th</span>, 2007</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/life/'>Life</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2007/06/13/wrapping-up-libgsmd/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2007/06/13/wrapping-up-libgsmd/" itemprop="url">Wrapping Up Libgsmd</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>So, Got myselves busy with <a href="http://www.openmoko.org">Openmoko</a>. Time will tell, if I would be able to get hold of the first device (neo1973) based on the platform. Anyway me and empty_mind had decided to bring our favourite programming, python to the platform. Of course <a href="http://www.openembedded.org">OpenEmbedded</a>, on which OpenMoko is based already provides python, but this time we are into customising the big snake for the Openmoko platform by writing language bindings, optimising runtimes. etc..No doubt fun times ahead.</p>
+
+<p>I have even come up with an extension module that wraps up the Voice Out function of libgsmd. It works on my box but the damn thing isnt getting installed in the final image although it build just fine, so I couldnt really test it out if it works in the device (no..not the real device just the qemu stuff).</p>
+
+<p>Have filed a bug report on this, hopefully it should be fixed.</p>
+
+<p><em>Sigh</em>, heres the screenshot of the error in qemu.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/06/openmoko.png?w=512"></p>
+
+<p><strong>Links:</strong></p>
+
+<p>Dadu&rsquo;s (empty_mind&rsquo;s) blog:<a href="http://http://www.vivekkhurana.com/pymoko/"> http://www.vivekkhurana.com/pymoko/</a>
+The neo1973 phone :  <a href="http://rene.rebe.name/photos/?p=/Computex/2007/img_2208.jpg">http://rene.rebe.name/photos/?p=/Computex/2007/img_2208.jpg</a></p>
+
+<p>Oh gawd, I Promise I will be good..Just send me one of those gadgets to hack and drool on..</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -504,106 +599,6 @@ And to the co-ordinators of exibhitions, judges with a &lsquo;nada&rsquo; knowle
 <code>noremap &lt;silent&gt; &lt;C-p&gt; :tabprevious&lt;CR&gt;</code></p>
 
 <p>Long live, the cult of vi&hellip;</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-01-24T13:52:00+05:30" data-updated="true" itemprop="datePublished">Jan 24<span>th</span>, 2007</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2007/01/24/gtkpod-with-moto-razr-v3i/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2007/01/24/gtkpod-with-moto-razr-v3i/" itemprop="url">Gtkpod With Moto Razr V3i</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>So, one of my friends turned up today with his new moto v3i asking for help..Pretty simple, put music in his mobile and make it accessible through itunes software bundled with v3i.</p>
-
-<p>With a sense of confidence I connected it to my box, and voila it was detected as a Mass Storage Device. He gave me the CDs that came with his mobile. I gave him a smirk in return and said &ldquo;This is Linux..Linux doesnt need any steenking windows driver cd&rdquo;.</p>
-
-<p>I copied some songs over his mobile in the itunes folder. But no songs in itunes. After scratching my head for a while, I decided to give gtkpod a shot..So fired uo my trusty shell and did a &ldquo;emerge gtkpod&rdquo;.</p>
-
-<p>In gtkpod in &ldquo;Edit iPod Properties&rdquo;, i selected the device as xmobile, connected the mobile and this time syncing the music worked&hellip;</p>
-
-<p>He is now probably wondering whether to give gentoo a go..</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-12-25T11:01:00+05:30" data-updated="true" itemprop="datePublished">Dec 25<span>th</span>, 2006</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/government/'>Government</a>, <a class='category' href='/blog/categories/rants/'>Rants</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2006/12/25/bsnl-bonanza-or/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2006/12/25/bsnl-bonanza-or/" itemprop="url">BSNL Bonanza or &#8230;</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>BSNL has claimed that they will upgrade all the 256k connections to 2mbps..Juicy&hellip;</p>
-
-<p>One thing puzzling me though is the fact that I have a 900UL connection. Anyone with some other plan with a 2 Mbps connection has to be mental&hellip;..For example, 500 bucks per month entitles you for a free 1024 mb usage&hellip;2 Mbps with 1024megs is nothing. If you are applying for a BSNL connection, stay clear out of this plan. Its puny&hellip;For example,</p>
-
-<p>256 kbps =  32 kBps (B &ndash;> Bytes, b &ndash;> bits, this is what everyone advertise)&hellip;</p>
-
-<p>So..Lets suppose you download a big file for an hour..In an hour there are 60 minutes and hence 60 * 60 = 3600 sec&hellip;So if you were to download something for an hour you would have downloaded 3600*32 =  115200 kBs or 115.2 MBs&hellip;.This is for 1 hour with a 256 kbps..So around some 9 hours you are done&hellip;.Yeah but of course you still have those night unlimited slots&hellip;.</p>
-
-<p>Now 2mbps = 4 * 256 kbps => 4 * 32kBps =  128kBps! (Boys thats fast)&hellip;That means you will use your 1024 megs quota in just  2 &frac12; hours&hellip;(excluding the free night usage)&hellip;</p>
-
-<p>With an 900 UL plan there aint any limitations and this is what scares me..2 Mbps with an unlimited connection for 900 bucks is a godsend, really economical&hellip;But I have a sneaky feeling that the current 900 UL plan would be left out, forcing the heavy users to switch to other plans&hellip;GOtta save money if that happens..</p>
-
-<p><strong>UPDATE:</strong></p>
-
-<p>Bsnl, sneaky chums have cleanly excluded UL plans outta this&hellip; here <a href="http://chennai.bsnl.co.in/News/BBSTariff010107.htm">http://chennai.bsnl.co.in/News/BBSTariff010107.htm</a></p>
-
-<p>The troubling thought is that, all are capped&hellip;and they are low&hellip;another thing is to note the &ldquo;upto&rdquo; word in the table except the Home 3300 plan. I think I will play safe and go with the present 900 UL&hellip;.I download around 10 gigs per month btw&hellip;none of those plans seems attractive&hellip;</p>
-
-<p>Another year,  another disappointment&hellip;.</p>
 
 		
 		
