@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="May 29th, 2008 FOSS and Linux, Rants, bleh, embedded, freesmartphone.org, gsoc, linux, neo1973, odeviced, openmoko Comments First Frigging Milestone &hellip;">
+	<meta name="description" content="May 22nd, 2008 FOSS and Linux, embedded, freesmartphone.org, gsoc, linux, neo1973, odeviced, openmoko Comments Odeviced: Progress Report :P So, &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,63 +104,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-05-29T17:58:00+05:30" data-updated="true" itemprop="datePublished">May 29<span>th</span>, 2008</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/bleh/'>bleh</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2008/05/29/first-frigging-milestone/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2008/05/29/first-frigging-milestone/" itemprop="url">First Frigging Milestone..</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Why Milestone? Nope, I didn&rsquo;t come up with fancy code or a &ldquo;beautiful&rdquo; one for that matter (Came up with a way to unload plugins). Milestone, because today was the first day I was squeezing up my half empty head to work around a teency weency problem. In short, I am happy I was actually <strong>thinking</strong> today about squishing a segmentation fault which was bringing the whole house down due to dbus and the kinky wifi plugin.</p>
-
-<p>Now a word of warning. The wifi plugin is a circus freak of sorts. Being the lazy bum I am, I found it a drag to manually get into the trouble of coming up with xml introspection data for the &ldquo;org.freesmartphone.Device.plugins.wifi&rdquo; interface.</p>
-
-<p>Instead I just came up with a grand plan of letting <em>valac</em> generate wifi.c and wifi.h, which I could modify later. Piece of cake? Sure&hellip;</p>
-
-<p>After the wifi plugin is loaded it works pretty well. The keyword being &ldquo;After&rdquo;&hellip;By the way, check the <a href="http://projects.linuxtogo.org/pipermail/smartphones-standards/2008-May/000078.html">progress report</a> which I sent to the <a href="http://projects.linuxtogo.org/pipermail/smartphones-standards/">smartphone-standards</a> list. That should give you an idea of how odeviced works and looks like. In fact, it works pretty satisfactorily discounting the segmentation faults :D, which is <strong>easily </strong>reproducible in the following ways,</p>
-
-<ul>
-<li><p>Don&rsquo;t load the wifi plugin on startup, set enable=0 in odeviced.conf. Instead load it manually after odeviced starts up and begins to idle.</p></li>
-<li><p>If the wifi plugin is already loaded, unload it and then try to load it again.</p></li>
-</ul>
-
-
-<p>Part of this problem might be my arrogance of not to use GTypeModules for dynamically typing the plugins. I need to discuss with my mentor, mickeyl about this once he gets back to business after <a href="http://www.linuxtag.org/2008/en/">LinuxTag</a>.</p>
-
-<p>The barely bare bones powercontrol plugin loads and unloads without any problems, but it doesn&rsquo;t do anything as remotely useful as the wifi plugin!! Just contains an init function that has a printf in it (bleh!, thank goodness it didn&rsquo;t bail out).</p>
-
-<p>Oh and the all important <a href="http://sudharsh.unixpod.com/odeviced-20080529.tar.bz2">tarball</a> is here. Highly effective than laughing gas!</p>
-
-<p>&hellip;Another gdb session beckons</p>
-
-		
-		
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -680,6 +623,45 @@ enable=1`</p></li>
 <p>Get the bindings <a href="http://sudharsh.unixpod.com/pyjana-proto.tar.gz">here</a></p>
 
 <p>As always all sorts of help is appreciated</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-09T15:02:00+05:30" data-updated="true" itemprop="datePublished">Feb 9<span>th</span>, 2008</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/life/'>Life</a>, <a class='category' href='/blog/categories/bleh/'>bleh</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2008/02/09/hax0rgotchi/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2008/02/09/hax0rgotchi/" itemprop="url">Hax0rGotchi</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Finally, got the patience to make an <a href="http://en.wikipedia.org/wiki/Hackergotchi">hackergotchi</a> of my photograph using <a href="http://gimp.org/">GIMP</a>.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/02/face.png"></p>
 
 		
 		

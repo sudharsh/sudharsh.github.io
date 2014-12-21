@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-12-21T14:53:09+05:30</updated>
+  <updated>2014-12-21T14:57:46+05:30</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[All systems are Go]]></title>
-    <link href="http://sudharsh.me/blog/2014/11/11/all-systems-are-go/"/>
-    <updated>2014-11-11T13:35:27+05:30</updated>
-    <id>http://sudharsh.me/blog/2014/11/11/all-systems-are-go</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Pebble and the Bullshit of Fitness Trackers]]></title>
