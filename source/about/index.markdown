@@ -7,17 +7,13 @@ sharing: false
 footer: false
 ---
 
-[Pythonista](http://python.org) who secretly admires Ruby's syntax and likes to annoy Ruby programmers.
+Full stack Engineer who loves to tinker with Golang, Clojure, JS, Python and Rust. That guy in the team who suggests Postgres. 
 
-Motorcycle Lover who likes Royal Enfield but finds some its owners obnoxious and annoying
+Motorcycle Lover who likes to go on long rides.
 
-Budding [gopher](http://golang.org) likely suffering from some form of [ADHD](https://en.wikipedia.org/wiki/ADHD).
+[PC Gamer](https://en.wikipedia.org/wiki/PC_Master_Race) who sees the world at more than 24fps ;).
 
 Tone deaf bathroom singer who finds [Louis CK](https://www.youtube.com/results?search_query=louis+ck), [Carlin](https://www.youtube.com/results?search_query=george+carlin) and [Goundamani](https://www.youtube.com/results?search_query=goundamani) hilarious. 
-
-Recent [Kindle owner](https://www.goodreads.com/review/list/28616278) into the [Discworld](https://en.wikipedia.org/wiki/Discworld) series.
-
-Engineer at [Apigee](http://apigee.com) who prefers curd rice for lunch.
 
 
 
