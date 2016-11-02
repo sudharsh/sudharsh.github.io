@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="May 22nd, 2008 FOSS and Linux, embedded, freesmartphone.org, gsoc, linux, neo1973, odeviced, openmoko Comments Odeviced: Progress Report :P So, &hellip;">
+	<meta name="description" content="Apr 30th, 2008 College, Life, Rants, bleh Comments A Debacle of an Exam&#8230; One of the Life&rsquo;s greatest ironies. I actually enjoyed studying &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,172 +104,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-05-22T11:18:00-07:00" data-updated="true" itemprop="datePublished">May 22<span>nd</span>, 2008</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2008/05/22/odeviced-progress-report-p/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2008/05/22/odeviced-progress-report-p/" itemprop="url">Odeviced: Progress Report :P</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>So, presenting a preliminary skeleton service for odeviced that loads shared object libraries (or in other words plugins). Nothing to be proud of, but hey, something is better than nothing.</p>
-
-<p>Here&rsquo;s a screenshot of a very very preliminary odeviced in action..</p>
-
-<p><a href="http://sudharsh.unixpod.com/Screenshot.png"><img src="http://sudharsh.unixpod.com/Screenshot.png" alt="odeviced" /></a></p>
-
-<p>Basically its just a dbus service that can load modules from a predefined location. Here&rsquo;s how it works currently,</p>
-
-<ul>
-<li><p>Setup all the boring stuff like registering the object path and getting the connection to the DBus system bus. The interface used will be &ldquo;org.freesmartphone.Device&rdquo;.</p></li>
-<li><p>The service reads the configuration file at /etc/odeviced.conf whose contents are as follows,`</p>
-
-<h1>General configurations</h1>
-
-<p>[odeviced]
-device_name=FreeRunner<code>
-</code>[powercontrol]
-enable=1`</p></li>
-<li><p>So from the above configuration, the device name is set to FreeRunner and odeviced tries to load the powercontrol plugin since &ldquo;enable&rdquo; is set to 1. Of course, the dbus service exposes the load method to load plugins manually after the service has started if the need arises.</p></li>
-<li><p>The default directory for plugins is at &lsquo;/usr/share/odeviced/plugins&rsquo;. Maybe additional directories for other plugins can be set in odeviced.conf. By now odeviced tries to load the plugin libpowercontrol.so under &lsquo;/usr/share/odeviced/plugins&rsquo;.</p></li>
-<li><p>After successful loading of the plugin, odeviced executes the init function in the plugin which is of the form &lt;plugin_name>_init. In our case it is powercontrol_init. The dbus paths for the plugins are to be set here. So we would have object paths such as &ldquo;/org/freesmartphone/Device/plugins/powercontrol&#8217;. This is yet to be done.</p></li>
-<li><p>As evident in the above screenshot the powercontrol_init contains a single printf statement which merely spits out &ldquo;In powercontrol&rdquo;. And yes, the powercontrol plugin is written in good ol&#8217; C.</p></li>
-</ul>
-
-
-<p>Notice the gnome-terminal at the right. It is running a simple python helper script for testing odeviced. It simply reads from stdin and calls the `load&#8217; method offered by the dbus service with the input as the argument. As you can see, powercontrol has been loaded successfully but &ldquo;l&rdquo; and &ldquo;this_aint_a_plugin&rdquo; gives a critical warning that these plugins couldn&rsquo;t be found.</p>
-
-<p><em>What needs to be done</em></p>
-
-<ul>
-<li><p>Make the code &ldquo;beautiful&rdquo;. :D. I am constantly on the lookout for vala&#8217;ish ways of doing things. Still need to work on my OOP skills :/.</p></li>
-<li><p>Come up with a decent plugin for powercontrol.</p></li>
-<li><p>Put in some example apps or port the existing OM ones to use odeviced.</p></li>
-</ul>
-
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-05-18T15:32:00-07:00" data-updated="true" itemprop="datePublished">May 18<span>th</span>, 2008</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/gsoc/'>gsoc</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/odeviced/'>odeviced</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2008/05/18/fun-with-vala-and-dbus/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2008/05/18/fun-with-vala-and-dbus/" itemprop="url">Fun With Vala and DBus</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>After the lousy semester exams, I decided put in some time to learn <a href="http://live.gnome.org/Vala">vala</a> and <a href="http://freedesktop.org/wiki/Software/dbus">dbus</a> to cheer me up. For the unitiated,</p>
-
-<ul>
-<li><p>&lsquo;<em>Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C.</em>&rsquo;</p></li>
-<li><p>DBus is a low latency IPC system with less overhead with emphasis on desktop applications</p></li>
-</ul>
-
-
-<p>I must say the folks at #vala in GimpNet has been patient with me, especially considering the silly questions I had been asking for the last couple of days. I should get commit access to the git repositories of freesmartphone.org in a short while as well :D.</p>
-
-<p>I learned a couple of things on the way. Especially the KeyFile API from the <a href="http://library.gnome.org/devel/glib/">GLib</a> library really rocked. Note that odeviced would have configuration file sitting in &lsquo;/etc&rsquo; containing various settings like plugins to be loaded, their own internal switches and so on. I would have almost &ldquo;reinvented the wheel&rdquo; trying to reimplement stuff thats already provided by GLib if I hadn&rsquo;t browsed through the API reference of GLib. Implementing something like the above for odeviced in vala looks something like this,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='vala'><span class='line'><span class="p">....</span>
-</span><span class='line'><span class="kd">private</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFile</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFile</span><span class="p">();</span>
-</span><span class='line'><span class="kd">private</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">plugins</span><span class="p">;</span>
-</span><span class='line'><span class="kd">private</span> <span class="kt">string</span> <span class="n">dev_name</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">();</span>
-</span><span class='line'><span class="p">......</span>
-</span><span class='line'><span class="cm">/* vala will warn you if you dont put this under a try, catch block */</span>
-</span><span class='line'><span class="n">file</span><span class="p">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="s">&quot;/etc/odeviced.conf&quot;</span><span class="p">,</span> <span class="n">GLib</span><span class="p">.</span><span class="n">KeyFileFlags</span><span class="p">.</span><span class="n">NONE</span><span class="p">);</span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">has_group</span><span class="p">(</span><span class="s">&quot;odeviced&quot;</span><span class="p">))</span>
-</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="n">dev_name</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="n">get_string</span><span class="p">(</span><span class="s">&quot;odeviced&quot;</span><span class="p">,</span> <span class="s">&quot;device_name&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="n">plugins</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="n">get_groups</span><span class="p">();</span>
-</span><span class='line'><span class="n">_load</span><span class="p">(</span><span class="n">plugins</span><span class="p">);</span>
-</span><span class='line'><span class="p">....</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Of course, the corresponding configuration file will look something like this,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[odeviced]</span>
-</span><span class='line'><span class="na">device_name</span><span class="o">=</span><span class="s">FreeRunner</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">[powercontrol]</span>
-</span><span class='line'><span class="na">enable</span><span class="o">=</span><span class="s">1</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In the above example, things within &lsquo;[&rsquo; and &lsquo;]&rsquo; are group names and each of these groups consist of a key-value pair.</p>
-
-<p>As for the dbus part, each plugin would set up dbus objects on their own. GModule library will be used to load the <em>.so</em> libraries. So we&rsquo;d have object paths like <code>/org/freesmartphone/Device/powercontroller</code>. And of course, odeviced will be on the System Bus.</p>
-
-<p>On a related note, the &ldquo;surprise&rdquo; gift is on its way :D.</p>
-
-		
-		
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -499,72 +333,6 @@ enable=1`</p></li>
   
 
 
-<time datetime="2008-03-30T09:47:00-07:00" data-updated="true" itemprop="datePublished">Mar 30<span>th</span>, 2008</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/life/'>Life</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/linux/'>linux</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2008/03/30/omfg-i-has-a-lappy/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2008/03/30/omfg-i-has-a-lappy/" itemprop="url">OMFG.. I HAS a LAPPY</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>I had been looking for a machine replacing my 4 and a half year old computer which served me really well. I was really keen on buying (my daddy actually) a Dell XPS m133o. But the lack of payment options and the service tax really added to the hefty price. Yesterday my mom took a stroll around the Sony World and found a 14 incher which she thought would fit my needs. I went and took a look and it was love at first site. Today I brought it home :D..</p>
-
-<p>Its a Sony Vaio VGN CR 36, The specifications are really competitive..Here goes,</p>
-
-<ul>
-<li><p>Core 2 Duo t8100 clocking atround 2.1 Ghz.</p></li>
-<li><p>2 gigs of RAM</p></li>
-<li><p>200 GB hard disk (comes with 5400 RPM drive, could have been a 7200)</p></li>
-<li><p>ATi Radeon x2300</p></li>
-<li><p>3 USB ports, one firewire, RJ 45 connector..blah blah blah</p></li>
-<li><p>and the 14.1 inch WXGA display that looks drop dead gorgeus</p></li>
-<li><p>The usual goodies, a web cam, finger print reader..etc</p></li>
-</ul>
-
-
-<p>All this at a 54k, and I feel its a good deal, especially with the 0% finance they offer..</p>
-
-<p>First of all, the keyboard is lifted straight from the macbooks (Apparently its the other way round, macs copied the keyboard from older vaios) and has that buttony feel to it. Its sturdy and a pleasure to use. Top marks there&hellip;</p>
-
-<p>Its neither light nor heavy and the build quality is excellent. However the battery that comes with the CR is quite flimsy. I am afraid its a borky design. There is noticeable shake and it falls right off if I forget to lock it. Big Bleh on that.</p>
-
-<p>One really cool thing about the laptop is the fact that the fan is at the sides and not at the bottom thus saving your balls.</p>
-
-<p>The screen is brilliant that offers minimal reflection even though the LCD is glossy.</p>
-
-<p>It ships with Vista which in my not so humble opinion is next to dog barf. (The warranty doesn&rsquo;t get screwed up if I nuke it).</p>
-
-<p>Getting ready to install Gentoo on it. Tried putting the gutsy cd but refused to start X. The radeon must be the culprit for this one. I will come up with my experiences of installing Gentoo on it in the next post</p>
-
-<p>Overall its a sexy machine that oozes OMFGAWESOMENESS with a competitive price. I foresee Dell cutting the prices on XPS now..</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
 <time datetime="2008-02-24T17:33:00-08:00" data-updated="true" itemprop="datePublished">Feb 24<span>th</span>, 2008</time></div>
 		<div class="tags">
 
@@ -662,6 +430,147 @@ enable=1`</p></li>
 		<p>Finally, got the patience to make an <a href="http://en.wikipedia.org/wiki/Hackergotchi">hackergotchi</a> of my photograph using <a href="http://gimp.org/">GIMP</a>.</p>
 
 <p><img class="center" src="http://sudharsh.files.wordpress.com/2008/02/face.png"></p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-07T17:32:00-08:00" data-updated="true" itemprop="datePublished">Feb 7<span>th</span>, 2008</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/events/'>Events</a>, <a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/linux/'>linux</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2008/02/07/fossconf-08/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2008/02/07/fossconf-08/" itemprop="url">FossConf &#8216;08</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Totally screwed out for the last 5 days. 3 days of intense FOSS at Fossconf and internal assessments at College after that. What a week. I had Ub3rcool fun at fossconf meeting new people and matching irc nicks with faces, presenting a tutorial on writing python extensions and pygsmd, and of course voluntary work eating food which was provided to us.</p>
+
+<p>I am feeling lazy to give a report on the event, which my fat elder bro has <a href="http://technofreakatchennai.wordpress.com/2008/02/04/fossconf-chennai-2008/">taken time to do so</a>.</p>
+
+<p>The best I can do is give you some links =).</p>
+
+<p><a href="http://flickr.com/search/?q=fossconf">http://flickr.com/search/?q=fossconf</a></p>
+
+<p><a href="http://picasaweb.google.co.uk/tshrinivasan/FossConfDayOne">http://picasaweb.google.co.uk/tshrinivasan/FossConfDayOne</a></p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-26T21:01:00-08:00" data-updated="true" itemprop="datePublished">Dec 26<span>th</span>, 2007</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2007/12/26/smshackhow-not-to-design-guis/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2007/12/26/smshackhow-not-to-design-guis/" itemprop="url">SMSHack&#8230;how Not to Design GUIs</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I got to test some code in the neo and found that sms sending using pygsmd works quite well!!..Also I was looking for an opportunity to brush up my 2 hour stint with pyGTK which I had a long long time ago. What better reason than to create a dirty, scrawny, crufty, fugly GUI for sending SMS. Heres a screenshot of the GUI in action taken from the neo itself. It doesnt really follow any GUI guidelines (who would care at 2:30 AM)&hellip;When you click SendSMS, it calls pygsmd.sms.send() and sends your message..and when you click Quit button, the obvious thing happens.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/12/screenshot-1.png"></p>
+
+<p>Oh there is also this another more better looking tool called <a href="http://wiki.openmoko.org/wiki/SMSTool">SMSTool</a> by alessandro, you might want to check that out as well if you want, it achieves its purpose in a weird sort of interesting way. It communicates with libgsmd-tool in shell mode through python subprocesses.</p>
+
+<p>If anyone is willing to modify the GUI and make it look more humane, be my guest..It ofcourse depends on pygtk and its dependencies</p>
+
+<p>P.S: SVN in projects.openmoko.org seems to be down. So I was not able to commit these example scripts.</p>
+
+<p>Goofup: I did it again..The SMSTool is written by <a href="http://mput.de/blog/">kriss</a> and maintaned by alessandro</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-11-04T17:59:00-08:00" data-updated="true" itemprop="datePublished">Nov 4<span>th</span>, 2007</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/logs/'>Logs</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/neo1973/'>neo1973</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2007/11/04/pygsmd-shell-shell-mode-of-libgsmd-tool-in-python/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2007/11/04/pygsmd-shell-shell-mode-of-libgsmd-tool-in-python/" itemprop="url">Pygsmd-shell: Shell Mode of Libgsmd-tool in Python</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Got some sms and phonebook code in the svn, but not all. So once I had some bindings finished. I decided to write a sort of example script that uses our pygsmd module. libgsmd-tool have always been a friend of mine in knowing whats up with gsmd. Therefore to pay a tribute to my good &ldquo;friend&rdquo;, I came up with a python script that mimics &lsquo;libgsmd-tool -m shell&rsquo;. Of course since pygsmd itself is yet to be completed, the script is incomplete although functional. Its been a long time since I had written a real python script, so if its not pythonic, please comment..The script is already in the svn,  so if you are interested take a look and most importantly test it out and extend it..=D</p>
+
+<p>Heres a more sane version(88) from the <a href="http://projects.openmoko.org/plugins/scmsvn/viewcvs.php/*checkout*/python-gsmd/examples/pygsmd_shell.py?content-type=text%2Fplain&amp;rev=88&amp;root=python-openmoko">svn</a></p>
+
+<p>And the screenshot of pygsmd-shell in action. Notice the AT commands in Phonesim to the right. And the screenshot of the script running in the neo.</p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/pygsmdshell.png"></p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/screenshot-1.png"></p>
+
+<p><img class="center" src="http://sudharsh.files.wordpress.com/2007/11/screenshot-1.png"></p>
+
+<p>For pygsmd svn repository, <a href="http://projects.openmoko.org/plugins/scmsvn/viewcvs.php/?root=python-openmoko">click here</a></p>
 
 		
 		
