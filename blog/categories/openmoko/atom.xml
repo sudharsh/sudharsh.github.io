@@ -4,7 +4,7 @@
   <title><![CDATA[Category: openmoko | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/openmoko/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-12-21T14:57:46+05:30</updated>
+  <updated>2016-11-01T18:08:15-07:00</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
     <link href="http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri/"/>
-    <updated>2009-12-17T14:55:00+05:30</updated>
+    <updated>2009-12-17T14:55:00-08:00</updated>
     <id>http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri</id>
     <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"><img src="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg" alt="" /></a></p>
 
@@ -33,7 +33,7 @@
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
     <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
-    <updated>2009-12-06T14:27:00+05:30</updated>
+    <updated>2009-12-06T14:27:00-08:00</updated>
     <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 
@@ -135,7 +135,7 @@ server.run()
   <entry>
     <title type="html"><![CDATA[No GTA03 in 2009 :(]]></title>
     <link href="http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009/"/>
-    <updated>2009-04-05T13:56:00+05:30</updated>
+    <updated>2009-04-05T13:56:00-07:00</updated>
     <id>http://sudharsh.me/blog/2009/04/05/no-gta03-in-2009</id>
     <content type="html"><![CDATA[<p>2-3 back came a sad and shocking <a href="http://mobile.slashdot.org/article.pl?sid=09/04/04/228240&amp;art_pos=2">news</a> (atleast to me) that Openmoko has sacked/let go of 50% of its work force and has ceased all developments for GTA03. Furthermore Openmoko has stopped funding FSO. Both of which were grim developments to hear.</p>
 
@@ -150,7 +150,7 @@ server.run()
   <entry>
     <title type="html"><![CDATA[SHR, fsod and certain other things.]]></title>
     <link href="http://sudharsh.me/blog/2008/11/23/shr-fsod-and-certain-other-things/"/>
-    <updated>2008-11-23T06:58:00+05:30</updated>
+    <updated>2008-11-23T06:58:00-08:00</updated>
     <id>http://sudharsh.me/blog/2008/11/23/shr-fsod-and-certain-other-things</id>
     <content type="html"><![CDATA[<p><a href="http://wiki.openmoko.org/wiki/SHR">SHR</a> (Stable Hybrid Release) released images recently and boy, did they do an awesome job at it. By far, SHR and Debian are some of the images that uses the <a href="http://git.freesmartphone.org/">FSO daemons</a> by default. So turns out to be a great testing ground for the FSO APIs. And after a long while, I also got some time to play with my Freerunner. Here is a screenshot of TangoGPS in action.</p>
 
@@ -169,7 +169,7 @@ server.run()
   <entry>
     <title type="html"><![CDATA[fsod status]]></title>
     <link href="http://sudharsh.me/blog/2008/10/20/fsod-status/"/>
-    <updated>2008-10-20T17:37:00+05:30</updated>
+    <updated>2008-10-20T17:37:00-07:00</updated>
     <id>http://sudharsh.me/blog/2008/10/20/fsod-status</id>
     <content type="html"><![CDATA[<p>Its been a while since I blogged about odeviced. In my earlier posts I had mentioned the possibility of integrating odeviced and others (which do not exist at the moment) into a single daemon for avoiding too much fracture. I have pushed some code that does this, converting odeviced into a Device subsystem that is loaded by a master daemon called fsod. This, of course is very similar to the python implementation (<a href="http://git.freesmartphone.org/?p=framework.git;a=summary">frameworkd</a>) which is pretty awesome at what it does and has become a sort of success story for using DBus as the fudgy layer separating toolkits and the underlying systems which in themselves are tightly coupled.</p>
 

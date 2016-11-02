@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-12-21T14:57:46+05:30</updated>
+  <updated>2016-11-01T18:08:15-07:00</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Jenkins Build Status on Arduino]]></title>
     <link href="http://sudharsh.me/blog/2013/12/07/jenkins-build-status-on-arduino/"/>
-    <updated>2013-12-07T22:58:00+05:30</updated>
+    <updated>2013-12-07T22:58:00-08:00</updated>
     <id>http://sudharsh.me/blog/2013/12/07/jenkins-build-status-on-arduino</id>
     <content type="html"><![CDATA[<p>I gifted myself an Arduino Starter Kit from <a href="http://www.simplelabs.co.in">Simplelabs</a> to kill some time during the weekends.
 Needless to say, I felt really proud of myself once I got the <a href="http://arduino.cc/en/tutorial/blink">LED blink example</a> working without breaking anything.</p>
@@ -611,7 +611,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
     <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
-    <updated>2013-08-31T14:44:00+05:30</updated>
+    <updated>2013-08-31T14:44:00-07:00</updated>
     <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
     <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
 
@@ -751,7 +751,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
     <link href="http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/"/>
-    <updated>2013-05-26T19:32:00+05:30</updated>
+    <updated>2013-05-26T19:32:00-07:00</updated>
     <id>http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management</id>
     <content type="html"><![CDATA[<p><img class="center <a" src="href="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png">http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png</a>"></p>
 
@@ -768,7 +768,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Save your staplers!]]></title>
     <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
-    <updated>2011-02-06T15:45:00+05:30</updated>
+    <updated>2011-02-06T15:45:00-08:00</updated>
     <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
@@ -804,7 +804,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
     <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
-    <updated>2009-12-06T14:27:00+05:30</updated>
+    <updated>2009-12-06T14:27:00-08:00</updated>
     <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
     <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
 

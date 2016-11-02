@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | 42]]></title>
   <link href="http://sudharsh.me/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-12-21T14:57:46+05:30</updated>
+  <updated>2016-11-01T18:08:15-07:00</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Pebble and the Bullshit of Fitness Trackers]]></title>
     <link href="http://sudharsh.me/blog/2014/11/05/pebble/"/>
-    <updated>2014-11-05T21:51:14+05:30</updated>
+    <updated>2014-11-05T08:21:14-08:00</updated>
     <id>http://sudharsh.me/blog/2014/11/05/pebble</id>
     <content type="html"><![CDATA[<p>After countless unsuccessful attempts of getting fit by waking up early in the morning and run around the neighbourhood, realisation dawned on me. I needed some extra motivation to help me get started.</p>
 
@@ -43,7 +43,7 @@
   <entry>
     <title type="html"><![CDATA[Jenkins Build Status on Arduino]]></title>
     <link href="http://sudharsh.me/blog/2013/12/07/jenkins-build-status-on-arduino/"/>
-    <updated>2013-12-07T22:58:00+05:30</updated>
+    <updated>2013-12-07T22:58:00-08:00</updated>
     <id>http://sudharsh.me/blog/2013/12/07/jenkins-build-status-on-arduino</id>
     <content type="html"><![CDATA[<p>I gifted myself an Arduino Starter Kit from <a href="http://www.simplelabs.co.in">Simplelabs</a> to kill some time during the weekends.
 Needless to say, I felt really proud of myself once I got the <a href="http://arduino.cc/en/tutorial/blink">LED blink example</a> working without breaking anything.</p>
@@ -638,7 +638,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Getting IP of an interface in Clojure]]></title>
     <link href="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/"/>
-    <updated>2013-12-05T00:56:00+05:30</updated>
+    <updated>2013-12-05T00:56:00-08:00</updated>
     <id>http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure</id>
     <content type="html"><![CDATA[<p>Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface</p>
 

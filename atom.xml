@@ -4,7 +4,7 @@
   <title><![CDATA[42]]></title>
   <link href="http://sudharsh.me/atom.xml" rel="self"/>
   <link href="http://sudharsh.me/"/>
-  <updated>2014-12-21T14:57:46+05:30</updated>
+  <updated>2016-11-01T18:08:15-07:00</updated>
   <id>http://sudharsh.me/</id>
   <author>
     <name><![CDATA[Sudharshan S]]></name>
@@ -14,9 +14,18 @@
 
   
   <entry>
+    <title type="html"><![CDATA[12 years of Linux]]></title>
+    <link href="http://sudharsh.me/blog/2016/08/25/12-years-of-linux/"/>
+    <updated>2016-08-25T01:46:29-07:00</updated>
+    <id>http://sudharsh.me/blog/2016/08/25/12-years-of-linux</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Annoyasaurus Lex]]></title>
     <link href="http://sudharsh.me/blog/2014/12/18/annoyasaurus-lex/"/>
-    <updated>2014-12-18T18:29:39+05:30</updated>
+    <updated>2014-12-18T04:59:39-08:00</updated>
     <id>http://sudharsh.me/blog/2014/12/18/annoyasaurus-lex</id>
     <content type="html"><![CDATA[<p>I was 7 the first time I watched Jurassic Park. It has remained my favorite childhood movie and greatly influenced how I was going to play with my toys for the next few years.</p>
 
@@ -47,7 +56,7 @@
   <entry>
     <title type="html"><![CDATA[Pebble and the Bullshit of Fitness Trackers]]></title>
     <link href="http://sudharsh.me/blog/2014/11/05/pebble/"/>
-    <updated>2014-11-05T21:51:14+05:30</updated>
+    <updated>2014-11-05T08:21:14-08:00</updated>
     <id>http://sudharsh.me/blog/2014/11/05/pebble</id>
     <content type="html"><![CDATA[<p>After countless unsuccessful attempts of getting fit by waking up early in the morning and run around the neighbourhood, realisation dawned on me. I needed some extra motivation to help me get started.</p>
 
@@ -74,7 +83,7 @@
   <entry>
     <title type="html"><![CDATA[The Royal Affair]]></title>
     <link href="http://sudharsh.me/blog/2014/08/18/the-royal-affair/"/>
-    <updated>2014-08-18T23:21:05+05:30</updated>
+    <updated>2014-08-18T10:51:05-07:00</updated>
     <id>http://sudharsh.me/blog/2014/08/18/the-royal-affair</id>
     <content type="html"><![CDATA[<p>I was never a big fan of <a href="http://en.wikipedia.org/wiki/Royal_Enfield">Royal Enfields</a></p>
 
@@ -108,7 +117,7 @@
   <entry>
     <title type="html"><![CDATA[Pen and Paper]]></title>
     <link href="http://sudharsh.me/blog/2014/07/12/pen-and-notebook/"/>
-    <updated>2014-07-12T19:46:38+05:30</updated>
+    <updated>2014-07-12T07:16:38-07:00</updated>
     <id>http://sudharsh.me/blog/2014/07/12/pen-and-notebook</id>
     <content type="html"><![CDATA[<p>I am one of those people with a very volatile memory. Unless I jot down things even if it is as mundane as getting a haircut, I find myself with a nagging sense of incompleteness in my head. It is a very uncomfortable feeling to have.</p>
 
@@ -131,7 +140,7 @@
   <entry>
     <title type="html"><![CDATA[Jenkins Build Status on Arduino]]></title>
     <link href="http://sudharsh.me/blog/2013/12/07/jenkins-build-status-on-arduino/"/>
-    <updated>2013-12-07T22:58:00+05:30</updated>
+    <updated>2013-12-07T22:58:00-08:00</updated>
     <id>http://sudharsh.me/blog/2013/12/07/jenkins-build-status-on-arduino</id>
     <content type="html"><![CDATA[<p>I gifted myself an Arduino Starter Kit from <a href="http://www.simplelabs.co.in">Simplelabs</a> to kill some time during the weekends.
 Needless to say, I felt really proud of myself once I got the <a href="http://arduino.cc/en/tutorial/blink">LED blink example</a> working without breaking anything.</p>
@@ -728,7 +737,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Getting IP of an interface in Clojure]]></title>
     <link href="http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure/"/>
-    <updated>2013-12-05T00:56:00+05:30</updated>
+    <updated>2013-12-05T00:56:00-08:00</updated>
     <id>http://sudharsh.me/blog/2013/12/05/getting-ip-of-an-interface-in-clojure</id>
     <content type="html"><![CDATA[<p>Here&rsquo;s a rather crude way in clojure to get the IP of the current host given a network interface</p>
 
@@ -754,7 +763,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Hiccup: Organizing templates using multimethods]]></title>
     <link href="http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods/"/>
-    <updated>2013-08-31T14:44:00+05:30</updated>
+    <updated>2013-08-31T14:44:00-07:00</updated>
     <id>http://sudharsh.me/blog/2013/08/31/hiccup-organizing-templates-using-multimethods</id>
     <content type="html"><![CDATA[<p>There are two major templating libraries for Clojure,<a href="https://github.com/cgrand/enlive"> Enlive</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. Since I am not that much of a designer, I chose Hiccup for my side project written in Clojure. I liked the DSL&rsquo;s unification of code and templating; right in my comfort zone. This post is a little log on how I ended up using <a href="http://clojure.org/multimethods">multimethods</a> for organizing my Hiccup template functions.</p>
 
@@ -930,7 +939,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[Cloudcraft: Easy minecraft server management]]></title>
     <link href="http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management/"/>
-    <updated>2013-05-26T19:32:00+05:30</updated>
+    <updated>2013-05-26T19:32:00-07:00</updated>
     <id>http://sudharsh.me/blog/2013/05/26/cloudcraft-easy-minecraft-server-management</id>
     <content type="html"><![CDATA[<p><img class="center" src="http://sudharsh.files.wordpress.com/2013/05/2013-05-25_00-39-01.png"></p>
 
@@ -947,7 +956,7 @@ The wiring is a huge mess, but hey, it works! :)</p>
   <entry>
     <title type="html"><![CDATA[I]]></title>
     <link href="http://sudharsh.me/blog/2013/05/11/i/"/>
-    <updated>2013-05-11T19:37:00+05:30</updated>
+    <updated>2013-05-11T19:37:00-07:00</updated>
     <id>http://sudharsh.me/blog/2013/05/11/i</id>
     <content type="html"><![CDATA[<p>More than Death, losing my memory scares the shit out of me.
 It makes me queasy to think that all the wonderful experiences I had, the secrets in my head, my tough times and failures can go poof; slowly or in an instant without warning.</p>
@@ -963,7 +972,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA["Brooks was here"]]></title>
     <link href="http://sudharsh.me/blog/2013/04/25/brooks-was-here/"/>
-    <updated>2013-04-25T14:30:00+05:30</updated>
+    <updated>2013-04-25T14:30:00-07:00</updated>
     <id>http://sudharsh.me/blog/2013/04/25/brooks-was-here</id>
     <content type="html"><![CDATA[<p><strong>Minor spoilers ahead</strong></p>
 
@@ -981,7 +990,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[Chile, alla vamos!]]></title>
     <link href="http://sudharsh.me/blog/2011/10/01/chile-alla-vamos/"/>
-    <updated>2011-10-01T13:13:00+05:30</updated>
+    <updated>2011-10-01T13:13:00-07:00</updated>
     <id>http://sudharsh.me/blog/2011/10/01/chile-alla-vamos</id>
     <content type="html"><![CDATA[<p>It all started as a little hack by <a href="http://twitter.com/#%21/cnu">Srini</a> and I at the <a href="http://developer.yahoo.com/hackday/">Yahoo! Openhack</a> Event conducted in Bangalore. The hack by itself wasn&rsquo;t that fancy when compared to the other finalists but we did feel good when our hack got shortlisted for the finals. We wrote a little web app which would index <a href="http://www.delicious.com/">delicious</a> bookmarks and enable Full Text Search on the Content with a neat tagging mechanism.</p>
 
@@ -1006,7 +1015,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[Save your staplers!]]></title>
     <link href="http://sudharsh.me/blog/2011/02/06/save-your-staplers/"/>
-    <updated>2011-02-06T15:45:00+05:30</updated>
+    <updated>2011-02-06T15:45:00-08:00</updated>
     <id>http://sudharsh.me/blog/2011/02/06/save-your-staplers</id>
     <content type="html"><![CDATA[<p>Picture this. You are at work on a Friday evening. You are all pumped up! Who wouldn&rsquo;t be. Two full days of zero work ahead! You shutdown your computer, rise up, turn around to leave and BAM! This happens,</p>
 
@@ -1042,7 +1051,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[Over the Hills and not so Far Away]]></title>
     <link href="http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away/"/>
-    <updated>2010-10-15T19:29:00+05:30</updated>
+    <updated>2010-10-15T19:29:00-07:00</updated>
     <id>http://sudharsh.me/blog/2010/10/15/over-the-hills-and-not-so-far-away</id>
     <content type="html"><![CDATA[<p>I had been itching to go on a motorbike roadtrip to Kerala. Sitting in the back of the car isn&rsquo;t exactly my idea of a fun and fulfilling roadtrip.</p>
 
@@ -1078,7 +1087,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[simplejson's simple gotcha]]></title>
     <link href="http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha/"/>
-    <updated>2010-09-17T18:30:00+05:30</updated>
+    <updated>2010-09-17T18:30:00-07:00</updated>
     <id>http://sudharsh.me/blog/2010/09/17/simplejsons-simple-gotcha</id>
     <content type="html"><![CDATA[<p>I like simple things. Anything more complex more than &lsquo;simple&rsquo; is tough to deal with. Therefore it comes as no surprise that I love JSON. Heck, the entire grammar fits in a business card.</p>
 
@@ -1131,7 +1140,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[Touring, now a Breeze! ]]></title>
     <link href="http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze/"/>
-    <updated>2010-07-18T16:58:00+05:30</updated>
+    <updated>2010-07-18T16:58:00-07:00</updated>
     <id>http://sudharsh.me/blog/2010/07/18/touring-now-a-breeze</id>
     <content type="html"><![CDATA[<p>India, is a wonderful place for touring on a motorbike. With terrains ranging from high mountainous North, North Eastern India to the Coastal plains and lush Ghats down South, we sure have a huge load of places to see and experience. Motorbike touring can also be risky since a disproportionate rate of road accidents involve two-wheelers. Therefore it is absolutely necessary for the rider to protect himself on the road with proper riding gears.</p>
 
@@ -1182,7 +1191,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[Roadtrip to Pondy]]></title>
     <link href="http://sudharsh.me/blog/2010/07/05/roadtrip-to-pondy/"/>
-    <updated>2010-07-05T08:31:00+05:30</updated>
+    <updated>2010-07-05T08:31:00-07:00</updated>
     <id>http://sudharsh.me/blog/2010/07/05/roadtrip-to-pondy</id>
     <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg"><img src="http://sudharsh.files.wordpress.com/2010/07/photo-02211.jpg?w=219" alt="" /></a></p>
 
@@ -1199,7 +1208,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[Almost a graduate]]></title>
     <link href="http://sudharsh.me/blog/2010/03/30/almost-a-graduate/"/>
-    <updated>2010-03-30T17:06:00+05:30</updated>
+    <updated>2010-03-30T17:06:00-07:00</updated>
     <id>http://sudharsh.me/blog/2010/03/30/almost-a-graduate</id>
     <content type="html"><![CDATA[<p>4 years ago, I joined a college which had the highest mediocrity rating among the mediocre colleges in TN. To be honest, I didn&rsquo;t have good academics in my high school, so I must say I was quite fortunate to get an undergrad &lsquo;seat&rsquo; for a CS Engineering degree there. Luckily, on the very 2nd day of college, I had enough brains to come to a conclusion that my next 4 years would be spent in an Orwellian Dystopian Parallel Universe where students wore lab coats for CS Labs. (It still beats me, the purpose of a fucking labcoat in a Theoretical Computer Science Lab).</p>
 
@@ -1218,7 +1227,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[24camp - Be there]]></title>
     <link href="http://sudharsh.me/blog/2010/02/10/24camp-be-there/"/>
-    <updated>2010-02-10T12:19:00+05:30</updated>
+    <updated>2010-02-10T12:19:00-08:00</updated>
     <id>http://sudharsh.me/blog/2010/02/10/24camp-be-there</id>
     <content type="html"><![CDATA[<p>Last week, <a href="http://24camp.org/">24camp</a> started out as a means for people to get together and work on interesting projects/ideas.</p>
 
@@ -1231,7 +1240,7 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
   <entry>
     <title type="html"><![CDATA[Road trip to Yelagiri]]></title>
     <link href="http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri/"/>
-    <updated>2009-12-17T14:55:00+05:30</updated>
+    <updated>2009-12-17T14:55:00-08:00</updated>
     <id>http://sudharsh.me/blog/2009/12/17/road-trip-to-yelagiri</id>
     <content type="html"><![CDATA[<p><a href="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg"><img src="http://sudharsh.files.wordpress.com/2009/12/photo-0017.jpg" alt="" /></a></p>
 
@@ -1242,150 +1251,6 @@ It makes me queasy to think that all the wonderful experiences I had, the secret
 <p>Alas, my friends couldn&rsquo;t make it and I had to go solo, without any company. The tripmeter at the end of the day read 484.5. Also, logged part of the return trip with TangoGPS in my Freerunner. I have uploaded the <a href="http://www.openstreetmap.org/user/sudharsh/traces/585929">traces to OSM</a>.</p>
 
 <p>I have written a <a href="http://www.xbhp.com/talkies/tourer/10982-chennai-yelagiri-solo-ride-lots-lots-rain.html#post346437">fairly detailed triplog</a> at the xbhp forums. Do read it :D</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mashing Twitter and FSO]]></title>
-    <link href="http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso/"/>
-    <updated>2009-12-06T14:27:00+05:30</updated>
-    <id>http://sudharsh.me/blog/2009/12/06/mashing-twitter-and-fso</id>
-    <content type="html"><![CDATA[<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
-
-<p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
-
-<ol>
-<li><p> Send messages to your old/unused number whose SIM is in the <a href="http://openmoko.com/freerunner.html">Freerunner</a> (or any other device supported by the <a href="http://wiki.freesmartphone.org">FSO</a> framework)</p></li>
-<li><p> Handle the incoming messages and use <a href="http://code.google.com/p/python-twitter/">python-twitter</a> API (or) raw urllib2 to post updates. Of course, the device should be connected to the internet, you can <a href="http://wiki.openmoko.org/wiki/Usb_networking">tether</a> this device to an old unused computer. Simply put, the Freerunner should be able to access the internet.</p></li>
-</ol>
-
-
-<p>I know this is dumb given cheap GPRS and all, but what the heck; Sundays <em>are</em> reserved for dumb things and I wanted to show off how easy it is to develop and conjure up simple but powerful scripts using open hackable hardware like the Freerunner. So take off your pedantic hats ;)</p>
-
-<p>Here is the actual python code,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'><span class="c"># Written By Sudharshan S, http://sudharsh.wordpress.com</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">dbus</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">logging</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">twitter</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">gobject</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">gobject</span> <span class="kn">import</span> <span class="n">MainLoop</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">from</span> <span class="nn">dbus.mainloop.glib</span> <span class="kn">import</span> <span class="n">DBusGMainLoop</span>
-</span><span class='line'><span class="n">DBusGMainLoop</span> <span class="p">(</span><span class="n">set_as_default</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Use OAUTH?</span>
-</span><span class='line'><span class="n">USERNAME</span> <span class="o">=</span> <span class="s">&quot;username&quot;</span>
-</span><span class='line'><span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&quot;TweetForwarder&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">TweetForwarder</span><span class="p">:</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="sd">&quot;&quot;&quot;Process Incoming messages and update twitter status</span>
-</span><span class='line'><span class="sd">      if the message startswith &#39;tweet&#39;</span>
-</span><span class='line'><span class="sd">   &quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
-</span><span class='line'>       <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Starting up....&quot;</span><span class="p">)</span>
-</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">twitter_api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>       <span class="c"># Get proxies and add signal handlers</span>
-</span><span class='line'>       <span class="n">bus</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">SystemBus</span><span class="p">()</span>
-</span><span class='line'>       <span class="n">_usage</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;org.freesmartphone.ousaged&quot;</span><span class="p">,</span>
-</span><span class='line'>                               <span class="s">&quot;/org/freesmartphone/Usage&quot;</span><span class="p">)</span>
-</span><span class='line'>       <span class="n">_proxy</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;org.freesmartphone.ogsmd&quot;</span><span class="p">,</span> \
-</span><span class='line'>                               <span class="s">&quot;/org/freesmartphone/GSM/Device&quot;</span><span class="p">)</span>
-</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">usage_iface</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">_usage</span><span class="p">,</span> <span class="s">&quot;org.freesmartphone.Usage&quot;</span><span class="p">)</span>
-</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">usage_iface</span><span class="o">.</span><span class="n">RequestResource</span><span class="p">(</span><span class="s">&#39;GSM&#39;</span><span class="p">)</span>
-</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">sms_iface</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span> <span class="p">(</span><span class="n">_proxy</span><span class="p">,</span> <span class="s">&quot;org.freesmartphone.GSM.SMS&quot;</span><span class="p">)</span>
-</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">sms_iface</span><span class="o">.</span><span class="n">connect_to_signal</span> <span class="p">(</span><span class="s">&quot;IncomingMessage&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">onIncomingMessage</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">def</span> <span class="nf">onIncomingMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-</span><span class='line'>       <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Received SMS from </span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">))</span>
-</span><span class='line'>       <span class="c"># We don&#39;t ALL messages to this number to be tweeted</span>
-</span><span class='line'>       <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;tweet &quot;</span><span class="p">):</span>
-</span><span class='line'>           <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Trying to update status : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">message</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-</span><span class='line'>           <span class="bp">self</span><span class="o">.</span><span class="n">twitter_api</span><span class="o">.</span><span class="n">PostUpdate</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="mi">6</span><span class="p">:])</span>
-</span><span class='line'>           <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Updated Status&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>       <span class="n">loop</span> <span class="o">=</span> <span class="n">MainLoop</span><span class="p">()</span>
-</span><span class='line'>       <span class="n">loop</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">server</span> <span class="o">=</span> <span class="n">TweetForwarder</span><span class="p">(</span><span class="n">USERNAME</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
-
-<p>The script and the accompanying dependency can be downloaded from <a href="http://gitorious.org/dumb-scripts/dumb-scripts/archive-tarball/master">here</a>. Just change the USERNAME and PASSWORD accordingly after scp&#8217;ing the tarball to your device.</p>
-
-<p>Some useful links,</p>
 ]]></content>
   </entry>
   

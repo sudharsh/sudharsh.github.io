@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Nov 22nd, 2009 art Comments Come.. Let&#8217;s Dance Just another sketch to break the monotony of my life. (Somehow felt good no matter how bad this &hellip;">
+	<meta name="description" content="Dec 6th, 2009 FOSS and Linux, Python, Tips, embedded, freesmartphone.org, linux, openmoko, programming Comments Mashing Twitter and FSO I really &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -120,7 +120,179 @@
   
 
 
-<time datetime="2009-11-22T19:17:00+05:30" data-updated="true" itemprop="datePublished">Nov 22<span>nd</span>, 2009</time></div>
+<time datetime="2009-12-06T14:27:00-08:00" data-updated="true" itemprop="datePublished">Dec 6<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/tips/'>Tips</a>, <a class='category' href='/blog/categories/embedded/'>embedded</a>, <a class='category' href='/blog/categories/freesmartphone-dot-org/'>freesmartphone.org</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/openmoko/'>openmoko</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2009/12/06/mashing-twitter-and-fso/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/12/06/mashing-twitter-and-fso/" itemprop="url">Mashing Twitter and FSO</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I really love Twitter and it didn&rsquo;t make any sense to me to shell out a rupee for every tweet sent through my Airtel Mobile. Moreover, I am on one of those monthly booster packs which allows you to send 22000 text messages for free. I simply had to exploit this by setting up my own little &lsquo;OC&rsquo; twitter forwarder written in python. (I know of smstweet.in service but I am still charged 1.50 for every tweet I send)</p>
+
+<p>Its insanely simple to write such a &lsquo;forwarder&rsquo; in python using the services provided by the FSO (<a href="http://wiki.freesmartphone.org">freesmartphone.org</a>) Framework,</p>
+
+<ol>
+<li><p> Send messages to your old/unused number whose SIM is in the <a href="http://openmoko.com/freerunner.html">Freerunner</a> (or any other device supported by the <a href="http://wiki.freesmartphone.org">FSO</a> framework)</p></li>
+<li><p> Handle the incoming messages and use <a href="http://code.google.com/p/python-twitter/">python-twitter</a> API (or) raw urllib2 to post updates. Of course, the device should be connected to the internet, you can <a href="http://wiki.openmoko.org/wiki/Usb_networking">tether</a> this device to an old unused computer. Simply put, the Freerunner should be able to access the internet.</p></li>
+</ol>
+
+
+<p>I know this is dumb given cheap GPRS and all, but what the heck; Sundays <em>are</em> reserved for dumb things and I wanted to show off how easy it is to develop and conjure up simple but powerful scripts using open hackable hardware like the Freerunner. So take off your pedantic hats ;)</p>
+
+<p>Here is the actual python code,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># Written By Sudharshan S, http://sudharsh.wordpress.com</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">dbus</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">twitter</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">gobject</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">gobject</span> <span class="kn">import</span> <span class="n">MainLoop</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">dbus.mainloop.glib</span> <span class="kn">import</span> <span class="n">DBusGMainLoop</span>
+</span><span class='line'><span class="n">DBusGMainLoop</span> <span class="p">(</span><span class="n">set_as_default</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Use OAUTH?</span>
+</span><span class='line'><span class="n">USERNAME</span> <span class="o">=</span> <span class="s">&quot;username&quot;</span>
+</span><span class='line'><span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">&quot;TweetForwarder&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">TweetForwarder</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="sd">&quot;&quot;&quot;Process Incoming messages and update twitter status</span>
+</span><span class='line'><span class="sd">      if the message startswith &#39;tweet&#39;</span>
+</span><span class='line'><span class="sd">   &quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+</span><span class='line'>       <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Starting up....&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">twitter_api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="c"># Get proxies and add signal handlers</span>
+</span><span class='line'>       <span class="n">bus</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">SystemBus</span><span class="p">()</span>
+</span><span class='line'>       <span class="n">_usage</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;org.freesmartphone.ousaged&quot;</span><span class="p">,</span>
+</span><span class='line'>                               <span class="s">&quot;/org/freesmartphone/Usage&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="n">_proxy</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s">&quot;org.freesmartphone.ogsmd&quot;</span><span class="p">,</span> \
+</span><span class='line'>                               <span class="s">&quot;/org/freesmartphone/GSM/Device&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">usage_iface</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">_usage</span><span class="p">,</span> <span class="s">&quot;org.freesmartphone.Usage&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">usage_iface</span><span class="o">.</span><span class="n">RequestResource</span><span class="p">(</span><span class="s">&#39;GSM&#39;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">sms_iface</span> <span class="o">=</span> <span class="n">dbus</span><span class="o">.</span><span class="n">Interface</span> <span class="p">(</span><span class="n">_proxy</span><span class="p">,</span> <span class="s">&quot;org.freesmartphone.GSM.SMS&quot;</span><span class="p">)</span>
+</span><span class='line'>       <span class="bp">self</span><span class="o">.</span><span class="n">sms_iface</span><span class="o">.</span><span class="n">connect_to_signal</span> <span class="p">(</span><span class="s">&quot;IncomingMessage&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">onIncomingMessage</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">onIncomingMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>       <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Received SMS from </span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">message</span><span class="p">))</span>
+</span><span class='line'>       <span class="c"># We don&#39;t ALL messages to this number to be tweeted</span>
+</span><span class='line'>       <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;tweet &quot;</span><span class="p">):</span>
+</span><span class='line'>           <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Trying to update status : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">message</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span><span class='line'>           <span class="bp">self</span><span class="o">.</span><span class="n">twitter_api</span><span class="o">.</span><span class="n">PostUpdate</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="mi">6</span><span class="p">:])</span>
+</span><span class='line'>           <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Updated Status&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>       <span class="n">loop</span> <span class="o">=</span> <span class="n">MainLoop</span><span class="p">()</span>
+</span><span class='line'>       <span class="n">loop</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">server</span> <span class="o">=</span> <span class="n">TweetForwarder</span><span class="p">(</span><span class="n">USERNAME</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Make sure you have python-netclient and python-json installed on your Freerunner. These can be installed using the &lsquo;opkg install&rsquo; command.</p>
+
+<p>The script and the accompanying dependency can be downloaded from <a href="http://gitorious.org/dumb-scripts/dumb-scripts/archive-tarball/master">here</a>. Just change the USERNAME and PASSWORD accordingly after scp&#8217;ing the tarball to your device.</p>
+
+<p>Some useful links,</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-22T19:17:00-08:00" data-updated="true" itemprop="datePublished">Nov 22<span>nd</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -161,7 +333,7 @@
   
 
 
-<time datetime="2009-10-17T06:18:00+05:30" data-updated="true" itemprop="datePublished">Oct 17<span>th</span>, 2009</time></div>
+<time datetime="2009-10-17T06:18:00-07:00" data-updated="true" itemprop="datePublished">Oct 17<span>th</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -258,7 +430,7 @@
   
 
 
-<time datetime="2009-07-25T17:22:00+05:30" data-updated="true" itemprop="datePublished">Jul 25<span>th</span>, 2009</time></div>
+<time datetime="2009-07-25T17:22:00-07:00" data-updated="true" itemprop="datePublished">Jul 25<span>th</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -424,7 +596,7 @@
   
 
 
-<time datetime="2009-06-30T10:57:00+05:30" data-updated="true" itemprop="datePublished">Jun 30<span>th</span>, 2009</time></div>
+<time datetime="2009-06-30T10:57:00-07:00" data-updated="true" itemprop="datePublished">Jun 30<span>th</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -532,7 +704,7 @@
   
 
 
-<time datetime="2009-06-21T16:15:00+05:30" data-updated="true" itemprop="datePublished">Jun 21<span>st</span>, 2009</time></div>
+<time datetime="2009-06-21T16:15:00-07:00" data-updated="true" itemprop="datePublished">Jun 21<span>st</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -571,7 +743,7 @@
   
 
 
-<time datetime="2009-05-11T17:26:00+05:30" data-updated="true" itemprop="datePublished">May 11<span>th</span>, 2009</time></div>
+<time datetime="2009-05-11T17:26:00-07:00" data-updated="true" itemprop="datePublished">May 11<span>th</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -615,7 +787,7 @@
   
 
 
-<time datetime="2009-04-09T13:17:00+05:30" data-updated="true" itemprop="datePublished">Apr 9<span>th</span>, 2009</time></div>
+<time datetime="2009-04-09T13:17:00-07:00" data-updated="true" itemprop="datePublished">Apr 9<span>th</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -835,7 +1007,7 @@
   
 
 
-<time datetime="2009-04-05T13:56:00+05:30" data-updated="true" itemprop="datePublished">Apr 5<span>th</span>, 2009</time></div>
+<time datetime="2009-04-05T13:56:00-07:00" data-updated="true" itemprop="datePublished">Apr 5<span>th</span>, 2009</time></div>
 		<div class="tags">
 
 
@@ -878,7 +1050,7 @@
   
 
 
-<time datetime="2009-03-23T14:38:00+05:30" data-updated="true" itemprop="datePublished">Mar 23<span>rd</span>, 2009</time></div>
+<time datetime="2009-03-23T14:38:00-07:00" data-updated="true" itemprop="datePublished">Mar 23<span>rd</span>, 2009</time></div>
 		<div class="tags">
 
 </div>
@@ -900,151 +1072,6 @@
 
 </article>
 
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-05T17:20:00+05:30" data-updated="true" itemprop="datePublished">Feb 5<span>th</span>, 2009</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2009/02/05/thinking-inside-the-box/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/02/05/thinking-inside-the-box/" itemprop="url">Thinking Inside the &#8220;Box&#8221;</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>About 10 minutes ago, my brain switched from neutral to first gear and started pondering about ways to teach someone how to program (Not that I am particularly good at programming in the first place :D).</p>
-
-<p>For example, how would you explain the concept of variables, references, names. etc, which seemingly form the corner stone of programming language syntax. Sometimes this can make you struggle a bit when you are switching languages.</p>
-
-<p>Consider the following,</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a = 10
-</span><span class='line'>&gt;&gt;&gt; b = a
-</span><span class='line'>&gt;&gt;&gt; id(a)
-</span><span class='line'>37688272
-</span><span class='line'>&gt;&gt;&gt; id(b)
-</span><span class='line'>37688272</span></code></pre></td></tr></table></div></figure>
-
-
-<p>One teency weency thing I learnt the hardway was the fact that when the interpreter evaluates &lsquo;a = 10&rsquo;, it creates a &ldquo;box&rdquo;, slaps the label &lsquo;a&rsquo; on it and puts the integer 10 in it. Consequently, something like swapping of two numbers becomes as easy as,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This is actually emphasised on most, if not all Python tutorials I have come across. This didn&rsquo;t sound all that important when I learnt Python for the first time.</p>
-
-<p>Then I found C to be doing things differently (Am I even right?),
-Take this for example,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="cm">/* This however creates a new &quot;box&quot;</span>
-</span><span class='line'><span class="cm">           containing the value 5 and a name y */</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of x = %d, Address of x is %x</span><span class="se">\n</span><span class="s">&quot;</span> \
-</span><span class='line'>         <span class="s">&quot;Value of x = %d, Address of y is %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Gives the following output, where x and y are named on different boxes and yet have the same values.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">Value</span> <span class="n">of</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Address</span> <span class="n">of</span> <span class="n">x</span> <span class="n">is</span> <span class="mf">98e6</span><span class="n">cecc</span>
-</span><span class='line'><span class="n">Value</span> <span class="n">of</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Address</span> <span class="n">of</span> <span class="n">y</span> <span class="n">is</span> <span class="mf">98e6</span><span class="n">cec8</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Hmm, This is where I hit it. Suddenly realisation dawned. Sun shone again. Birds twittered. The darkness was gone. I suddenly found myself telling <em><strong>&ldquo;Its called the pointers.. stupid!&rdquo;</strong></em></p>
-
-<p>Now, to mirror the the Python &ldquo;box&rdquo; analogy (not exactly) well, a in a language like C, we have to our disposal the good old pointers.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="cm">/* Pointer to the &quot;box&quot; that is name &#39;x&#39;. */</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">y</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
-</span><span class='line'>          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of x = %d, Address of x is %x</span><span class="se">\n</span><span class="s">&quot;</span> \
-</span><span class='line'>         <span class="s">&quot;Value of y = %d, Address of y is %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This would give me,
-<code>Value of x = 5, Address of x is c07ec844
-Value of y = 5, Address of y is c07ec844
-</code></p>
-
-<p>where &lsquo;*&rsquo; and &lsquo;&amp;&rsquo; are the de-reference (value-of) and reference (value-at) operators.</p>
-
-<p>So folks, Is it right to think along the lines of &ldquo;a box at c07ec844 is labelled &lsquo;x&rsquo; with the integer value 5&rdquo; when I see something as mundane as &ldquo;int x = 5&rdquo; . It did help me to understand pointers better, but are there any better analogies when speaking about variables, references etc. than say, picturing a row of shelves with lots of boxes, each of which can have multiple sticky notes with names at a given point of time.</p>
-
-		
-		
-	</div>
-
-</article>
-
 </div>
 <nav id="pagenavi">
     
@@ -1056,7 +1083,7 @@ Value of y = 5, Address of y is c07ec844
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2014
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     Sudharshan S
 
