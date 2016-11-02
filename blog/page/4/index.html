@@ -9,7 +9,7 @@
 	<meta name="author" content="Sudharshan S">
 
 	
-	<meta name="description" content="Feb 5th, 2009 Rants, programming Comments Thinking Inside the &#8220;Box&#8221; About 10 minutes ago, my brain switched from neutral to first gear &hellip;">
+	<meta name="description" content="Feb 1st, 2009 Life, Rants, bleh Comments Zero Productivity For the last few weeks, my productivity has dipped to an all time low. Progit is to be &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,151 +104,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-05T17:20:00-08:00" data-updated="true" itemprop="datePublished">Feb 5<span>th</span>, 2009</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/rants/'>Rants</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2009/02/05/thinking-inside-the-box/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/02/05/thinking-inside-the-box/" itemprop="url">Thinking Inside the &#8220;Box&#8221;</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>About 10 minutes ago, my brain switched from neutral to first gear and started pondering about ways to teach someone how to program (Not that I am particularly good at programming in the first place :D).</p>
-
-<p>For example, how would you explain the concept of variables, references, names. etc, which seemingly form the corner stone of programming language syntax. Sometimes this can make you struggle a bit when you are switching languages.</p>
-
-<p>Consider the following,</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a = 10
-</span><span class='line'>&gt;&gt;&gt; b = a
-</span><span class='line'>&gt;&gt;&gt; id(a)
-</span><span class='line'>37688272
-</span><span class='line'>&gt;&gt;&gt; id(b)
-</span><span class='line'>37688272</span></code></pre></td></tr></table></div></figure>
-
-
-<p>One teency weency thing I learnt the hardway was the fact that when the interpreter evaluates &lsquo;a = 10&rsquo;, it creates a &ldquo;box&rdquo;, slaps the label &lsquo;a&rsquo; on it and puts the integer 10 in it. Consequently, something like swapping of two numbers becomes as easy as,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This is actually emphasised on most, if not all Python tutorials I have come across. This didn&rsquo;t sound all that important when I learnt Python for the first time.</p>
-
-<p>Then I found C to be doing things differently (Am I even right?),
-Take this for example,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="cm">/* This however creates a new &quot;box&quot;</span>
-</span><span class='line'><span class="cm">           containing the value 5 and a name y */</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of x = %d, Address of x is %x</span><span class="se">\n</span><span class="s">&quot;</span> \
-</span><span class='line'>         <span class="s">&quot;Value of x = %d, Address of y is %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Gives the following output, where x and y are named on different boxes and yet have the same values.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">Value</span> <span class="n">of</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Address</span> <span class="n">of</span> <span class="n">x</span> <span class="n">is</span> <span class="mf">98e6</span><span class="n">cecc</span>
-</span><span class='line'><span class="n">Value</span> <span class="n">of</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Address</span> <span class="n">of</span> <span class="n">y</span> <span class="n">is</span> <span class="mf">98e6</span><span class="n">cec8</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Hmm, This is where I hit it. Suddenly realisation dawned. Sun shone again. Birds twittered. The darkness was gone. I suddenly found myself telling <em><strong>&ldquo;Its called the pointers.. stupid!&rdquo;</strong></em></p>
-
-<p>Now, to mirror the the Python &ldquo;box&rdquo; analogy (not exactly) well, a in a language like C, we have to our disposal the good old pointers.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="cm">/* Pointer to the &quot;box&quot; that is name &#39;x&#39;. */</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">y</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
-</span><span class='line'>          <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of x = %d, Address of x is %x</span><span class="se">\n</span><span class="s">&quot;</span> \
-</span><span class='line'>         <span class="s">&quot;Value of y = %d, Address of y is %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This would give me,
-<code>Value of x = 5, Address of x is c07ec844
-Value of y = 5, Address of y is c07ec844
-</code></p>
-
-<p>where &lsquo;*&rsquo; and &lsquo;&amp;&rsquo; are the de-reference (value-of) and reference (value-at) operators.</p>
-
-<p>So folks, Is it right to think along the lines of &ldquo;a box at c07ec844 is labelled &lsquo;x&rsquo; with the integer value 5&rdquo; when I see something as mundane as &ldquo;int x = 5&rdquo; . It did help me to understand pointers better, but are there any better analogies when speaking about variables, references etc. than say, picturing a row of shelves with lots of boxes, each of which can have multiple sticky notes with names at a given point of time.</p>
-
-		
-		
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -679,6 +534,67 @@ Value of y = 5, Address of y is c07ec844
 <p>(But given the fact that the code links against GLib and DBus, I have no idea if these numbers mean anything at all. I would be grateful if anyone thinks this is something to cheer about)</p>
 
 <p>P.S: I am looking for a temporary place to host the ipks for the lazy ones, will post the link once I get that. Meanwhile, get the code <a href="http://git.freesmartphone.org/?p=openmoko-gsoc2008.git;a=summary">here</a>.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-05T15:06:00-07:00" data-updated="true" itemprop="datePublished">Aug 5<span>th</span>, 2008</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/foss-and-linux/'>FOSS and Linux</a>, <a class='category' href='/blog/categories/linux/'>linux</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2008/08/05/muktin-2008-quite-a-change-from-mukt-v1/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2008/08/05/muktin-2008-quite-a-change-from-mukt-v1/" itemprop="url">mukt. In 2008, Quite a Change From Mukt V1</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img class="center" src="http://sudharsh.files.wordpress.com/2008/08/image000.jpg?w=512"></p>
+
+<p>After intense negotiations with the college that made me realise that I could be a good business man, I was given OD to attend <a href="http://mukt.in">mukt.in</a>. I was there to talk on DBus (which by the way was EPIC FAIL!). On a brighter side, I had fun showing off my gsoc code to people at <a href="http://www.qvantel.com/open.html">qvantel</a>. One of the things that I learned from this &ldquo;version&rdquo; of mukt.in was to prepare talks well in advance, otherwise you end up giving a mediocre presentation.</p>
+
+<p>There were a lot of great things about mukt.in this year than the last version. The venue, the speaker list, the topics covered and the people who attended it.</p>
+
+<p>The entire scope of mukt is to introduce people to FOSS. This is quite unlike other &ldquo;biggies&rdquo; in India like foss.in which is mainly concerned with the developer folk. In fact, mukt.in was more like fossconf with regards to its intended audience. Last year was more satisfying for me personally because I got a chance to actively help around. This year I didn&rsquo;t move my butt and was pampered like a elite speaker, which I felt to be weird.</p>
+
+<p>But at the same time, the event as a whole was a great success! The interactions between the speakers was awesome, many of us whom were using the free wifi at krish&rsquo;s place. His mom made me feel home and all salutes to a nice lady who happens to make the best &ldquo;chai&rdquo; ever.</p>
+
+<p>We also visited Charminar, Got stuck at Hussein Sagar in the midnight where there were no local buses, realised that samosas can cost a fortune in some places (;) ). And of course, thanks to <a href="http://www.ajuonline.net/blog2">Aju</a> bhaiyya for the tee. (you are the best for now :D)</p>
+
+<p>Ok, so here are some of my thoughts on improving mukt.in with which I have become quite attached,</p>
+
+<ul>
+<li><p>I feel the duration of the event to be too long. Two days would be apt and the third day, as <a href="http://shakthimaan.com/">mbuf</a> put forth rightly, could be made as a &ldquo;Picnic day&rdquo;. Get a mini-van for the speakers and visit the tourist spots or some hang-out. A wonderful way to get together and make mukt more of a friendly cozy foss event that everyone would love to attend.</p></li>
+<li><p>Be a bit strict with the kind of talks that make it to the final lists. Ask the speakers to submit slides and be strict with it.</p></li>
+<li><p>Chinese food, all the three days was a bit sucky. Tokens from the local canteen would have been cool instead.</p></li>
+<li><p>I realised this rather late, but the mukt.in logo could have been a bit more expressive. Like a little image of Charminar or even the Buddha of Hussein Sagar that adds some weight to the logo. You get the picture.</p></li>
+</ul>
+
+
+<p>I guess thats about it. Next time, I am ruddy damn sure mukt.in will be bigger and more &ldquo;mukt&#8221;ier.</p>
+
+<p>@mukt.in organizers, take a week off and sleep well. You guys deserve it!</p>
 
 		
 		
